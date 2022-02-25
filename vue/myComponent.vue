@@ -98,7 +98,7 @@
               fetch(url)
                 .then(response => response.text())
                 .then(data => {
-                    this.logs = data + "\n" + this.logs;
+                    this.logs = data+'\n'+this.logs;
                     let splt = this.logs.split('\n');
                     while (splt.length > 400){
                         splt.pop();
