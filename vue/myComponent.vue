@@ -104,6 +104,7 @@
                         splt.shift();
                     }
                     this.logs = splt.join('\n');
+                    this.logs.scrollTop = this.logs.scrollHeight;
                     setTimeout(()=>{this.showlogs();}, 1000);
                 });
             } else {
