@@ -101,7 +101,7 @@
                     this.logs = data + "\n" + this.logs;
                     let splt = this.logs.split('\n');
                     while (splt.length > 400){
-                        splt.shift();
+                        splt.pop();
                     }
                     this.logs = splt.join('\n');
                     this.logs.scrollTop = this.logs.scrollHeight;
