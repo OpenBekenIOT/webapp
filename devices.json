@@ -1820,6 +1820,23 @@
       },
       "image": "https://obrazki.elektroda.pl/6540960600_1668021484.webp",
       "wiki": "https://www.elektroda.com/rtvforum/topic3932742.html"
-    }
+    },
+	  
+    {
+      "bDetailed": "0",
+      "vendor": "Hama",
+      "name": "WiFi LED Lamp, E27, 10 W, CW",
+      "model": "Hama CW E27 10W Lamp, 176598",
+      "chip": "BK7231T",
+      "board": "WB2L",
+      "pins": {
+        "7": "PWM;2",
+        "8": "PWM;1"
+      },
+      "image": "https://www.hama.com/bilder/00176/abx/00176584abx.png",
+      "wiki": "",
+      "product": "https://www.hama.com/00176584/hama-wlan-led-lamp-e27-10w-dimmable-bulb-for-voice-app-control-white"
+    },
+	  
   ]
 }
