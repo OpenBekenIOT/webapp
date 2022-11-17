@@ -490,11 +490,11 @@
     {
       "vendor": "Tuya",
       "bDetailed": "1",
-      "name": "LSPS5 Wall Switch No-Neutral - 1 or 2 or 3 gang",
+      "name": "LSPS5 Wall Switch No-Neutral - 3 gang",
       "chip": "BK7231N",
       "board": "CB3S",
       "pins": {
-        "6": "WiFi_Led;0",
+        "6": "WifiLED_n;0",
         "7": "Relay;1",
         "8": "Relay;2",
         "9": "Relay;3",
@@ -503,7 +503,39 @@
         "26": "Btn;2"
       },
       "keywords": ["relay","wall switch","no neutral"],
-      "image": "https://obrazki.elektroda.pl/4519621800_1668572293.jpg",
+      "image": "https://obrazki.elektroda.pl/8988415600_1668572364.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic3934363.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "1",
+      "name": "LSPS5 Wall Switch No-Neutral - 2 gang",
+      "chip": "BK7231N",
+      "board": "CB3S",
+      "pins": {
+        "6": "WifiLED_n;0",
+        "7": "Relay;1",
+        "9": "Relay;2",
+        "14": "Btn;1",
+        "24": "Btn;2"
+      },
+      "keywords": ["relay","wall switch","no neutral"],
+      "image": "https://obrazki.elektroda.pl/4353080000_1668572367_org.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic3934363.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "1",
+      "name": "LSPS5 Wall Switch No-Neutral - 1 gang",
+      "chip": "BK7231N",
+      "board": "CB3S",
+      "pins": {
+        "6": "WifiLED_n;0",
+        "7": "Relay;1",
+        "14": "Btn;1"
+      },
+      "keywords": ["relay","wall switch","no neutral"],
+      "image": "https://obrazki.elektroda.pl/3036573800_1668572364_org.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic3934363.html"
     },
     {
@@ -1608,7 +1640,7 @@
       "board": "CBU",
       "keywords": ["switch", "4 gang"],
       "pins": {
-        "6": "Relay;1",
+        "6": "Relay;3",
         "7": "Relay;2",
         "9": "Relay;1",
         "14": "Button;1",
