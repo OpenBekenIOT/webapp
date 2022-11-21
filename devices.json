@@ -490,11 +490,11 @@
     {
       "vendor": "Tuya",
       "bDetailed": "1",
-      "name": "LSPS5 Wall Switch No-Neutral - 1 or 2 or 3 gang",
+      "name": "LSPS5 Wall Switch No-Neutral - 3 gang",
       "chip": "BK7231N",
       "board": "CB3S",
       "pins": {
-        "6": "WiFi_Led;0",
+        "6": "WifiLED_n;0",
         "7": "Relay;1",
         "8": "Relay;2",
         "9": "Relay;3",
@@ -503,7 +503,39 @@
         "26": "Btn;2"
       },
       "keywords": ["relay","wall switch","no neutral"],
-      "image": "https://obrazki.elektroda.pl/4519621800_1668572293.jpg",
+      "image": "https://obrazki.elektroda.pl/8988415600_1668572364.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic3934363.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "1",
+      "name": "LSPS5 Wall Switch No-Neutral - 2 gang",
+      "chip": "BK7231N",
+      "board": "CB3S",
+      "pins": {
+        "6": "WifiLED_n;0",
+        "7": "Relay;1",
+        "9": "Relay;2",
+        "14": "Btn;1",
+        "24": "Btn;2"
+      },
+      "keywords": ["relay","wall switch","no neutral"],
+      "image": "https://obrazki.elektroda.pl/4353080000_1668572367_org.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic3934363.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "1",
+      "name": "LSPS5 Wall Switch No-Neutral - 1 gang",
+      "chip": "BK7231N",
+      "board": "CB3S",
+      "pins": {
+        "6": "WifiLED_n;0",
+        "7": "Relay;1",
+        "14": "Btn;1"
+      },
+      "keywords": ["relay","wall switch","no neutral"],
+      "image": "https://obrazki.elektroda.pl/3036573800_1668572364_org.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic3934363.html"
     },
     {
@@ -565,34 +597,6 @@
       "keywords": ["TuyaMCU","dimmer","WML26N65C4","WMM26N65C4","PC817","SC95F8613X"],
       "image": "https://obrazki.elektroda.pl/2560946000_1666618650.png",
       "wiki": "https://www.elektroda.pl/rtvforum/viewtopic.php?t=3929151&highlight="
-    },
-    {
-      "vendor": "Nous",
-      "bDetailed": "1",
-      "name": "Bulb P4 E14 RGBCW (BK7231N + BP5758)",
-      "chip": "BK7231N",
-      "board": "EB01-B",
-      "pins": {
-        "26": "BP5758D_CLK;0",
-        "24": "BP5758D_DAT;0"
-      },
-      "keywords": ["RGBCW"],
-      "image": "https://obrazki.elektroda.pl/8219818100_1664010430.jpg",
-      "wiki": "https://www.elektroda.pl/rtvforum/viewtopic.php?t=3923992&highlight="
-    },
-    {
-      "vendor": "Nous",
-      "bDetailed": "1",
-      "name": "Bulb P8 GU10 RGBCW (BK7231N + BP5758)",
-      "chip": "BK7231N",
-      "board": "EB01-B",
-      "pins": {
-        "26": "BP5758D_CLK;0",
-        "24": "BP5758D_DAT;0"
-      },
-      "keywords": ["RGBCW"],
-      "image": "https://obrazki.elektroda.pl/9188059200_1668416800.jpg",
-      "wiki": "https://www.elektroda.pl/rtvforum/topic3934503.html"
     },
     {
       "vendor": "Nous",
@@ -1636,7 +1640,7 @@
       "board": "CBU",
       "keywords": ["switch", "4 gang"],
       "pins": {
-        "6": "Relay;1",
+        "6": "Relay;3",
         "7": "Relay;2",
         "9": "Relay;1",
         "14": "Button;1",
