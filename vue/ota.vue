@@ -23,7 +23,7 @@
             <br/>
             <span>Select remote OTA file to download to PC:</span>
             <select v-model="selectedfile" @change="remoteotafilechange()">
-                <option v-for="opt in options" v-bind:key="opt.url" v-bind:value="opt.url">{{ opt.name }}<option>
+                <option v-for="opt in options" v-bind:key="opt.url" v-bind:value="opt.url">{{ opt.name }}</option>
             </select>
             <span>Download: </span><a v-bind:href="selectedfile">{{selectedfile}}</a>
 
@@ -35,9 +35,9 @@
             <p>Or drop it here:</p>
             <br/>
             <div class="drop" @drop="dropHandler($event)" @dragover="dragOverHandler($event)">
-                <div class="otatext center" v-html="otatext"></div>
+                <span class="otatext center" v-html="otatext"></span>
             </div>
-            <div v-html="status" :class="{invalid: invalidOTASelected}"></div>
+            <span v-html="status" :class="{invalid: invalidOTASelected}"></span>
         </div>
     </div>
 </template>

@@ -21,10 +21,11 @@
             <div class="left">
                 <input type="text" v-model="folder">
                 <div class="drop" @drop="dropHandler($event)" @dragover="dragOverHandler($event)">
-                    <div class="otatext center" v-html="otatext"></div>
+                    <span class="otatext center" v-html="otatext"></span>
                 </div>
-                <div v-html="status"></div>
-                <div v-html="output"></div>
+                <span v-html="status"></span>
+                <br>
+                <span v-html="output"></span>
             </div>
             <div class="middle">
                 <div>

@@ -1,9 +1,11 @@
 <template>
     <div>
         <div>
-            Here you can read device flash directly. RF config is Beken internal configuration memory and Config is our configuration structure.<br>
-            Here you can also recover your device from "MAC ends with 00 00 00 and is unable to change" bug. Button 'Restore RF config' will restore RF partition for T and N and set a random MAC address, but this also requires rebooting device later.<br>
-            
+            <span>
+                Here you can read device flash directly. RF config is Beken internal configuration memory and Config is our configuration structure.<br>
+                Here you can also recover your device from "MAC ends with 00 00 00 and is unable to change" bug. Button 'Restore RF config' will restore RF partition for T and N and set a random MAC address, but this also requires rebooting device later.<br>
+            </span>
+
             <button @click="rf(null, $event)">Read RF Config</button>
             <button @click="config(null, $event)">Read Config</button>
             <button @click="flashvars(null, $event)">Read FlashVars</button>

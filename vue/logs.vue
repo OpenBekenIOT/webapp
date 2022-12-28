@@ -5,7 +5,7 @@
         <table class="logging-settings">
             <tr>
                 <td style="width: 80px">
-                    Logging:
+                    <label>Logging:</label>
                 </td>
                 <td>
                     <button class="logging" :class="{paused:paused}"  @click="paused = !paused">{{paused?"Resume":"Pause"}}</button>
@@ -33,7 +33,7 @@
                     <select v-model="loglevel">
                         <option v-for="(item,index) of loglevelnames" :value="index" :key="index">{{item}}</option>
                     </select>
-                     NOTE: If you are getting 'command unknown', remember that some commands are only added when a driver is started, and some drivers requires device reboot to start.
+                     <span class="note">NOTE: If you are getting 'command unknown', remember that some commands are only added when a driver is started, and some drivers requires device reboot to start.</span>
                 </td>
             </tr>
             <tr>

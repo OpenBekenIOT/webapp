@@ -115,9 +115,9 @@
     /* Style the tab */
     .tab {
       overflow: hidden;
-      border: 1px solid #ccc;
+      border: 2px solid #ccc;
       background-color: #f1f1f1;
-      height: 40px;
+      height: 50px;
       box-sizing: border-box;
     }
     
@@ -130,6 +130,9 @@
       cursor: pointer;
       padding: 14px 16px;
       transition: 0.3s;
+      height: 100%;
+      font-size: 1rem;
+      border: 0;
     }
     
     /* Change background color of buttons on hover */
@@ -145,15 +148,15 @@
     /* Style the tab content */
     .tabcontent {
       padding: 0px 12px;
-      border: 1px solid #ccc;
       border-top: none;
       overflow: auto;
       position: absolute;
-      top: 40px;
+      top: 50px;
       right: 0;
       bottom: 0;
       left: 0;
       box-sizing: border-box;
+      background-color: #21333e;
     }
     input[type=range] {
         width:99%;
@@ -168,5 +171,11 @@
       right: 0;
       bottom: 0;
       left: 0;
+    }
+    body {
+      background-color: #21333e;
+    }
+    h3 {
+      color: #faffff;
     }
 </style>

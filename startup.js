@@ -12,7 +12,7 @@ document.head.appendChild(s1);
 //Root styles - prevent scrollbar in body, consistent default font
 var css = document.createElement("style");
 css.type = "text/css";
-var styles = "body{margin:0; padding:0;} *{font-family: 'Segoe UI',Arial,sans-serif;}";
+var styles = "@import '../styles/main.css';";
 css.appendChild(document.createTextNode(styles));
 document.head.appendChild(css);
 
