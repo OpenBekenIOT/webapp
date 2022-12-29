@@ -8,21 +8,24 @@
         When editing a file, use "Save, Reset (...), and run" file to test new scripts, it will restart scripting every time with a clear state.
         </p>
         <div class="top">
-            <button @click="backup(null, $event)">Read fsblock</button>
-            <button @click="restore(null, $event)">Restore fsblock</button>
-            <button @click="read(null, $event)">List Filesystem</button>
-            <button @click="create(null, $event)">Create File</button>
-            <button @click="resetSVM(null, $event)">Reset scripts</button>
+            <button class="button" style="width: calc((100%/ 3) - 4px);" @click="backup(null, $event)">Read fsblock</button>
+            <button class="button" style="width: calc((100%/ 3) - 4px);" @click="restore(null, $event)">Restore fsblock</button>
+            <button class="button" style="width: calc((100%/ 3) - 4px);" @click="read(null, $event)">List Filesystem</button>
             <br/>
-            <button @click="getTar(null, $event)">Download Tar of FS</button>
+            <button class="button" style="width: calc((100%/ 3) - 4px);" @click="create(null, $event)">Create File</button>
+            <button class="button" style="width: calc((100%/ 3) - 4px);" @click="resetSVM(null, $event)">Reset scripts</button>
+            <button class="button" style="width: calc((100%/ 3) - 4px);" @click="getTar(null, $event)">Download Tar of FS</button>
 
         </div>
         <div class="bottom">
             <div class="left">
                 <input type="text" v-model="folder">
+                <br>
+                <br>
                 <div class="drop" @drop="dropHandler($event)" @dragover="dragOverHandler($event)">
                     <span class="otatext center" v-html="otatext"></span>
                 </div>
+                <br>
                 <span v-html="status"></span>
                 <br>
                 <span v-html="output"></span>
@@ -913,10 +916,10 @@
         height:90%;
     }
     .top {
-        height:10%;
+        height:15%;
     }
     .bottom {
-        height:90%;
+        height:85%;
         position: relative;
     }
 </style>

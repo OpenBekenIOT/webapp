@@ -11,6 +11,49 @@ body {
     font-weight: bold;
 }
 
-p, label, span, h4, h2 {
+p,
+label,
+span,
+h4,
+h2 {
     color: #eaeaea;
 }
+
+a {
+    color: #1fa3ec;
+    text-decoration: none;
+}
+
+input,
+select {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background: #ddd;
+    color: #000;
+}
+
+.button {
+    border: 0;
+    border-radius: .3rem;
+    background: #1fa3ec;
+    color: #faffff;
+    line-height: 2.4rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .button:disabled {
+    border: 0;
+    border-radius: .3rem;
+    background: darkgray;
+    color: lightgray;
+    line-height: 2.4rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
+    cursor: not-allowed;
+  }

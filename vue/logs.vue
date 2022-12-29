@@ -248,13 +248,13 @@
     font-family: 'Courier New', Courier, monospace;
     resize: none;
 	width: calc(100% - 20px);
-	height: calc(100% - 160px);
+	height: calc(75% - 160px);
 }
 .container .logging-settings{
     height: 150px;
     overflow: auto;
     position: absolute;
-    bottom: 0;
+    top: calc(75% - 150px);
 }
 .feature {
     margin-right:2em;
@@ -271,5 +271,12 @@ button.logging.paused{
 
 button.feature, button.logging{
     width: 75px;
+}
+
+textarea {
+    color: lime;
+    background-color: black;
+    outline: none;
+    border: none;
 }
 </style>

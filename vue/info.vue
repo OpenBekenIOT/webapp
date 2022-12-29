@@ -29,7 +29,7 @@
       devices</span>
       <br /><br />
 
-      <select v-model="selectedDevice" style="width: 250px;">
+      <select v-model="selectedDevice" style="width: 100%;">
         <option v-for="dev in filteredDevices" :value="dev" :key="dev">{{ getDeviceDisplayName(dev) }}</option>
       </select>
 
@@ -54,10 +54,14 @@
       </div>
 
       <br />
-      <label class="spaced-label" for="deviceFlag" style="width:75px; display: inline-block;">Flag:</label>&nbsp;<input id="deviceFlag"
-        v-model="deviceFlag" /><br />
-      <label class="spaced-label" for="deviceCommand" style="width:75px; display: inline-block;">Command:</label>&nbsp;<input
-        id="deviceCommand" v-model="deviceCommand" placeholder="Startup command" /><br />
+      <label for="deviceFlag" style="width:100%; display: inline-block;">Flag:</label>&nbsp;
+      <br />
+      <input id="deviceFlag" style="width:100%;" v-model="deviceFlag" />
+      <br />
+      <label for="deviceCommand" style="width:100%; display: inline-block;">Command:</label>&nbsp;
+      <br />
+      <input id="deviceCommand" style="width:100%;" v-model="deviceCommand" placeholder="Startup command" />
+      <br />
 
       <button class="button" @click="savePins">Save Pins</button>
       <br />
@@ -351,25 +355,6 @@ module.exports = {
   width: 20px;
 }
 
-.button {
-  border: 0;
-  border-radius: .3rem;
-  background: #1fa3ec;
-  color: #faffff;
-  line-height: 2.4rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 5px;
-}
-
-input, select {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  background: #ddd;
-  color: #000;
-}
 .spaced-label {
   margin-right: 10px;
 }
