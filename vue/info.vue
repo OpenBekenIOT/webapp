@@ -34,9 +34,9 @@
       </select>
 
       <div>
-        <device :selected-device="selectedDevice" style="margin: 10px 0"></device>
+        <device :selected-device="selectedDevice" style="margin: 10px 0; color: #eaeaea;"></device>
         <div v-if="selectedDevice">
-          <button @click="useDevice">Copy Device Settings</button>
+          <button class="button" @click="useDevice">Copy Device Settings</button>
         </div>
         <p v-else>Pick a device from the dropdown.</p>
       </div>
@@ -63,7 +63,7 @@
       <input id="deviceCommand" style="width:100%;" v-model="deviceCommand" placeholder="Startup command" />
       <br />
 
-      <button class="button" @click="savePins">Save Pins</button>
+      <button style="width: 100%;" class="button" @click="savePins">Save Pins</button>
       <br />
       <p class="note">NOTE: You might need to reboot your device in order to apply all changes.</p>
     </div>
@@ -353,10 +353,6 @@ module.exports = {
 .pin-index {
   display: inline-block;
   width: 20px;
-}
-
-.spaced-label {
-  margin-right: 10px;
 }
 
 .pin-config select, input {

@@ -4,7 +4,7 @@
 
         <table class="logging-settings">
             <tr>
-                <td style="width: 80px">
+                <td style="width: 80px; padding-right: 5px;">
                     <label>Logging:</label>
                 </td>
                 <td>
@@ -15,7 +15,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="width: 80px">
+                <td style="width: 80px; padding-right: 5px;">
                     <label>Log Features:</label>
                 </td>
                 <td id="logFeaturesParent">
@@ -26,24 +26,25 @@
                 </td>
             </tr>
             <tr>
-                <td style="width: 80px">
+                <td style="width: 80px; padding-right: 5px;">
                     <label>Log Level:</label>
                 </td>
                 <td>
                     <select v-model="loglevel">
                         <option v-for="(item,index) of loglevelnames" :value="index" :key="index">{{item}}</option>
                     </select>
+                    <br />
                      <span class="note">NOTE: If you are getting 'command unknown', remember that some commands are only added when a driver is started, and some drivers requires device reboot to start.</span>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="width: 80px; padding-right: 5px;">
                     <label>Command:</label>
                 </td>
                 <td>
                     <form @submit="send($event)">
                         <input v-model="cmd" id="obkcommand" type="text" autocomplete="on" style="width:60%;">
-                        <input type="submit">
+                        <input class="button" type="submit">
                     </form>
                 </td>
             </tr>
@@ -239,22 +240,14 @@
 
 <style scoped>
 .container .logs{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 150px;
-    left: 0;
-    margin: 0 10px;
     font-family: 'Courier New', Courier, monospace;
     resize: none;
-	width: calc(100% - 20px);
+	width: 100%;
 	height: calc(75% - 160px);
 }
 .container .logging-settings{
     height: 150px;
     overflow: auto;
-    position: absolute;
-    top: calc(75% - 150px);
 }
 .feature {
     margin-right:2em;

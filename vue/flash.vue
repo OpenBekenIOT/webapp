@@ -6,10 +6,12 @@
                 Here you can also recover your device from "MAC ends with 00 00 00 and is unable to change" bug. Button 'Restore RF config' will restore RF partition for T and N and set a random MAC address, but this also requires rebooting device later.<br>
             </span>
             <br/>
-            <button style="width: calc((100%/ 4) - 4px);" class="button" @click="rf(null, $event)">Read RF Config</button>
-            <button style="width: calc((100%/ 4) - 4px);" class="button" @click="config(null, $event)">Read Config</button>
-            <button style="width: calc((100%/ 4) - 4px);" class="button" @click="flashvars(null, $event)">Read FlashVars</button>            
-            <button style="width: calc((100%/ 4) - 4px);" class="button" @click="restore_rf(null, $event)">Restore RF Config (N & T)</button>
+            <div class="evenly-buttons">
+                <button class="button space-distr" @click="rf(null, $event)">Read RF Config</button>
+                <button class="button space-distr" @click="config(null, $event)">Read Config</button>
+                <button class="button space-distr" @click="flashvars(null, $event)">Read FlashVars</button>            
+                <button class="button space-distr" @click="restore_rf(null, $event)">Restore RF Config (N & T)</button>
+            </div>
             <br/>
             <br />
             <a :href="rfurl" download="rfdata">Download RF block</a>

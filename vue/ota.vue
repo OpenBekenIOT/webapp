@@ -5,17 +5,17 @@
             <p>Build: {{ build }}</p>
         </div>
         <div>
-            <button class="button" :disabled="!otadata" @click="sequence(null, $event)">Start safe OTA (keep LittleFS
+            <button class="button" style="width: 100%;" :disabled="!otadata" @click="sequence(null, $event)">Start safe OTA (keep LittleFS
                 data)</button>
             <br />
-            <button class="button" :disabled="!otadata" @click="startota(null, $event)">Start quick OTA (delete all
+            <button class="button" style="width: 100%;" :disabled="!otadata" @click="startota(null, $event)">Start quick OTA (delete all
                 LittleFS data)</button>
             <br />
-            <button class="button" style="width: calc((100%/ 3) - 4px);" @click="backup(null, $event)">Read
-                fsblock</button>
-            <button class="button" style="width: calc((100%/ 3) - 4px);" @click="reboot(null, $event)">Reboot</button>
-            <button class="button" style="width: calc((100%/ 3) - 4px);" @click="restore(null, $event)">Restore
-                fsblock</button>
+            <div class="evenly-buttons">
+                <button class="button" @click="backup(null, $event)">Read fsblock</button>
+                <button class="button" @click="reboot(null, $event)">Reboot</button>
+                <button class="button" @click="restore(null, $event)">Restore fsblock</button>
+            </div>
             <br />
             <br />
             <select v-model="defaultaction">
@@ -24,9 +24,7 @@
                 <option value='sequence'>Backup/OTA/Restore</option>
             </select>
             <span>Selected: {{ defaultaction }}</span>
-            <br />
-            <br />
-            <span>Select remote OTA file to download to PC:</span>
+            <p>Select remote OTA file to download to PC:</p>
             <select v-model="selectedfile" @change="remoteotafilechange()">
                 <option v-for="opt in options" v-bind:key="opt.url" v-bind:value="opt.url">{{ opt.name }}</option>
             </select>
@@ -35,16 +33,13 @@
         </div>
         <br />
         <div>
-            <label for="otaFilePicker">Select OTA file from disk:</label><input id="otaFilePicker" type="file"
-                @change="fileSelected($event)" :accept="otaFileExtension">
-            <br />
+            <label for="otaFilePicker">Select OTA file from disk: </label>
+            <input id="otaFilePicker" type="file" @change="fileSelected($event)" :accept="otaFileExtension">
             <p>Or drop it here:</p>
-            <br />
             <div class="drop" @drop="dropHandler($event)" @dragover="dragOverHandler($event)">
                 <span class="otatext center" v-html="otatext"></span>
             </div>
-            <br />
-            <span v-html="status" :class="{ invalid: invalidOTASelected }"></span>
+            <p v-html="status" :class="{ invalid: invalidOTASelected }"></p>
         </div>
     </div>
 </template>

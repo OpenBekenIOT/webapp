@@ -12,7 +12,7 @@
     </div>
     
     <!-- Tab content -->
-    <div class="tabcontent" :style="(tab === 'Logs')?null:'display:none;'">
+    <div class="tabcontent" v-if="(tab === 'Logs')">
       <h3>Logs</h3>
       <logs-controller></logs-controller>
     </div>
@@ -105,7 +105,7 @@
 
 <style scoped>
     .fullscreen{
-        height:100%;
+        height:100vh;
     }
 
     .example {
@@ -147,16 +147,12 @@
     
     /* Style the tab content */
     .tabcontent {
-      padding: 0px 12px;
+      padding: 12px;
       border-top: none;
-      overflow: auto;
-      position: absolute;
-      top: 50px;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      height: calc(100vh - 50px);
       box-sizing: border-box;
       background-color: #21333e;
+      overflow: scroll;
     }
     input[type=range] {
         width:99%;
@@ -166,16 +162,10 @@
       height: 25px;
     }
    .tabcontent .container{
-      position:absolute;
-      top: 65px;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      height: calc(100% - 62px);
+      width: 100%;
     }
     body {
       background-color: #21333e;
-    }
-    h3 {
-      color: #faffff;
     }
 </style>
