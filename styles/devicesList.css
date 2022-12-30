@@ -1,6 +1,8 @@
 body {
     padding: 10px;
     background-color: #21333e;
+    height: 100vh;
+    margin: 0px;
 }
 
 * {
@@ -89,4 +91,33 @@ select {
 iframe {
     border: none;
     aspect-ratio: 16 / 9;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: calc(20vw - 20px) calc(80vw - 10px);
+    grid-template-rows: calc(10vh - 20px) calc(90vh - 10px);
+    grid-template-areas:
+        "header  header"
+        "sidebar content";
+    gap: 10px;
+}
+
+.header {
+    grid-area: header;
+}
+
+.content {
+    grid-area: content;
+    overflow: scroll;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+table {
+    display: block;
+    width: 100%;
+    word-break: break-all; 
 }
