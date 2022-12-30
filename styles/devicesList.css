@@ -1,6 +1,6 @@
 body {
-    margin: 0;
-    padding: 0;
+    padding: 10px;
+    background-color: #21333e;
 }
 
 * {
@@ -10,8 +10,26 @@ body {
     -moz-box-sizing: border-box;
 }
 
-.note {
-    font-weight: bold;
+.evenly-iframes {
+    display: flex;
+    flex-flow: row;
+}
+
+.evenly-iframes iframe {
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-right: 2.5px;
+    margin-left: 2.5px;
+}
+
+.evenly-iframes iframe:first-of-type {
+    margin-right: 2.5px;
+    margin-left: 0px;
+}
+
+.evenly-iframes iframe:last-of-type {
+    margin-left: 2.5px;
+    margin-right: 0xp;
 }
 
 p,
@@ -23,19 +41,15 @@ h3,
 h4,
 h5,
 h6,
-pre {
+pre,
+th,
+td {
     color: #eaeaea;
 }
 
 a {
     color: #1fa3ec;
     text-decoration: none;
-}
-
-input,
-select {
-    background: #ddd;
-    color: #000;
 }
 
 .button {
@@ -61,28 +75,18 @@ select {
     cursor: not-allowed;
 }
 
-.evenly-buttons {
-    display: flex;
-    flex-flow: row;
+input,
+select {
+    background: #ddd;
+    color: #000;
+    padding: 5px;
 }
 
-.evenly-buttons button {
-    flex-grow: 1;
-    flex-basis: 0;
-    margin-right: 2.5px;
-    margin-left: 2.5px;
+.note {
+    font-weight: bold;
 }
 
-.evenly-buttons button:first-of-type {
-    margin-right: 2.5px;
-    margin-left: 0px;
-}
-
-.evenly-buttons button:last-of-type {
-    margin-left: 2.5px;
-    margin-right: 0xp;
-}
-
-body {
-    background-color: #21333e;
+iframe {
+    border: none;
+    aspect-ratio: 16 / 9;
 }

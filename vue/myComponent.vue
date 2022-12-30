@@ -165,7 +165,4 @@
       height: calc(100% - 62px);
       width: 100%;
     }
-    body {
-      background-color: #21333e;
-    }
 </style>
