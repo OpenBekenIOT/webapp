@@ -7,11 +7,11 @@
                 <td style="width: 80px; padding-right: 5px;">
                     <label>Logging:</label>
                 </td>
-                <td>
-                    <button class="logging" :class="{paused:paused}"  @click="paused = !paused">{{paused?"Resume":"Pause"}}</button>
-                    <button class="feature" style="width: 100px" @click="clear">Clear History</button>
-                    <button class="feature" style="width: 125px" @click="selectAllFeatures">Select All Features</button>
-                    <button class="feature" style="width: 125px" @click="clearAllFeatures">Clear All Features</button>
+                <td class="evenly-buttons">
+                    <button class="logging button" :class="{paused:paused}"  @click="paused = !paused">{{paused?"Resume":"Pause"}}</button>
+                    <button class="feature button" @click="clear">Clear History</button>
+                    <button class="feature button" @click="selectAllFeatures">Select All Features</button>
+                    <button class="feature button" @click="clearAllFeatures">Clear All Features</button>
                 </td>
             </tr>
             <tr>
@@ -247,10 +247,10 @@
 }
 .container .logging-settings{
     height: 150px;
+    width: 100%;
     overflow: auto;
 }
 .feature {
-    margin-right:2em;
     display: inline-block;
 }
 
@@ -260,10 +260,6 @@
 
 button.logging.paused{
    background-color: #c0c0c0;
-}
-
-button.feature, button.logging{
-    width: 75px;
 }
 
 textarea {
