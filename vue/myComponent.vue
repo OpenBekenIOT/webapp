@@ -12,7 +12,7 @@
     </div>
     
     <!-- Tab content -->
-    <div class="tabcontent" :style="(tab === 'Logs')?null:'display:none;'">
+    <div class="tabcontent" v-if="(tab === 'Logs')">
       <h3>Logs</h3>
       <logs-controller></logs-controller>
     </div>
@@ -105,7 +105,7 @@
 
 <style scoped>
     .fullscreen{
-        height:100%;
+        height:100vh;
     }
 
     .example {
@@ -115,9 +115,9 @@
     /* Style the tab */
     .tab {
       overflow: hidden;
-      border: 1px solid #ccc;
+      border: 2px solid #ccc;
       background-color: #f1f1f1;
-      height: 40px;
+      height: 50px;
       box-sizing: border-box;
     }
     
@@ -130,6 +130,9 @@
       cursor: pointer;
       padding: 14px 16px;
       transition: 0.3s;
+      height: 100%;
+      font-size: 1rem;
+      border: 0;
     }
     
     /* Change background color of buttons on hover */
@@ -144,16 +147,12 @@
     
     /* Style the tab content */
     .tabcontent {
-      padding: 0px 12px;
-      border: 1px solid #ccc;
+      padding: 12px;
       border-top: none;
-      overflow: auto;
-      position: absolute;
-      top: 40px;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      height: calc(100vh - 50px);
       box-sizing: border-box;
+      background-color: #21333e;
+      overflow: scroll;
     }
     input[type=range] {
         width:99%;
@@ -163,10 +162,7 @@
       height: 25px;
     }
    .tabcontent .container{
-      position:absolute;
-      top: 65px;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      height: calc(100% - 62px);
+      width: 100%;
     }
 </style>

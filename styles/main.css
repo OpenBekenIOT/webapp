@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    font-family: verdana, sans-serif;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.note {
+    font-weight: bold;
+}
+
+p,
+label,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre {
+    color: #eaeaea;
+}
+
+a {
+    color: #1fa3ec;
+    text-decoration: none;
+}
+
+input,
+select {
+    background: #ddd;
+    color: #000;
+}
+
+.button {
+    border: 0;
+    border-radius: .3rem;
+    background: #1fa3ec;
+    color: #faffff;
+    line-height: 2.4rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.button:disabled {
+    border: 0;
+    border-radius: .3rem;
+    background: darkgray;
+    color: lightgray;
+    line-height: 2.4rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 5px;
+    cursor: not-allowed;
+}
+
+.evenly-buttons {
+    display: flex;
+    flex-flow: row;
+}
+
+.evenly-buttons button {
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-right: 2.5px;
+    margin-left: 2.5px;
+}
+
+.evenly-buttons button:first-of-type {
+    margin-right: 2.5px;
+    margin-left: 0px;
+}
+
+.evenly-buttons button:last-of-type {
+    margin-left: 2.5px;
+    margin-right: 0xp;
+}
+
+body {
+    background-color: #21333e;
+}

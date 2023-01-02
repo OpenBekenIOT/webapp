@@ -1,182 +1,170 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-<style>
-.table-image {
-  td, th {
-    vertical-align: middle;
-  }
-}
-</style>
+	<!-- Custom CSS instead of Bootstrap -->
+	<link rel="stylesheet" href="styles/devicesList.css">
 </head>
+
 <body>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<div class="wrapper">
+		<div class="header">
+			<div>
+				<h1 style="margin-top: 0px;"><a href="https://github.com/openshwprojects/OpenBK7231T_App">OpenBeken</a> IoT
+					devices teardowns database</h1>
+				<h2>Powered by <a href="https://www.elektroda.com/rtvforum/forum507.html">Elektroda.com</a> teardowns
+					section</h2>
+			</div>
+			<div>
+				<a class="toggle open" href="#sidebar">
+					<svg style="fill: white;" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M6 36v-3h36v3Zm0-10.5v-3h36v3ZM6 15v-3h36v3Z"/></svg>
+				</a>
+			</div>
+		</div>
+		<div class="content">
+			<div style="width: 100%;">
+				<p>Have a device? Help us! Submit a teardown <a
+						href="https://www.elektroda.com/rtvforum/forum507.html">here!</a>
+				</p>
+				<p>Want to get cloud-free? Pair with HA? Flash OpenBeken - now supporting BK7231N, BK7231T, XR809,
+					BL602,
+					T34,
+					W800/W801, W600/W601!</p>
+				<p>Need help? Ask <a href="https://www.elektroda.com/rtvforum/topic3866123-960.html">here!</a> Direct
+					contact with
+					developers, daily feedback and bugfixes!</p>
+				<p>Please watch our English flashing/configuration tutorials:</p>
+				<div class="evenly-iframes">
+					<iframe width="100%" src="https://www.youtube.com/embed/Yb3zXtBdSnE"></iframe>
+					<iframe width="100%" src="https://www.youtube.com/embed/PKkiqDNFIx8"></iframe>
+					<iframe width="100%" src="https://www.youtube.com/embed/KU0tDwtjfjw"></iframe>
+				</div>
+				<br>
+				<p>We have also Polish translations for <a href="https://www.youtube.com/watch?v=7MyfSgxLAOo">RGBCW bulb
+						flashing &
+						soldering tutorial</a> , <a href="https://www.youtube.com/watch?v=0V0kaRVnk18">CB2S Relay
+						flashing</a>, <a href="https://www.youtube.com/watch?v=JCqq-gn-X2c">WB3S wall switch
+						flashing.</a>
+				</p>
+				<p>Tool for BK7231T flashing: <a
+						href="https://github.com/openshwprojects/OpenBK7231T/blob/master/bk_writer1.60.zip">bkWriter
+						1.60</a></p>
+				<p>Tool for BK7231N flashing: <a
+						href="https://github.com/OpenBekenIOT/hid_download_py">hid_download_py</a>
+				</p>
+				<p>Click on device name to get a detailed teardown article, often with pins configuration and setup.</p>
+				<p>Some devices were submitted by contributors and not by me, and might not have complete info.</p>
+				<p>Also keep in mind that we have some Zigbee or TODO devices on list, just for the sake of
+					completeness.
+				</p>
+				<p style="margin-top: 0px;" class="note">NOTE: BL0937, BL0942 and CSE7766 are chips used for energy
+					metering.</p>
+				<p class="note">NOTE: SM2135, BP1658 and BP5758 are "I2C" RGBCW LED drivers.</p>
+				<p class="note">NOTE: Type filter "RGBCW" to find RGBCW devices, try also "4CH", "relay", try shop
+					names,
+					like
+					"Action", "Blitzwolf", "Aubess", etc...</p>
+				<p class="note">NOTE: If config template is missing, check linked topic, it may not been just entered in
+					Database</p>
+			</div>
+			<div style="overflow: scroll;">
+				<p id="demo"></p>
+				<h6 id="g_state">Table is loading.</h6>
+				<table>
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Image</th>
+							<th scope="col">Device Name</th>
+							<th scope="col">Chipset (Module)</th>
+							<th scope="col">Keywords</th>
+							<th scope="col">Config</th>
+							<th scope="col">Date</th>
+						</tr>
+					</thead>
+					<tbody id="tableBody">
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="sidebar" id="sidebar">
+			<div class="menu-title">
+				<h1>Menu</h1>
+				<a class="toggle close" href="#">
+					<svg style="fill: white;" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="m12.45 37.65-2.1-2.1L21.9 24 10.35 12.45l2.1-2.1L24 21.9l11.55-11.55 2.1 2.1L26.1 24l11.55 11.55-2.1 2.1L24 26.1Z"/></svg>
+				</a>
+			</div>
+			<form onsubmit="return false;">
+				<!-- <label class="sr-only" for="filter_text">Name</label> -->
+				<label style="margin-bottom: 10px;display: inline-block;" for="filter_text">Keyword filter:</label>
+				<br>
+				<input style="margin-bottom: 10px;display: inline-block; width: 100%;" type="text"
+					class="form-control mb-2" id="filter_text" placeholder="Keyword">
+				<br>
+				<!--  <div class="col-auto" style="display:none">
+			  <label class="sr-only" for="inlineFormInputGroup">Username</label>
+			  <label class="mr-sm-2" for="inlineFormCustomSelect">Keyword filter:</label>
+			  <div class="input-group mb-2">
+				  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+					<option selected>All...</option>
+					<option value="1">All</option>
+					<option value="2">Two</option>
+					<option value="3">Three</option>
+				  </select>
+			  </div>
+			</div> -->
+				<input class="form-check-input" type="checkbox" id="filter_BK7231N" checked>
+				<label class="form-check-label" for="filter_BK7231N">BK7231N</label>
+				<br>
+				<input class="form-check-input" type="checkbox" id="filter_BK7231T" checked>
+				<label class="form-check-label" for="filter_BK7231T">BK7231T</label>
+				<br>
+				<input class="form-check-input" type="checkbox" id="filter_XR809" checked>
+				<label class="form-check-label" for="filter_XR809">XR809</label>
+				<br>
+				<input class="form-check-input" type="checkbox" id="filter_BL602" checked>
+				<label class="form-check-label" for="filter_BL602">BL602</label>
+				<br>
+				<input class="form-check-input" type="checkbox" id="filter_W80X" checked>
+				<label class="form-check-label" for="filter_W80X">W80X</label>
+				<br>
+				<input class="form-check-input" type="checkbox" id="filter_W60X" checked>
+				<label class="form-check-label" for="filter_W60X">W60X</label>
+				<br>
+				<input class="form-check-input" type="checkbox" id="filter_ESP82XX">
+				<label class="form-check-label" for="filter_ESP82XX">ESP82XX</label>
+				<br>
+				<input class="form-check-input" type="checkbox" id="filter_detailed">
+				<label class="form-check-label" for="filter_detailed">Only show DETAILED teardowns</label>
+				<div>
+					<button style="width: 100%;" class="button" onclick="refreshForFilters()">Apply filtering</button>
+				</div>
+			</form>
+		</div>
+	</div>
 
-
-<h2><a href="https://github.com/openshwprojects/OpenBK7231T_App">OpenBeken</a> IoT devices teardowns database</h2>
-<h4>Powered by <a href="https://www.elektroda.com/rtvforum/forum507.html">Elektroda.com</a>  teardowns section</h4>
-<h6>Have a device? Help us! Submit a teardown <a href="https://www.elektroda.com/rtvforum/forum507.html">here!</a></h6>
-<h6>Want to get cloud-free? Pair with HA? Flash OpenBeken - now supporting BK7231N, BK7231T, XR809, BL602, T34, W800/W801, W600/W601!</h6>
-<h6>Need help? Ask <a href="https://www.elektroda.com/rtvforum/topic3866123-960.html">here!</a> Direct contact with developers, daily feedback and bugfixes!</h6>
-<h5>Please watch our English flashing/configuration tutorials:</h5>
-<iframe width="420" height="345" src="https://www.youtube.com/embed/Yb3zXtBdSnE">
-</iframe><iframe width="420" height="345" src="https://www.youtube.com/embed/PKkiqDNFIx8">
-</iframe><iframe width="420" height="345" src="https://www.youtube.com/embed/KU0tDwtjfjw">
-</iframe>
-<br>
-<h6>We have also Polish translations for <a href="https://www.youtube.com/watch?v=7MyfSgxLAOo">RGBCW bulb flashing & soldering tutorial</a> , <a href="https://www.youtube.com/watch?v=0V0kaRVnk18">CB2S Relay flashing</a>, <a href="https://www.youtube.com/watch?v=JCqq-gn-X2c">WB3S wall switch flashing.</a></h6>
-<h5>Tool for BK7231T flashing: <a href="https://github.com/openshwprojects/OpenBK7231T/blob/master/bk_writer1.60.zip">bkWriter 1.60</a></h5>
-<h5>Tool for BK7231N flashing: <a href="https://github.com/OpenBekenIOT/hid_download_py">hid_download_py</a></h5>
-<h6>Click on device name to get a detailed teardown article, often with pins configuration and setup.</h6>
-<h6>Some devices were submitted by contributors and not by me, and might not have complete info.</h6>
-<h6>Also keep in mind that we have some Zigbee or TODO devices on list, just for the sake of completeness.</h6>
-
-<form onsubmit="return false;">
-  <div class="form-row align-items-center">
-    <div class="col-auto">
-      <label class="sr-only" for="filter_text">Name</label>
-      <label class="mr-sm-2" for="filter_text">Keyword filter:</label>
-      <input type="text" class="form-control mb-2" id="filter_text" placeholder="Keyword Filter">
-    </div>
-    <div class="col-auto" style="display:none">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <label class="mr-sm-2" for="inlineFormCustomSelect">Keyword filter:</label>
-      <div class="input-group mb-2">
-		  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-			<option selected>All...</option>
-			<option value="1">All</option>
-			<option value="2">Two</option>
-			<option value="3">Three</option>
-		  </select>
-      </div>
-    </div>
-    <div class="col-auto">
-      <label class="mr-sm-2" for="filter_BK7231N"></label>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" id="filter_BK7231N" checked>
-        <label class="form-check-label" for="filter_BK7231N">
-         BK7231N
-        </label>
-      </div>
-    </div>
-    <div class="col-auto">
-      <label class="mr-sm-2" for="filter_BK7231T"></label>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" id="filter_BK7231T" checked>
-        <label class="form-check-label" for="filter_BK7231T">
-         BK7231T
-        </label>
-      </div>
-    </div>
-    <div class="col-auto">
-      <label class="mr-sm-2" for="filter_XR809"></label>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" id="filter_XR809" checked>
-        <label class="form-check-label" for="filter_XR809">
-         XR809
-        </label>
-      </div>
-    </div>
-    <div class="col-auto">
-      <label class="mr-sm-2" for="filter_BL602"></label>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" id="filter_BL602" checked>
-        <label class="form-check-label" for="filter_BL602">
-         BL602
-        </label>
-      </div>
-    </div>
-    <div class="col-auto">
-      <label class="mr-sm-2" for="filter_W80X"></label>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" id="filter_W80X" checked>
-        <label class="form-check-label" for="filter_W80X">
-         W80X
-        </label>
-      </div>
-    </div>
-    <div class="col-auto">
-      <label class="mr-sm-2" for="filter_W60X"></label>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" id="filter_W60X" checked>
-        <label class="form-check-label" for="filter_W60X">
-         W60X
-        </label>
-      </div>
-    </div>
-    <div class="col-auto">
-      <label class="mr-sm-2" for="filter_ESP82XX"></label>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" id="filter_ESP82XX">
-        <label class="form-check-label" for="filter_ESP82XX">
-         ESP82XX
-        </label>
-      </div>
-    </div>
-    <div class="col-auto">
-      <label class="mr-sm-2" for="filter_detailed"></label>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" id="filter_detailed">
-        <label class="form-check-label" for="filter_detailed">
-          Only show DETAILED teardowns
-        </label>
-      </div>
-    </div>
-    <div class="col-auto">
-      <button  class="btn btn-primary mb-2"  onclick="refreshForFilters()">Apply filtering</button>
-    </div>
-  </div>
-</form>
-<h6>NOTE: BL0937, BL0942 and CSE7766 are chips used for energy metering.</h6>
-<h6>NOTE: SM2135, BP1658 and BP5758 are "I2C" RGBCW LED drivers.</h6>
-<h6>NOTE: Type filter "RGBCW" to find RGBCW devices, try also "4CH", "relay", try shop names, like "Action", "Blitzwolf", "Aubess", etc...</h6>
-<h6>NOTE: If config template is missing, check linked topic, it may not been just entered in Database</h6>
-<p id="demo"></p>
-<h6 id="g_state">Table is loading.</h6>
-<table class="table table-image">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Image</th>
-      <th scope="col">Device Name</th>
-      <th scope="col">Chipset (Module)</th>
-      <th scope="col">Keywords</th>
-      <th scope="col">Config</th>
-      <th scope="col">Date</th>
-    </tr>
-  </thead>
-  <tbody id="tableBody">
-  </tbody>
-</table>
-<script>
-var g_database;
-var getJSON = function(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = 'json';
-    xhr.onload = function() {
-      var status = xhr.status;
-      if (status === 200) {
-		//alert("status is 200");
-        callback(null, xhr.response);
-      } else {
-		alert("JSON get error? Status is "+status);
-        callback(status, xhr.response);
-      }
-    };
-    xhr.send();
-};
+	<script>
+		var g_database;
+		var getJSON = function (url, callback) {
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', url, true);
+			xhr.responseType = 'json';
+			xhr.onload = function () {
+				var status = xhr.status;
+				if (status === 200) {
+					//alert("status is 200");
+					callback(null, xhr.response);
+				} else {
+					alert("JSON get error? Status is " + status);
+					callback(status, xhr.response);
+				}
+			};
+			xhr.send();
+		};
 
 function processJSON(json) {
 	//json = JSON.parse(json);
@@ -433,12 +421,12 @@ function refreshJSON(json) {
 		
 		var tr = document.createElement('tr');   
 
-		var th = document.createElement('th');
-		var td1 = document.createElement('td');
-		var td2 = document.createElement('td');
-		var td3 = document.createElement('td');
-		var td4 = document.createElement('td');
-		var td5 = document.createElement('td');
+				var th = document.createElement('th');
+				var td1 = document.createElement('td');
+				var td2 = document.createElement('td');
+				var td3 = document.createElement('td');
+				var td4 = document.createElement('td');
+				var td5 = document.createElement('td');
 
 		var img = document.createElement('img');
 		
@@ -468,27 +456,25 @@ function refreshJSON(json) {
 		tr.appendChild(td4);
 		tr.appendChild(td5);
 
-		tableBody.appendChild(tr);
-		cnt++;
-	}
-	g_state.innerHTML = "Showing " + cnt + " out of " +arrayLength +" devices.";
-  //document.getElementById("demo").innerHTML = s;
+				tableBody.appendChild(tr);
+				cnt++;
+			}
+			g_state.innerHTML = "Showing " + cnt + " out of " + arrayLength + " devices.";
+			//document.getElementById("demo").innerHTML = s;
 
-}
+		}
 
-getJSON('https://openbekeniot.github.io/webapp/devices.json',
-function(err, data) {
-  if (err !== null) {
-    alert('Something went wrong: ' + err);
-  } else {
-    //alert('Your query count: ' + data);
-	processJSON(data);
-  }
-});
+		getJSON('https://openbekeniot.github.io/webapp/devices.json',
+			function (err, data) {
+				if (err !== null) {
+					alert('Something went wrong: ' + err);
+				} else {
+					//alert('Your query count: ' + data);
+					processJSON(data);
+				}
+			});
 
-</script>
-
+	</script>
 </body>
+
 </html>
-
-

@@ -1,36 +1,45 @@
 <template>
     <div class="fill">
-        <p>"List Filesystem" will display all files on LittleFS. 
-        After listing the files, you can click on file name to begin editing text.
-        "Create File" allows you to create a new file on Device (like autoexec.bat).
-        You can also add files by drag &amp; dropping it.
-        "Reset scripts" will stop all script threads running (if you have started any) without stopping the device.
-        When editing a file, use "Save, Reset (...), and run" file to test new scripts, it will restart scripting every time with a clear state.
-        </p>
-        <div class="top">
-            <button @click="backup(null, $event)">Read fsblock</button>
-            <button @click="restore(null, $event)">Restore fsblock</button>
-            <button @click="read(null, $event)">List Filesystem</button>
-            <button @click="create(null, $event)">Create File</button>
-            <button @click="resetSVM(null, $event)">Reset scripts</button>
-            <br/>
-            <button @click="getTar(null, $event)">Download Tar of FS</button>
-
+        <div>
+            <p>"List Filesystem" will display all files on LittleFS.
+                After listing the files, you can click on file name to begin editing text.
+                "Create File" allows you to create a new file on Device (like autoexec.bat).
+                You can also add files by drag &amp; dropping it.
+                "Reset scripts" will stop all script threads running (if you have started any) without stopping the
+                device.
+                When editing a file, use "Save, Reset (...), and run" file to test new scripts, it will restart
+                scripting every time with a clear state.
+            </p>
+            <div class="evenly-buttons">
+                <button class="button" @click="backup(null, $event)">Read fsblock</button>
+                <button class="button" @click="restore(null, $event)">Restore fsblock</button>
+                <button class="button" @click="read(null, $event)">List Filesystem</button>
+            </div>
+            <div class="evenly-buttons">
+                <button class="button" @click="create(null, $event)">Create File</button>
+                <button class="button" @click="resetSVM(null, $event)">Reset scripts</button>
+                <button class="button" @click="getTar(null, $event)">Download Tar of FS</button>
+            </div>
         </div>
         <div class="bottom">
             <div class="left">
                 <input type="text" v-model="folder">
+                <br>
+                <br>
                 <div class="drop" @drop="dropHandler($event)" @dragover="dragOverHandler($event)">
-                    <div class="otatext center" v-html="otatext"></div>
+                    <span class="otatext center" v-html="otatext"></span>
                 </div>
-                <div v-html="status"></div>
-                <div v-html="output"></div>
+                <br>
+                <span v-html="status"></span>
+                <br>
+                <span v-html="output"></span>
             </div>
             <div class="middle">
                 <div>
                     <div v-for="file in files" v-bind:key="file.name">
-                        <span v-if="file.type === 1"><button @click="editfile(file.name)">{{file.name}}</button> - {{file.size}}</span>
-                        <br v-if="file.type === 1"/>
+                        <span v-if="file.type === 1"><button @click="editfile(file.name)">{{ file.name }}</button> -
+                            {{ file.size }}</span>
+                        <br v-if="file.type === 1" />
                     </div>
                 </div>
             </div>
@@ -39,7 +48,7 @@
                 <div id="fileEditorBody" style="display:none">
                     <button @click="save(null, $event)">Save</button>
                     <button @click="save(startScript_simple)">Save, Run file as script thread</button>
-                    <button @click="save(startScript_firstReset)">Save, Reset SVM and run file as script thread</button>         
+                    <button @click="save(startScript_firstReset)">Save, Reset SVM and run file as script thread</button>
                     <button @click="deleteFile(null, $event)">Delete</button>
                     <textarea v-model="edittext" rows="40" cols="100" style="height:90%"></textarea>
                 </div>
@@ -49,63 +58,63 @@
 </template>
 
 <script>
-  module.exports = {
+module.exports = {
 
-    data: ()=>{
-      return {
-        msg: 'world!',
-        backupdata: null,
-        status:'nothing going on',
-        folder:'',
-        otatext:'drop file(s) or .tar here',
+    data: () => {
+        return {
+            msg: 'world!',
+            backupdata: null,
+            status: 'nothing going on',
+            folder: '',
+            otatext: 'drop file(s) or .tar here',
 
-        output: '',
+            output: '',
 
-        edittext:'',
-        editname:'',
+            edittext: '',
+            editname: '',
 
-        stack:[],
-        files:[],
-      }
+            stack: [],
+            files: [],
+        }
     },
-    methods:{
-        dropHandler(ev){
+    methods: {
+        dropHandler(ev) {
             ev.preventDefault();
             console.log('drop');
             if (ev.dataTransfer.items) {
                 this.getFilesDataTransferItems(ev.dataTransfer.items)
-                .then(files => {
-                    console.log(files);
-                    if (files.length === 1 && files[0].filepath.endsWith('.tar')){
-                        let reader = new FileReader();
-                        reader.onload = (event) => {
-                            console.log(event);
-                            console.log('file len:'+event.target.result.byteLength);
-                            this.status += '<br/>tar upload '+files[0].filepath;
-                            this.putTar(event.target.result);
-                        };
-                        reader.readAsArrayBuffer(files[0]);
-                        return;
-                    }
-
-                    let allfiles = [];
-                    let addfolder = (f)=>{
-                        for (let i = 0; i < f.length; i++){
-                            if (f[i].subfolder){
-                                addfolder(f[i].subfolder);
-                            } else {
-                                allfiles.push(f[i]);
-                            }
+                    .then(files => {
+                        console.log(files);
+                        if (files.length === 1 && files[0].filepath.endsWith('.tar')) {
+                            let reader = new FileReader();
+                            reader.onload = (event) => {
+                                console.log(event);
+                                console.log('file len:' + event.target.result.byteLength);
+                                this.status += '<br/>tar upload ' + files[0].filepath;
+                                this.putTar(event.target.result);
+                            };
+                            reader.readAsArrayBuffer(files[0]);
+                            return;
                         }
-                    };
 
-                    addfolder(files);
+                        let allfiles = [];
+                        let addfolder = (f) => {
+                            for (let i = 0; i < f.length; i++) {
+                                if (f[i].subfolder) {
+                                    addfolder(f[i].subfolder);
+                                } else {
+                                    allfiles.push(f[i]);
+                                }
+                            }
+                        };
 
-                    console.log(allfiles);
+                        addfolder(files);
 
-                    this.uploadfiles(allfiles);
+                        console.log(allfiles);
 
-                });
+                        this.uploadfiles(allfiles);
+
+                    });
                 return;
             }
         },
@@ -115,14 +124,14 @@
         uploadfiles(files, cb) {
             let filecount = 0;
 
-            let saveone = ()=>{
-                if (filecount < files.length){
+            let saveone = () => {
+                if (filecount < files.length) {
                     let reader = new FileReader();
                     reader.onload = (event) => {
                         console.log(event);
-                        console.log('file len:'+event.target.result.byteLength);
-                        this.status += '<br/>save '+files[filecount].filepath;
-                        this.savefile(files[filecount].filepath, event.target.result, ()=>{
+                        console.log('file len:' + event.target.result.byteLength);
+                        this.status += '<br/>save ' + files[filecount].filepath;
+                        this.savefile(files[filecount].filepath, event.target.result, () => {
                             filecount++;
                             this.status += '.. done';
                             saveone();
@@ -150,14 +159,14 @@
                     } else if (item.isDirectory) {
                         let dirReader = item.createReader();
                         dirReader.readEntries(entries => {
-                        let entriesPromises = [];
-                        subfolder = [];
-                        folder.push({ name: item.name, subfolder: subfolder });
-                        for (let entr of entries)
-                            entriesPromises.push(
-                            traverseFileTreePromise(entr, (path || "")  + item.name + "/", subfolder)
-                            );
-                        resolve(Promise.all(entriesPromises));
+                            let entriesPromises = [];
+                            subfolder = [];
+                            folder.push({ name: item.name, subfolder: subfolder });
+                            for (let entr of entries)
+                                entriesPromises.push(
+                                    traverseFileTreePromise(entr, (path || "") + item.name + "/", subfolder)
+                                );
+                            resolve(Promise.all(entriesPromises));
                         });
                     }
                 });
@@ -167,106 +176,108 @@
             return new Promise((resolve, reject) => {
                 let entriesPromises = [];
                 for (let it of dataTransferItems)
-                entriesPromises.push(
-                    traverseFileTreePromise(it.webkitGetAsEntry(), null, files)
-                );
+                    entriesPromises.push(
+                        traverseFileTreePromise(it.webkitGetAsEntry(), null, files)
+                    );
                 Promise.all(entriesPromises).then(entries => {
-                resolve(files);
+                    resolve(files);
                 });
             });
         },
 
 
 
-        dragOverHandler(ev){
+        dragOverHandler(ev) {
             //console.log('File(s) in drop zone');
             // Prevent default behavior (Prevent file from being opened)
             ev.preventDefault();
         },
 
-        savefile(name, data, cb){
+        savefile(name, data, cb) {
             this.status += '<br/>saving file...';
-            let url = window.device+'/api/lfs/';
-            if (this.folder){
+            let url = window.device + '/api/lfs/';
+            if (this.folder) {
                 url += this.folder;
                 url += '/'
             }
             url += name;
-            fetch(url, { 
-                    method: 'POST',
-                    body: data
-                })
+            fetch(url, {
+                method: 'POST',
+                body: data
+            })
                 .then(response => response.text())
                 .then(text => {
-                    console.log('received '+text);
+                    console.log('received ' + text);
                     this.status += 'save complete...';
-                    if(cb) cb();
+                    if (cb) cb();
                 })
                 .catch(err => console.error(err)); // Never forget the final catch!
         },
 
-        backup(cb){
+        backup(cb) {
             this.status += '<br/>starting backup...';
-            let url = window.device+'/api/fsblock';
+            let url = window.device + '/api/fsblock';
             fetch(url)
                 .then(response => response.arrayBuffer())
                 .then(buffer => {
-                    this.backupdata = buffer; 
-                    console.log('received '+buffer.byteLength);
+                    this.backupdata = buffer;
+                    console.log('received ' + buffer.byteLength);
                     this.status += '..backup done...';
-                    if(cb) cb();
+                    if (cb) cb();
                 })
                 .catch(err => console.error(err)); // Never forget the final catch!
         },
 
-        restore(cb){
+        restore(cb) {
             this.status += '<br/>starting restore...';
-            let url = window.device+'/api/fsblock';
-            if (this.backupdata){
-                fetch(url, { 
-                        method: 'POST',
-                        body: this.backupdata
-                    })
+            let url = window.device + '/api/fsblock';
+            if (this.backupdata) {
+                fetch(url, {
+                    method: 'POST',
+                    body: this.backupdata
+                })
                     .then(response => response.text())
                     .then(text => {
-                        console.log('received '+text);
+                        console.log('received ' + text);
                         this.status += 'Restore complete...';
-                        if(cb) cb();
+                        if (cb) cb();
                     })
                     .catch(err => console.error(err)); // Never forget the final catch!
             }
         },
 
-        readFolder(fpath, cb){
-            let url = window.device+'/api/lfs'+fpath;
+        readFolder(fpath, cb) {
+            let url = window.device + '/api/lfs' + fpath;
             fetch(url)
                 .then(response => response.json())
                 .then(folder => {
-                    console.log('folder '+url,folder);
-                    this.status += 'Read '+url;
+                    console.log('folder ' + url, folder);
+                    this.status += 'Read ' + url;
                     if (!folder.content) return;
-                    for (let i = 0;i < folder.content.length; i++){
-                        if (folder.content[i].name.startsWith('.')){
+                    for (let i = 0; i < folder.content.length; i++) {
+                        if (folder.content[i].name.startsWith('.')) {
                         } else {
                             let root = fpath;
-                            if (fpath === '/'){
+                            if (fpath === '/') {
                                 fpath = '';
                             }
-                            this.files.push({ name:fpath + '/' + folder.content[i].name, 
-                                size:folder.content[i].size,
-                                type:folder.content[i].type});
+                            this.files.push({
+                                name: fpath + '/' + folder.content[i].name,
+                                size: folder.content[i].size,
+                                type: folder.content[i].type
+                            });
                         }
                     }
 
                     let i = 0;
-                    for (i = 0;i < this.files.length; i++){
+                    for (i = 0; i < this.files.length; i++) {
                         if (this.files[i].type === 2 && !this.files[i].requested) {
                             this.readFolder(this.files[i].name, cb);
                             this.files[i].requested = true;
                             break;
                         }
                     }
-                    if (i === this.files.length){
+                    if (i === this.files.length) {
                         if (cb) cb();
                     }
                 })
@@ -280,54 +291,50 @@
 
         create(cb) {
             let fname = prompt("Please enter new file name:", "autoexec.bat");
-            if(fname == null)
-            {
-                 alert("Canceled.");
+            if (fname == null) {
+                alert("Canceled.");
             }
-            else if(fname.length < 1)
-            {
-                 alert("Empty name.");
+            else if (fname.length < 1) {
+                alert("Empty name.");
             }
-            else
-            {
-                 //alert("TODO "+fname);
-                 alert("Will try to create " +fname);
-                 this.savefile(fname,"", ()=>{
-                     this.read();
-                 });
+            else {
+                //alert("TODO "+fname);
+                alert("Will try to create " + fname);
+                this.savefile(fname, "", () => {
+                    this.read();
+                });
             }
         },
-        
-        editfile(name){
-            let url = window.device+'/api/lfs'+name;
+
+        editfile(name) {
+            let url = window.device + '/api/lfs' + name;
             fetch(url)
                 .then(response => response.text())
                 .then(text => {
                     this.edittext = text;
                     this.editname = name;
-                    document.getElementById("fileEditorLabel").innerHTML = "Editing "+name;
+                    document.getElementById("fileEditorLabel").innerHTML = "Editing " + name;
                     document.getElementById("fileEditorBody").style.display = "block";
                 });
         },
 
 
-        deleteFile(cb) {   
+        deleteFile(cb) {
             let readCallback = this.read;
             if (this.editname) {
-                let r = confirm("Do you really want to remove the file "+this.editname+"?");
-                if(r == false)
-                {
-                     alert("Ok, then not.");
-                     return;
+                let r = confirm("Do you really want to remove the file " + this.editname + "?");
+                if (r == false) {
+                    alert("Ok, then not.");
+                    return;
                 }
-                let url = window.device+'/api/del'+this.editname;
-                alert("Will try to remove - url is "+url);
+                let url = window.device + '/api/del' + this.editname;
+                alert("Will try to remove - url is " + url);
                 fetch(url)
                     .then(response => response.arrayBuffer())
                     .then(buffer => {
                         this.status += '..delete done...';
-                         if (cb) cb();
-                         readCallback();
+                        if (cb) cb();
+                        readCallback();
                     })
             } else {
                 alert("Please begin editing some file first. Just click the name on list to edit.");
@@ -336,14 +343,14 @@
         save(cb) {
             let readCallback = this.read;
             if (this.editname) {
-                let url = window.device+'/api/lfs'+this.editname;
-                fetch(url, { 
-                        body: this.edittext,
-                        method: 'POST',
-                    })
-                    .then(()=>{
-                         if (cb) cb();
-                         readCallback();
+                let url = window.device + '/api/lfs' + this.editname;
+                fetch(url, {
+                    body: this.edittext,
+                    method: 'POST',
+                })
+                    .then(() => {
+                        if (cb) cb();
+                        readCallback();
                     });
             } else {
                 alert("Please begin editing some file first. Just click the name on list to edit.");
@@ -351,48 +358,47 @@
         },
         resetSVM() {
             if (this.editname) {
-                let url = window.device+'/api/cmnd';
+                let url = window.device + '/api/cmnd';
                 let cmd = "";
-                
+
                 cmd = "backlog resetSVM; ";
-                    
-                fetch(url, { 
-                        body: cmd,
-                        method: 'POST',
-                    })
-                    .then(()=>{
-                         
+
+                fetch(url, {
+                    body: cmd,
+                    method: 'POST',
+                })
+                    .then(() => {
+
                     });
             }
         },
         startScript_simple() {
-            this.startScript(null,null,0);
+            this.startScript(null, null, 0);
         },
         startScript_firstReset() {
-            this.startScript(null,null,1);
+            this.startScript(null, null, 1);
         },
         startScript(cb, event, bResetAll) {
             if (this.editname) {
-                let url = window.device+'/api/cmnd';
+                let url = window.device + '/api/cmnd';
                 let cmd = "";
-                if(bResetAll == 1)
-                {
+                if (bResetAll == 1) {
                     cmd = "backlog resetSVM; ";
                 }
                 cmd += "startScript " + this.editname;
-                fetch(url, { 
-                        body: cmd,
-                        method: 'POST',
-                    })
-                    .then(()=>{
-                         
+                fetch(url, {
+                    body: cmd,
+                    method: 'POST',
+                })
+                    .then(() => {
+
                     });
             } else {
                 alert("Please begin editing some file first. Just click the name on list to edit.");
             }
         },
 
-        tarball(){
+        tarball() {
             let tarball = {};
             tarball.TarReader = class {
                 constructor() {
@@ -422,12 +428,12 @@
                 _readFileInfo() {
                     this.fileInfo = [];
                     let offset = 0;
-                    let file_size = 0;       
+                    let file_size = 0;
                     let file_name = "";
                     let file_type = null;
-                    while(offset < this.buffer.byteLength - 512) {
+                    while (offset < this.buffer.byteLength - 512) {
                         file_name = this._readFileName(offset); // file name
-                        if(file_name.length == 0) {
+                        if (file_name.length == 0) {
                             break;
                         }
                         file_type = this._readFileType(offset);
@@ -440,8 +446,8 @@
                             "header_offset": offset
                         });
 
-                        offset += (512 + 512*Math.trunc(file_size/512));
-                        if(file_size % 512) {
+                        offset += (512 + 512 * Math.trunc(file_size / 512));
+                        if (file_size % 512) {
                             offset += 512;
                         }
                     }
@@ -465,11 +471,11 @@
 
                 _readFileType(header_offset) {
                     // offset: 156
-                    let typeView = new Uint8Array(this.buffer, header_offset+156, 1);
+                    let typeView = new Uint8Array(this.buffer, header_offset + 156, 1);
                     let typeStr = String.fromCharCode(typeView[0]);
-                    if(typeStr == "0") {
+                    if (typeStr == "0") {
                         return "file";
-                    } else if(typeStr == "5") {
+                    } else if (typeStr == "5") {
                         return "directory";
                     } else {
                         return typeStr;
@@ -478,17 +484,17 @@
 
                 _readFileSize(header_offset) {
                     // offset: 124
-                    let szView = new Uint8Array(this.buffer, header_offset+124, 12);
+                    let szView = new Uint8Array(this.buffer, header_offset + 124, 12);
                     let szStr = "";
-                    for(let i = 0; i < 11; i++) {
+                    for (let i = 0; i < 11; i++) {
                         szStr += String.fromCharCode(szView[i]);
                     }
-                    return parseInt(szStr,8);
+                    return parseInt(szStr, 8);
                 }
 
                 _readFileBlob(file_offset, size, mimetype) {
                     let view = new Uint8Array(this.buffer, file_offset, size);
-                    let blob = new Blob([view], {"type": mimetype});
+                    let blob = new Blob([view], { "type": mimetype });
                     return blob;
                 }
 
@@ -506,21 +512,21 @@
                 getTextFile(file_name) {
                     let info = this.fileInfo.find(info => info.name == file_name);
                     if (info) {
-                        return this._readTextFile(info.header_offset+512, info.size); 
+                        return this._readTextFile(info.header_offset + 512, info.size);
                     }
                 }
 
                 getFileBlob(file_name, mimetype) {
                     let info = this.fileInfo.find(info => info.name == file_name);
                     if (info) {
-                        return this._readFileBlob(info.header_offset+512, info.size, mimetype); 
+                        return this._readFileBlob(info.header_offset + 512, info.size, mimetype);
                     }
                 }
 
                 getFileBinary(file_name) {
                     let info = this.fileInfo.find(info => info.name == file_name);
                     if (info) {
-                        return this._readFileBinary(info.header_offset+512, info.size); 
+                        return this._readFileBinary(info.header_offset + 512, info.size);
                     }
                 }
             };
@@ -578,18 +584,18 @@
 
                 _createBuffer() {
                     let tarDataSize = 0;
-                    for(let i = 0; i < this.fileData.length; i++) {                        
+                    for (let i = 0; i < this.fileData.length; i++) {
                         let size = this.fileData[i].size;
-                        tarDataSize += 512 + 512*Math.trunc(size/512);
-                        if(size % 512) {
+                        tarDataSize += 512 + 512 * Math.trunc(size / 512);
+                        if (size % 512) {
                             tarDataSize += 512;
                         }
                     }
-                    let bufSize = 10240*Math.trunc(tarDataSize/10240);
-                    if(tarDataSize % 10240) {
+                    let bufSize = 10240 * Math.trunc(tarDataSize / 10240);
+                    if (tarDataSize % 10240) {
                         bufSize += 10240;
                     }
-                    this.buffer = new ArrayBuffer(bufSize); 
+                    this.buffer = new ArrayBuffer(bufSize);
                 }
 
                 async download(filename) {
@@ -604,11 +610,11 @@
                 }
 
                 async writeBlob(onUpdate) {
-                    return new Blob([await this.write(onUpdate)], {"type":"application/x-tar"});
+                    return new Blob([await this.write(onUpdate)], { "type": "application/x-tar" });
                 }
 
                 write(onUpdate) {
-                    return new Promise((resolve,reject) => {
+                    return new Promise((resolve, reject) => {
                         this._createBuffer();
                         let offset = 0;
                         let filesAdded = 0;
@@ -617,12 +623,12 @@
                             if (onUpdate) {
                                 onUpdate(filesAdded / this.fileData.length * 100);
                             }
-                            if(filesAdded === this.fileData.length) {
+                            if (filesAdded === this.fileData.length) {
                                 let arr = new Uint8Array(this.buffer);
                                 resolve(arr);
                             }
                         };
-                        for(let fileIdx = 0; fileIdx < this.fileData.length; fileIdx++) {
+                        for (let fileIdx = 0; fileIdx < this.fileData.length; fileIdx++) {
                             let fdata = this.fileData[fileIdx];
                             // write header
                             this._writeFileName(fdata.name, offset);
@@ -632,33 +638,33 @@
                             this._writeChecksum(offset);
 
                             // write file data
-                            let destArray = new Uint8Array(this.buffer, offset+512, fdata.size);
-                            if(fdata.dataType === "array") {
-                                for(let byteIdx = 0; byteIdx < fdata.size; byteIdx++) {
+                            let destArray = new Uint8Array(this.buffer, offset + 512, fdata.size);
+                            if (fdata.dataType === "array") {
+                                for (let byteIdx = 0; byteIdx < fdata.size; byteIdx++) {
                                     destArray[byteIdx] = fdata.array[byteIdx];
                                 }
                                 onFileDataAdded();
-                            } else if(fdata.dataType === "file") {
+                            } else if (fdata.dataType === "file") {
                                 let reader = new FileReader();
-                                
-                                reader.onload = (function(outArray) {
+
+                                reader.onload = (function (outArray) {
                                     let dArray = outArray;
-                                    return function(event) {
+                                    return function (event) {
                                         let sbuf = event.target.result;
                                         let sarr = new Uint8Array(sbuf);
-                                        for(let bIdx = 0; bIdx < sarr.length; bIdx++) {
+                                        for (let bIdx = 0; bIdx < sarr.length; bIdx++) {
                                             dArray[bIdx] = sarr[bIdx];
                                         }
                                         onFileDataAdded();
                                     };
                                 })(destArray);
                                 reader.readAsArrayBuffer(fdata.file);
-                            } else if(fdata.type === "directory") {
+                            } else if (fdata.type === "directory") {
                                 onFileDataAdded();
                             }
 
-                            offset += (512 + 512*Math.trunc(fdata.size/512));
-                            if(fdata.size % 512) {
+                            offset += (512 + 512 * Math.trunc(fdata.size / 512));
+                            if (fdata.size % 512) {
                                 offset += 512;
                             }
                         }
@@ -691,20 +697,20 @@
                 _writeFileType(typeStr, header_offset) {
                     // offset: 156
                     let typeChar = "0";
-                    if(typeStr === "file") {
+                    if (typeStr === "file") {
                         typeChar = "0";
-                    } else if(typeStr === "directory") {
+                    } else if (typeStr === "directory") {
                         typeChar = "5";
                     }
                     let typeView = new Uint8Array(this.buffer, header_offset + 156, 1);
-                    typeView[0] = typeChar.charCodeAt(0); 
+                    typeView[0] = typeChar.charCodeAt(0);
                 }
 
                 _writeFileSize(size, header_offset) {
                     // offset: 124
                     let sz = size.toString(8);
                     sz = this._leftPad(sz, 11);
-                    this._writeString(sz, header_offset+124, 12);
+                    this._writeString(sz, header_offset + 124, 12);
                 }
 
                 _leftPad(number, targetLength) {
@@ -717,56 +723,56 @@
 
                 _writeFileMode(mode, header_offset) {
                     // offset: 100
-                    this._writeString(this._leftPad(mode,7), header_offset+100, 8);         
+                    this._writeString(this._leftPad(mode, 7), header_offset + 100, 8);
                 }
 
                 _writeFileUid(uid, header_offset) {
                     // offset: 108
-                    this._writeString(this._leftPad(uid,7), header_offset+108, 8);
+                    this._writeString(this._leftPad(uid, 7), header_offset + 108, 8);
                 }
-                
+
                 _writeFileGid(gid, header_offset) {
                     // offset: 116
-                    this._writeString(this._leftPad(gid,7), header_offset+116, 8);
+                    this._writeString(this._leftPad(gid, 7), header_offset + 116, 8);
                 }
 
                 _writeFileMtime(mtime, header_offset) {
                     // offset: 136
-                    this._writeString(this._leftPad(mtime,11), header_offset+136, 12);
+                    this._writeString(this._leftPad(mtime, 11), header_offset + 136, 12);
                 }
 
                 _writeFileUser(user, header_offset) {
                     // offset: 265
-                    this._writeString(user, header_offset+265, 32);
+                    this._writeString(user, header_offset + 265, 32);
                 }
-                
+
                 _writeFileGroup(group, header_offset) {
                     // offset: 297
-                    this._writeString(group, header_offset+297, 32);
+                    this._writeString(group, header_offset + 297, 32);
                 }
 
                 _writeChecksum(header_offset) {
                     // offset: 148
-                    this._writeString("        ", header_offset+148, 8); // first fill with spaces
+                    this._writeString("        ", header_offset + 148, 8); // first fill with spaces
 
                     // add up header bytes
                     let header = new Uint8Array(this.buffer, header_offset, 512);
                     let chksum = 0;
-                    for(let i = 0; i < 512; i++) {
+                    for (let i = 0; i < 512; i++) {
                         chksum += header[i];
                     }
-                    this._writeString(chksum.toString(8), header_offset+148, 8);
+                    this._writeString(chksum.toString(8), header_offset + 148, 8);
                 }
 
                 _getOpt(opts, opname, defaultVal) {
-                    if(opts != null) {
-                        if(opts[opname] != null) {
+                    if (opts != null) {
+                        if (opts[opname] != null) {
                             return opts[opname];
                         }
                     }
                     return defaultVal;
                 }
-                
+
                 _fillHeader(header_offset, opts, fileType) {
                     let uid = this._getOpt(opts, "uid", 1000);
                     let gid = this._getOpt(opts, "gid", 1000);
@@ -778,10 +784,10 @@
                     this._writeFileMode(mode, header_offset);
                     this._writeFileUid(uid.toString(8), header_offset);
                     this._writeFileGid(gid.toString(8), header_offset);
-                    this._writeFileMtime(Math.trunc(mtime/1000).toString(8), header_offset);
+                    this._writeFileMtime(Math.trunc(mtime / 1000).toString(8), header_offset);
 
-                    this._writeString("ustar", header_offset+257,6); // magic string
-                    this._writeString("00", header_offset+263,2); // magic version
+                    this._writeString("ustar", header_offset + 257, 6); // magic string
+                    this._writeString("00", header_offset + 263, 2); // magic version
 
                     this._writeFileUser(user, header_offset);
                     this._writeFileGroup(group, header_offset);
@@ -792,19 +798,19 @@
         },
 
         // get a tarball of the files on the device
-        getTar(cb){
+        getTar(cb) {
             // read all file names....
             this.files = [];
             // calback gets called when no more folders to be read.
-            this.readFolder('/', ()=>{
+            this.readFolder('/', () => {
                 let tarball = this.tarball();
                 let tar = new tarball.TarWriter();
 
-                let nextfile = ()=>{
-                    for (i = 0;i < this.files.length; i++){
+                let nextfile = () => {
+                    for (i = 0; i < this.files.length; i++) {
                         if (this.files[i].type === 1 && !this.files[i].added) {
                             this.files[i].added = 1;
-                            let url = window.device+'/api/lfs'+this.files[i].name;
+                            let url = window.device + '/api/lfs' + this.files[i].name;
                             fetch(url)
                                 .then(response => response.arrayBuffer())
                                 .then(buff => {
@@ -816,40 +822,40 @@
                     }
                     // no files left to do...
                     tar.download('files.tar');
-                    if (cb)cb();
+                    if (cb) cb();
                 };
                 setTimeout(nextfile, 0);
             });
 
         },
 
-        putTar(buff, cb){
+        putTar(buff, cb) {
             let tarball = this.tarball();
             let tar = new tarball.TarReader();
 
             let fileInfo = tar.readArrayBuffer(buff);
 
-            let nextfile = ()=>{
+            let nextfile = () => {
                 let i;
-                for(i = 0; i < fileInfo.length; i++) {
+                for (i = 0; i < fileInfo.length; i++) {
                     let file_name = fileInfo[i].name;
                     console.log("file name: ", file_name);
                     console.log("file size: ", fileInfo[i].size);
                     console.log("file type: ", fileInfo[i].type);
-                    if(fileInfo[i].type == "file" && !fileInfo[i].saved) {
+                    if (fileInfo[i].type == "file" && !fileInfo[i].saved) {
                         fileInfo[i].saved = true;
                         let buff = tar.getFileBinary(file_name);
-                        this.savefile(file_name, buff, ()=>{
+                        this.savefile(file_name, buff, () => {
                             console.log("saved file name: ", file_name);
                             setTimeout(nextfile, 0);
                         });
                         return;
-                    }                        
+                    }
                 }
-                if (i === fileInfo.length){
+                if (i === fileInfo.length) {
                     console.log('all files saved');
                     this.read();
-                    if (cb)cb();
+                    if (cb) cb();
                 }
             };
 
@@ -857,7 +863,7 @@
         },
 
     },
-    mounted (){
+    mounted() {
         this.msg = 'fred';
 
         // construct tarball class
@@ -865,57 +871,60 @@
 
         console.log('mounted ota');
     }
-  }
+}
 //@ sourceURL=/vue/filesystem.vue
 </script>
 
 <style scoped>
-    .drop {
-        border: 5px solid blue;
-        width:  200px;
-        height: 100px;
-        text-align: center;
-        position: relative;
-        vertical-align: center;
-    }
+.drop {
+    border: 5px solid blue;
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    position: relative;
+    vertical-align: center;
+}
 
-    .otatext {
-    }
-    .center {
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-    }
+.otatext {}
 
-    .left {
-        position: absolute;
-        left:0;
-        width:30%;
-        height:100%;
-    }
-    .middle {
-        position: absolute;
-        left:30%;
-        width:20%;
-        height:100%;
-    }
-    .right {
-        position: absolute;
-        left:50%;
-        width:50%;
-        height:100%;
-    }
-    .fill {
-        height:90%;
-    }
-    .top {
-        height:10%;
-    }
-    .bottom {
-        height:90%;
-        position: relative;
-    }
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.left {
+    width: 30%;
+    height: 100%;
+}
+
+.middle {
+    width: 20%;
+    height: 100%;
+}
+
+.right {
+    width: 50%;
+    height: 100%;
+}
+
+.fill {
+    display: flex;
+    flex-flow: column;
+    height: 90%;
+}
+
+.top {
+    flex: 0 1 auto;
+}
+
+.bottom {
+    margin-top: 20px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: row;
+}
 </style>

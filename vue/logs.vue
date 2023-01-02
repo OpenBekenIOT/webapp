@@ -4,18 +4,18 @@
 
         <table class="logging-settings">
             <tr>
-                <td style="width: 80px">
-                    Logging:
+                <td style="width: 80px; padding-right: 5px;">
+                    <label>Logging:</label>
                 </td>
-                <td>
-                    <button class="logging" :class="{paused:paused}"  @click="paused = !paused">{{paused?"Resume":"Pause"}}</button>
-                    <button class="feature" style="width: 100px" @click="clear">Clear History</button>
-                    <button class="feature" style="width: 125px" @click="selectAllFeatures">Select All Features</button>
-                    <button class="feature" style="width: 125px" @click="clearAllFeatures">Clear All Features</button>
+                <td class="evenly-buttons">
+                    <button class="logging button" :class="{paused:paused}"  @click="paused = !paused">{{paused?"Resume":"Pause"}}</button>
+                    <button class="feature button" @click="clear">Clear History</button>
+                    <button class="feature button" @click="selectAllFeatures">Select All Features</button>
+                    <button class="feature button" @click="clearAllFeatures">Clear All Features</button>
                 </td>
             </tr>
             <tr>
-                <td style="width: 80px">
+                <td style="width: 80px; padding-right: 5px;">
                     <label>Log Features:</label>
                 </td>
                 <td id="logFeaturesParent">
@@ -26,24 +26,25 @@
                 </td>
             </tr>
             <tr>
-                <td style="width: 80px">
+                <td style="width: 80px; padding-right: 5px;">
                     <label>Log Level:</label>
                 </td>
                 <td>
                     <select v-model="loglevel">
                         <option v-for="(item,index) of loglevelnames" :value="index" :key="index">{{item}}</option>
                     </select>
-                     NOTE: If you are getting 'command unknown', remember that some commands are only added when a driver is started, and some drivers requires device reboot to start.
+                    <br />
+                     <span class="note">NOTE: If you are getting 'command unknown', remember that some commands are only added when a driver is started, and some drivers requires device reboot to start.</span>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="width: 80px; padding-right: 5px;">
                     <label>Command:</label>
                 </td>
                 <td>
                     <form @submit="send($event)">
                         <input v-model="cmd" id="obkcommand" type="text" autocomplete="on" style="width:60%;">
-                        <input type="submit">
+                        <input class="button" type="submit">
                     </form>
                 </td>
             </tr>
@@ -239,25 +240,17 @@
 
 <style scoped>
 .container .logs{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 150px;
-    left: 0;
-    margin: 0 10px;
     font-family: 'Courier New', Courier, monospace;
     resize: none;
-	width: calc(100% - 20px);
-	height: calc(100% - 160px);
+	width: 100%;
+	height: calc(75% - 160px);
 }
 .container .logging-settings{
     height: 150px;
+    width: 100%;
     overflow: auto;
-    position: absolute;
-    bottom: 0;
 }
 .feature {
-    margin-right:2em;
     display: inline-block;
 }
 
@@ -269,7 +262,10 @@ button.logging.paused{
    background-color: #c0c0c0;
 }
 
-button.feature, button.logging{
-    width: 75px;
+textarea {
+    color: lime;
+    background-color: black;
+    outline: none;
+    border: none;
 }
 </style>
