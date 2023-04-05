@@ -5197,7 +5197,21 @@
       "image": "https://obrazki.elektroda.pl/6173202200_1675442151.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20420773#20420773",
       "product": ""
-    },  
+    },
+    {
+      "bDetailed": "0",
+      "vendor": "LEDVANCE",
+      "name": "WiFi LED Filament Classic A60 Dimmable, E27, 6W",
+      "model": "LEDVANCE SmartPlus AC32956 Filament Classic Bulb, E27",
+      "chip": "BK7231T",
+      "board": "WBLC5",
+      "pins": {
+        "26": "PWM;0"
+      },
+      "image": "https://obrazki.elektroda.pl/4267164700_1680621794.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic3969717.html",
+      "product": ""
+    },
     {
       "vendor": "Techliner",
       "bDetailed": "1",
