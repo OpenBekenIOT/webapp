@@ -8702,21 +8702,44 @@
       "board": "CBLC5",
       "flags": "5632",
       "keywords": [
-        "34869",
-        "Globe Electric",
-        "CBLC5",
-        "PAR20",
-        "Light",
-        "LED",
+	"34869",
+	"Globe Electric",
+	"CBLC5",
+	"PAR20",
+	"Light",
+	"LED",
 		"GB34869"
       ],
       "pins": {
-        "24": "SM2135DAT;0",
-        "26": "SM2135CLK;0"
+	"24": "SM2135DAT;0",
+	"26": "SM2135CLK;0"
       },
       "command": "",
       "image": "https://obrazki.elektroda.pl/6297038600_1693845478.png",
       "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20721244#20721244"
-    }
+    },
+	{
+	  "vendor": "Globe Electric",
+	  "bDetailed": "0",
+	  "name": "RGB WiFi Smart Strip Model 50278",
+	  "model": "50278",
+	  "chip": "BK7231T",
+	  "board": "TODO",
+	  "flags": "0",
+	  "keywords": [
+	    "TODO",
+	    "TODO",
+	    "TODO"
+	  ],
+	  "pins": {
+	    "6": "dInput;0",
+	    "9": "PWM;1",
+	    "24": "PWM;2",
+	    "26": "PWM;3"
+	  },
+	  "command": "",
+	  "image": "https://obrazki.elektroda.pl/YOUR_IMAGE.jpg",
+	  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20880891"
+	}  
   ]
 }
