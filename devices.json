@@ -11051,6 +11051,32 @@
   "command": "",
   "image": "https://obrazki.elektroda.pl/3777891700_1706130396.jpg",
   "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20927159"
-}
+},
+	{
+	  "vendor": "Milfra",
+	  "bDetailed": "0",
+	  "name": "Milfra Wifi Smart Switch",
+	  "model": "TB-23",
+	  "chip": "BK7231N",
+	  "board": "N/A",
+	  "flags": "1088",
+	  "keywords": [
+		"wall socket",
+		"BK7231N",
+		"3 gang",
+        "milfra",
+        "TB-23"
+	  ],
+	  "pins": {
+		"14": "Btn;1",
+		"15": "Btn;3",
+		"16": "Btn;2",
+		"22": "Rel;1",
+		"24": "Rel;2",
+		"26": "Rel;3"
+	  },
+	  "image": "https://obrazki.elektroda.pl/9156598000_1713616453.webp",
+	  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21053778"
+	}
   ]
 }
