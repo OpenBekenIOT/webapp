@@ -49,27 +49,49 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4081005.html"
     },
 	{
-  "vendor": "Moes",
-  "bDetailed": "0",
-  "name": "Tuya Matter RGBCW 9W E27 Bulb",
-  "model": "MWB-RCW",
-  "chip": "BK7231N",
-  "board": "CBLC5",
-  "flags": "1024",
-  "keywords": [
-    "LAMP",
-    "ES",
-    "light",
-	"240812-1002DF"
-  ],
-  "pins": {
-    "24": "BP5758D_DAT;0",
-    "26": "BP5758D_CLK;0"
-  },
-  "command": "LED_Map 0 1 2 3 4",
-  "image": "https://obrazki.elektroda.pl/3524969400_1725644975.jpg",
-  "wiki": "https://www.elektroda.com/rtvforum/topic4074263.html"
-},
+	  "vendor": "Moes",
+	  "bDetailed": "0",
+	  "name": "Tuya Matter RGBCW 9W E27 Bulb",
+	  "model": "MWB-RCW",
+	  "chip": "BK7231N",
+	  "board": "CBLC5",
+	  "flags": "1024",
+	  "keywords": [
+		"LAMP",
+		"ES",
+		"light",
+		"240812-1002DF"
+	  ],
+	  "pins": {
+		"24": "BP5758D_DAT;0",
+		"26": "BP5758D_CLK;0"
+	  },
+	  "command": "LED_Map 0 1 2 3 4",
+	  "image": "https://obrazki.elektroda.pl/3524969400_1725644975.jpg",
+	  "wiki": "https://www.elektroda.com/rtvforum/topic4074263.html"
+	},
+	{
+	  "vendor": "Moes",
+	  "bDetailed": "0",
+	  "name": "Moes 5W RGB+CCT E12 Candelabra",
+	  "model": "FHZTDCM18136101",
+	  "chip": "BK7231N",
+	  "board": "CBLC5",
+	  "flags": "5120",
+	  "keywords": [
+		"E12",
+		"120v",
+		"Candelabra",
+		"MOES"
+	  ],
+	  "pins": {
+		"24": "BP5758D_DAT;0",
+		"26": "BP5758D_CLK;0"
+	  },
+	  "command": "BP5758D_Map 1 0 2 3 4",
+	  "image": "https://obrazki.elektroda.pl/9559934300_1734119387.jpg",
+	  "wiki": "https://www.elektroda.com/rtvforum/topic4093154.html"
+	},
     {
       "vendor": "GIRIER",
       "bDetailed": "0",
