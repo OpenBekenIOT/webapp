@@ -98,10 +98,8 @@
 <br>
 <h6>We have also Polish translations for <a href="https://www.youtube.com/watch?v=7MyfSgxLAOo">RGBCW bulb flashing & soldering tutorial</a> , <a href="https://www.youtube.com/watch?v=0V0kaRVnk18">CB2S Relay flashing</a>, <a href="https://www.youtube.com/watch?v=JCqq-gn-X2c">WB3S wall switch flashing.</a></h6>
 <h6>You can support us to make more videos/firmware features/teardowns <a href="https://www.paypal.com/paypalme/openshwprojects"> here</a></h6>
-<h5>New tool for BK7231 T and N flashing (and for automatic template extraction): <a href="https://github.com/openshwprojects/BK7231GUIFlashTool">BK7231 GUI Flash Tool</a></h5>
-<h5>Old tool for BK7231T flashing (do not use it to restore backup): <a href="https://github.com/openshwprojects/OpenBK7231T/blob/master/bk_writer1.60.zip">bkWriter 1.60</a></h5>
-<h5>Old tool for BK7231N flashing (requires Python): <a href="https://github.com/OpenBekenIOT/hid_download_py">hid_download_py</a></h5>
-<h5>Tool for BL602 flashing (inside tools/flash_tool): <a href="https://github.com/openshwprojects/OpenBL602">BLDevCube</a></h5>
+<h5>Modern Windows GUI tool for BK7231T, BK7231N, BK7231M and BK7238 flashing (and for automatic template extraction in most cases): <a href="https://github.com/openshwprojects/BK7231GUIFlashTool">BK7231 GUI Flash Tool</a></h5>
+<h5>!New 2025! Single place for all platform flashing tools (excludes BK7231 GUI Tool - see link above) <a href="https://github.com/openshwprojects/FlashTools/tree/main">FlashTools</a></h5>
 <h6>Click on device name to get a detailed teardown article, often with pins configuration and setup.</h6>
 <h6>Some devices were submitted by contributors and not by me, and might not have complete info.</h6>
 <h6>Also keep in mind that we have some Zigbee or TODO devices on list, just for the sake of completeness.</h6>
@@ -210,11 +208,11 @@ function hideNotNeeded()
 			</div>
 			</div>
 			<div class="col-auto" id="forumFilter">
-			  <label class="mr-sm-2" for="filter_LN882"></label>
+			  <label class="mr-sm-2" for="filter_LN882H"></label>
 			  <div class="form-check mb-2">
-				<input class="form-check-input" type="checkbox" id="filter_LN882" checked>
-				<label class="form-check-label" for="filter_LN882">
-				  LN882
+				<input class="form-check-input" type="checkbox" id="filter_LN882H" checked>
+				<label class="form-check-label" for="filter_LN882H">
+				  LN882H
 				  </label>
 				  </div>
 				  </div>
@@ -338,6 +336,16 @@ function findDocsURLForChip(chip) {
 	{
 		return "http://www.xradiotech.com/product/XR809.php";
 	}
+	if (chip == "LN882H") {
+		return "https://www.elektroda.com/rtvforum/topic4028087.html";
+	}
+	if (chip == "RTL87X0C") {
+		return "https://www.elektroda.com/rtvforum/topic4097185.html";
+	}
+	if (chip == "TR6260") {
+		return "https://www.elektroda.com/rtvforum/topic4093752.html";
+	}	
+	
 	return "";
 	
 	
@@ -472,7 +480,7 @@ function refreshJSON() {
   var filter_detailed = document.getElementById("filter_detailed").checked;
   var filter_W80X = document.getElementById("filter_W80X").checked;
   var filter_W60X = document.getElementById("filter_W60X").checked;
-  var filter_LN882 = document.getElementById("filter_LN882").checked;
+  var filter_LN882H = document.getElementById("filter_LN882H").checked;
   var g_state = document.getElementById("g_state");
   var selectMax = document.getElementById("selectMax");
   var selectType = document.getElementById("selectType");
@@ -559,9 +567,9 @@ function refreshJSON() {
 				continue;
 			}
 		}
-		if(filter_LN882 == false)
+		if(filter_LN882H == false)
 		{
-			if(chip.includes("LN882"))
+			if(chip == "LN882H")
 			{
 				continue;
 			}
