@@ -12358,6 +12358,30 @@
 	  "image": "https://obrazki.elektroda.pl/4846908000_1712784503.png",
 	  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21040727#21040727"
 	},
+  {
+    "vendor": "EARU",
+    "bDetailed": "0",
+    "name": "WiFi Smart Circuit Breaker 1P+N",
+    "model": "EAKCB-EWE-M",
+    "chip": "BL602",
+    "board": "PTBLU-W",
+    "flags": "1024",
+    "keywords": [
+      "YK-DPN-T-V1-1",
+      "Current Monitoring",
+      "Energy Metering"
+    ],
+    "pins": {
+      "1": "LED;0",
+      "4": "Btn;0",
+      "5": "WifiLED_n;0",
+      "20": "AlwaysLow;0",
+      "21": "AlwaysLow;0"
+    },
+    "command": "",
+    "image": "https://obrazki.elektroda.pl/5083588700_1751735837.jpg",
+    "wiki": "https://www.elektroda.com/rtvforum/topic4129041.html"
+  },
     {
       "vendor": "Tuya",
       "bDetailed": "0",
