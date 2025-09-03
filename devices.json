@@ -12383,6 +12383,29 @@
     "wiki": "https://www.elektroda.com/rtvforum/topic4129041.html"
   },
     {
+    "vendor": "TOMZN",
+    "bDetailed": "0",
+    "name": "1P 63A Circuit Breaker Power Monitoring DIN Relay",
+    "model": "TOB8-63WiFi",
+    "chip": "BL602",
+    "board": "PTBLU-W",
+    "flags": "1024",
+    "keywords": [
+      "K7500",
+      "SWD-WIFI计量(20241108)温度"
+    ],
+    "pins": {
+      "2": "WifiLED_n;10",
+      "3": "LED_n;10",
+      "14": "Btn;10",
+      "20": "BridgeREV;10",
+      "21": "BridgeFWD;10"
+    },
+    "command": "delay_s 11\r\nstartDriver BL0942",
+    "image": "https://obrazki.elektroda.pl/4886635500_1756889969.png",
+    "wiki": "https://www.elektroda.com/rtvforum/topic4136806.html"
+  },
+    {
       "vendor": "Tuya",
       "bDetailed": "0",
       "name": "Generic 16A Mini Smart Switch",
