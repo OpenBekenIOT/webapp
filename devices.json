@@ -12392,7 +12392,9 @@
     "flags": "1024",
     "keywords": [
       "K7500",
-      "SWD-WIFI计量(20241108)温度"
+      "SWD-WIFI计量(20241108)温度",
+      "CK-BL602-W102SW18-01_v5.0.0",
+      "ewelink"
     ],
     "pins": {
       "2": "WifiLED_n;10",
