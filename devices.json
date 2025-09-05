@@ -12382,6 +12382,27 @@
     "image": "https://obrazki.elektroda.pl/5083588700_1751735837.jpg",
     "wiki": "https://www.elektroda.com/rtvforum/topic4129041.html"
   },
+  {
+    "vendor": "CozyLife",
+    "bDetailed": "0",
+    "name": "B22 9W CW/WW LED Bulb",
+    "model": "HGBiJb",
+    "chip": "LN882H",
+    "board": "on PCB",
+    "flags": "5120",
+    "keywords": [
+      "XLD-QX9WLX-BP1.1",
+      "XLD-QX9W-BPD2.1",
+      "220V"
+    ],
+    "pins": {
+      "5": "BP5758D_DAT;0",
+      "6": "BP5758D_CLK;0"
+    },
+    "command": "powersave 1\r\nBP5758D_Current 10 10\r\nLED_Map -1 -1 -1 3 4\r\n",
+    "image": "https://obrazki.elektroda.pl/4210559400_1757052854.jpg",
+    "wiki": "https://www.elektroda.com/rtvforum/topic4137054.html"
+  },
     {
     "vendor": "TOMZN",
     "bDetailed": "0",
