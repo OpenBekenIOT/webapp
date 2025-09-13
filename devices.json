@@ -142,7 +142,6 @@
       "image": "https://obrazki.elektroda.pl/3524969400_1725644975.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4074263.html"
     },
-
     {
       "vendor": "Tuya",
       "bDetailed": "0",
@@ -3978,7 +3977,6 @@
       "image": "https://obrazki.elektroda.pl/5883352900_1678713488.png",
       "wiki": ""
     },
-
     {
       "vendor": "AVATTO",
       "name": "AVATTO Tuya Brazil 4x4 WiFi Wall Switch",
@@ -5007,6 +5005,29 @@
       "command": "",
       "image": "https://obrazki.elektroda.pl/9049397300_1721571936.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4066446.html"
+    },
+    {
+      "vendor": "TP-Link",
+      "bDetailed": "0",
+      "name": "Kasa Dual WiFi Exterior Smart Plug (US)",
+      "model": "KP400",
+      "chip": "RTL87X0C",
+      "board": "TODO",
+      "flags": "1024",
+      "keywords": ["double", "outdoors", "waterproof", "outlet"],
+      "pins": {
+        "2": "LED_n;2",
+        "3": "WifiLED;0",
+        "7": "Rel;2",
+        "8": "Rel;1",
+        "9": "WifiLED;0",
+        "10": "LED_n;1",
+        "11": "Btn;2",
+        "12": "Btn;1"
+      },
+      "command": "setButtonTimes 50 1 5",
+      "image": "https://obrazki.elektroda.pl/2201733400_1757640007.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4144475.html"
     },
     {
       "vendor": "BSEED",
@@ -8210,7 +8231,6 @@
       "image": "https://obrazki.elektroda.pl/4562508100_1752175980.png",
       "wiki": "https://www.elektroda.com/rtvforum/topic4130481.html"
     },
-
     {
       "vendor": "Tuya",
       "bDetailed": "1",
@@ -8803,7 +8823,6 @@
       "wiki": "https://www.elektroda.pl/rtvforum/topic4081611.html",
       "product": ""
     },
-
     {
       "vendor": "Sonoff",
       "bDetailed": "1",
@@ -9290,7 +9309,6 @@
       "image": "https://obrazki.elektroda.pl/7014154300_1721153160.png",
       "wiki": "https://www.elektroda.pl/rtvforum/topic4069082.html"
     },
-
     {
       "vendor": "Tuya",
       "bDetailed": "0",
@@ -9314,7 +9332,6 @@
       "image": "https://obrazki.elektroda.pl/6848632200_1738845218.png",
       "wiki": "https://www.elektroda.pl/rtvforum/viewtopic.php?p=21427301#21427301"
     },
-
     {
       "vendor": "Tuya",
       "bDetailed": "0",
@@ -9337,7 +9354,6 @@
       "image": "https://obrazki.elektroda.pl/7594845700_1738841875.jpg",
       "wiki": "https://www.elektroda.pl/rtvforum/topic4103835.html"
     },
-
     {
       "vendor": "Tuya",
       "bDetailed": "0",
