@@ -19,37 +19,6 @@
        <button @click="startDriver('DDP')">Start DDP</button>
        <button @click="startDriver('DGR')">Start DGR</button>
 
-      <h4>Network Device Scan</h4>
-      <p>
-        Scan your local subnet for OBK/Tasmota devices. Only successful answers will be shown.<br>
-        <small>
-          Enter the full starting IP (e.g. <b>192.168.0.2</b>) and in the second field, either single octets, ranges using <b>-</b>, or both separated by commas<br>
-          <b>Example:</b> <code>25,27-30,45,47,50-56</code>
-        </small>
-      </p>
-      <div>
-        <label for="scanStartIP">Start IP:</label>
-        <input id="scanStartIP" v-model="scanStartIP" placeholder="192.168.0.2" style="width:120px"/><br>
-        <label for="scanEndList" style="margin-left:8px;">End/List (octet):</label>
-        <input id="scanEndList" v-model="scanEndList" placeholder="25 or 25,29,40" style="width:140px"/><br>
-        <label for="scanTimeout" style="margin-left:8px;">Timeout (ms):</label>
-        <input id="scanTimeout" v-model.number="scanTimeout" type="number" min="200" max="5000" style="width:70px"/>
-        <button @click="scanNetwork" :disabled="scanInProgress">Scan</button>
-        <button @click="stopScan" v-if="scanInProgress" style="margin-left:8px;">Stop</button>
-      </div>
-      <div v-if="scanInProgress">
-        Scanning: {{ currentScanIP }} ({{ scanProgress }}/{{ scanTargetIPs.length }})
-      </div>
-      <div v-if="scanResults.length">
-        <h5>Found Devices:</h5>
-        <ul>
-          <li v-for="result in scanResults" :key="result.ip">
-            <b>{{ result.ip }}:</b>
-            <pre style="white-space:pre-wrap; word-break:break-all;">{{ JSON.stringify(result.statusNet, null, 2) }}</pre>
-          </li>
-        </ul>
-      </div>
-
       <h4>Test/Play Tools</h4>
       <p>Some things to play around/to learn events</p>
        <button @click="addRepeatingEvent(7298,'POWER TOGGLE', 2)">Start toggling power every 2 seconds</button><br>
@@ -128,6 +97,46 @@
        
 
     </div>
+    <div class="item">
+      <h4>Network Device Scan</h4>
+      <p>
+        Scan your local subnet for OBK/Tasmota devices.<br>
+        <details>
+        <summary>How to use</summary>
+        <small>
+          Enter the base network (e.g. <b>192.168.0</b>) and in the second field 
+          the IP or IPs to scan:<br>
+          - a single octet (e.g. 20)<br> &nbsp;&nbsp;  -->  192.168.0.20<br>
+          - ranges using <b>-</b> (e.g. 20-25)<br>&nbsp;&nbsp;  --> 192.168.0.20 - .25<br>
+          - octets separated by commas (like 20,23,25)<br>&nbsp;&nbsp;  -->  hosts .20, .23, .25<br>
+          - both ranges and single IPs separted by commas<br>
+          &nbsp;(e.g. 20-23,27,30-32)<br>
+          &nbsp;&nbsp;  -->  hosts .20, .21, .22, .23, .27, .30, .31, .32<br>
+        </small>
+        </details>
+      </p>
+      <div>
+        <label for="scanNet">Network:</label>
+        <input id="scanNet" v-model="scanNet" placeholder="192.168.0" style="width:100px"/><br>
+        <label for="scanList" style="margin-left:8px;">Hosts:</label>
+        <input id="scanList" v-model="scanList" placeholder="25 or 25,29,40" style="width:140px"/><br>
+        <label for="scanTimeout" style="margin-left:8px;">Timeout (ms):</label>
+        <input id="scanTimeout" v-model.number="scanTimeout" type="number" min="200" max="5000" style="width:70px"/>
+        <button @click="scanNetwork" :disabled="scanInProgress">Scan</button>
+        <button @click="stopScan" v-if="scanInProgress" style="margin-left:8px;">Stop</button>
+      </div>
+      <div v-if="scanInProgress">
+        Scanning: {{ currentScanIP }} ({{ scanProgress }}/{{ scanTargetIPs.length }})
+      </div>
+      <div v-if="scanResults.length">
+        <h5>Found Devices:</h5>
+        <ul>
+          <li v-for="result in scanResults" :key="result.ip">
+            <pre style="white-space:pre-wrap; word-break:break-all;"><b>{{ result.ip }}:</b><br>{{ JSON.stringify(result.statusNet, null, 2) }}</pre>
+          </li>
+        </ul>
+      </div>
+    </div>
    </div>
 </template>
 
@@ -157,8 +166,8 @@
         C:'0',
         W:'0',
         ExternalGroupName:'SomeRandomGroup',
-        scanStartIP: '192.168.0.2',
-        scanEndList: '25',
+        scanNet: '192.168.0',
+        scanList: '20-25',
         scanTimeout: 500,
         scanResults: [],
         scanInProgress: false,
@@ -349,7 +358,8 @@
         this.scanProgress = 0;
         this.currentScanIP = "";
         this.stopScanRequested = false;
-        this.scanTargetIPs = this.parseIPTargets(this.scanStartIP, this.scanEndList);
+        this.scanTargetIPs = this.parseIPTargets(this.scanNet, this.scanList);
+        let found = 0;
         for (let i = 0; i < this.scanTargetIPs.length; ++i) {
           if (this.stopScanRequested) break;
           let ip = this.scanTargetIPs[i];
@@ -364,9 +374,11 @@
               data = null;
             }
             if (data && data.StatusNET) {
+              // filter out most "useless" information - to identify even only Name, IP and MAC should be fine 
+              const { DNSServer1, DNSServer2, Webserver, HTTP_API, WifiConfig, WifiPower, ...helper } = data.StatusNET;
               this.scanResults.push({
                 ip: ip,
-                statusNet: data.StatusNET,
+                statusNet: helper,
               });
             }
           } catch (err) {
@@ -383,27 +395,40 @@
       stopScan() {
         this.stopScanRequested = true;
       },
-      parseIPTargets(startIP, endList) {
-        // startIP: e.g. "192.168.0.2"
-        // endList: e.g. "25,27-30,45"
-        startIP = (startIP || '').trim();
-        endList = (endList || '').trim();
-        if (!startIP) return [];
-        let parts = startIP.split('.');
-        if (parts.length !== 4) return [];
+
+
+      // examples for possible IPs and ranges:
+      //
+      //
+      //  single range, e.g. 192.168.0.10 - 192.168.0.20
+      //	Net   = "192.168.0"
+      //	Hosts = "10-20"
+      //
+      //  single IPs, e.g. 192.168.0.10, 192.168.0.20, 192.168.0.25 and 192.168.0.30 
+      //	Net   = "192.168.0"
+      //	Hosts = "10,20,25,30"
+      //
+      //  single IPs and ranges, e.g. 192.168.0.10, 192.168.0.20 - 192.168.0.25, 192.168.0.30 and 192.168.0.40 - 192.168.0.50  
+      //	Net   = "192.168.0"
+      //	Hosts = "10,20-25,30,40-50"
+      parseIPTargets(Net, List) {
+        // Net: e.g. "192.168.0"
+        // endList: e.g. "20-25,27-30,45"
+        Net = (Net || '').trim();
+        List = (List || '').trim();
+        if (!Net) return [];
+        let parts = Net.split('.');
+        if (parts.length !== 3) return [];
         let base = `${parts[0]}.${parts[1]}.${parts[2]}`;
-        let startOctet = parseInt(parts[3]);
-        if (isNaN(startOctet)) return [];
+        let octetSet = new Set();
   
-        // Always include the starting octet
-        let octetSet = new Set([startOctet]);
-  
-        if (endList) {
-          let items = endList.split(',');
+        if (List) {
+          let items = List.split(',');
           items.forEach(item => {
             item = item.trim();
             if (item.includes('-')) {
               // Handle range
+              console.log('item includes - ' + item);
               let [startStr, endStr] = item.split('-').map(s => s.trim());
               let rangeStart = parseInt(startStr);
               let rangeEnd = parseInt(endStr);
@@ -420,7 +445,7 @@
               }
             }
           });
-        }
+        } 
   
         // Filter valid octets (1..255), sort them
         let allOctets = Array.from(octetSet).filter(o => o >= 1 && o <= 255).sort((a, b) => a - b);
