@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>USB 5v DC12V eWeLink WiFi DIY 4CH Switch</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">USB 5v DC12V eWeLink WiFi DIY 4CH Switch (KR0548-4CH)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/4839374300_1671706511.jpg" alt="USB 5v DC12V eWeLink WiFi DIY 4CH Switch">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> QIACHIP</p>
+        <p><strong>Chip:</strong> BL602</p>
+        <p><strong>Board:</strong> SM-028_V1.3</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> switch, relay, 4ch</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "QIACHIP",
+  "bDetailed": "0",
+  "name": "USB 5v DC12V eWeLink WiFi DIY 4CH Switch",
+  "model": "KR0548-4CH",
+  "chip": "BL602",
+  "board": "SM-028_V1.3",
+  "pins": {
+    "1": "Btn;2",
+    "2": "Rel;1",
+    "3": "Btn;1",
+    "4": "Btn;3",
+    "14": "WifiLED;0",
+    "17": "Rel;3",
+    "20": "Btn;4",
+    "21": "Rel;4",
+    "22": "Rel;2"
+  },
+  "keywords": [
+    "switch",
+    "relay",
+    "4ch"
+  ],
+  "image": "https://obrazki.elektroda.pl/4839374300_1671706511.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20347388#20347388",
+  "product": "https://www.aliexpress.com/item/1005004980084932.html?spm=a2g0o.order_list.order_list_main.17.3c441c24DneLdn&gatewayAdapt=glo2pol"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P1 is Btn on channel 2<br>- P2 is Rel on channel 1<br>- P3 is Btn on channel 1<br>- P4 is Btn on channel 3<br>- P14 is WifiLED on channel 0<br>- P17 is Rel on channel 3<br>- P20 is Btn on channel 4<br>- P21 is Rel on channel 4<br>- P22 is Rel on channel 2<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/viewtopic.php?p=20347388#20347388" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/viewtopic.php?p=20347388#20347388" target="_blank">Polish guide</a>
+        </p>
+        <p>You can also visit <a href="https://www.aliexpress.com/item/1005004980084932.html?spm=a2g0o.order_list.order_list_main.17.3c441c24DneLdn&gatewayAdapt=glo2pol" target="_blank">shop site</a>.</p>
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="eWeLink_EWI_RFBL_4ch.html">4-Channel R3 Pro Smart Switch PCB 85-265V</a> - 22.2% match</li>
+<li><a href="GIRIER_JR_PM09.html">20A EU Power Monitoring Plug</a> - 11.1% match</li>
+<li><a href="Tuya_Smart_Socket_20A.html">Smart Socket 20A</a> - 11.1% match</li>
+<li><a href="eWeLink_RMC021.html">90-250v Wi-Fi Smart Plug With Power Monitoring (EU) (Red PCB)</a> - 11.1% match</li>
+<li><a href="ModeMix_MOD001.html">MOD001 Smart Curtain Module</a> - 11.1% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DIY smart switch</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">DIY smart switch ()</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/3889877500_1709032216.jpg" alt="DIY smart switch">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Ewelink</p>
+        <p><strong>Chip:</strong> BL602</p>
+        <p><strong>Board:</strong> SM-028_V1.3</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> switch, relay, single</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Ewelink",
+  "bDetailed": "0",
+  "name": "DIY smart switch",
+  "model": "",
+  "chip": "BL602",
+  "board": "SM-028_V1.3",
+  "flags": "1024",
+  "keywords": [
+    "switch",
+    "relay",
+    "single"
+  ],
+  "pins": {
+    "2": "TglChanOnTgl;1",
+    "14": "LED_n;1",
+    "20": "Btn;1",
+    "21": "Rel;1"
+  },
+  "command": "powersave 1",
+  "image": "https://obrazki.elektroda.pl/3889877500_1709032216.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20980720"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P2 is TglChanOnTgl on channel 1<br>- P14 is LED_n on channel 1<br>- P20 is Btn on channel 1<br>- P21 is Rel on channel 1<br>- Flags are set to 1024<br>- StartupCommand is set to powersave 1<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/viewtopic.php?p=20980720" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/viewtopic.php?p=20980720" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Meiq_R2.html">IoT Meiq Sonoff Basic R2</a> - 50.0% match</li>
+<li><a href="QIACHIP_KR0548_2CH_W.html">WiFi DIY dual Switch</a> - 40.0% match</li>
+<li><a href="Tuya_ETS301W.html">Ener-J Touch Switch</a> - 25.0% match</li>
+<li><a href="SmartLED_1xCLY701_1G_8044.html">8044 1 Gang Smart Switch</a> - 25.0% match</li>
+<li><a href="Tuya_72_087.html">Blow 1 gang light switch</a> - 25.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

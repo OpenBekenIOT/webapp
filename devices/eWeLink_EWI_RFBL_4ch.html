@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>4-Channel R3 Pro Smart Switch PCB 85-265V</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">4-Channel R3 Pro Smart Switch PCB 85-265V (EWI-RFBL-4ch)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/8289926700_1740328333.png" alt="4-Channel R3 Pro Smart Switch PCB 85-265V">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> eWeLink</p>
+        <p><strong>Chip:</strong> BL602</p>
+        <p><strong>Board:</strong> SDV-002_V1.2</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> relay, garage, module, 4x SONGLE SRD-05VDC-SL-C</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "eWeLink",
+  "bDetailed": "0",
+  "name": "4-Channel R3 Pro Smart Switch PCB 85-265V",
+  "model": "EWI-RFBL-4ch",
+  "chip": "BL602",
+  "board": "SDV-002_V1.2",
+  "flags": "134218820",
+  "keywords": [
+    "relay",
+    "garage",
+    "module",
+    "4x SONGLE SRD-05VDC-SL-C"
+  ],
+  "pins": {
+    "0": "Rel;4",
+    "1": "Btn;4",
+    "2": "Rel;1",
+    "3": "Rel;3",
+    "14": "Btn;1",
+    "20": "Btn;3",
+    "21": "Btn;2",
+    "22": "Rel;2"
+  },
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/8289926700_1740328333.png",
+  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21452814#21452814"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P0 is Rel on channel 4<br>- P1 is Btn on channel 4<br>- P2 is Rel on channel 1<br>- P3 is Rel on channel 3<br>- P14 is Btn on channel 1<br>- P20 is Btn on channel 3<br>- P21 is Btn on channel 2<br>- P22 is Rel on channel 2<br>- Flags are set to 134218820<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/viewtopic.php?p=21452814#21452814" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/viewtopic.php?p=21452814#21452814" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Tuya_ZH_Z38.html">3CH Wi-Fi USB Switch Module 5V-12V</a> - 25.0% match</li>
+<li><a href="QIACHIP_KR0548_4CH.html">USB 5v DC12V eWeLink WiFi DIY 4CH Switch</a> - 22.2% match</li>
+<li><a href="Casenl_Tuya_WIFI_4gang_Switch.html">4 gang push button switch</a> - 22.2% match</li>
+<li><a href="Tuya_Smart_Socket_20A.html">Smart Socket 20A</a> - 12.5% match</li>
+<li><a href="eWeLink_RMC021.html">90-250v Wi-Fi Smart Plug With Power Monitoring (EU) (Red PCB)</a> - 12.5% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>
