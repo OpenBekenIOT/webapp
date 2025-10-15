@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GU10 RGBCCT 4.8W 345LM RGB+2700-6500K Bulb</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">GU10 RGBCCT 4.8W 345LM RGB+2700-6500K Bulb (S19263)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/2072813000_1709672386.jpg" alt="GU10 RGBCCT 4.8W 345LM RGB+2700-6500K Bulb">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Eveready</p>
+        <p><strong>Chip:</strong> BK7231N</p>
+        <p><strong>Board:</strong> CBLC5</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> poundland, BP5758D</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Eveready",
+  "bDetailed": "0",
+  "name": "GU10 RGBCCT 4.8W 345LM RGB+2700-6500K Bulb",
+  "model": "S19263",
+  "chip": "BK7231N",
+  "board": "CBLC5",
+  "flags": "1024",
+  "keywords": [
+    "poundland",
+    "BP5758D"
+  ],
+  "pins": {
+    "24": "BP5758D_DAT;0",
+    "26": "BP5758D_CLK;0"
+  },
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/2072813000_1709672386.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4040714.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P24 is BP5758D_DAT on channel 0<br>- P26 is BP5758D_CLK on channel 0<br>- Flags are set to 1024<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4040714.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4040714.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Moes_MWB_RCW.html">Tuya Matter RGBCW 9W E27 Bulb</a> - 100.0% match</li>
+<li><a href="Moes_FHZTDCM18136101.html">5W RGB+CCT E12 Candelabra Bulb</a> - 100.0% match</li>
+<li><a href="Nous_Bulb_P8_GU10_RGBCW_(BK7231N_BP5758).html">Bulb P8 GU10 RGBCW (BK7231N + BP5758)</a> - 100.0% match</li>
+<li><a href="Home_Awesome_EBE_BAW577_F.html">14W 120V RGB+CCT 1400LM E26 Bulb</a> - 100.0% match</li>
+<li><a href="Litemate_LM044.html">SmartHome RGBCW WiFi LED Lamp 9W B22 A60 810LM</a> - 50.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

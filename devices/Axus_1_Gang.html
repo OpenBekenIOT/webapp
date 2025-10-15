@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Axus EWelink Smart Life Light Switch WiFi Bluetooth RF433</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Axus EWelink Smart Life Light Switch WiFi Bluetooth RF433 (1-Gang)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/6446325900_1681284514.png" alt="Axus EWelink Smart Life Light Switch WiFi Bluetooth RF433">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Axus</p>
+        <p><strong>Chip:</strong> BL602</p>
+        <p><strong>Board:</strong> SDV-002_V1.2</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> touch, sensor, remote, no neutral</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Axus",
+  "bDetailed": "0",
+  "name": "Axus EWelink Smart Life Light Switch WiFi Bluetooth RF433",
+  "model": "1-Gang",
+  "chip": "BL602",
+  "board": "SDV-002_V1.2",
+  "flags": "536871936",
+  "keywords": [
+    "touch",
+    "sensor",
+    "remote",
+    "no neutral"
+  ],
+  "pins": {
+    "3": "Rel;1",
+    "12": "WifiLED;0",
+    "14": "Btn;1"
+  },
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/6446325900_1681284514.png",
+  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20535955#20535955"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P3 is Rel on channel 1<br>- P12 is WifiLED on channel 0<br>- P14 is Btn on channel 1<br>- Flags are set to 536871936<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/viewtopic.php?p=20535955#20535955" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/viewtopic.php?p=20535955#20535955" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Shenzhen_Qingning_Tongchuang_Technology_Co_Ltd_3_Gang.html">EWelink Smart Life Light Switch</a> - 42.9% match</li>
+<li><a href="Axus_3_Gang.html">Axus EWelink Smart Life Light Switch WiFi Bluetooth RF433</a> - 42.9% match</li>
+<li><a href="eWelink_E27_AC90_250V_Smart_Lamp_Holder.html">E27 AC90-250V Smart Lamp Holder</a> - 33.3% match</li>
+<li><a href="Tuya_LSPS5_Wall_Switch_No_Neutral_1_gang.html">LSPS5 Wall Switch No-Neutral - 1 gang</a> - 33.3% match</li>
+<li><a href="Deta_Grid_6911HA.html">Deta Grid Connect Smart Single Gang Touch Light Switch - 6911HA</a> - 33.3% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>
