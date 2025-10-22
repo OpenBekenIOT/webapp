@@ -461,7 +461,11 @@
                     case 'ESP8266': 
                         prefix = 'OpenESP8266_';
                         postfix = '.img';
-                        break;                                                                                                                                                                                                                                                                                                                                                          
+                        break;
+                    case 'RDA5981': 
+                        prefix = 'OpenRDA5981_';
+                        postfix = '_ota.img';
+                        break;
 		    default:
 			prefix = 'Open' + this.chipset + '_';
                         postfix = '.img';
