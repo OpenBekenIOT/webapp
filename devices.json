@@ -12766,6 +12766,23 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4097320.html"
     },
     {
+      "vendor": "Ledytech",
+      "bDetailed": "0",
+      "name": "Smart Ceiling Light Replacement, RGB LED Ceiling Fan Light Retrofit Kit 1800LM",
+      "model": "XGD-NZ-002",
+      "chip": "BK7238",
+      "board": "WB43-M5 V1.1",
+      "flags": "1024",
+      "keywords": ["AK001-ZJ21412", "CCT", "2700K-6500K", "zengge", "surplife", "3D_22_20250107_ZIL-BK38"],
+      "pins": {
+        "6": "PWM;5",
+        "8": "PWM;4"
+      },
+      "command": "backlog powersave 1; startDriver SM16703P; SM16703P_Init 240 GRB; startdriver pixelanim",
+      "image": "https://obrazki.elektroda.pl/9496845200_1761371358.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4150277.html"
+    },
+    {
       "vendor": "Amazon",
       "bDetailed": "0",
       "name": "BTF-Lighting FCOB CCT LED Strip Light",
