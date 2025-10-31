@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Single switch module ver 20231005</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Single switch module ver 20231005 (SB451)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/4371617200_1712320814.jpg" alt="Single switch module ver 20231005">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Tuya</p>
+        <p><strong>Chip:</strong> BK7231N</p>
+        <p><strong>Board:</strong> CB2S</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> Allegro, BP2525, DS-1311WN</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Tuya",
+  "bDetailed": "0",
+  "name": "Single switch module ver 20231005",
+  "model": "SB451",
+  "chip": "BK7231N",
+  "board": "CB2S",
+  "keywords": [
+    "Allegro",
+    "BP2525",
+    "DS-1311WN"
+  ],
+  "pins": {
+    "7": "WifiLED_n;0",
+    "8": "Rel;1",
+    "11": "Btn_Tgl_All;0",
+    "26": "TglChanOnTgl;1"
+  },
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/4371617200_1712320814.jpg",
+  "wiki": "https://www.elektroda.pl/rtvforum/topic4057978.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P7 is WifiLED_n on channel 0<br>- P8 is Rel on channel 1<br>- P11 is Btn_Tgl_All on channel 0<br>- P26 is TglChanOnTgl on channel 1<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.pl/rtvforum/topic4057978.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4057978.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="SHUNSHUN_16A_WIFI_Mini_Smart_Switch.html">SHUNSHUN_16A_WIFI_Mini_Smart_Switch</a> - 75.0% match</li>
+<li><a href="Tuya_86_TDQ_INNOV2.html">MINI Smart Switch</a> - 75.0% match</li>
+<li><a href="Tuya_Generic_16A_DIY_Mini_Switch.html">Generic 16A DIY Mini Switch</a> - 50.0% match</li>
+<li><a href="SIXWGH_WHD03.html">Tuya 16A (15A) Mini Smart Switch + RF 433.92Mhz</a> - 50.0% match</li>
+<li><a href="Tuya_Mini_Smart_Switch_16A_1_Gang_Shunshun_Graffiti.html">Mini Smart Switch 16A 1 Gang Shunshun Graffiti</a> - 50.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Sitemap: https://openbekeniot.github.io/webapp/sitemap.xml
+
+User-agent: *
+Disallow:
+
