@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AVATTO Tuya Brazil 4x4 WiFi Wall Switch</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">AVATTO Tuya Brazil 4x4 WiFi Wall Switch (6 Gang)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/3446798000_1683029505.jpg" alt="AVATTO Tuya Brazil 4x4 WiFi Wall Switch">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> AVATTO</p>
+        <p><strong>Chip:</strong> BK7231N</p>
+        <p><strong>Board:</strong> N/A</p>
+        <p><strong>Detailed:</strong> N/A</p>
+        <p><strong>Keywords:</strong> avatto, 6gang, cbu</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "AVATTO",
+  "name": "AVATTO Tuya Brazil 4x4 WiFi Wall Switch",
+  "model": "6 Gang",
+  "chip": "BK7231N",
+  "flags": "1028",
+  "keywords": [
+    "avatto",
+    "6gang",
+    "cbu"
+  ],
+  "pins": {
+    "6": "Rel;3",
+    "7": "Rel;2",
+    "8": "Rel;1",
+    "9": "Btn;6",
+    "10": "Btn;5",
+    "11": "Btn;4",
+    "14": "Btn;1",
+    "16": "Btn;2",
+    "17": "WifiLED;10",
+    "20": "Rel_n;0",
+    "23": "Btn;3",
+    "24": "Rel;5",
+    "26": "Rel;4",
+    "28": "Rel;6"
+  },
+  "image": "https://obrazki.elektroda.pl/3446798000_1683029505.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic3975448.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P6 is Rel on channel 3<br>- P7 is Rel on channel 2<br>- P8 is Rel on channel 1<br>- P9 is Btn on channel 6<br>- P10 is Btn on channel 5<br>- P11 is Btn on channel 4<br>- P14 is Btn on channel 1<br>- P16 is Btn on channel 2<br>- P17 is WifiLED on channel 10<br>- P20 is Rel_n on channel 0<br>- P23 is Btn on channel 3<br>- P24 is Rel on channel 5<br>- P26 is Rel on channel 4<br>- P28 is Rel on channel 6<br>- Flags are set to 1028<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read more information and get help on forum: <a href="https://www.elektroda.com/rtvforum/topic3975448.html" target="_blank">English thread</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic3975448.html" target="_blank">Polish thread</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Casenl_Tuya_WIFI_4gang_Switch.html">4 gang push button switch</a> - 35.7% match</li>
+<li><a href="Geeni_Current_Charge_outlet.html">Current + Charge outlet</a> - 21.4% match</li>
+<li><a href="Calex_UK_power_strip_900018_1_v1_0_UK.html">UK power strip 900018.1 v1.0 UK</a> - 21.4% match</li>
+<li><a href="Tuya_TSL_PS_F4U_01_W.html">Smart Power Strip 4x socket and 2x USB</a> - 21.4% match</li>
+<li><a href="Arlec_PB88UHA.html">PB88UHA Smart Connect Outlet Power Strip 4x with USB and USB C</a> - 21.4% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

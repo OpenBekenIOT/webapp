@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OpenBeken Configuration Generator - Parse Tuya JSON data from Cloudcutter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>OpenBeken Configuration Generator - Parse Tuya JSON data from Cloudcutter</h1>
+    <p>This tool can generate OpenBeken config with one click. Just input JSON data extracted from firmware, preferrably taken from cloudcutter profile and get your config. Usage:</p>
+	<ul>
+	<li>Get cloudcutter profile text or user_param_key from BK tools (advanced users)</li>
+	<li>Click <a href="https://github.com/tuya-cloudcutter/tuya-cloudcutter.github.io/tree/master/devices">here</a> for profiles</li>
+	<li>Paste the JSON into input field</li>
+	<li>When doing it in OpenBeken Web Application, you will have 'Apply template' button, just click it</li>
+	</ul>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="input-text">Input:</label>
+        <textarea class="form-control" id="input-text" rows="10"></textarea>
+      </div>
+      <div class="col-md-6">
+        <label for="output-text">Text interpretation:</label>
+        <textarea class="form-control" id="output-text" rows="10"></textarea>
+      </div>
+    </div>
+    <div class="row">
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="output-text-templ">OpenBeken template:</label>
+        <textarea class="form-control" id="output-text-templ" rows="10"></textarea>
+      </div>
+      <div class="col-md-6">
+        <label for="output-text-scr">OpenBeken one shot script:</label>
+        <textarea class="form-control" id="output-text-scr" rows="10"></textarea>
+      </div>
+    </div>
+    <div class="row">    
+    <span class="text-center">Examples (each button will fetch a cloudcutter JSON):</span>
+      <div class="col-md-12 text-center">
+        <button class="btn btn-primary mt-3" id="parse-btn" onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/athom-garage-door-opener.json')">Garage Door</button>
+        <button class="btn btn-primary mt-3" id="parse-btn" onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/aldi-casalux-wifi-led-rgb-light-strip.json')">RGB strip</button>
+        <button class="btn btn-primary mt-3" id="parse-btn" onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/lenovo-se-242dc-rgbct-bulb-v1.2.21.json')">RGBCW LED</button>
+        <button class="btn btn-primary mt-3" id="parse-btn" onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/deta-6014ha-switch.json')">Deta Plug</button>
+        <button class="btn btn-primary mt-3" id="parse-btn" onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/pegant-pg3451-3-outlet-power-strip.json')">Triple socket + USB</button>
+        <button class="btn btn-primary mt-3" id="parse-btn" onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/b04e860fe0bb1c8bed417ab36c57e6759ec08510/devices/spectrum-woj14415-rgbct-gu10-bulb.json')">SM2135 LED</button>
+        <button class="btn btn-primary mt-3" id="parse-btn" onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/43a341ef1dd8eec8514e1d435563bd9008ff2835/devices/hombli-hbss-0209-smart-socket-b2030248-energy-plug.json')">BL0937 PLUG</button>
+        <button class="btn btn-primary mt-3" id="parse-btn" onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/b04e860fe0bb1c8bed417ab36c57e6759ec08510/devices/tuya-generic-rr620w-jl-smart-switch.json')">BL0942 power metering plug</button>
+        <button class="btn btn-primary mt-3" id="parse-btn" onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/nous-p4-e14-rgbct-bulb.json')">BP5758 LED</button>
+        <button class="btn btn-primary mt-3" id="parse-btn" onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/lsc-3004200-wifi-outdoor-dual-socket.json')">Bridge socket (TODO)</button>
+      </div>
+	  
+	   
+    </div>
+  </div>
+  <script type="text/javascript" src="templateParser.js"></script>
+  <script>
+    var inputText;
+    var outputText_desc;
+    var outputText_script;
+    var outputText_template;
+	function loadSample(url)
+	{
+        fetch(url)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(data) {
+            inputText.value = JSON.stringify(data, null, 2);
+		    refreshFields();
+          })
+          .catch(function(error) {
+            console.error('Error fetching JSON: ', error);
+          });
+     
+	}
+	function refreshFields() {
+		let res = processJSON(inputText.value);
+		outputText_desc.value = res.desc;
+		outputText_script.value = res.scr;
+		outputText_template.value = JSON.stringify(res.tmpl, null, 2);
+	}
+    document.addEventListener('DOMContentLoaded', function() {
+      inputText = document.getElementById('input-text');
+      outputText_desc = document.getElementById('output-text');
+      outputText_script = document.getElementById('output-text-scr');
+      outputText_template = document.getElementById('output-text-templ');
+      
+      inputText.addEventListener('change', function() {
+		refreshFields();
+      });
+    });
+  </script>
+</body>
+</html>
