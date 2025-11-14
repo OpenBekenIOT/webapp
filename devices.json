@@ -8737,6 +8737,33 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4133328.html"
     },
     {
+      "vendor": "SZKOSTON",
+      "bDetailed": "0",
+      "name": "Tuya 5v-12v 1x USB-A, 1x USB-C Smart Wifi Mini Switch",
+      "model": "MG-SPQ100",
+      "chip": "BK7231N",
+      "board": "on PCB",
+      "flags": "1024",
+      "keywords": [
+        "MG-SPQ100-B-WIF",
+        "AL15-03",
+        "806945-1",
+        "MG-SM5115",
+        "Shenzhen Koston Technology Co., Ltd",
+        "智能适配器 V1.2 2024-06-15",
+        "CH129-NT"
+      ],
+      "pins": {
+        "14": "Rel;1",
+        "15": "Rel;2",
+        "22": "Btn_Tgl_All;0",
+        "28": "WifiLED_n;0"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/9780261900_1763152910.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic_YOUR_TOPIC.html"
+    },
+    {
       "vendor": "Tuya",
       "bDetailed": "0",
       "name": "Mini WiFi Curtain Module",
@@ -11111,6 +11138,32 @@
       "command": "powersave 1",
       "image": "https://obrazki.elektroda.pl/5467955300_1761719981.png",
       "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21733076#21733076"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "1-Gang Dry Contact Relay Module",
+      "model": "QS-WIFI-SEC01-DC",
+      "chip": "BK7231N",
+      "board": "CBLC9S",
+      "flags": "0",
+      "keywords": [
+        "switch",
+        "QLRELAY",
+        "BJ-SS-105D",
+        "QL-0833",
+        "REV:0",
+        "2024.09.25",
+        "P-mjnr"
+      ],
+      "pins": {
+        "6": "WifiLED_n;0",
+        "7": "Rel;0",
+        "8": "dInput_n;0"
+      },
+      "command": "powersave 1",
+      "image": "https://obrazki.elektroda.pl/6083973100_1761845359.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4151106.html"
     },
     {
       "vendor": "SparkleIoT",
