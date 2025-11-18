@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FRESHIN Smart Bulb E27 A60 RGBCW</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">FRESHIN Smart Bulb E27 A60 RGBCW ()</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/1991161200_1675734721.png" alt="FRESHIN Smart Bulb E27 A60 RGBCW">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Freshin</p>
+        <p><strong>Chip:</strong> BK7231T</p>
+        <p><strong>Board:</strong> N/A</p>
+        <p><strong>Detailed:</strong> N/A</p>
+        <p><strong>Keywords:</strong> E27, RGBW, 9W, SM2135</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Freshin",
+  "name": "FRESHIN Smart Bulb E27 A60 RGBCW",
+  "chip": "BK7231T",
+  "pins": {
+    "7": "SM2135_DAT",
+    "8": "SM2135_CLK"
+  },
+  "image": "https://obrazki.elektroda.pl/1991161200_1675734721.png",
+  "wiki": "https://www.elektroda.com/rtvforum/topic3954346.html",
+  "shop": "https://freshin.com/products/smart-light-bulbs-freshin-e27-a60-9w-rgbcw-wifi-light-bulb-dimmable-led-light-2-4ghz-only-compatible-with-alexa-google-home-no-hub-required",
+  "flag": 134218752,
+  "command": "SM2135_Map 2 1 0 4 3",
+  "keywords": [
+    "E27",
+    "RGBW",
+    "9W",
+    "SM2135"
+  ]
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P7 is SM2135_DAT on channel undefined<br>- P8 is SM2135_CLK on channel undefined<br>- StartupCommand is set to SM2135_Map 2 1 0 4 3<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read more information and get help on forum: <a href="https://www.elektroda.com/rtvforum/topic3954346.html" target="_blank">English thread</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic3954346.html" target="_blank">Polish thread</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>
