@@ -632,7 +632,7 @@
       "flags": "1024",
       "keywords": ["2APUZ-SW6", "SM01_BK_N"],
       "pins": {
-        "6": "Rel_n;2",
+        "6": "Rel;2",
         "14": "LED;3",
         "22": "Btn;2",
         "24": "dInput_NoPullUp_n;3",
@@ -642,6 +642,31 @@
       "command": "",
       "image": "https://obrazki.elektroda.pl/6222220800_1746300349.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4120237.html"
+    },
+    {
+      "vendor": "Avatar",
+      "bDetailed": "0",
+      "name": "Smart RGBCW LED Bulb GU10 5W",
+      "model": "GU10-EU-UK",
+      "chip": "BK7231N",
+      "board": "on PCB",
+      "flags": "2251937261425664",
+      "keywords": [
+        "26X32SEG21172",
+        "Avatar Controls",
+        "ALS23L",
+        "X001ASUR2F",
+        "SM2235",
+        "500lm",
+        "5.0 W"
+      ],
+      "pins": {
+        "24": "SM2235DAT;0",
+        "26": "SM2235CLK;0"
+      },
+      "command": "backlog powersave 1; SM2235_Map 1 0 2 3 4",
+      "image": "https://obrazki.elektroda.pl/1057299100_1763206637.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4153643.html"
     },
     {
       "vendor": "Gerier",
@@ -5021,7 +5046,7 @@
       "name": "Kasa Dual WiFi Exterior Smart Plug (US)",
       "model": "KP400",
       "chip": "RTL87X0C",
-      "board": "TODO",
+      "board": "",
       "flags": "1024",
       "keywords": ["double", "outdoors", "waterproof", "outlet"],
       "pins": {
@@ -6546,6 +6571,31 @@
       "command": "",
       "image": "https://static.elektroda.pl/attach/71yUF8q0SBL__SX522__9911857.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4091943.html"
+    },
+    {
+      "vendor": "Farylink",
+      "bDetailed": "0",
+      "name": "Tuya 1CH 16A Mini Smart Switch",
+      "model": "S180v3.1",
+      "chip": "LN882H",
+      "board": "FL-M118-V1.1",
+      "flags": "2098176",
+      "keywords": [
+        "cb2s",
+        "XINCHUANGZHI",
+        "SCH-T73-1A-5S",
+        "20A/125VAC",
+        "breaker"
+      ],
+      "pins": {
+        "6": "TglChanOnTgl;1",
+        "7": "WifiLED;0",
+        "10": "Btn_Tgl_All;0",
+        "11": "Rel;1"
+      },
+      "command": "powersave 1",
+      "image": "https://obrazki.elektroda.pl/5279774000_1763372813.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4153500.html"
     },
     {
       "vendor": "Farylink",
@@ -8735,6 +8785,33 @@
       "command": "PowerSave 1",
       "image": "https://obrazki.elektroda.pl/1115430100_1754564033_thumb.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4133328.html"
+    },
+    {
+      "vendor": "SZKOSTON",
+      "bDetailed": "0",
+      "name": "Tuya 5v-12v 1x USB-A, 1x USB-C Smart Wifi Mini Switch",
+      "model": "MG-SPQ100",
+      "chip": "BK7231N",
+      "board": "on PCB",
+      "flags": "1024",
+      "keywords": [
+        "MG-SPQ100-B-WIF",
+        "AL15-03",
+        "806945-1",
+        "MG-SM5115",
+        "Shenzhen Koston Technology Co., Ltd",
+        "智能适配器 V1.2 2024-06-15",
+        "CH129-NT"
+      ],
+      "pins": {
+        "14": "Rel;1",
+        "15": "Rel;2",
+        "22": "Btn_Tgl_All;0",
+        "28": "WifiLED_n;0"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/9780261900_1763152910.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic_YOUR_TOPIC.html"
     },
     {
       "vendor": "Tuya",
@@ -11111,6 +11188,32 @@
       "command": "powersave 1",
       "image": "https://obrazki.elektroda.pl/5467955300_1761719981.png",
       "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21733076#21733076"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "1-Gang Dry Contact Relay Module",
+      "model": "QS-WIFI-SEC01-DC",
+      "chip": "BK7231N",
+      "board": "CBLC9S",
+      "flags": "0",
+      "keywords": [
+        "switch",
+        "QLRELAY",
+        "BJ-SS-105D",
+        "QL-0833",
+        "REV:0",
+        "2024.09.25",
+        "P-mjnr"
+      ],
+      "pins": {
+        "6": "WifiLED_n;0",
+        "7": "Rel;0",
+        "8": "dInput_n;0"
+      },
+      "command": "powersave 1",
+      "image": "https://obrazki.elektroda.pl/6083973100_1761845359.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4151106.html"
     },
     {
       "vendor": "SparkleIoT",
