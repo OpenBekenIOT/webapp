@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WiFi DIY dual Switch</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">WiFi DIY dual Switch (KR0548-2CH-W)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://user-images.githubusercontent.com/14217781/209668935-4cb93644-7656-4b5e-a41b-515674f8ce0e.jpg" alt="WiFi DIY dual Switch">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> QIACHIP</p>
+        <p><strong>Chip:</strong> BL602</p>
+        <p><strong>Board:</strong> SM-028_V1.3</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> switch, relay, KR0548</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "QIACHIP",
+  "bDetailed": "0",
+  "name": "WiFi DIY dual Switch",
+  "model": "KR0548-2CH-W",
+  "chip": "BL602",
+  "board": "SM-028_V1.3",
+  "pins": {
+    "4": "Btn;2",
+    "14": "WifiLED_n;1",
+    "17": "Rel;2",
+    "20": "Btn;1",
+    "21": "Rel;1"
+  },
+  "keywords": [
+    "switch",
+    "relay",
+    "KR0548"
+  ],
+  "image": "https://user-images.githubusercontent.com/14217781/209668935-4cb93644-7656-4b5e-a41b-515674f8ce0e.jpg",
+  "wiki": "",
+  "product": "https://aliexpress.com/item/1005004920914830.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P4 is Btn on channel 2<br>- P14 is WifiLED_n on channel 1<br>- P17 is Rel on channel 2<br>- P20 is Btn on channel 1<br>- P21 is Rel on channel 1<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="#" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/" target="_blank">Polish guide</a>
+        </p>
+        <p>You can also visit <a href="https://aliexpress.com/item/1005004920914830.html" target="_blank">shop site</a>.</p>
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Ewelink_DIY_smart_switch.html">DIY smart switch</a> - 40.0% match</li>
+<li><a href="Tuya_YSS102_(Junlit)_Single_Pole_Switch_BK7231T_version.html">YSS102 (Junlit) Single Pole Switch - BK7231T version</a> - 20.0% match</li>
+<li><a href="SmartLED_1xCLY701_1G_8044.html">8044 1 Gang Smart Switch</a> - 20.0% match</li>
+<li><a href="Tuya_72_087.html">Blow 1 gang light switch</a> - 20.0% match</li>
+<li><a href="Tuya_TY_SJ_01.html">Generic Flood Water Leak Detector - 2x AAA</a> - 20.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>
