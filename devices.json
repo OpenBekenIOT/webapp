@@ -978,6 +978,28 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4038842.html"
     },
     {
+      "vendor": "TOMZN",
+      "bDetailed": "0",
+      "name": "WIFI Smart ATS 2P AC Dual Power Automatic Transfer Switch",
+      "model": "TOQ7e-125/2 220V",
+      "chip": "BL602",
+      "board": "SDV-002_V1.2",
+      "keywords": [
+        "ewelink",
+        "relay",
+        "button",
+        "breaker"
+      ],
+      "pins": {
+        "2": "Rel;1",
+        "14": "Btn;1",
+        "12": "LED;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/6502478700_1764714096.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4155641.html"
+    },
+    {
       "vendor": "Feit",
       "bDetailed": "0",
       "name": "Feit Electric Wi-Fi Smart Outdoor Plug BPPLUG/WIFI/WP/2 (T version)",
