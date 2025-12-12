@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kasa Dual WiFi Exterior Smart Plug (US)</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Kasa Dual WiFi Exterior Smart Plug (US) (KP400)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/2201733400_1757640007.jpg" alt="Kasa Dual WiFi Exterior Smart Plug (US)">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> TP-Link</p>
+        <p><strong>Chip:</strong> RTL87X0C</p>
+        <p><strong>Board:</strong> N/A</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> double, outdoors, waterproof, outlet</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "TP-Link",
+  "bDetailed": "0",
+  "name": "Kasa Dual WiFi Exterior Smart Plug (US)",
+  "model": "KP400",
+  "chip": "RTL87X0C",
+  "board": "",
+  "flags": "1024",
+  "keywords": [
+    "double",
+    "outdoors",
+    "waterproof",
+    "outlet"
+  ],
+  "pins": {
+    "2": "LED_n;2",
+    "3": "WifiLED;0",
+    "7": "Rel;2",
+    "8": "Rel;1",
+    "9": "WifiLED;0",
+    "10": "LED_n;1",
+    "11": "Btn;2",
+    "12": "Btn;1"
+  },
+  "command": "setButtonTimes 50 1 5",
+  "image": "https://obrazki.elektroda.pl/2201733400_1757640007.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4144475.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P2 is LED_n on channel 2<br>- P3 is WifiLED on channel 0<br>- P7 is Rel on channel 2<br>- P8 is Rel on channel 1<br>- P9 is WifiLED on channel 0<br>- P10 is LED_n on channel 1<br>- P11 is Btn on channel 2<br>- P12 is Btn on channel 1<br>- Flags are set to 1024<br>- StartupCommand is set to setButtonTimes 50 1 5<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4144475.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4144475.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Geeni_Current_Charge_outlet.html">Current + Charge outlet</a> - 25.0% match</li>
+<li><a href="TP_Link_P100.html">Tapo 10A Smart Plug Socket (UK)</a> - 25.0% match</li>
+<li><a href="BSEED_W602.html">2-Gang SmartLife Switch</a> - 25.0% match</li>
+<li><a href="Aubess_Mini_Smart_Switch_16A_2_gang_Smart_TY_S02_2.html">Aubess Mini Smart Switch 16A 2 gang Smart-TY-S02-2</a> - 25.0% match</li>
+<li><a href="Globe_Electric_50151.html">Outdoor 2-Outlet Smart Plug</a> - 25.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>
