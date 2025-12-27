@@ -97,6 +97,46 @@
        
 
     </div>
+    <div class="item">
+      <h4>Network Device Scan</h4>
+      <p>
+        Scan your local subnet for OBK/Tasmota devices.<br>
+        <details>
+        <summary>How to use</summary>
+        <small>
+          Enter the base network (e.g. <b>192.168.0</b>) and in the second field 
+          the IP or IPs to scan:<br>
+          - a single octet (e.g. 20)<br> &nbsp;&nbsp;  -->  192.168.0.20<br>
+          - ranges using <b>-</b> (e.g. 20-25)<br>&nbsp;&nbsp;  --> 192.168.0.20 - .25<br>
+          - octets separated by commas (like 20,23,25)<br>&nbsp;&nbsp;  -->  hosts .20, .23, .25<br>
+          - both ranges and single IPs separted by commas<br>
+          &nbsp;(e.g. 20-23,27,30-32)<br>
+          &nbsp;&nbsp;  -->  hosts .20, .21, .22, .23, .27, .30, .31, .32<br>
+        </small>
+        </details>
+      </p>
+      <div>
+        <label for="scanNet">Network:</label>
+        <input id="scanNet" v-model="scanNet" placeholder="192.168.0" style="width:100px"/><br>
+        <label for="scanList" style="margin-left:8px;">Hosts:</label>
+        <input id="scanList" v-model="scanList" placeholder="25 or 25,29,40" style="width:140px"/><br>
+        <label for="scanTimeout" style="margin-left:8px;">Timeout (ms):</label>
+        <input id="scanTimeout" v-model.number="scanTimeout" type="number" min="200" max="5000" style="width:70px"/>
+        <button @click="scanNetwork" :disabled="scanInProgress">Scan</button>
+        <button @click="stopScan" v-if="scanInProgress" style="margin-left:8px;">Stop</button>
+      </div>
+      <div v-if="scanInProgress">
+        Scanning: {{ currentScanIP }} ({{ scanProgress }}/{{ scanTargetIPs.length }})
+      </div>
+      <div v-if="scanResults.length">
+        <h5>Found Devices:</h5>
+        <ul>
+          <li v-for="result in scanResults" :key="result.ip">
+            <pre style="white-space:pre-wrap; word-break:break-all;"><b>{{ result.ip }}:</b><br>{{ JSON.stringify(result.statusNet, null, 2) }}</pre>
+          </li>
+        </ul>
+      </div>
+    </div>
    </div>
 </template>
 
@@ -126,6 +166,15 @@
         C:'0',
         W:'0',
         ExternalGroupName:'SomeRandomGroup',
+        scanNet: '192.168.0',
+        scanList: '20-25',
+        scanTimeout: 500,
+        scanResults: [],
+        scanInProgress: false,
+        scanProgress: 0,
+        currentScanIP: "",
+        scanTargetIPs: [],
+        stopScanRequested: false,
       }
     },
     methods:{
@@ -303,6 +352,115 @@
                 }); // Never forget the final catch!
         },
 
+      async scanNetwork() {
+        this.scanResults = [];
+        this.scanInProgress = true;
+        this.scanProgress = 0;
+        this.currentScanIP = "";
+        this.stopScanRequested = false;
+        this.scanTargetIPs = this.parseIPTargets(this.scanNet, this.scanList);
+        let found = 0;
+        for (let i = 0; i < this.scanTargetIPs.length; ++i) {
+          if (this.stopScanRequested) break;
+          let ip = this.scanTargetIPs[i];
+          this.currentScanIP = ip;
+          try {
+            let url = `http://${ip}/cm?cmnd=STATUS%205`;
+            let res = await this.fetchWithTimeout(url, { timeout: this.scanTimeout });
+            let data = null;
+            try {
+              data = await res.json();
+            } catch (e) {
+              data = null;
+            }
+            if (data && data.StatusNET) {
+              // filter out most "useless" information - to identify even only Name, IP and MAC should be fine 
+              const { DNSServer1, DNSServer2, Webserver, HTTP_API, WifiConfig, WifiPower, ...helper } = data.StatusNET;
+              this.scanResults.push({
+                ip: ip,
+                statusNet: helper,
+              });
+            }
+          } catch (err) {
+            // Ignore errors, do not push non-success
+          }
+          this.scanProgress = i + 1;
+          // Yield to UI and allow for stop
+          await new Promise(resolve => setTimeout(resolve, 30));
+        }
+        this.scanInProgress = false;
+        this.currentScanIP = "";
+        this.stopScanRequested = false;
+      },
+      stopScan() {
+        this.stopScanRequested = true;
+      },
+
+
+      // examples for possible IPs and ranges:
+      //
+      //
+      //  single range, e.g. 192.168.0.10 - 192.168.0.20
+      //	Net   = "192.168.0"
+      //	Hosts = "10-20"
+      //
+      //  single IPs, e.g. 192.168.0.10, 192.168.0.20, 192.168.0.25 and 192.168.0.30 
+      //	Net   = "192.168.0"
+      //	Hosts = "10,20,25,30"
+      //
+      //  single IPs and ranges, e.g. 192.168.0.10, 192.168.0.20 - 192.168.0.25, 192.168.0.30 and 192.168.0.40 - 192.168.0.50  
+      //	Net   = "192.168.0"
+      //	Hosts = "10,20-25,30,40-50"
+      parseIPTargets(Net, List) {
+        // Net: e.g. "192.168.0"
+        // endList: e.g. "20-25,27-30,45"
+        Net = (Net || '').trim();
+        List = (List || '').trim();
+        if (!Net) return [];
+        let parts = Net.split('.');
+        if (parts.length !== 3) return [];
+        let base = `${parts[0]}.${parts[1]}.${parts[2]}`;
+        let octetSet = new Set();
+  
+        if (List) {
+          let items = List.split(',');
+          items.forEach(item => {
+            item = item.trim();
+            if (item.includes('-')) {
+              // Handle range
+              console.log('item includes - ' + item);
+              let [startStr, endStr] = item.split('-').map(s => s.trim());
+              let rangeStart = parseInt(startStr);
+              let rangeEnd = parseInt(endStr);
+              if (!isNaN(rangeStart) && !isNaN(rangeEnd) && rangeEnd >= rangeStart) {
+                for (let i = rangeStart; i <= rangeEnd; ++i) {
+                  octetSet.add(i);
+                }
+              }
+            } else {
+              // Single number
+              let val = parseInt(item);
+              if (!isNaN(val)) {
+                octetSet.add(val);
+              }
+            }
+          });
+        } 
+  
+        // Filter valid octets (1..255), sort them
+        let allOctets = Array.from(octetSet).filter(o => o >= 1 && o <= 255).sort((a, b) => a - b);
+  
+        return allOctets.map(octet => `${base}.${octet}`);
+      },
+      fetchWithTimeout(resource, options = {}) {
+        const { timeout = 1500 } = options;
+        const controller = new AbortController();
+        const id = setTimeout(() => controller.abort(), timeout);
+        return fetch(resource, {
+          ...options,
+          signal: controller.signal
+        }).finally(() => clearTimeout(id));
+      }
     },
     mounted (){
         this.msg = 'fred';
