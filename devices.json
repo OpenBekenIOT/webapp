@@ -15165,6 +15165,32 @@
       },
       "image": "https://obrazki.elektroda.pl/9953248800_1766501806.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4158285.html"
-    }
+    },
+    {
+	  "vendor": "SmartLife",
+	  "bDetailed": "0",
+	  "name": "Mini Smart Socket EU16/20A Wifi Smart Plug With Power Monitoring",
+	  "model": "EU20A",
+	  "chip": "LN882H",
+	  "board": "on PCB",
+	  "flags": "1024",
+	  "keywords": [
+	    "LN882HKI",
+	    "BL0937",
+	    "socket",
+	    "BP2525"
+	  ],
+	  "pins": {
+	    "6": "LED_n;0",
+	    "7": "Btn;0",
+	    "19": "Rel;0",
+	    "20": "BL0937CF;0",
+	    "21": "BL0937CF1;0",
+	    "22": "BL0937SEL;0"
+	  },
+	  "command": "",
+	  "image": "https://obrazki.elektroda.pl/2870202100_1766419999.jpg",
+	  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21787662"
+	}
   ]
 }
