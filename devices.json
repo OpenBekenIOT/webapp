@@ -15188,7 +15188,7 @@
 	    "21": "BL0937CF1;0",
 	    "22": "BL0937SEL;0"
 	  },
-	  "command": "",
+	  "command": "setChannelLabel 0 \"Toggle\"",
 	  "image": "https://obrazki.elektroda.pl/2870202100_1766419999.jpg",
 	  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21787662"
 	}
