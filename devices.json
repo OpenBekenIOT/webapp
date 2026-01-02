@@ -15217,6 +15217,30 @@
       "image": "https://obrazki.elektroda.pl/9953248800_1766501806.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4158285.html"
     },
+	{
+	  "vendor": "Tuya",
+	  "bDetailed": "0",
+	  "name": "Mini Smart Switch With Power Monitor - 16A",
+	  "chip": "BK7231N",
+	  "board": "CB2S",
+	  "flags": "1024",
+	  "keywords": [
+	    "switch",
+	    "relay",
+	    "CB2S",
+	    "BK7231N",
+	    "BL0942"
+	  ],
+	  "pins": {
+	    "8": "Rel;1",
+	    "23": "WifiLED;0",
+	    "24": "Btn_Tgl_All;0",
+	    "26": "TglChanOnTgl;1"
+	  },
+	  "command": "startDriver BL0942",
+	  "image": "https://obrazki.elektroda.pl/8987584400_1767345124.jpg",
+	  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21796183"
+	},
     {
       "vendor": "Tuya",
       "bDetailed": "0",
