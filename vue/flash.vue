@@ -17,7 +17,7 @@
                 <td><a :href="rfurl" download="rfdata">Download RF</a></td>
                 <td>
                 </td>
-                <td><button @click="restore_rf(null, $event)">Restore (Recreate) RF Config (N & T)</button></td>
+                <td><button @click="restore_rf(null, $event)">Restore (Recreate) RF Config (N & T)</button><br><button @click="detectRFPartitionBeken(null, $event)" :disabled="!(chipset && chipset.toLowerCase().indexOf('bk') != -1)" :title="(chipset && chipset.toLowerCase().indexOf('bk7') != -1) ? '' : 'Available on Beken devices only'">Detect RF partition (Beken)</button></td>
             </tr>
             <tr>
                 <td>  <button @click="config(null, $event)">Read OBK Config</button></td>
@@ -95,7 +95,6 @@
         fullDumpRunning:0,
         fullDumpChunkSize: 0,
         fullDumpJobLabel: '',
-        fullDumpFileTag: '',
         display: '',
         configdata: null,
         build:'unknown',
@@ -223,6 +222,68 @@
             console.log('getRFAddress is not implemented for '+this.chipset);
 			return '1e0000-1000';
         },
+        async detectRFPartitionBeken(cb){
+            // Beken RF sector detection by scanning backwards for TLV\0 header (54 4C 56 00),
+            // as implemented in Easy Flasher RFPartitionUtil.getRFFromBackup().
+            if(this.chipset == null || !this.chipset.toLowerCase().startsWith("bk7")){
+                this.status += '<br/>RF auto-detect is intended for Beken devices only.';
+                return;
+            }
+
+            let s = prompt("Flash size in hex (e.g. 0x200000 for 2MB). Leave blank for 0x200000:", "0x200000");
+            if(s == null){
+                return;
+            }
+            s = s.trim();
+
+            let flashSize = 0x200000;
+            if(s.length > 0){
+                if(s.toLowerCase().startsWith("0x")){
+                    flashSize = parseInt(s, 16);
+                } else {
+                    flashSize = parseInt(s, 16);
+                }
+                if(!Number.isFinite(flashSize) || flashSize < 0x1000){
+                    alert("Invalid flash size.");
+                    return;
+                }
+            }
+
+            this.status += `<br/>Scanning for RF TLV header (54 4C 56 00) from end of assumed flash size (0x${flashSize.toString(16)})...`;
+
+            for(let addr = (flashSize - 0x1000); addr >= 0; addr -= 0x1000){
+                let url = window.device + '/api/flash/' + addr.toString(16) + '-1000';
+                try{
+                    const resp = await fetch(url);
+                    const buf = await resp.arrayBuffer();
+                    const b = new Uint8Array(buf);
+
+                    if(b.length >= 4 && b[0] == 0x54 && b[1] == 0x4c && b[2] == 0x56 && b[3] == 0x00){
+                        this.status += `<br/>RF TLV header found at 0x${addr.toString(16)} (size 0x1000).`;
+
+                        // As in RFPartitionUtil.getMACFromQio(), MAC is at offset +36.
+                        if(b.length >= (36 + 6)){
+                            let mac = [];
+                            for(let i = 0; i < 6; i++){
+                                mac.push(b[36 + i].toString(16).padStart(2,'0'));
+                            }
+                            this.status += `<br/>MAC at +36: ${mac.join(':')}`;
+                        }
+
+                        // Point the RF download link at the detected sector for convenience.
+                        this.rfurl = window.device + '/api/flash/' + addr.toString(16) + '-1000';
+
+                        if (cb) cb();
+                        return;
+                    }
+                }catch(e){
+                    console.error(e);
+                }
+            }
+
+            this.status += `<br/>RF TLV header not found.`;
+        },
+
         getConfigAddress(){
             if(this.chipset === "BK7231T") {
 				return '1e1000-1000';
@@ -269,9 +330,8 @@
             this.downloadArrayBuffer(this.fullDumpData, fileName+".bin");
         },
 
-        startDumpJob(label, fileTag, flashStart, flashSize, style){
+        startDumpJob(label, flashStart, flashSize, style){
             this.fullDumpJobLabel = label;
-            this.fullDumpFileTag = fileTag;
             this.fullDumpFlashStart = flashStart;
             this.fullDumpFlashSize = flashSize;
             this.fullDumpStyle = style;
@@ -403,7 +463,7 @@
 			} else {
                 return;
             }
-            this.startDumpJob("full 2MB dump", "FullDump", 0, 2097152, "QIO");
+            this.startDumpJob("full 2MB dump", 0, 2097152, "QIO");
         },
         doFlashDumpInternal() {
             if(this.fullDumpRunning!=0){
@@ -414,7 +474,7 @@
             this.fullDumpRunning = 1;
             console.log("doFlashDumpInternal started!");
             this.status += `<br/>downloading ${this.getDumpJobLabel()}...`;
-            this.fullDumpData = new ArrayBuffer();
+            this.fullDumpData = new ArrayBuffer(0);
             this.fullDumpCurAt = this.fullDumpFlashStart;
             this.fullDumpChunkSize = 4096;
             this.fullDumpErrors = 0;
@@ -426,9 +486,9 @@
 				return '1e3000-2000';
 			}
             if(this.chipset === "BK7231N") {
-				return '0x1D3000-2000';
+				return '1d3000-2000';
 			}
-            console.log('getConfigAddress is not implemented for '+this.chipset);
+            console.log('getFlashVarsAddress is not implemented for '+this.chipset);
 			return '1e1000-1000';
         },
         rf(cb){
@@ -472,7 +532,7 @@
         },
         downloadTuyaConfig() {
             // it ends at 2097152 - at 2MB
-            this.startDumpJob("Tuya GPIO config", "TuyaConfig", 0x1EE000, 73728, "TuyaConfig");
+            this.startDumpJob("Tuya GPIO config", 0x1EE000, 73728, "TuyaConfig");
         },
         config(cb){
             this.status += '<br/>reading config...';
