@@ -10922,11 +10922,11 @@
         "8": "BAT_Relay;3",
         "14": "DoorSnsrWSleep;4",
         "16": "WifiLED_n;0",
-        "20": "CHT8305_SCK;0",
-        "22": "CHT8305_SDA;0;1",
+        "20": "CHT83XX_SCK;0",
+        "22": "CHT83XX_SDA;0;1",
         "23": "BAT_ADC;2"
       },
-      "command": "backlog PowerSave 1; startDriver battery; startDriver NTP; startDriver CHT8305",
+      "command": "backlog PowerSave 1; startDriver battery; startDriver NTP; startDriver CHT83XX",
       "image": "https://obrazki.elektroda.pl/5743076800_1701986603.png",
       "wiki": "https://www.elektroda.com/rtvforum/topic4019974.html"
     },
@@ -14546,8 +14546,8 @@
         "14": "Btn;4",
         "15": "GN6932_DAT;3",
         "17": "GN6932_CLK;3",
-        "20": "CHT8305_SCK;0",
-        "22": "CHT8305_SDA;1;0",
+        "20": "CHT83XX_SCK;0",
+        "22": "CHT83XX_SDA;1;0",
         "28": "GN6932_STB;3"
       },
       "command": "",

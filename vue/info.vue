@@ -1,36 +1,36 @@
 <template>
   <div class="container">
     <div class="item">
-      <h4 v-if="peers.length">SSDP Devices:</h4>
+      <h4 v-if="peers.length">SSDP Devices</h4>
       <p v-for="peer in peers" v-bind:key="peer.url"><a target="_blank" v-bind:href="peer.url">{{peer.name}}</a></p>
     </div>
     <div class="item">
-      <h4>Current Device:</h4>
-      <p>UpTime: {{uptime_s}}s</p>
-      <p>Build: {{build}}</p>
-      <p>IP Address: {{ip}}</p>
-      <p>MAC Address: {{mac}}</p>
-      <p>MQTT Server: {{mqtthost}}</p>
-      <p>MQTT Topic: {{mqtttopic}}</p>
-      <p>Device Short Name: {{shortName}}</p>
-      <p>WEBAPP Url root: {{webapp}}</p>
+      <h4>Current Device</h4>
+      <p>Uptime: {{ formattedUptime }}</p>
+      <p>Release: {{build}}</p>
+      <p>IP address: {{ip}}</p>
+      <p>MAC address: {{mac}}</p>
+      <p>MQTT server: {{mqtthost}}</p>
+      <p>MQTT topic: {{mqtttopic}}</p>
+      <p>Device short name: {{shortName}}</p>
+      <p>Web app URL root: {{webapp}}</p>
       <p>Chipset: {{chipset}}</p>
       <p>Flags: {{flags}}</p>
       <p>Version: {{currentversion}} <span v-html="lateststr"></span></p>
       <p v-if="error">Error: {{error}}</p>
       <h4>Export Current Template</h4>
-      <p>Please fill all fields before submitting.</p>
-	  <textarea id="deviceTemplate"  placeholder="qqq" style="vertical-align: top; width: 300px; height:500px"></textarea>
+      <p>Please complete all missing details before submitting a new template to <a href="https://www.elektroda.com/rtvforum/forum390.html" target="_blank" rel="noopener noreferrer">Elektroda</a>.</p>
+	  <textarea id="deviceTemplate"  placeholder="Template will appear here. If this box is empty, template generation may have failed." style="vertical-align: top; width: 300px; height:500px"></textarea>
     <br>
-          <button @click="getTemplateAsFile">Download template as file</button>
-          <button @click="getTemplateAsClipboard">Copy To Clipboard</button>
+          <button @click="getTemplateAsFile">Download template</button>
+          <button @click="getTemplateAsClipboard">Copy to clipboard</button>
 
     </div>
 
     <div class="item" v-if="supportsClientDeviceDB" style="width: 300px;">
-      <h4>Devices:</h4>
-	  <p>Here you can apply an existing template (configuration) to your device. The following Templates List is loaded from <a href="https://openbekeniot.github.io/webapp/devicesList.html">here</a>. </p>
-	  <p>If you have any questions, ask on our forum <a href="https://www.elektroda.com/">here</a>. </p>
+      <h4>Device Templates</h4>
+	  <p>Here you can apply an existing template (configuration) to your device. The template list is loaded from <a href="https://openbekeniot.github.io/webapp/devicesList.html">here</a>. </p>
+	  <p>If you have questions, please ask on our forum <a href="https://www.elektroda.com/rtvforum/forum390.html">here</a>. </p>
       Chipset:
       <select v-model="selectedChipset">
         <option v-for="chip in chipsets" :value="chip" :key="chip">{{chip}}</option>
@@ -47,13 +47,13 @@
         <div v-if="selectedDevice">
           <button @click="useDevice">Copy Device Settings</button>
         </div>
-        <div v-else>Pick a device from the dropdown.</div>
+        <div v-else>Select a device from the drop-down list.</div>
       </div>
     </div>
 
     <div class="item" style="width: 300px;">
-      <h4>Pin Settings:</h4>
-	  <p>Here you can configure your device. Remember that some pin roles require second channel field, which is only available on native interface right now. Also remember that the expected channel order for LEDs is R G B C W (first channel is Red, second Green, etc...)</p>
+      <h4>Pin Settings</h4>
+	  <p>Configure your device pins here. Note that some pin roles require a second channel field, which is currently only available in the native UI. LED channel order is R, G, B, C, W (first channel is Red, second is Green, etc.).</p>
       <div v-for="(role, index) in pins.roles" :key="index">
         <span class="pin-index">{{index}}</span>
         <select v-model="pins.roles[index]">
@@ -63,18 +63,18 @@
       </div>
 
       <br/>
-      <label for="deviceFlag" style="width:75px; display: inline-block;">Flag:</label>&nbsp;<input id="deviceFlag" v-model="deviceFlag" /><br/>
+      <label for="deviceFlag" style="width:75px; display: inline-block;">Flags:</label>&nbsp;<input id="deviceFlag" v-model="deviceFlag" /><br/>
       <label for="deviceCommand" style="width:75px; display: inline-block;">Command:</label>&nbsp;<input id="deviceCommand" v-model="deviceCommand" placeholder="Startup command"/><br/>
 
-      <button @click="savePins">Save Pins</button>
+      <button @click="savePins">Save pin settings</button>
       <br/>
-	  NOTE: You might need to reboot your device in order to apply all changes.
+	  You may need to reboot the device for changes to take effect.
     </div>
     <div class="item" style="width: 300px;">
-      <h4>Channel Types:</h4>
-	  <p>Channel types/roles are used mostly with TuyaMCU devices. They are for more advanced users. Channel types/roles can be also used while making advanced scriptable devices and for testing.</p>
-	  <p>Setting a type for given channel may cause a special control to appear on main native WWW page. For example, a slider for dimmer channel or a radio selection box for a fan speed channel.</p>
-	  <p>Do not edit unless you know what you're doing.</p>
+      <h4>Channel Types</h4>
+	  <p>Channel types/roles are primarily used with TuyaMCU devices and are intended for advanced users. They are also useful for creating advanced scriptable devices and for testing.</p>
+	  <p>Setting a type for given channel may cause a special control to appear on the main web UI page. For example, a slider for dimmer channel or a radio selection box for a fan speed channel.</p>
+	  <p>Do not change these settings unless you understand the implications.</p>
       <div v-for="(role, index) in channelTypes.types" :key="index">
         <span class="channel-index">{{index}}</span>
         <select v-model="channelTypes.types[index]">
@@ -83,7 +83,7 @@
       </div>
 
       <br/>
-      <button @click="saveChannelTypes">Save Types</button>
+      <button @click="saveChannelTypes">Save channel types</button>
       <br/>
     </div>
   </div>
@@ -122,7 +122,7 @@
         devices: null,
         selectedDevice: null,
         chipsets:[
-          "All","BK7231N","BK7231S","BK7231T","BL602", "XR809", "W800", "W600"
+          "All","BK7231M","BK7231N","BK7231T","BK7238","BK7252","BK7252N","BL2028N","BL602","ECR6600","ESP32","ESP32C2","ESP32C3","ESP8266","ESP8285","LN8825","LN882H","RDA5981","RTL8710AM","RTL8710B","RTL87X0C","T34","TR6260","TXW81X","W600","W800","XR806","XR809","XR872"
         ],
         selectedChipset: "All",
         pinRoleNames_Old: [
@@ -243,8 +243,8 @@
             "DHT12",
             "DHT21",
             "DHT22",
-            "CHT8305_SDA",
-            "CHT8305_SCK",
+            "CHT83XX_SDA",
+            "CHT83XX_SCK",
             "SHT3X_SDA",
             "SHT3X_SCK",
             "SoftSDA",
@@ -263,6 +263,29 @@
             "TM1637_CLK",
             "BL0937SEL_n",
             "DoorSnsrWSleep_pd",
+            "SGP_CLK",
+            "SGP_DAT",
+            "ADC_Button",
+            "GN6932_CLK",
+            "GN6932_DAT",
+            "GN6932_STB",
+            "TM1638_CLK",
+            "TM1638_DAT",
+            "TM1638_STB",
+            "BAT_Relay_n",
+            "KP18058_CLK",
+            "KP18058_DAT",
+            "DS1820_IO",
+            "PWM_ScriptOnly",
+            "PWM_ScriptOnly_n",
+            "Counter_f",
+            "Counter_r",
+            "IRRecv_nPup",
+            "StripState",
+            "StripState_n",
+            "HLW_8112_SCSN",
+            "RCRecv",
+            "RCRecv_nPup",
             "error",
             "error",
             "error",
@@ -270,7 +293,9 @@
         ],
         releases: [],
         latest: "", // read from github
+        latest_base: "", // numeric version extracted from latest
         currentversion: "", // extracted from build
+        currentversion_base: "", // numeric version extracted from currentversion
         lateststr: "",
 
         peers:[],
@@ -284,6 +309,9 @@
         //The first value is empty value
         var list = this.devices.filter(item => item === null || item.chip === this.selectedChipset);
         return list;
+      },
+      formattedUptime(){
+        return this.formatUptime(this.uptime_s);
       }
     },
     methods:{
@@ -307,11 +335,12 @@
                 this.supportsClientDeviceDB = res.supportsClientDeviceDB;
 
                 this.currentversion = this.build.split(' ').pop();
+                this.currentversion_base = this.extractBaseVersion(this.currentversion);
                 // only get releases the first time.
                 if (!this.releases.length){
                   this.getReleases();
                 }
-                //Only if chip supplied supportsSSDP=true or did not supply it at all (backward compatibility)
+                //Only if chip supplied supports SSDP=true or did not supply it at all (backward compatibility)
                 if (res.supportsSSDP === undefined || res.supportsSSDP === 1){
                   this.getPeers();
                 }
@@ -563,22 +592,92 @@
               console.error(err)
             });
       },
+      extractBaseVersion(input){
+        if (input === undefined || input === null) return "";
+        const s = String(input);
+
+        // Extract the first dotted numeric sequence (e.g. 1.18.245) from:
+        // "1.18.245_hlw8112", "v1.18.245", "Release 1.18.245", etc.
+        const m = s.match(/(\d+(?:\.\d+){1,4})/);
+        return m ? m[1] : "";
+      },
+      compareVersions(a, b){
+        const pa = String(a).split('.').map(x => parseInt(x, 10));
+        const pb = String(b).split('.').map(x => parseInt(x, 10));
+
+        const len = Math.max(pa.length, pb.length);
+        for (let i = 0; i < len; i++){
+          const av = (pa[i] || 0);
+          const bv = (pb[i] || 0);
+          if (av > bv) return 1;
+          if (av < bv) return -1;
+        }
+        return 0;
+      },
       getReleases(){
         let base = "https://api.github.com/repos/openshwprojects/OpenBK7231T_App/releases";
         fetch(base)
           .then(response => response.json())
           .then(data => {
+
+            // If GitHub returns an error object (rate limit, etc.), do not break the UI
+            if (!Array.isArray(data) || !data.length){
+              this.lateststr = "";
+              return;
+            }
+
             this.releases = data;
-            // find latest release
-            this.latest = data[0].name;
-            if (this.latest !== this.currentversion){
-              this.lateststr = `(<a href="${data[0].html_url}" target="_blank">${this.latest}</a> available)`;
+
+            const rel = data.find(r => r && !r.draft && !r.prerelease) || data[0];
+
+            this.latest = rel.name || "";
+            this.latest_base = this.extractBaseVersion(this.latest);
+
+            this.lateststr = "";
+
+            if (this.latest_base && this.currentversion_base){
+              if (this.compareVersions(this.latest_base, this.currentversion_base) > 0){
+                this.lateststr = `(<a href="${rel.html_url}" target="_blank" rel="noopener noreferrer">${this.latest_base}</a> available)`;
+              }
+              return;
+            }
+
+            // Fallback to old behaviour if we couldn't extract versions
+            if (this.latest && this.latest !== this.currentversion){
+              this.lateststr = `(<a href="${rel.html_url}" target="_blank" rel="noopener noreferrer">${this.latest}</a> available)`;
             }
           })
           .catch(err => {
               this.error = err.toString();
               console.error(err)
             });
+      },
+      formatUptime(totalSeconds){
+        let s = Math.max(0, Math.floor(Number(totalSeconds) || 0));
+
+        // Note: months/years are approximate (30-day months, 365-day years)
+        const units = [
+          ["year",   365 * 24 * 3600],
+          ["month",   30 * 24 * 3600],
+          ["week",     7 * 24 * 3600],
+          ["day",          24 * 3600],
+          ["hour",             3600],
+          ["minute",             60],
+          ["second",              1],
+        ];
+
+        const parts = [];
+        for (const [name, size] of units) {
+          const value = Math.floor(s / size);
+          s -= value * size;
+
+          // Omit zero units, but always show seconds if nothing else is present
+          if (value === 0 && !(name === "second" && parts.length === 0)) continue;
+
+          parts.push(`${value} ${name}${value === 1 ? "" : "s"}`);
+        }
+
+        return parts.join(", ");
       },
       getDeviceDisplayName(dev){
         //The first option is a placeholder with null value
