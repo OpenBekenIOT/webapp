@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>E27 Smart Bulb 9W</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">E27 Smart Bulb 9W ()</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/6035509400_1706733874_thumb.jpg" alt="E27 Smart Bulb 9W">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Yinsan</p>
+        <p><strong>Chip:</strong> W600</p>
+        <p><strong>Board:</strong> TW-05</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> yinsan, smart bulb, light, w600, tw-05, e27, 800lm, 850lm</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Yinsan",
+  "bDetailed": "0",
+  "name": "E27 Smart Bulb 9W",
+  "model": "",
+  "chip": "W600",
+  "board": "TW-05",
+  "flags": "5632",
+  "keywords": [
+    "yinsan",
+    "smart bulb",
+    "light",
+    "w600",
+    "tw-05",
+    "e27",
+    "800lm",
+    "850lm"
+  ],
+  "pins": {
+    "3": "PWM;1",
+    "6": "PWM;5",
+    "11": "PWM;2",
+    "13": "PWM;3",
+    "14": "PWM;4"
+  },
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/6035509400_1706733874_thumb.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4032697.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P3 is PWM on channel 1<br>- P6 is PWM on channel 5<br>- P11 is PWM on channel 2<br>- P13 is PWM on channel 3<br>- P14 is PWM on channel 4<br>- Flags are set to 5632<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4032697.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4032697.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Zemismart_ZML2_7W.html">Matter LED Light Bulb RGBCW E27 Dimmable 7W</a> - 20.0% match</li>
+<li><a href="Cozylife_Aiyato_Homekit_9W_RGBWW_Dimmable_2700_6500K_E27_Bulb.html">Aiyato Homekit 9W RGBWW Dimmable 2700-6500K E27 Bulb</a> - 20.0% match</li>
+<li><a href="Magic_Home_LED_RGB_IR_Strip.html">LED RGB IR Strip</a> - 20.0% match</li>
+<li><a href="Tuya_LED_RGBCW_E27_18W_WB2L_M1.html">Tuya LED RGBCW E27 18W WB2L_M1</a> - 20.0% match</li>
+<li><a href="Tuya_LED_RGBCW_E14_9W_WB2L_M1.html">Tuya LED RGBCW E14 9W WB2L_M1</a> - 20.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

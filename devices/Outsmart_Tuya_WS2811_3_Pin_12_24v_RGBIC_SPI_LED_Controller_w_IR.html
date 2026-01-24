@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tuya WS2811 3-Pin 12-24v RGBIC SPI LED Controller w/IR</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Tuya WS2811 3-Pin 12-24v RGBIC SPI LED Controller w/IR ()</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/9462602700_1717443680.png" alt="Tuya WS2811 3-Pin 12-24v RGBIC SPI LED Controller w/IR">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Outsmart</p>
+        <p><strong>Chip:</strong> BK7231N</p>
+        <p><strong>Board:</strong> CBU</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> MOSI, WS2812B, pixelanim, addressable, 12v output, SM16703P, microphone, strip lights, buttons, infra-red</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Outsmart",
+  "bDetailed": "0",
+  "name": "Tuya WS2811 3-Pin 12-24v RGBIC SPI LED Controller w/IR",
+  "model": "",
+  "chip": "BK7231N",
+  "board": "CBU",
+  "flags": "1024",
+  "keywords": [
+    "MOSI",
+    "WS2812B",
+    "pixelanim",
+    "addressable",
+    "12v output",
+    "SM16703P",
+    "microphone",
+    "strip lights",
+    "buttons",
+    "infra-red"
+  ],
+  "pins": {
+    "6": "Btn;0",
+    "7": "Btn_ScriptOnly;1",
+    "8": "Btn_ScriptOnly;2",
+    "20": "IRRecv;0"
+  },
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/9462602700_1717443680.png",
+  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21106272#21106272"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P6 is Btn on channel 0<br>- P7 is Btn_ScriptOnly on channel 1<br>- P8 is Btn_ScriptOnly on channel 2<br>- P20 is IRRecv on channel 0<br>- Flags are set to 1024<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+	<div class="col-12 mb-3">
+	  <div class="card">
+		<div class="card-body">
+		  <p class="font-weight-bold" style="font-size: 1.5rem;">
+			Warning! This device is using per-pixel addressable LEDs. Please consult generic PixelAnim guide: 
+			<a href="https://www.elektroda.com/rtvforum/topic4057187.html" target="_blank">
+			  OpenBeken WS2812B animations - new HTTP panel integration, PixelAnim driver
+			</a>
+		  </p>
+		</div>
+	  </div>
+	</div>
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/viewtopic.php?p=21106272#21106272" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/viewtopic.php?p=21106272#21106272" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Bardi_JKY101_F_SR_V31.html">Bardi On Off Breaker</a> - 25.0% match</li>
+<li><a href="Tuya_TYWRA_RF.html">MHCOZY Relay module (dry contact)</a> - 25.0% match</li>
+<li><a href="realme_smartswitch.html">smartswitch</a> - 25.0% match</li>
+<li><a href="Tuya_X801A.html">Lonsonho Tuya X801A-L/LerLink 1 Gang No Neutral Switch (X801A-L)</a> - 25.0% match</li>
+<li><a href="Tuya_S09.html">Tuya Generic Temperature/Humidity/Clock/IR - LCD, TuyaMCU</a> - 25.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

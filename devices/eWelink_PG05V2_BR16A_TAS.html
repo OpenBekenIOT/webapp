@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sonoff 16A Brazil Smart Plug Outlet - Power Monitoring</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Sonoff 16A Brazil Smart Plug Outlet - Power Monitoring (PG05V2-BR16A-TAS)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/3861189900_1720126604.jpg" alt="Sonoff 16A Brazil Smart Plug Outlet - Power Monitoring">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> eWelink</p>
+        <p><strong>Chip:</strong> BL602</p>
+        <p><strong>Board:</strong> SM-028_V1.3</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> south america, 230v, ITEAD, BL0937, bouffalo, QLRELAY BRD-SS-105LMF</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "eWelink",
+  "bDetailed": "0",
+  "name": "Sonoff 16A Brazil Smart Plug Outlet - Power Monitoring",
+  "model": "PG05V2-BR16A-TAS",
+  "chip": "BL602",
+  "board": "SM-028_V1.3",
+  "flags": "1024",
+  "keywords": [
+    "south america",
+    "230v",
+    "ITEAD",
+    "BL0937",
+    "bouffalo",
+    "QLRELAY BRD-SS-105LMF"
+  ],
+  "pins": {
+    "2": "Rel;0",
+    "3": "BL0937CF1;0",
+    "14": "BL0937CF;0",
+    "17": "Btn;0",
+    "20": "LED_n;0",
+    "21": "BL0937SEL;0"
+  },
+  "command": "backlog PowerSave 1",
+  "image": "https://obrazki.elektroda.pl/3861189900_1720126604.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4063490.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P2 is Rel on channel 0<br>- P3 is BL0937CF1 on channel 0<br>- P14 is BL0937CF on channel 0<br>- P17 is Btn on channel 0<br>- P20 is LED_n on channel 0<br>- P21 is BL0937SEL on channel 0<br>- Flags are set to 1024<br>- StartupCommand is set to backlog PowerSave 1<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4063490.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4063490.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Tuya_Smart_Socket_20A.html">Smart Socket 20A</a> - 50.0% match</li>
+<li><a href="eWeLink_RMC021.html">90-250v Wi-Fi Smart Plug With Power Monitoring (EU) (Red PCB)</a> - 50.0% match</li>
+<li><a href="Elivco_RMC004.html">[BL602] WiFi Elivco smart plug with energy monitor BL0937 RMC004</a> - 50.0% match</li>
+<li><a href="Generic_WiFi_Smart_Switch_KR2302_20220515.html">WiFi Smart Switch KR2302 20220515</a> - 16.7% match</li>
+<li><a href="Tuya_EAKCB_T_M.html">EARU Circuit Breaker 63A MCB 1P+N with Power Monitoring and Threshold Protection</a> - 16.7% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>
