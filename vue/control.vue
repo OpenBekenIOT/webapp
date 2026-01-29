@@ -1,7 +1,7 @@
 <template>
     <div>
-    <h3>Basic device status and debug channel values display</h3>
-    <p>Here you can operate on raw channel values. You can also set RAW pwm values, without LED driver. PLEASE REMEMBER that this page is not a correct LED RGB/CW controller. Please use main WWW page for that.</p>
+    <h4>Channel Debug Controls</h4>
+    <p>This page provides low-level control of raw channel values for testing and troubleshooting. You can toggle relay/PWM outputs and set channel values directly. If your device uses an LED driver, these controls bypass it and may not match the lighting UI. For normal RGB/CW lighting control, use the main OpenBeken web UI.</p>
         <div>
           <!--<span v-for="item in channels" v-bind:key="item">{{item}}:{{channels[item]}} </span>-->
           <div v-for="(item, key) in channels" v-bind:key="item">
@@ -12,7 +12,7 @@
                 :class="item?'set':'unset'" 
                 @click="channelclick(key)"
               >{{channels[key]?'On':'Off'}}</button>
-              <span v-bind:key="'span'+item">{{key}}:{{item}} role {{outputchannelrolenames[+key]}}{{channeltag[+key]}}</span>
+              <span v-bind:key="'span'+item">{{key}}:{{item}} Role: {{outputchannelrolenames[+key]}}{{channeltag[+key]}}</span>
               <input 
                 v-if="(outputchannelrolenames[+key] === 'PWM') || (outputchannelrolenames[+key] === 'PWM_n')" 
                 v-bind:key="'input'+item" 
@@ -27,13 +27,13 @@
 
 
         <div v-if="show_cw">
-          <span class="label">CW:</span>
+          <span class="label">Cool White:</span>
           <div class="radiused cw">
             <input type="range" min="0" max="100" v-model="cw" @input="change()">
           </div>
         </div>
         <div v-if="show_ww">
-          <span class="label">WW:</span>
+          <span class="label">Warm White:</span>
           <div class="radiused ww">
             <input type="range" min="0" max="100" v-model="ww" @input="change()">
           </div>
@@ -45,13 +45,13 @@
           </div>
         </div>
         <div v-if="show_rgb">
-          <span class="label">Sat:</span>
+          <span class="label">Saturation:</span>
           <div class="radiused" v-bind:style="backgroundstyle">
               <input type="range" min="0" max="100" v-model="saturation" @input="change()">
           </div>
         </div>
         <div v-if="show_rgb">
-          <span class="label">Int:</span>
+          <span class="label">Intensity:</span>
           <div class="radiused lightness">
               <input type="range" min="0" max="100" v-model="lightness" @input="change()">
           </div>
