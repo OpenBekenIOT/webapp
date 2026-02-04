@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tesla Smart Plus TSL SPL-1 Energy Metering</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Tesla Smart Plus TSL SPL-1 Energy Metering (TSL-SPL-1)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://store.fixmobile.gr/sites/fixmobile.gr/files/styles/product_teaser_store/public/field/product-images/1594914_0d.jpg?itok=FTtUVkL4" alt="Tesla Smart Plus TSL SPL-1 Energy Metering">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> TeslaSmart</p>
+        <p><strong>Chip:</strong> BK7231N</p>
+        <p><strong>Board:</strong> CB2S</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> BL0937, Energy metering</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "TeslaSmart",
+  "bDetailed": "0",
+  "name": "Tesla Smart Plus TSL SPL-1 Energy Metering",
+  "model": "TSL-SPL-1",
+  "chip": "BK7231N",
+  "board": "CB2S",
+  "keywords": [
+    "BL0937",
+    "Energy metering"
+  ],
+  "pins": {
+    "6": "BL0937CF1;1",
+    "7": "BL0937CF;1",
+    "8": "LED_n;1",
+    "10": "Btn;1",
+    "24": "BL0937SEL;1",
+    "26": "Rel;1"
+  },
+  "image": "https://store.fixmobile.gr/sites/fixmobile.gr/files/styles/product_teaser_store/public/field/product-images/1594914_0d.jpg?itok=FTtUVkL4",
+  "wiki": ""
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P6 is BL0937CF1 on channel 1<br>- P7 is BL0937CF on channel 1<br>- P8 is LED_n on channel 1<br>- P10 is Btn on channel 1<br>- P24 is BL0937SEL on channel 1<br>- P26 is Rel on channel 1<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="#" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Mirabella_I004526.html">Mirabella Genio Plug with Energy Monitoring I004526</a> - 100.0% match</li>
+<li><a href="Nedis_WIFIPO120FWT.html">WIFIPO120FWT SmartPlug 16A (BL0937, CB2S)</a> - 83.3% match</li>
+<li><a href="ELIVCO_LSPA9.html">LSPA9 Power metering plug BL0937 version</a> - 83.3% match</li>
+<li><a href="HomeKit_WHDZ03_Smart_Plug_with_Energy_Monitoring.html">WHDZ03 Smart Plug with Energy Monitoring</a> - 66.7% match</li>
+<li><a href="Nedis_WIFIPO120FWT.html">WIFIPO120FWT SmartPlug 16A (BL0937, WB2S)</a> - 66.7% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

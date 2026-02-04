@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>YsxLite "Xiaomi" X6 "4K" Mini Spy Camera - WIP - NO SD SUPPORT</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">YsxLite "Xiaomi" X6 "4K" Mini Spy Camera - WIP - NO SD SUPPORT (X6)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/1447090200_1759249256.png" alt="YsxLite "Xiaomi" X6 "4K" Mini Spy Camera - WIP - NO SD SUPPORT">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Taixin</p>
+        <p><strong>Chip:</strong> TXW81X</p>
+        <p><strong>Board:</strong> on PCB</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> STD-X6-MAIN-V01, 20240328, RTSP, cctv, TXW817-810, IPC</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Taixin",
+  "bDetailed": "0",
+  "name": "YsxLite \"Xiaomi\" X6 \"4K\" Mini Spy Camera - WIP - NO SD SUPPORT",
+  "model": "X6",
+  "chip": "TXW81X",
+  "board": "on PCB",
+  "flags": "1024",
+  "keywords": [
+    "STD-X6-MAIN-V01",
+    "20240328",
+    "RTSP",
+    "cctv",
+    "TXW817-810",
+    "IPC"
+  ],
+  "pins": {
+    "11": "Btn;1",
+    "34": "SoftSCL;0",
+    "35": "SoftSDA;0",
+    "36": "LED;1",
+    "37": "LED;2"
+  },
+  "pin_notes": {
+    "11": "PA11 Mode Button",
+    "34": "PC02",
+    "35": "PC03",
+    "36": "PC04 Blue LED",
+    "37": "PC05 Red LED"
+  },
+  "command": "startdriver txwcam",
+  "image": "https://obrazki.elektroda.pl/1447090200_1759249256.png",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4121456.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P11 is Btn on channel 1<br>- P34 is SoftSCL on channel 0<br>- P35 is SoftSDA on channel 0<br>- P36 is LED on channel 1<br>- P37 is LED on channel 2<br>- Flags are set to 1024<br>- StartupCommand is set to startdriver txwcam<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4121456.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4121456.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Tuya_6000HA.html">Deta Grid Connect Smart Inline Switch</a> - 20.0% match</li>
+<li><a href="Sylvania_Model_Number_75822_Menards.html">Sylvania Smart+ WiFi Plug</a> - 20.0% match</li>
+<li><a href="Colorock_1_Gang_WiFi_Switch_CR_MINI_V2_LED200W.html">Colorock 1-Gang WiFi Switch CR-MINI-V2 LED200W</a> - 20.0% match</li>
+<li><a href="KMC_6911HA.html">KMC 30153 smart mini plug 15A 125VAC 60Hz (LSPA7 clone)</a> - 20.0% match</li>
+<li><a href="Energizer_EIX3_1003_ME2.html">15A Smart Wifi Plug (US)</a> - 20.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

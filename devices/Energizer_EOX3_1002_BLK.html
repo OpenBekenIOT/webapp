@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Outdoor Twin Socket Smart Plug (US)</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Outdoor Twin Socket Smart Plug (US) (EOX3-1002-BLK)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/7500807500_1675748043.jpg" alt="Outdoor Twin Socket Smart Plug (US)">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Energizer</p>
+        <p><strong>Chip:</strong> BK7231N</p>
+        <p><strong>Board:</strong> N/A</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> 2A3ZO-ETS-C-020, menards, EOX3-1002-ME2, double, splitter, external, outside</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Energizer",
+  "bDetailed": "0",
+  "name": "Outdoor Twin Socket Smart Plug (US)",
+  "model": "EOX3-1002-BLK",
+  "chip": "BK7231N",
+  "board": "",
+  "flags": "1024",
+  "keywords": [
+    "2A3ZO-ETS-C-020",
+    "menards",
+    "EOX3-1002-ME2",
+    "double",
+    "splitter",
+    "external",
+    "outside"
+  ],
+  "pins": {
+    "7": "Rel;1",
+    "8": "Btn;1,2",
+    "24": "Rel;2",
+    "26": "LED_n;0"
+  },
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/7500807500_1675748043.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic3955578.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P7 is Rel on channel 1<br>- P8 is Btn on channel 1,2<br>- P24 is Rel on channel 2<br>- P26 is LED_n on channel 0<br>- Flags are set to 1024<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic3955578.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic3955578.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Teknikkdeler_ECF_SOP02.html">Dual smart plug outdoor 16A IP44 BK7231T ECF-SOP02</a> - 40.0% match</li>
+<li><a href="Aoycocr_U3_UK_Smart_Plug.html">Aoycocr U3 UK Smart Plug</a> - 25.0% match</li>
+<li><a href="LYTLM_SM15155_lamp_RGBCW_ip65.html">SM15155 lamp RGBCW ip65</a> - 25.0% match</li>
+<li><a href="Tuya_WBP_1G.html">Mini Smart Switch With Power Monitor - 16A</a> - 25.0% match</li>
+<li><a href="Tuya_SmartSwitch_WL_SW01_16_SW01_16A.html">SmartSwitch WL-SW01_16 SW01 16A</a> - 25.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

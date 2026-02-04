@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Martin Jerry 1-Gang Smart Switch</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Martin Jerry 1-Gang Smart Switch (RP-S01)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/5526521000_1740261642.jpg" alt="Martin Jerry 1-Gang Smart Switch">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Tuya</p>
+        <p><strong>Chip:</strong> BK7231N</p>
+        <p><strong>Board:</strong> CB3S</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> BL0937, stvrdl</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Tuya",
+  "bDetailed": "0",
+  "name": "Martin Jerry 1-Gang Smart Switch",
+  "model": "RP-S01",
+  "chip": "BK7231N",
+  "board": "CB3S",
+  "flags": "0",
+  "keywords": [
+    "BL0937",
+    "stvrdl"
+  ],
+  "pins": {
+    "6": "LED;1",
+    "7": "Btn;1",
+    "8": "Rel;1",
+    "9": "WifiLED;0",
+    "14": "BL0937SEL;0",
+    "24": "BL0937CF;0",
+    "26": "BL0937CF1;0"
+  },
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/5526521000_1740261642.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4108004.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P6 is LED on channel 1<br>- P7 is Btn on channel 1<br>- P8 is Rel on channel 1<br>- P9 is WifiLED on channel 0<br>- P14 is BL0937SEL on channel 0<br>- P24 is BL0937CF on channel 0<br>- P26 is BL0937CF1 on channel 0<br>- Flags are set to 0<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4108004.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4108004.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Calex_5201000300.html">16A Smart Power Plug with Energy Metering (Holland) (EU)</a> - 42.9% match</li>
+<li><a href="Akai_Energy_Smart_1430.html">Enchufe WiFi energy metering plug</a> - 42.9% match</li>
+<li><a href="Tuya_TYTE_D1.html">AC85-250V 3000W/16A Smart Switch with Temperature Probe</a> - 42.9% match</li>
+<li><a href="Action_3202087.html">LSC Smart Plug (with Energy Meter)</a> - 42.9% match</li>
+<li><a href="Arlec_PCTH01HA_Bunnings_CB3S_BK7231N.html">Arlec PCTH01HA - Bunnings - CB3S BK7231N</a> - 37.5% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

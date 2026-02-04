@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>smart outlet dual wall socket</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">smart outlet dual wall socket (SM-PW801-U2)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/5596486600_1700145306.jpg" alt="smart outlet dual wall socket">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Xenon</p>
+        <p><strong>Chip:</strong> BK7231T</p>
+        <p><strong>Board:</strong> WB3S</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Xenon",
+  "bDetailed": "0",
+  "name": "smart outlet dual wall socket",
+  "model": "SM-PW801-U2",
+  "chip": "BK7231T",
+  "board": "WB3S",
+  "keywords": [],
+  "pins": {
+    "1": "WifiLED_n;1",
+    "6": "Rel;1",
+    "9": "Rel;2",
+    "10": "Btn;2",
+    "24": "Btn;1"
+  },
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/5596486600_1700145306.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4015180.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P1 is WifiLED_n on channel 1<br>- P6 is Rel on channel 1<br>- P9 is Rel on channel 2<br>- P10 is Btn on channel 2<br>- P24 is Btn on channel 1<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4015180.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4015180.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Tuya_ETS301W.html">Ener-J Touch Switch</a> - 40.0% match</li>
+<li><a href="Prime_CCWFIO232PK.html">CCWFIO232PK SmartOutlet Outdoor 2x Costco</a> - 40.0% match</li>
+<li><a href="DS_103_3_Gang_Switch.html">3 Gang Switch</a> - 40.0% match</li>
+<li><a href="Tuya_Smart_High_Power_Switch_for_Boiler_Water_Heater_20A_4400W.html">Tuya Smart High Power Switch for Boiler Water Heater 20A 4400W</a> - 40.0% match</li>
+<li><a href="Tuya_SM_AW713.html">Connectify Smart WiFi Remote Control Automatic Shut Off Valve for Gas Stoves/Water Pipes</a> - 40.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

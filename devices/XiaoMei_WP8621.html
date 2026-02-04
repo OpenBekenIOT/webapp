@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Futterautomat für Aquarium | Automatic Fish Feeder</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Smart Futterautomat für Aquarium | Automatic Fish Feeder (WP8621)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/8671024600_1718170279.png" alt="Smart Futterautomat für Aquarium | Automatic Fish Feeder">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> XiaoMei</p>
+        <p><strong>Chip:</strong> BL2028N</p>
+        <p><strong>Board:</strong> WIFI001_V20</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> BK7231N, BK7231M, belon</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "XiaoMei",
+  "bDetailed": "0",
+  "name": "Smart Futterautomat für Aquarium | Automatic Fish Feeder",
+  "model": "WP8621",
+  "chip": "BL2028N",
+  "board": "WIFI001_V20",
+  "flags": "-2147483648",
+  "keywords": [
+    "BK7231N",
+    "BK7231M",
+    "belon"
+  ],
+  "pins": {
+    "0": "LED;5",
+    "1": "WifiLED;4",
+    "4": "WifiLED_n;0",
+    "7": "dInput;1",
+    "9": "dInput;3",
+    "15": "Rel;2",
+    "22": "dInput_n;7",
+    "23": "LED;6"
+  },
+  "command": "backlog SetPinRole 0 LED; SetPinChannel 5 0; SetPinRole 1 WifiLED; SetPinChannel 5 0;setChannel 3 0; addRepeatingEvent 20 3 setChannel 6 1;",
+  "image": "https://obrazki.elektroda.pl/8671024600_1718170279.png",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4056533.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P0 is LED on channel 5<br>- P1 is WifiLED on channel 4<br>- P4 is WifiLED_n on channel 0<br>- P7 is dInput on channel 1<br>- P9 is dInput on channel 3<br>- P15 is Rel on channel 2<br>- P22 is dInput_n on channel 7<br>- P23 is LED on channel 6<br>- Flags are set to -2147483648<br>- StartupCommand is set to backlog SetPinRole 0 LED; SetPinChannel 5 0; SetPinRole 1 WifiLED; SetPinChannel 5 0;setChannel 3 0; addRepeatingEvent 20 3 setChannel 6 1;<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4056533.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4056533.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Vanters_ANT325_V0.html">Automatic Fish Feeder</a> - 12.5% match</li>
+<li><a href="SZKOSTON_MG_SPQ100.html">Tuya 5v-12v 1x USB-A, 1x USB-C Smart Wifi Mini Switch</a> - 12.5% match</li>
+<li><a href="Tuya_TY_86_3W.html">3gang WiFi switch with RF</a> - 12.5% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

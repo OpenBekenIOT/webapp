@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WiFi DIY Switch</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">WiFi DIY Switch (ZN268131)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/5120493600_1650616045.jpg" alt="WiFi DIY Switch">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Generic</p>
+        <p><strong>Chip:</strong> BK7231T</p>
+        <p><strong>Board:</strong> WB2S</p>
+        <p><strong>Detailed:</strong> 1</p>
+        <p><strong>Keywords:</strong> switch, relay, AP8506, YTA-SS-105DM</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Generic",
+  "bDetailed": "1",
+  "name": "WiFi DIY Switch",
+  "model": "ZN268131",
+  "chip": "BK7231T",
+  "board": "WB2S",
+  "keywords": [
+    "switch",
+    "relay",
+    "AP8506",
+    "YTA-SS-105DM"
+  ],
+  "pins": {
+    "6": "Rel;1",
+    "7": "WifiLED_n;1",
+    "10": "Btn;1",
+    "26": "TglChanOnTgl;1"
+  },
+  "image": "https://obrazki.elektroda.pl/5120493600_1650616045.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic3895572.html#20033093"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P6 is Rel on channel 1<br>- P7 is WifiLED_n on channel 1<br>- P10 is Btn on channel 1<br>- P26 is TglChanOnTgl on channel 1<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic3895572.html#20033093" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic3895572.html#20033093" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Tuya_YSS102_(Junlit)_Single_Pole_Switch_BK7231N_version.html">YSS102 (Junlit) Single Pole Switch - BK7231N version</a> - 50.0% match</li>
+<li><a href="DS_101_1_Gang_Switch.html">1 Gang Switch</a> - 50.0% match</li>
+<li><a href="Tuya_Mini_Smart_Switch_16A_1_Gang_Shunshun_Graffiti.html">Mini Smart Switch 16A 1 Gang Shunshun Graffiti</a> - 50.0% match</li>
+<li><a href="Aubess_A5C_30E1_02.html">Aubess Mini Smart Switch 16A, A5C-30E1-02</a> - 50.0% match</li>
+<li><a href="Tuya_SL_SC_01.html">Spacetronik shutter controller module SL-SC-01</a> - 33.3% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>
