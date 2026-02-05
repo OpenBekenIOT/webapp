@@ -2,19 +2,19 @@
   <div class="container">
     <div class="item" style="max-width: 300px;">
       <h4>GPIO Doctor</h4>
-      <p>Here you can quickly detect GPIO roles of an unknown device. Remember to try checking <a href="https://www.youtube.com/watch?v=VDbaLR_0YWs"> our Templates</a> first, maybe there is already template for your device.</p>
+      <p>Use this tool to identify GPIO roles on an unknown device. Before you start, check <a href="https://www.youtube.com/watch?v=VDbaLR_0YWs">Templates</a> first; there may already be a template for your device.</p>
 
-      <h4>Usage warning</h4>
-      <p>This tool will override your current GPIO settings. Use with caution. Backup your current template if needed.</p>
+      <h4>Warning</h4>
+      <p>This tool overrides your current GPIO configuration. Use with caution. Back up your current template first, if needed.</p>
 
-      <h4>How to use - finding outputs</h4>
-      <p>To find relays, LEDs or PWMs, just use 'Set Output High'/Set Output Low' button on each pin and see if relay/LED/Light changes. This works also for PWMs, because 'Relay' role can control PWM, it just toggles it between 100% and 0% duty.</p>
+      <h4>How to use: finding outputs</h4>
+      <p>To find relays, LEDs, or PWM outputs, use the “Set Output High” / “Set Output Low” button for each pin and observe what changes. This can also help with PWM outputs, because the “Relay” role can drive a PWM channel by toggling it between 100% and 0% duty cycle.</p>
  
-      <h4>How to use - finding inputs</h4>
-      <p>To find inputs, including buttons, first click 'Setup input with pull up', which is a most common option, and then press a button for a second and check if state High/Low changes. If it changes, then you've found your button. In some rare cases, you also might want to try no pullup resistor mode (maybe for door sensors, etc?)</p>
+      <h4>How to use: finding inputs</h4>
+      <p>To find inputs (including buttons), first click “Set Input (pull-up)”, which is the most common option. Then press and hold the button briefly and check whether the state changes (High/Low). If it does, you have likely found your button. In rarer cases, you may also want to try “Set Input (no pull-up)” (for example, some door sensors).</p>
  
-      <h4>How to use - final steps</h4>
-      <p>You can easily change pin roles here and they will be saved. Remember to clear up unused Relay/dInput/roles etc manually and keep only the roles you are going to use</p>
+      <h4>How to use: final steps</h4>
+      <p>Changes you make here are saved automatically. Once you have identified the required pins, clear any unused roles and keep only the roles you intend to use.</p>
  
     </div>
     <div class="item" style="max-width: 550px;">
@@ -33,8 +33,8 @@
          {{ pins.states[index] ? 'Set Output Low' : 'Set Output High' }}
          </button>
         <button @click="setInput(index,'dInput')">Set Input P-up</button>
-        <button @click="setInput(index,'dInput_NoPullUp')">Set Input (no p-up)</button>
-        <button @click="clearPin(index)">Clear)</button>
+        <button @click="setInput(index,'dInput_NoPullUp')">Set Input (no P-up)</button>
+        <button @click="clearPin(index)">Clear</button>
         <hr>
       </div>
 
@@ -59,7 +59,7 @@
 
         },
        getPinAlias(index) {
-        // some of pins have special roles
+        // Some pins have special roles
         if (index == 23)
           return "ADC3";
         if (index == 26)

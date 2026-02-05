@@ -1,8 +1,10 @@
 <template>
     <div>
         <div>
-            Here you can read device flash directly. RF config is Beken internal configuration memory and OBK Config is our configuration structure.<br>
-            Here you can also recover your device from "MAC ends with 00 00 00 and is unable to change" bug. Button 'Restore RF config' will restore RF partition for T and N and set a random MAC address, but this also requires rebooting device later.<br>
+            <div class="flashIntro">
+            <p>You can read flash regions directly from the device. RF configuration contains Beken calibration and network data, while OBK configuration contains OpenBeken settings.</p>
+            <p>If your device has an invalid MAC address ending in 00:00:00, use Restore RF configuration. This resets the RF partition and generates a random MAC address. Reboot the device afterward.</p>
+            </div>
             
 
             <table class="my-table">
@@ -13,52 +15,55 @@
                 <th>Extra</th>
             </tr>
             <tr>
-                <td> <button @click="rf(null, $event)">Read RF Config</button></td>
-                <td><a :href="rfurl" download="rfdata">Download RF</a></td>
+                <td> <button @click="rf(null, $event)">Read RF configuration</button></td>
+                <td><a :href="rfurl" download="rfdata">Download RF data</a></td>
                 <td>
                 </td>
-                <td><button @click="restore_rf(null, $event)">Restore (Recreate) RF Config (N & T)</button></td>
+                <td><button @click="restore_rf(null, $event)">Restore RF configuration (BK7231N/BK7231T)</button></td>
             </tr>
             <tr>
-                <td>  <button @click="config(null, $event)">Read OBK Config</button></td>
-                <td> <a :href="configurl" download="configdata">Download OBK Config</a></td>
+                <td>  <button @click="config(null, $event)">Read OBK configuration</button></td>
+                <td> <a :href="configurl" download="configdata">Download OBK configuration</a></td>
                 <td>
                 <div>
-                    <label for="cfgFilePicker">Select file with binary CFG header:</label><input id="cfgFilePicker"
+                    <label for="cfgFilePicker">Select a file with a binary CFG header:</label><input id="cfgFilePicker"
                     type="file" @change="cfgFileSelected($event)">
-                    <div v-html="cfgStatus" :class="{invalid: invalidCFGSelected}"></div>
-                    <button @click="writeCFG(null, $event)">Start CFG write</button>
+                    <div v-if="cfgStatus" v-html="cfgStatus" :class="{invalid: invalidCFGSelected}"></div>
+                    <button @click="writeCFG(null, $event)">Write CFG to device</button>
                 </div>
                 </td>
                 <td></td>
             </tr>
+            <tr v-if="isBekenNT">
+                <td> <button @click="flashvars(null, $event)">Read FlashVars (BK7231N/BK7231T only)</button></td>
+                <td><a :href="flashvarsurl" download="flashvarsdata">Download FlashVars</a></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr v-else-if="chipset !== 'unknown'">
+                <td colspan="4">FlashVars is available only on BK7231N/BK7231T.</td>
+            </tr>
             <tr>
-                <td> <button @click="flashvars(null, $event)">Read Beken FlashVars (unused?)</button></td>
-                <td><a :href="flashvarsurl" download="flashvarsdata">Download Flash Vars</a></td>
+                <td></td>
+                <td> <button @click="downloadFullDump(null, $event)">Download full 2MB flash dump</button></td>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
-                <td></td>
-                <td> <button @click="downloadFullDump(null, $event)">Download full 2MB dump</button></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>  <button @click="readTuyaConfig(null, $event)">Read Tuya GPIO Config</button></td>
-                <td> <button @click="downloadTuyaConfig(null, $event)">Download Tuya GPIO Config</button></td>
+                <td>  <button @click="readTuyaConfig(null, $event)">Read Tuya GPIO configuration</button></td>
+                <td> <button @click="downloadTuyaConfig(null, $event)">Download Tuya GPIO configuration</button></td>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
-                <td>  <button @click="readCustom(null, $event)">Read Custom (prompts for ofs/len)</button></td>
-                <td> <button @click="downloadCustom(null, $event)">Download Custom (prompts for ofs/len)</button></td>
+                <td>  <button @click="readCustom(null, $event)">Read custom region (prompts for offset/length)</button></td>
+                <td> <button @click="downloadCustom(null, $event)">Download custom region (prompts for offset/length)</button></td>
                 <td></td>
                 <td></td>
             </tr>
             </table>
                 <div>
-                    <h4> Current job status</h4>
+                    <h4>Job Status</h4>
                     <div v-html="status" :class=""></div>
                 </div>
 
@@ -109,8 +114,13 @@
         invalidOTASelected: false,
         cfgtext:'Drop CFG file here',
         invalidCFGSelected: true,
-        cfgStatus: 'no file selected',
+        cfgStatus: '',
       }
+    },
+    computed:{
+        isBekenNT(){
+            return this.chipset === 'BK7231N' || this.chipset === 'BK7231T';
+        },
     },
     methods:{
         getinfo(){
@@ -123,7 +133,7 @@
                     this.chipset = res.chipset;     //Set chipset to fixed value for testing
                     this.rfurl = window.device+'/api/flash/'+this.getRFAddress();
                     this.configurl = window.device+'/api/flash/'+this.getConfigAddress();
-                    this.flashvarsurl = window.device+'/api/flash/'+this.getFlashVarsAddress();
+                    this.flashvarsurl = this.isBekenNT ? (window.device+'/api/flash/'+this.getFlashVarsAddress()) : '';
                 })
                 .catch(err => {
                     this.error = err.toString();
@@ -133,10 +143,10 @@
         writeCFG(cb){
             if(this.invalidCFGSelected )
             {
-                alert("Sorry, invalid CFG file selected");
+                alert("Invalid CFG file selected.");
                 return;
             }
-            let confirmationForUser = prompt("Are you sure? This will overwrite your OBK config (pins, channels, flags, WiFi data, IP, MQTT, short startup command) Y/N", "N");
+            let confirmationForUser = prompt("Are you sure? This will overwrite your OBK configuration (pins, channels, flags, WiFi, IP, MQTT, short startup command). Type Y to continue.", "N");
             if(confirmationForUser == null)
             {
             }
@@ -154,10 +164,10 @@
          writeCFG_Internal(cb){
             if(this.invalidCFGSelected )
             {
-                alert("Sorry, invalid CFG file selected");
+                alert("Invalid CFG file selected.");
                 return;
             }
-            this.cfgStatus += 'Writing OBK config...';
+            this.cfgStatus += 'Writing OBK configuration...';
             let url = window.device+'/api/flash/'+this.getConfigAddress();
             console.log('Will use URL '+url);
                 fetch(url, { 
@@ -167,7 +177,7 @@
                     .then(response => response.text())
                     .then(text => {
                         console.log('received '+text);
-                        this.cfgStatus = 'Write OBK cfg complete! Now you should reboot...';
+                        this.cfgStatus = 'Write complete. Reboot the device to apply changes.';
                         if(cb) cb();
                     })
                     .catch(err => console.error(err)); // Never forget the final catch!
@@ -205,11 +215,11 @@
 
             if (this.invalidCFGSelected){
                 console.log("this cfg is incorrect");
-                this.cfgStatus = 'Invalid CFG file was ' + operation;
+                this.cfgStatus = 'Invalid CFG file (' + operation + ').';
             }
             else{
                 console.log("this cfg is OK");
-                this.cfgStatus = 'Correct CFG file selected';
+                this.cfgStatus = 'Valid CFG file selected.';
                 this.cfgdata = result;
             }
         },
@@ -285,7 +295,7 @@
         },
         onFullDumpReadyForDownload(){
             this.fullDumpRunning = 0;
-            this.status += `<br>${this.getDumpJobLabel()} ready!</br>`;
+            this.status += `<br/>${this.getDumpJobLabel()} is ready.`;
             this.generateFullDumpDownloadForBrowser();
         },
         downloadFullDumpFragment(){
@@ -310,7 +320,7 @@
                 .then(response => response.arrayBuffer())
                 .then(buffer => {
                     if(buffer.byteLength != this.fullDumpChunkSize) {
-                        this.status += "bad len " + buffer.byteLength + ", retrying...";
+                        this.status += "Unexpected response length (" + buffer.byteLength + "). Retrying...";
                         retryWithDelay();
                         return;
                     }
@@ -328,12 +338,12 @@
                         if(this.fullDumpErrors > 100) {
                             console.error("Fragment error, too many failed attempts, stopping!");
                             console.error(err);
-                            this.status += "error! Too many failed attempts.<br>";
+                            this.status += "Error: too many failed attempts.<br/>";
                             this.fullDumpRunning = 0;
                         } else {
                             console.warn("Fragment error, will retry!");
                             console.warn(err);
-                            this.status += "error, retrying...";
+                            this.status += "Error; retrying...";
                             retryWithDelay();
                         }
                     }); // Never forget the final catch!
@@ -349,7 +359,7 @@
 	        return;
 	    }
 	
-	    this.status += `<br/>reading custom data from offset ${offset.toString(16)} with length ${length}...`;
+	    this.status += `<br/>Reading custom data from offset 0x${offset.toString(16)} with length ${length}...`;
 	    let url = window.device + `/api/flash/${offset.toString(16)}-${length.toString(16)}`;
 	    console.log('Will use URL ' + url);
 	
@@ -358,7 +368,7 @@
 	        .then(buffer => {
 	            this.configdata = buffer;
 	            console.log('received ' + buffer.byteLength);
-	            this.status += '..got custom data...';
+	            this.status += '..received custom data...';
 	            this.dump(buffer);
 	            if (cb) cb();
 	        })
@@ -376,7 +386,7 @@
 	        return;
 	    }
 	
-	    this.status += `<br/>downloading custom data from offset ${offset.toString(16)} with length ${length}...`;
+	    this.status += `<br/>Downloading custom data from offset 0x${offset.toString(16)} with length ${length}...`;
 	    let url = window.device + `/api/flash/${offset.toString(16)}-${length.toString(16)}`;
 	    console.log('Will use URL ' + url);
 	
@@ -384,17 +394,17 @@
 	        .then(response => response.arrayBuffer())
 	        .then(buffer => {
 	            this.downloadArrayBuffer(buffer, `custom_${offset.toString(16)}-${length}.bin`);
-	            this.status += `<br>custom data ready!</br>`;
+	            this.status += `<br/>Custom data is ready.`;
 	            if (cb) cb();
 	        })
 	        .catch(err => console.error(err)); 
 	},  
         downloadFullDump() {
             if(0){
-                alert("Not functional yet");
+                alert("Not available yet.");
                 return;
             }
-			let rep = prompt("Are you certain? This option is currently slow, may crash OBK on older version so you have to repower it manually, and also may still restart OBK several times on newer builds. It is better to just download only config partition and LittleFS TAR. Futhermore, flashing full 2MB of one device to another device is BAD idea. WiFi calibration is per device! Enter yes.", "no");
+			let rep = prompt("Are you certain? This option is slow and may crash OpenBeken on older builds, requiring a manual power-cycle. It may also reboot several times on newer builds. If you only need settings, prefer downloading the configuration partition and a LittleFS backup (.tar). Do not flash a full 2MB dump from one device to another; RF/WiFi calibration is device-specific. Type yes to continue.", "no");
 			if (rep != null) {
 				  if(rep[0] == "y") {
 				  } else {
@@ -407,13 +417,13 @@
         },
         doFlashDumpInternal() {
             if(this.fullDumpRunning!=0){
-                alert("Flash dump is already requested, wait for processing first.");
+                alert("A flash dump is already in progress. Please wait for it to finish.");
                 return;
             }
             // start with empty data
             this.fullDumpRunning = 1;
             console.log("doFlashDumpInternal started!");
-            this.status += `<br/>downloading ${this.getDumpJobLabel()}...`;
+            this.status += `<br/>Downloading ${this.getDumpJobLabel()}...`;
             this.fullDumpData = new ArrayBuffer();
             this.fullDumpCurAt = this.fullDumpFlashStart;
             this.fullDumpChunkSize = 4096;
@@ -426,13 +436,13 @@
 				return '1e3000-2000';
 			}
             if(this.chipset === "BK7231N") {
-				return '0x1D3000-2000';
+				return '1d3000-2000';
 			}
-            console.log('getConfigAddress is not implemented for '+this.chipset);
-			return '1e1000-1000';
+            console.log('getFlashVarsAddress is not implemented for '+this.chipset);
+			return '0-0';
         },
         rf(cb){
-            this.status += '<br/>reading rf config...';
+            this.status += '<br/>Reading RF configuration...';
             let url = window.device+'/api/flash/'+this.getRFAddress();
             console.log('Will use URL '+url);
             fetch(url)
@@ -440,7 +450,7 @@
                 .then(buffer => {
                     this.rfdata = buffer; 
                     console.log('received '+buffer.byteLength);
-                    this.status += '..got rf config...';
+                    this.status += '..received RF configuration...';
                     this.dump(buffer);
                     if(cb) cb();
                 })
@@ -456,7 +466,7 @@
 		return 0x1D8000;
         },
         readTuyaConfig(cb){
-            this.status += '<br/>reading tuya config...';
+            this.status += '<br/>Reading Tuya GPIO configuration...';
             let url = window.device+'/api/flash/1EE000-1000';
             console.log('Will use URL '+url);
             fetch(url)
@@ -464,7 +474,7 @@
                 .then(buffer => {
                     this.configdata = buffer; 
                     console.log('received '+buffer.byteLength);
-                    this.status += '..got tuya config...';
+                    this.status += '..received Tuya GPIO configuration...';
                     this.dump(buffer);
                     if(cb) cb();
                 })
@@ -475,7 +485,7 @@
             this.startDumpJob("Tuya GPIO config", "TuyaConfig", 0x1EE000, 73728, "TuyaConfig");
         },
         config(cb){
-            this.status += '<br/>reading config...';
+            this.status += '<br/>Reading OBK configuration...';
             let url = window.device+'/api/flash/'+this.getConfigAddress();
             console.log('Will use URL '+url);
             fetch(url)
@@ -483,14 +493,18 @@
                 .then(buffer => {
                     this.configdata = buffer; 
                     console.log('received '+buffer.byteLength);
-                    this.status += '..got  config...';
+                    this.status += '..received OBK configuration...';
                     this.dump(buffer);
                     if(cb) cb();
                 })
                 .catch(err => console.error(err)); // Never forget the final catch!
         },
         flashvars(cb){
-            this.status += '<br/>reading flashvars...';
+            if(!this.isBekenNT){
+                this.status += '<br/>FlashVars is available only on BK7231N/BK7231T.';
+                return;
+            }
+            this.status += '<br/>Reading FlashVars...';
             let url = window.device+'/api/flash/'+this.getFlashVarsAddress();
             console.log('Will use URL '+url);
             fetch(url)
@@ -498,14 +512,14 @@
                 .then(buffer => {
                     this.configdata = buffer; 
                     console.log('received '+buffer.byteLength);
-                    this.status += '..got rf config...';
+                    this.status += '..received FlashVars...';
                     this.dump(buffer);
                     if(cb) cb();
                 })
                 .catch(err => console.error(err)); // Never forget the final catch!
         },
         restore_rf(cb){
-			  let rep = prompt("Are you certain? Use this option only if you already broke your RF partition and your MAC ends with 00 00. Otherwise new RF partition might have worse calibration data so WiFi quality will decrease. Enter yes.", "no");
+			  let rep = prompt("Use this option only if your RF partition is already corrupted (for example, your MAC ends with 00 00). Otherwise, WiFi performance may decrease because the recreated RF partition uses generic calibration data. Type yes to continue.", "no");
 			  if (rep != null) {
 				  if(rep == "yes") {
 					this.restore_rf_internal(cb);
@@ -526,7 +540,7 @@
 			return Math.floor(Math.random() * (max - min + 1)) + min;
 		},
         restore_rf_internal(cb){
-            this.status += '<br/>Restoring RF config...';
+            this.status += '<br/>Restoring RF configuration...';
             console.log('restore rf ');
             let url = window.device+'/api/flash/'+this.getRFAddress();
             console.log('Will use URL '+url);
@@ -578,7 +592,7 @@
                     .then(response => response.text())
                     .then(text => {
                         console.log('received '+text);
-                        this.status += '<br/>RF restored!';
+                        this.status += '<br/>RF configuration restored. Reboot the device.';
                     })
                     .catch(err => console.error(err)); // Never forget the final catch!
             }
@@ -610,7 +624,7 @@
 
         this.rfurl = window.device+'/api/flash/'+this.getRFAddress();
         this.configurl = window.device+'/api/flash/'+this.getConfigAddress();
-        this.flashvarsurl = window.device+'/api/flash/'+this.getFlashVarsAddress();
+        this.flashvarsurl = '';
 
         console.log('mounted ota');
         this.getinfo();
@@ -636,6 +650,14 @@
     display: inline-block;
     width: 20px;
   }
+  .flashIntro {
+    margin: 0 0 12px 0;
+  }
+  .flashIntro p {
+    margin: 0 0 6px 0;
+  }
+
+
   
             .my-table, 
             .my-table th,

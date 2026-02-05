@@ -2,7 +2,7 @@
     <div>
         <div>
             <p>Chipset: {{chipset}}</p>
-            <p>Build: {{build}}</p>
+            <p>Release: {{build}}</p>
         </div>
         <div>
             <span v-if="supportsLittleFS">
@@ -35,10 +35,9 @@
         </div>
         <br/>
         <div>
-            <label for="otaFilePicker">Select OTA file from disk:</label><input id="otaFilePicker" type="file" @change="fileSelected($event)" :accept="otaFileExtension">
+            <label for="otaFilePicker">Select OTA file from disk: </label><input id="otaFilePicker" type="file" @change="fileSelected($event)" :accept="otaFileExtension">
             <br/>
             <p>Or drop it here:</p>
-            <br/>
             <div class="drop" @drop="dropHandler($event)" @dragover="dragOverHandler($event)">
                 <div class="otatext center" v-html="otatext"></div>
             </div>
@@ -59,7 +58,7 @@
         backupdata: null,
         otadata:null,
         otatext:'Drop OTA file here',
-        status:'Nothing going on',
+        status:'Ready.',
         defaultaction: '',
         build:'unknown',
         chipset:'unknown',
@@ -665,7 +664,10 @@
 
 <style scoped>
     .drop {
-        border: 5px solid blue;
+        border: 4px solid #3b82f6;
+        background: #ffffff;
+        color: #1e40af;
+        margin-bottom: 20px;
         width:  200px;
         height: 100px;
         text-align: center;
