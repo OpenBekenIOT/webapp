@@ -3,8 +3,6 @@
         <div>
             Here you can read device flash directly. RF config is Beken internal configuration memory and OBK Config is our configuration structure.<br>
             Here you can also recover your device from "MAC ends with 00 00 00 and is unable to change" bug. Button 'Restore RF config' will restore RF partition for T and N and set a random MAC address, but this also requires rebooting device later.<br>
-            
-
             <table class="my-table">
             <tr>
                 <th>Read</th>
@@ -15,7 +13,10 @@
             <tr>
                 <td> <button @click="rf(null, $event)">Read RF Config</button></td>
                 <td><a :href="rfurl" download="rfdata">Download RF</a></td>
-                <td>
+                <td><div><label for="RFFilePicker">Select file with binary RF data:</label><input id="RFFilePicker" type="file" @change="RFFileSelected($event)">
+		 <div v-html="RFcfgStatus" :class="{invalid: invalidRFCFGSelected}"></div>
+		 <button @click="writeRFCFG(null, $event)">Start RF CFG write</button>
+		</div>
                 </td>
                 <td><button @click="restore_rf(null, $event)">Restore (Recreate) RF Config (N & T)</button></td>
             </tr>
@@ -61,20 +62,10 @@
                     <h4> Current job status</h4>
                     <div v-html="status" :class=""></div>
                 </div>
-
-
-
-           
-          
-           
             <br/>
-            
             <br/>
-            
             <br/>
-           
             <br/>
-            
         </div>
         <div v-html="display" class="display"></div>
     </div>
@@ -110,6 +101,8 @@
         cfgtext:'Drop CFG file here',
         invalidCFGSelected: true,
         cfgStatus: 'no file selected',
+	invalidRFCFGSelected: true,
+	RFcfgStatus: 'no file selected',
       }
     },
     methods:{
@@ -213,12 +206,89 @@
                 this.cfgdata = result;
             }
         },
+	// Write RF partition
+        writeRFCFG(cb){
+            if(this.invalidRFCFGSelected)
+            {
+                alert("Sorry, invalid RF CFG file selected");
+                return;
+            }
+            let confirmationForUser = prompt("Are you sure? This will overwrite your RF config (MAC address and calibration) Y/N", "N");
+            if(confirmationForUser != null && confirmationForUser.length === 1 && confirmationForUser[0] === 'Y') {
+                this.status += '<br/>starting RF CFG write...';
+                this.writeRFCFG_Internal(cb);
+            }
+        },
+        writeRFCFG_Internal(cb){
+            if (this.invalidRFCFGSelected)
+            {
+                alert("Sorry, invalid RF CFG file selected");
+                return;
+            }
+            this.RFcfgStatus += 'Writing RF config...';
+            let url = window.device+'/api/flash/'+this.getRFAddress();
+            console.log('Will use URL '+url);
+                fetch(url, {
+                        method: 'POST',
+                        body: this.cfgdata
+                    })
+                    .then(response => response.text())
+                    .then(text => {
+                        console.log('received '+text);
+                        this.RFcfgStatus = 'Write RF cfg complete! Now you should reboot...';
+                        if(cb) cb();
+                    })
+                    .catch(err => console.error(err)); // Never forget the final catch!
+        },
+        RFFileSelected(ev){
+            console.log("RF CFG File selected");
+            this.invalidRFCFGSelected = false; //Reset status style
+            var file = ev.target.files[0];  //There should be only one file
+            if (file){
+                console.log('... RF CFG fileName = ' + file.name);
+                var reader = new FileReader();
+                reader.onload = (event) => this.checkRFCFGData(event, file, "selected");
+                reader.readAsArrayBuffer(file);
+            }
+        },
+        isRFCFGImage(arrayBuffer){
+            let view = new DataView(arrayBuffer);
+            if (view.byteLength < 4) return false;
+            console.log("isRFCFGImage sees " +view);
+            // TLV\0 header
+            return view.getUint8(0) === 0x54 && view.getUint8(1) === 0x4C && view.getUint8(2) === 0x56 && view.getUint8(3) === 0;
+        },
+        checkRFCFGData(event, file, operation){
+            this.cfgdata = null;    //Reset otadata
+            var result = event.target.result;   //ArrayBuffer
+            console.log('chipset=' + this.chipset);
+            console.log("Checking RF CFG data");
+            console.log(result);
+            console.log('RF cfgdata len:' + result.byteLength);
+            this.cfgtext = file.name + ' len:' + result.byteLength;
+
+            this.invalidRFCFGSelected = !this.isRFCFGImage(result);
+
+            if (this.invalidRFCFGSelected){
+                console.log("this RF cfg is incorrect");
+                this.RFcfgStatus = 'Invalid RF CFG file was ' + operation;
+            }
+            else{
+                console.log("this RF cfg is OK");
+                this.RFcfgStatus = 'Correct CFG file selected';
+                this.cfgdata = result;
+            }
+        },
+
         getRFAddress(){
             if(this.chipset === "BK7231T") {
 				return '1e0000-1000';
 			}
             if(this.chipset === "BK7231N") {
 				return '1d0000-1000';
+			}
+            if(this.chipset === "BK7238") {
+				return '1e0000-1000';
 			}
             console.log('getRFAddress is not implemented for '+this.chipset);
 			return '1e0000-1000';
@@ -229,6 +299,9 @@
 			}
             if(this.chipset === "BK7231N") {
 				return '1d1000-1000';
+			}
+            if(this.chipset === "BK7238") {
+				return '1e1000-1000';
 			}
             console.log('getConfigAddress is not implemented for '+this.chipset);
 			return '1e1000-1000';
@@ -428,7 +501,7 @@
             if(this.chipset === "BK7231N") {
 				return '0x1D3000-2000';
 			}
-            console.log('getConfigAddress is not implemented for '+this.chipset);
+            console.log('getFlashVarsAddress is not implemented for '+this.chipset);
 			return '1e1000-1000';
         },
         rf(cb){
@@ -571,7 +644,7 @@
 			
 			let streamData = new Uint8Array(correct_rf_config);
             if (streamData){
-                fetch(url, { 
+                fetch(url, {
                         method: 'POST',
                         body: streamData
                     })
