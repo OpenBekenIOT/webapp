@@ -287,6 +287,21 @@
         const startupscript = Array.from(document.scripts).find(script => script.src.includes("startup.js"));
         const baseUrl = startupscript.src.substring(0, startupscript.src.lastIndexOf('/'));
         
+        const valuemaps = document.createElement("script");
+        valuemaps.setAttribute(
+          "src",
+          `${baseUrl}/generated/generated_value_maps.js`
+        );
+        valuemaps.async = true;
+        document.head.appendChild(valuemaps);
+        const procTable = document.createElement("script");
+        procTable.setAttribute(
+          "src",
+          `${baseUrl}/generated/generated_processing_table.js`
+        );
+        procTable.async = true;
+        document.head.appendChild(procTable);
+
         const plugin = document.createElement("script");
         plugin.setAttribute(
           "src",
