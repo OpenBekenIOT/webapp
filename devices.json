@@ -747,7 +747,7 @@
         "21": "BL0937SEL;0",
         "22": "Btn;1"
       },
-      "command": "backlog",
+      "command": "",
       "image": "https://obrazki.elektroda.pl/9547341300_1726165924.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4075409.html"
     },
@@ -819,6 +819,28 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4153643.html"
     },
     {
+      "vendor": "Action",
+      "bDetailed": "0",
+      "name": "LSC Smart Connect GU10 Smart LED Bulbs 3-Pack",
+      "model": "3208076.1",
+      "chip": "BK7231N",
+      "board": "CBLC5",
+      "flags": "1024",
+      "keywords": [
+        "GU10BL-5S2P-RGB-B1",
+        "LDH202502",
+        "390lm",
+        "SM2185N"
+      ],
+      "pins": {
+        "24": "SM2235DAT;0",
+        "26": "SM2235CLK;0"
+      },
+      "command": "backlog SM2235_Map 0 1 2 3 4; SoftI2C_SetClkPeriod 50; SM2235_Current 2 2",
+      "image": "https://obrazki.elektroda.pl/8981691300_1769904987.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4163315.html"
+    },
+    {
       "vendor": "Ewelink",
       "bDetailed": "0",
       "name": "SMART GU10 RGBWW LED Bulb",
@@ -865,7 +887,7 @@
     {
       "vendor": "LEDVANCE",
       "bDetailed": "0",
-      "name": "SmartPlus Classic A60 Dimable White Bulb E27 9W 806lm",
+      "name": "SmartPlus Classic A60 Dimmable White Bulb E27 9W 806lm",
       "model": "AC33908",
       "chip": "BK7231T",
       "board": "WB8P",
@@ -1047,6 +1069,32 @@
       "image": "https://obrazki.elektroda.pl/7382316300_1712211576.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4046718.html"
     },
+    {
+      "vendor": "Hama",
+      "bDetailed": "0",
+      "name": "16A WiFi Socket with Power Metering 3680W (EU)",
+      "model": "00176575",
+      "chip": "BK7231N",
+      "board": "CB2S",
+      "flags": "1024",
+      "keywords": [
+        "BHT-DFG-J-V1.0",
+        "e1x608",
+        "keyjup78v54myhan",
+        "reu9feycmeln24g1"
+      ],
+      "pins": {
+        "6": "BL0937CF1;0",
+        "7": "BL0937CF;0",
+        "8": "WifiLED_n;0",
+        "10": "Btn;1",
+        "24": "BL0937SEL;0",
+        "26": "Rel;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/6407399300_1769974756.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4163429.html"
+    },    
     {
       "vendor": "Ai-Thinker",
       "bDetailed": "0",
@@ -5754,7 +5802,8 @@
     {
       "vendor": "Calex",
       "bDetailed": "0",
-      "name": "UK power strip 900018.1 v1.0 UK",
+      "name": "Power Strip v1.0 (UK)",
+      "model": "900018.1",      
       "chip": "BK7231T",
       "board": "WB3S",
       "pins": {
@@ -6010,7 +6059,7 @@
     {
       "vendor": "Tuya",
       "bDetailed": "0",
-      "name": "Motion Senor Smart Night Light - EU",
+      "name": "Motion Sensor Smart Night Light - EU",
       "model": "TM-YD001W-WIF-EU",
       "chip": "BK7231N",
       "board": "CBU",
@@ -7066,7 +7115,7 @@
         "24": "Rel;1",
         "26": "LED_n;1"
       },
-      "command": "backlog",
+      "command": "",
       "image": "https://obrazki.elektroda.pl/8647098200_1703538706.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4023937.html"
     },
@@ -7087,6 +7136,24 @@
       "command": "",
       "image": "https://obrazki.elektroda.pl/6050697600_1703164290.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4023251.html"
+    },
+    {
+      "vendor": "eWeLink",
+      "bDetailed": "0",
+      "name": "10A Mini Smart Switch/Breaker",
+      "model": "ELC-MNEW01",
+      "chip": "BL602",
+      "board": "SM-028_V1.3",
+      "keywords": ["RM-BRK001-MAC2HG","FWSW-WHBL602-SWITCH-BL602L_v1.2.0","CK-BL602-4SW-WH"],
+      "pins": {
+        "3": "TglChanOnTgl;1",
+        "14": "LED_n;1",
+        "20": "Btn;1",
+        "21": "Rel;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/7023185600_1769861719.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4163220.html"
     },
     {
       "vendor": "Shenzhen Qingning Tongchuang Technology Co.Ltd",
@@ -7667,6 +7734,33 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4100731.html"
     },
     {
+      "vendor": "eWeLink",
+      "bDetailed": "0",
+      "name": "WiFi Smart Plug",
+      "model": "RMC003",
+      "chip": "BL602",
+      "board": "SM-028_V1.3",
+      "flags": "1024",
+      "keywords": [
+        "RM-TY012-MAD2HG",
+        "RM-SMART",
+        "CNHZ",
+        "HZ32-1A3S-LH1",
+        "CK-BL602-SWP1-01"
+      ],
+      "pins": {
+        "2": "Rel;1",
+        "3": "BL0937CF1;0",
+        "14": "BL0937CF;0",
+        "20": "LED_n;1",
+        "21": "BL0937SEL;0",
+        "22": "Btn;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/1124713900_1770834644.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4164682.html"
+    },    
+    {
       "vendor": "JSPTECH",
       "bDetailed": "0",
       "name": "Tuya 10A AC110-220V Smart Plug (US)",
@@ -8055,11 +8149,11 @@
     {
       "vendor": "SHUNSHUN",
       "bDetailed": "0",
-      "name": "",
-      "model": "16A WIFI Mini Smart Switch",
+      "name": "16A WIFI Mini Smart Switch",
+      "model": "",
       "chip": "BK7231N",
       "board": "CB2S",
-      "keywords": [],
+      "keywords": ["breaker"],
       "pins": {
         "7": "WifiLED_n;0",
         "10": "Btn_Tgl_All;0",
@@ -8570,7 +8664,7 @@
     {
       "vendor": "Action",
       "bDetailed": "0",
-      "name": "LSC Smart Plug (with Energy Meter)",
+      "name": "LSC Smart Plug (with Energy Meter) - Variant #1",
       "model": "3202087.1",
       "chip": "BK7238",
       "board": "T1-2S-NL",
@@ -8587,6 +8681,54 @@
       "command": "",
       "image": "https://obrazki.elektroda.pl/5533322700_1769036509.png",
       "wiki": "https://www.elektroda.com/rtvforum/topic4161922.html"
+    },
+    {
+      "vendor": "Action",
+      "bDetailed": "0",
+      "name": "LSC Smart Plug (with Energy Meter) - Variant #2",
+      "model": "3202087.1",
+      "chip": "BK7238",
+      "board": "T1-2S-NL",
+      "keywords": ["power metering", "3680W", "FS 125634"],
+      "pins": {
+        "1": "BL0937SEL;0",
+        "6": "BL0937CF;0",
+        "8": "BL0937CF1;0",
+        "9": "LED_n;0",
+        "11": "WifiLED_n;0",
+        "24": "Rel;0",
+        "26": "Btn;0"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/5533322700_1769036509.png",
+      "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21833006#21833006"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "1",
+      "name": "Smart Power Strip 16A 5CH DIN 4xAC 4xUSB-A (EU)",
+      "model": "RH-EU411-4U-W",
+      "chip": "BK7238",
+      "board": "T1-U-HL",
+      "flags": "1024",
+      "keywords": [
+        "DIN rail",
+        "energy monitoring",
+        "BL0942",
+        "relay module"
+      ],
+      "pins": {
+        "6": "Rel;5",
+        "9": "Rel;2",
+        "21": "Rel;4",
+        "22": "Btn_Tgl_All;0",
+        "23": "WifiLED_n;0",
+        "24": "Rel;3",
+        "26": "Rel;1"
+      },
+      "command": "startDriver BL0942",
+      "image": "https://obrazki.elektroda.pl/5119999700_1771076454.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4164991.html"
     },
     {
       "vendor": "Tuya",
@@ -12067,13 +12209,13 @@
     {
       "vendor": "Teckin",
       "bDetailed": "0",
-      "name": "Smart Socket (EU)",
+      "name": "Smart Plug (EU)",
       "model": "SP22",
       "chip": "RTL8710B",
       "board": "T112_V1.1",
       "flags": "1024",
       "keywords": [
-        "plug"
+        "TECKINHOME"
       ],
       "pins": {
         "0": "BL0937CF;0",
@@ -12088,6 +12230,30 @@
       "image": "https://obrazki.elektroda.pl/5899965000_1758606802.png",
       "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21654509#21654509"
     },
+    {
+      "vendor": "Teckin",
+      "bDetailed": "0",
+      "name": "Smart Plug (UK)",
+      "model": "SP23",
+      "chip": "RTL8710B",
+      "board": "T112_V1.1",
+      "flags": "1024",
+      "keywords": [
+        "TECKINHOME",
+        "SP23/SP27-FTY",
+        "0000002x12",
+        "keyaqceqmgp343e7",
+        "twezq8g8ykoaggey"
+      ],
+      "pins": {
+        "12": "Rel;1",
+        "14": "Btn;1",
+        "15": "LED_n;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/1900099200_1770551715.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4163366.html"
+    },    
     {
       "vendor": "Tuya",
       "bDetailed": "0",
@@ -12600,6 +12766,63 @@
       "wiki": "https://www.elektroda.pl/rtvforum/viewtopic.php?t=3946334&highlight="
     },
     {
+      "vendor": "MOES",
+      "bDetailed": "0",
+      "name": "Matter WiFi 2 Gang Smart Switch Module",
+      "model": "MS-104B",
+      "chip": "BK7231N",
+      "board": "CBU",
+      "flags": "1075840000",
+      "keywords": [
+        "FNHDM20003",
+        "REV 1.0",
+        "PWDSWQ",
+        "DK10008"
+      ],
+      "pins": {
+        "7": "Rel;2",
+        "8": "Rel;1",
+        "14": "dInput_n;2",
+        "16": "dInput_n;1",
+        "24": "LED_n;0"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/3692700000_1769793183.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4163153.html"
+    },
+    {
+      "vendor": "HomeMate",
+      "bDetailed": "0",
+      "name": "4 Gang Smart Touch Switch",
+      "model": "T1_V2",
+      "chip": "BK7238",
+      "board": "T1-3S",
+      "flags": "136315972",
+      "keywords": [
+        "4-gang",
+        "touch switch",
+        "relay",
+        "indian standard",
+        "keyfxuj3d5wg53wx",
+        "fpuupxtmit0vj8i5",
+        "e1mx46bc"
+      ],
+      "pins": {
+        "6": "Btn_ScriptOnly;1",
+        "8": "Btn_ScriptOnly;2",
+        "9": "WifiLED_n;0",
+        "11": "Btn_ScriptOnly;4",
+        "20": "Btn_ScriptOnly;3",
+        "22": "Rel;1",
+        "23": "Rel;2",
+        "24": "Rel;3",
+        "26": "Rel;4"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/3724601400_1657910301.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4163057.html"
+    },
+    {
       "vendor": "LSC",
       "bDetailed": "0",
       "name": "LSC Smart LED E27 806 lumen (RGBCW)",
@@ -12902,8 +13125,8 @@
     {
       "vendor": "Tuya",
       "bDetailed": "0",
-      "name": "MOES Smart Swich Module WIFI 4gang",
-      "model": "MOES Smart Swich Module WIFI 4gang",
+      "name": "MOES Smart Switch Module WIFI 4gang",
+      "model": "",
       "chip": "BK7231N",
       "board": "CBU",
       "keywords": ["switch", "4 gang"],
@@ -14068,7 +14291,7 @@
     {
       "vendor": "BN-LINK",
       "bDetailed": "1",
-      "name": "BN-LINK Smart Power Strip Compatible with Alexa Google Home, Smart Plug WiFi Outlets Surge Protector with 4 USB 4 Charging Port Multi Plug Extender,15A",
+      "name": "BN-LINK Smart Power Strip 4xAC 4xUSB 15A",
       "model": "U158WT",
       "chip": "BK7231T",
       "board": "WB2S",
@@ -14086,7 +14309,7 @@
     {
       "vendor": "LVWIT",
       "bDetailed": "1",
-      "name": "LVWIT B22 Bayonet WiFi LED Bulb, 1521Lm,Tuya Smart Bulb B22, 12W",
+      "name": "LVWIT B22 Bayonet WiFi LED Bulb 1521Lm 12W",
       "model": "A70-30 WIR-DIM+CCT+RGB",
       "chip": "BK7231N",
       "board": "",
