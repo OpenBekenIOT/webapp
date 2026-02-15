@@ -27,6 +27,7 @@
 
     { "search": "wfst_pin", "role": "WifiLED_n", "desc": "- WiFi LED on P{value}", "nochan": true },
     { "search": "wfst", "role": "WifiLED_n", "desc": "- WiFi LED (wfst) on P{value}", "nochan": true },
+    { "search": "irpin", "role": "IRRecv", "desc": "- IR Receiver on P{value}", "nochan": true },
     { "search": "infrr", "role": "IRRecv", "desc": "- IR Receiver on P{value}", "nochan": true },
     { "search": "infre", "role": "IRSend", "desc": "- IR Sender on P{value}", "nochan": true },
     { "search": "remote_io", "role": "RCRecv", "desc": "- RF Remote on P{value}", "nochan": true },
@@ -77,6 +78,7 @@
     { "search": "CS", "role": null, "desc": "- SPI CS P{value}", "nochan": true },
 
     { "search": "buzzer_io", "role": null, "desc": "- Buzzer Pin (TODO) on P{value}", "nochan": true },
+    { "search": "buzzer_pwm", "role": "VALUEONLY", "desc": "- Buzzer Frequency {value}Hz", "nochan": true },
     { "search": "bz_pin_pin", "role": null, "desc": "- Buzzer Pin (bz_pin_pin) on P{value}", "nochan": true },
     { "search": "status_led_pin", "role": "WifiLED_n", "desc": "- Status LED on P{value}", "nochan": true },
 
