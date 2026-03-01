@@ -12955,7 +12955,8 @@
     {
       "vendor": "Tuya",
       "bDetailed": "1",
-      "name": "AT-Q-SMR1-20 wifi DIN rail RCBO circuit breaker + energy meter",
+      "name": "WiFi DIN rail RCBO circuit breaker + energy meter",
+      "model": "AT-Q-SMR1-20",
       "chip": "BK7231T",
       "board": "WB3S",
       "pins": {},
@@ -12963,6 +12964,30 @@
       "image": "https://obrazki.elektroda.pl/3704334600_1672760032.png",
       "wiki": "https://www.elektroda.com/rtvforum/topic3946256.html"
     },
+    {
+      "vendor": "AT",
+      "bDetailed": "0",
+      "name": "63A DIN rail wifi switch with power metering",
+      "model": "AT-SY1-TSW",
+      "chip": "BK7238",
+      "board": "T1-U-HL",
+      "flags": "0",
+      "keywords": [
+        "circut",
+        "breaker"
+      ],
+      "pins": {
+        "6": "BridgeREV;1",
+        "8": "BridgeFWD;1",
+        "17": "Btn;1",
+        "20": "ADC;2",
+        "21": "LED;1",
+        "28": "WifiLED_n;0"
+      },
+      "command": "backlog startDriver BL0942; startDriver Bridge; BridgePulseLength 100; powersave 1",
+      "image": "https://obrazki.elektroda.pl/1332857400_1772244672.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4166555.html"
+    },    
     {
       "vendor": "LSC",
       "bDetailed": "0",
