@@ -6655,7 +6655,30 @@
       "command": "",
       "image": "https://obrazki.elektroda.pl/1643181800_1677426605.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic3960571.html"
-    },    
+    },
+    {
+      "vendor": "ALDI",
+      "bDetailed": "0",
+      "name": "Casalux RGBW Innen 15m SMARTER LED-STREIFEN",
+      "model": "",
+      "chip": "BK7231N",
+      "board": "on PCB",
+      "flags": "1024",
+      "keywords": [
+        "strip"
+      ],
+      "pins": {
+        "2": "Btn;0",
+        "6": "PWM;0",
+        "8": "PWM;2",
+        "9": "PWM;3",
+        "24": "PWM;1",
+        "26": "IRRecv;0"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/7754023700_1772184184.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4166455.html"
+    },        
     {
       "vendor": "QiaChip",
       "bDetailed": "1",
