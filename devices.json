@@ -10355,6 +10355,25 @@
     {
       "vendor": "Tuya",
       "bDetailed": "0",
+      "name": "Generic Mini Switch",
+      "model": "KC E243951",
+      "chip": "BK7231N",
+      "board": "CB2S",
+      "flags": "1024",
+      "keywords": ["86-TDQ","INNOU2","2022.12.01", "breaker"],
+      "pins": {
+        "7": "WifiLED_n;0",
+        "8": "Rel;1",
+        "10": "Btn_Tgl_All;0",
+        "26": "TglChanOnTgl;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/7667601800_1772399095.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4166758.html"
+    },    
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
       "name": "Single switch module ver 20231005",
       "model": "SB451",
       "chip": "BK7231N",
