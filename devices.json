@@ -9517,6 +9517,33 @@
       "bDetailed": "0",
       "name": "Mini WiFi Curtain Module",
       "model": "QS-WIFI-S10-C04",
+      "chip": "BK7238",
+      "board": "T1-M",
+      "flags": "64",
+      "keywords": [
+        "shutter",
+        "rollers",
+        "blinds",
+        "QLRELAY",
+        "JZC-11FH",
+        "003-1H2L"
+      ],
+      "pins": {
+        "6": "BtnShutterUp;1",
+        "8": "WifiLED_n;0",
+        "9": "ShutterA;1",
+        "24": "ShutterB;1",
+        "26": "BtnShutterDown;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/6465596100_1772258118.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4166558.html"
+    },    
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "Mini WiFi Curtain Module",
+      "model": "QS-WIFI-S10-C04",
       "chip": "BK7231N",
       "board": "CBLC9",
       "flags": "1024",
