@@ -9570,6 +9570,31 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4049271.html"
     },
     {
+      "vendor": "Argo",
+      "bDetailed": "0",
+      "name": "Niveo Smart Ceramic Fan Heater",
+      "model": "8013557519378",
+      "chip": "RTL87X0C",
+      "board": "WBR3",
+      "flags": "64",
+      "keywords": [
+        "TuyaMCU",
+        "e1mtgt2k",
+        "keyjkajwawthq4f5",
+        "se5uznrcm8bjetr8",
+        "KB-5152",
+        "E123995",
+        "ROFEDZ",
+        "PT0805E-WIFI D10",
+        "2024-0-30",
+        "MASTERBOX 6 PZ - 8013557519385"
+      ],
+      "pins": {},
+      "command": "",
+      "image": "https://static.elektroda.pl/attach/PXL_20260303_144639383_RAW-01_6128113.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4166319.html"
+    },
+    {
       "vendor": "Tuya",
       "bDetailed": "0",
       "name": "Tuya Generic Temperature/Humidity/Clock/IR - LCD, TuyaMCU",
