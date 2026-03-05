@@ -8626,6 +8626,20 @@
       "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20684106#20684106"
     },
     {
+      "vendor": "VISLONE",
+      "bDetailed": "0",
+      "name": "3A Wi-Fi Smart Thermostat LCD Touch-Screen Programmable Thermostat",
+      "model": "RLV3138164134758QF",
+      "chip": "RTL8710B",
+      "board": "WR3",
+      "flags": "1024",
+      "keywords": ["000002fn93","FZH1621","120D521021","fcp4pmzxlnfjmibg","keym5sjxrqcryptn","ASIN: B08NP7GQ7Z","gas","boiler","tuyamcu"],
+      "pins": {},
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/3765190100_1772501476.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4166898.html"
+    },    
+    {
       "vendor": "Sonoff",
       "bDetailed": "1",
       "name": "Sonoff POWR316D Elite16A WiFi smart Energy Meter",
