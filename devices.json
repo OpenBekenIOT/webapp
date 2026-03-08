@@ -5172,7 +5172,8 @@
     {
       "vendor": "Vesync",
       "bDetailed": "0",
-      "name": "BSD33 power metering plug",
+      "name": "Power Metering Plug",
+      "model": "BSD33",      
       "chip": "BK7231M",
       "board": "CB2S",
       "pins": {
@@ -5188,6 +5189,27 @@
       "image": "https://obrazki.elektroda.pl/9322646800_1719415161.jpg",
       "wiki": "https://www.elektroda.pl/rtvforum/topic4062174.html"
     },
+    {
+      "vendor": "ELIVCO",
+      "bDetailed": "0",
+      "name": "20A Smart Power Metering Plug",
+      "model": "BSD33",      
+      "chip": "BL602",
+      "board": "SM-028_V1.3",
+        "pins": {
+        "2": "Rel;1",
+        "3": "BL0937CF1;0",
+        "4": "LED_n;1",
+        "14": "BL0937CF;0",
+        "20": "WifiLED_n;1",
+        "21": "BL0937SEL;0",
+        "22": "Btn;1"
+        },
+      "command": "",
+      "keywords": ["AC100-240V", "BL0937"],
+      "image": "https://obrazki.elektroda.pl/9975877900_1772888412.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4167374.html"
+    },    
     {
       "vendor": "Tuya",
       "bDetailed": "0",
