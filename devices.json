@@ -5190,6 +5190,29 @@
       "wiki": "https://www.elektroda.pl/rtvforum/topic4062174.html"
     },
     {
+      "vendor": "Sonoff",
+      "bDetailed": "0",
+      "name": "Basic Gen5 Smart Switch",
+      "model": "BASIC-1GS",
+      "chip": "BK7238",
+      "board": "BASIC-1GS-WIFI V1.2",
+      "flags": "1024",
+      "keywords": [
+        "Matter over wifi",
+        "relay",
+        "breaker"
+      ],
+      "pins": {
+        "1": "Btn_n;1",
+        "6": "Btn;1",
+        "8": "WifiLED;2",
+        "26": "Rel;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/6907100900_1773319764.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4167932.html"
+    },    
+    {
       "vendor": "ELIVCO",
       "bDetailed": "0",
       "name": "20A Smart Power Metering Plug",
