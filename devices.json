@@ -5809,7 +5809,7 @@
         "7": "KP18058_CLK;0",
         "8": "KP18058_DAT;0"
       },
-      "command": "backlog KP18058_Map 2 0 1 255 3; KP18058_Current 31 15; SetFlag 24 1; SetFlag 12 1; led_dimmer $led_dimmer",
+      "command": "backlog KP18058_Map 2 0 1 255 3; KP18058_Current 25 13; SetFlag 24 1; SetFlag 12 1; led_dimmer $led_dimmer; PowerSave 1",
       "image": "https://obrazki.elektroda.pl/8189021300_1772710483.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4167160.html"      
       },    
