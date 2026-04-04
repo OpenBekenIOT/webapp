@@ -1,0 +1,205 @@
+{
+  "meta": {
+    "name": "Tuya pin and parameter spec",
+    "source": "collected from templateParser.js, TuyaConfig.cs (BK7231Flasher) and LibreTiny tuya-pin-config",
+    "version": "1.0"
+  },
+  "mappings": [
+    { "search": "/^rl_on(\\d+)_pin$/", "role": "BridgeFWD", "desc": "- Bridge Relay On (channel {number}) on P{value}" },
+    { "search": "/^rl_off(\\d+)_pin$/", "role": "BridgeREV", "desc": "- Bridge Relay Off (channel {number}) on P{value}" },
+    { "search": "/^rl(\\d+)_pin$/", "role": "Rel", "desc": "- Relay (channel {number}) on P{value}" },
+    { "search": "/^led(\\d+)_pin$/", "role": "LED", "desc": "- LED (channel {number}) on P{value}" },
+    { "search": "/^door(\\d+)_magt_pin$/", "role": "dInput", "desc": "- Door Sensor (channel {number}) on P{value}" },
+    { "search": "/^bt(\\d+)_pin$/", "role": "Btn", "desc": "- Button (channel {number}) on P{value}" },
+    { "search": "/^k(\\d+)pin_pin$/", "role": "Btn", "desc": "- Button (channel {number}) on P{value}" },
+    { "search": "/^onoff(\\d+)$/", "role": "TglChanOnTgl", "desc": "- TglChannelToggle (channel {number}) on P{value}" },
+
+    { "search": "/^netled(\\d*)_pin$/", "role": "WifiLED_n", "desc": "- WiFi LED on P{value}", "nochan": true },
+
+    { "search": "gate_sensor_pin_pin", "role": "dInput", "desc": "- Door/Gate Sensor on P{value}", "nochan": true },
+    { "search": "basic_pin_pin", "role": "dInput", "desc": "- PIR sensor on P{value}", "nochan": true },
+    { "search": "ele_pin", "role": "BL0937CF", "desc": "- BL0937 ELE on P{value}", "nochan": true },
+    { "search": "epin", "role": "BL0937CF", "desc": "- EPIN (alias for ele_pin) on P{value}", "nochan": true },
+    { "search": "vi_pin", "role": "BL0937CF1", "desc": "- BL0937 VI on P{value}", "nochan": true },
+    { "search": "ivpin", "role": "BL0937CF1", "desc": "- BL0937 VI (ivpin) on P{value}", "nochan": true },
+    { "search": "sel_pin_pin", "role": "BL0937SEL", "desc": "- BL0937 SEL on P{value}", "nochan": true },
+    { "search": "ivcpin", "role": "BL0937SEL", "desc": "- BL0937 SEL (ivcpin) on P{value}", "nochan": true },
+
+    { "search": "wfst_pin", "role": "WifiLED_n", "desc": "- WiFi LED on P{value}", "nochan": true },
+    { "search": "wfst", "role": "WifiLED_n", "desc": "- WiFi LED (wfst) on P{value}", "nochan": true },
+    { "search": "irpin", "role": "IRRecv", "desc": "- IR Receiver on P{value}", "nochan": true },
+    { "search": "infrr", "role": "IRRecv", "desc": "- IR Receiver on P{value}", "nochan": true },
+    { "search": "infre", "role": "IRSend", "desc": "- IR Sender on P{value}", "nochan": true },
+    { "search": "remote_io", "role": "RCRecv", "desc": "- RF Remote on P{value}", "nochan": true },
+
+    { "search": "r_pin", "role": "PWM", "desc": "- LED Red (Channel 1) on P{value}", "channel": 1 },
+    { "search": "g_pin", "role": "PWM", "desc": "- LED Green (Channel 2) on P{value}", "channel": 2 },
+    { "search": "b_pin", "role": "PWM", "desc": "- LED Blue (Channel 3) on P{value}", "channel": 3 },
+    { "search": "c_pin", "role": "PWM", "desc": "- LED Cool (Channel 4) on P{value}", "channel": 4 },
+    { "search": "w_pin", "role": "PWM", "desc": "- LED Warm (Channel 5) on P{value}", "channel": 5 },
+
+    { "search": "mic", "role": "ADC", "desc": "- Microphone (ADC?) Pin on P{value}", "nochan": true },
+    { "search": "micpin", "role": "ADC", "desc": "- Microphone (micpin) on P{value}", "nochan": true },
+
+    { "search": "ctrl_pin", "role": null, "desc": "- Control Pin (TODO) on P{value}", "nochan": true },
+    { "search": "total_bt_pin", "role": "Btn_Tgl_All", "desc": "- Pair/Toggle All Pin on P{value}", "nochan": true },
+    { "search": "reset_pin", "role": "Btn", "desc": "- Pair/Reset All Pin on P{value}", "nochan": true },
+    { "search": "key_pin", "role": "Btn_Tgl_All", "desc": "- Pair/Toggle All Pin on P{value}", "nochan": true },
+
+    { "search": "bt_pin", "role": "Btn", "desc": "- Button (channel 0) on P{value}", "channel": 0 },
+    { "search": "bt", "role": "Btn", "desc": "- Button (bt) on P{value}", "channel": 0 },
+
+    { "search": "rl", "role": "Rel", "desc": "- Relay (channel 0) on P{value}", "channel": 0 },
+
+    { "search": "samp_sw_pin", "role": "BAT_Relay", "desc": "- Battery Relay on P{value}", "nochan": true },
+    { "search": "samp_pin", "role": "BAT_ADC", "desc": "- Battery ADC on P{value}", "nochan": true },
+
+    { "search": "i2c_scl_pin", "role": "I2C_SCL", "desc": "- I2C SCL on P{value}", "nochan": true },
+    { "search": "i2c_sda_pin", "role": "I2C_SDA", "desc": "- I2C SDA on P{value}", "nochan": true },
+
+    { "search": "alt_pin_pin", "role": "ALT", "desc": "- ALT pin on P{value}", "nochan": true },
+    { "search": "one_wire_pin", "role": "OneWire", "desc": "- OneWire IO pin on P{value}", "nochan": true },
+    { "search": "backlit_io_pin", "role": "LED", "desc": "- Backlit IO pin on P{value}", "nochan": true },
+
+    { "search": "max_V", "role": "VALUEONLY", "desc": "- Battery Max Voltage: {value}", "nochan": true },
+    { "search": "min_V", "role": "VALUEONLY", "desc": "- Battery Min Voltage: {value}", "nochan": true },
+
+    { "search": "pwmhz", "role": "VALUEONLY", "desc": "- PWM Frequency {value}", "nochan": true },
+
+    { "search": "pirsense_pin", "role": null, "desc": "- PIR Sensitivity on P{value}", "nochan": true },
+    { "search": "pirlduty", "role": "VALUEONLY", "desc": "- PIR Low Duty {value}", "nochan": true },
+    { "search": "pirfreq", "role": "VALUEONLY", "desc": "- PIR Frequency {value}", "nochan": true },
+    { "search": "pirmduty", "role": "VALUEONLY", "desc": "- PIR High Duty {value}", "nochan": true },
+    { "search": "pirin_pin", "role": null, "desc": "- PIR Input on P{value}", "nochan": true },
+
+    { "search": "mosi", "role": "SM16703P_DIN", "desc": "- SPI MOSI P{value}", "nochan": true },
+    { "search": "miso", "role": null, "desc": "- SPI MISO P{value}", "nochan": true },
+    { "search": "SCL", "role": null, "desc": "- SPI SCL P{value}", "nochan": true },
+    { "search": "CS", "role": null, "desc": "- SPI CS P{value}", "nochan": true },
+
+    { "search": "buzzer_io", "role": null, "desc": "- Buzzer Pin (TODO) on P{value}", "nochan": true },
+    { "search": "buzzer_pwm", "role": "VALUEONLY", "desc": "- Buzzer Frequency {value}Hz", "nochan": true },
+    { "search": "bz_pin_pin", "role": null, "desc": "- Buzzer Pin (bz_pin_pin) on P{value}", "nochan": true },
+    { "search": "status_led_pin", "role": "WifiLED_n", "desc": "- Status LED on P{value}", "nochan": true },
+
+    { "search": "baud", "role": "VALUEONLY", "desc": "UART baud {value}", "nochan": true },
+    { "search": "baud_cfg", "role": null, "desc": "baud_cfg present", "nochan": true },
+
+    { "search": "iicscl", "role": null, "desc": "- I2C SCL (iicscl) on P{value}", "nochan": true, "special": "i2c" },
+    { "search": "iicsda", "role": null, "desc": "- I2C SDA (iicsda) on P{value}", "nochan": true, "special": "i2c" },
+
+    { "search": "crc", "role": "VALUEONLY", "desc": "crc = {value}", "nochan": true },
+    { "search": "category", "role": "VALUEONLY", "desc": "category = {value}", "nochan": true },
+    { "search": "Jsonver", "role": "VALUEONLY", "desc": "Jsonver = {value}", "nochan": true },
+    { "search": "jv", "role": "VALUEONLY", "desc": "jv = {value}", "nochan": true },
+
+    { "search": "netled_lv", "role": "VALUEONLY", "desc": "netled_lv = {value}", "nochan": true },
+    { "search": "netled_reuse", "role": "VALUEONLY", "desc": "netled_reuse = {value}", "nochan": true },
+    { "search": "net_trig", "role": "VALUEONLY", "desc": "net_trig = {value}", "nochan": true },
+    { "search": "net_type", "role": "VALUEONLY", "desc": "net_type = {value}", "nochan": true },
+    { "search": "wfct", "role": "VALUEONLY", "desc": "wfct = {value}", "nochan": true },
+
+    { "search": "reset_lv", "role": "VALUEONLY", "desc": "reset_lv = {value}", "nochan": true },
+    { "search": "reset_t", "role": "VALUEONLY", "desc": "reset_t = {value}", "nochan": true },
+
+    { "search": "cmod", "role": "VALUEONLY", "desc": "cmod = {value}", "nochan": true },
+    { "search": "dmod", "role": "VALUEONLY", "desc": "dmod = {value}", "nochan": true },
+    { "search": "cwtype", "role": "VALUEONLY", "desc": "cwtype = {value}", "nochan": true },
+    { "search": "onoffmode", "role": "VALUEONLY", "desc": "onoffmode = {value}", "nochan": true },
+    { "search": "pmemory", "role": "VALUEONLY", "desc": "pmemory = {value}", "nochan": true },
+    { "search": "defcolor", "role": "VALUEONLY", "desc": "defcolor = {value}", "nochan": true },
+    { "search": "defbright", "role": "VALUEONLY", "desc": "defbright = {value}", "nochan": true },
+    { "search": "deftemp", "role": "VALUEONLY", "desc": "deftemp = {value}", "nochan": true },
+    { "search": "cwmaxp", "role": "VALUEONLY", "desc": "cwmaxp = {value}", "nochan": true },
+    { "search": "brightmin", "role": "VALUEONLY", "desc": "brightmin = {value}", "nochan": true },
+    { "search": "brightmax", "role": "VALUEONLY", "desc": "brightmax = {value}", "nochan": true },
+    { "search": "colormin", "role": "VALUEONLY", "desc": "colormin = {value}", "nochan": true },
+    { "search": "colormax", "role": "VALUEONLY", "desc": "colormax = {value}", "nochan": true },
+    { "search": "cwmin", "role": "VALUEONLY", "desc": "cwmin = {value}", "nochan": true },
+    { "search": "cwmax", "role": "VALUEONLY", "desc": "cwmax = {value}", "nochan": true },
+    { "search": "colormaxp", "role": "VALUEONLY", "desc": "colormaxp = {value}", "nochan": true },
+    { "search": "colorpfun", "role": "VALUEONLY", "desc": "colorpfun = {value}", "nochan": true },
+    { "search": "brightstep", "role": "VALUEONLY", "desc": "brightstep = {value}", "nochan": true },
+    { "search": "bristep", "role": "VALUEONLY", "desc": "bristep = {value}", "nochan": true },
+    { "search": "hsvstep", "role": "VALUEONLY", "desc": "hsvstep = {value}", "nochan": true },
+    { "search": "rgbt", "role": "VALUEONLY", "desc": "rgbt = {value}", "nochan": true },
+    { "search": "title20", "role": "VALUEONLY", "desc": "title20 = {value}", "nochan": true },
+
+    { "search": "gmr", "role": "VALUEONLY", "desc": "gmr = {value}", "nochan": true },
+    { "search": "gmg", "role": "VALUEONLY", "desc": "gmg = {value}", "nochan": true },
+    { "search": "gmb", "role": "VALUEONLY", "desc": "gmb = {value}", "nochan": true },
+    { "search": "gmkr", "role": "VALUEONLY", "desc": "gmkr = {value}", "nochan": true },
+    { "search": "gmkg", "role": "VALUEONLY", "desc": "gmkg = {value}", "nochan": true },
+    { "search": "gmkb", "role": "VALUEONLY", "desc": "gmkb = {value}", "nochan": true },
+    { "search": "gmwr", "role": "VALUEONLY", "desc": "gmwr = {value}", "nochan": true },
+    { "search": "gmwg", "role": "VALUEONLY", "desc": "gmwg = {value}", "nochan": true },
+    { "search": "gmwb", "role": "VALUEONLY", "desc": "gmwb = {value}", "nochan": true },
+
+    { "search": "r_lv", "role": "VALUEONLY", "desc": "r_lv = {value}", "nochan": true },
+    { "search": "g_lv", "role": "VALUEONLY", "desc": "g_lv = {value}", "nochan": true },
+    { "search": "b_lv", "role": "VALUEONLY", "desc": "b_lv = {value}", "nochan": true },
+    { "search": "c_lv", "role": "VALUEONLY", "desc": "c_lv = {value}", "nochan": true },
+    { "search": "w_lv", "role": "VALUEONLY", "desc": "w_lv = {value}", "nochan": true },
+
+    { "search": "dccur", "role": "VALUEONLY", "desc": "dccur = {value}", "nochan": true },
+    { "search": "ehccur", "role": "VALUEONLY", "desc": "ehccur = {value}", "nochan": true },
+    { "search": "cjccur", "role": "VALUEONLY", "desc": "cjccur = {value}", "nochan": true },
+    { "search": "dwcur", "role": "VALUEONLY", "desc": "dwcur = {value}", "nochan": true },
+    { "search": "ehwcur", "role": "VALUEONLY", "desc": "ehwcur = {value}", "nochan": true },
+    { "search": "cjwcur", "role": "VALUEONLY", "desc": "cjwcur = {value}", "nochan": true },
+    { "search": "drgbcur", "role": "VALUEONLY", "desc": "drgbcur = {value}", "nochan": true },
+    { "search": "campere", "role": "VALUEONLY", "desc": "campere = {value}", "nochan": true },
+    { "search": "wampere", "role": "VALUEONLY", "desc": "wampere = {value}", "nochan": true },
+
+    { "search": "iicr", "role": "VALUEONLY", "desc": "iicr = {value}", "nochan": true },
+    { "search": "iicg", "role": "VALUEONLY", "desc": "iicg = {value}", "nochan": true },
+    { "search": "iicb", "role": "VALUEONLY", "desc": "iicb = {value}", "nochan": true },
+    { "search": "iicc", "role": "VALUEONLY", "desc": "iicc = {value}", "nochan": true },
+    { "search": "iicw", "role": "VALUEONLY", "desc": "iicw = {value}", "nochan": true },
+
+    { "search": "iicccur", "role": "VALUEONLY", "desc": "iicccur = {value}", "nochan": true },
+    { "search": "iicwcur", "role": "VALUEONLY", "desc": "iicwcur = {value}", "nochan": true },
+
+    { "search": "/^bt(\\d+)_lv$/", "role": null, "desc": "bt{number}_lv = {value}", "group": 1, "nochan": true },
+    { "search": "/^bt(\\d+)_type$/", "role": null, "desc": "bt{number}_type = {value}", "group": 1, "nochan": true },
+    { "search": "bt_type", "role": "VALUEONLY", "desc": "bt_type = {value}", "nochan": true },
+
+    { "search": "/^rl(\\d+)_lv$/", "role": null, "desc": "rl{number}_lv = {value}", "group": 1, "nochan": true },
+    { "search": "/^rl(\\d+)_type$/", "role": null, "desc": "rl{number}_type = {value}", "group": 1, "nochan": true },
+    { "search": "/^rl_on(\\d+)_lv$/", "role": null, "desc": "rl_on{number}_lv = {value}", "group": 1, "nochan": true },
+    { "search": "/^rl_off(\\d+)_lv$/", "role": null, "desc": "rl_off{number}_lv = {value}", "group": 1, "nochan": true },
+
+    { "search": "rl1_dr_type", "role": "VALUEONLY", "desc": "rl1_dr_type = {value}", "nochan": true },
+    { "search": "rl_drvtime", "role": "VALUEONLY", "desc": "rl_drvtime = {value}", "nochan": true },
+
+    { "search": "total_bt_lv", "role": "VALUEONLY", "desc": "total_bt_lv = {value}", "nochan": true },
+
+    { "search": "ele_fun_en", "role": "VALUEONLY", "desc": "ele_fun_en = {value}", "nochan": true },
+    { "search": "chip_type", "role": "VALUEONLY", "desc": "chip_type = {value}", "nochan": true },
+
+    { "search": "sel_pin_lv", "role": "VALUEONLY", "desc": "sel_pin_lv = {value}", "nochan": true },
+
+    { "search": "netled1_lv", "role": "VALUEONLY", "desc": "netled1_lv = {value}", "nochan": true },
+    { "search": "netled_reuse", "role": "VALUEONLY", "desc": "netled_reuse = {value}", "nochan": true },
+
+    { "search": "ele_rx", "role": null, "desc": "ele_rx on RX Pin P{value}", "nochan": true },
+    { "search": "ele_tx", "role": null, "desc": "ele_tx on TX Pin P{value}", "nochan": true }
+  ],
+  "valueMaps": {
+    "chip_type": {
+      "0": "BL0937",
+      "1": "HLW8012",
+      "2": "HLW8032",
+      "3": "BL0942",
+      "4": "BL0942"
+    },
+    "sel_pin_lv": {
+      "0": "active-low",
+      "1": "active-high"
+    },
+    "netled_lv": {
+      "0": "active-low",
+      "1": "active-high"
+    }
+  }
+}
