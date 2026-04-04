@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <div class="item">
-      <h4 v-if="peers.length">SSDP Devices</h4>
+    <div class="item item--ssdp" v-if="peers.length">
+      <h4>SSDP Devices</h4>
       <p v-for="peer in peers" v-bind:key="peer.url"><a target="_blank" v-bind:href="peer.url">{{peer.name}}</a></p>
     </div>
-    <div class="item">
+    <div class="item item--current">
       <h4>Current Device</h4>
       <p>Uptime: {{ formattedUptime }}</p>
       <p>Release: {{build}}</p>
@@ -18,27 +18,29 @@
       <p>Flags: {{flags}}</p>
       <p>Version: {{currentversion}} <span v-html="lateststr"></span></p>
       <p v-if="error">Error: {{error}}</p>
-      <h4>Export Current Template</h4>
-      <p>Please complete all missing details before submitting a new template to <a href="https://www.elektroda.com/rtvforum/forum390.html" target="_blank" rel="noopener noreferrer">Elektroda</a>.</p>
-	  <textarea id="deviceTemplate"  placeholder="Template will appear here. If this box is empty, template generation may have failed." style="vertical-align: top; width: 300px; height:500px"></textarea>
-    <br>
-          <button @click="getTemplateAsFile">Download template</button>
-          <button @click="getTemplateAsClipboard">Copy to clipboard</button>
+      <h4 class="export-title">Export Current Template</h4>
+      <p class="templateNote">Please complete all missing details before submitting a new template to <a href="https://www.elektroda.com/rtvforum/forum390.html" target="_blank" rel="noopener noreferrer">Elektroda</a>.</p>
+	  <textarea id="deviceTemplate" class="templateBox" placeholder="Template will appear here. If this box is empty, template generation may have failed."></textarea>
+
+      <div class="button-row">
+        <button @click="getTemplateAsFile">Download template</button>
+        <button @click="getTemplateAsClipboard">Copy to clipboard</button>
+      </div>
 
     </div>
 
-    <div class="item" v-if="supportsClientDeviceDB" style="width: 300px;">
+    <div class="item item--templates" v-if="supportsClientDeviceDB">
       <h4>Device Templates</h4>
 	  <p>Here you can apply an existing template (configuration) to your device. The template list is loaded from <a href="https://openbekeniot.github.io/webapp/devicesList.html">here</a>. </p>
 	  <p>If you have questions, please ask on our forum <a href="https://www.elektroda.com/rtvforum/forum390.html">here</a>. </p>
       Chipset:
-      <select v-model="selectedChipset">
+      <select class="chipset-select" v-model="selectedChipset">
         <option v-for="chip in chipsets" :value="chip" :key="chip">{{chip}}</option>
       </select>
       {{ (filteredDevices || []).length - 1 }} devices
       <br/><br/>
 
-      <select v-model="selectedDevice" style="width: 250px;">
+      <select class="device-select" v-model="selectedDevice">
         <option v-for="dev in filteredDevices" :value="dev" :key="dev">{{ getDeviceDisplayName(dev) }}</option>
       </select>
 
@@ -51,10 +53,10 @@
       </div>
     </div>
 
-    <div class="item" style="width: 300px;">
+    <div class="item item--pins">
       <h4>Pin Settings</h4>
 	  <p>Configure your device pins here. Note that some pin roles require a second channel field, which is currently only available in the native UI. LED channel order is R, G, B, C, W (first channel is Red, second is Green, etc.).</p>
-      <div v-for="(role, index) in pins.roles" :key="index">
+      <div class="pin-row" v-for="(role, index) in pins.roles" :key="index">
         <span class="pin-index">{{index}}</span>
         <select v-model="pins.roles[index]">
           <option v-for="(name, index2) in pins.rolenames" :value="index2" :key="index2" :selected="(role == index2)">{{name}}</option>
@@ -63,19 +65,25 @@
       </div>
 
       <br/>
-      <label for="deviceFlag" style="width:75px; display: inline-block;">Flags:</label>&nbsp;<input id="deviceFlag" v-model="deviceFlag" /><br/>
-      <label for="deviceCommand" style="width:75px; display: inline-block;">Command:</label>&nbsp;<input id="deviceCommand" v-model="deviceCommand" placeholder="Startup command"/><br/>
+      <div class="kv-row">
+        <label for="deviceFlag">Flags:</label>
+        <input id="deviceFlag" v-model="deviceFlag" />
+      </div>
+      <div class="kv-row">
+        <label for="deviceCommand">Command:</label>
+        <input id="deviceCommand" v-model="deviceCommand" placeholder="Startup command"/>
+      </div>
 
-      <button @click="savePins">Save pin settings</button>
+      <button class="pins-save" @click="savePins">Save pin settings</button>
       <br/>
 	  You may need to reboot the device for changes to take effect.
     </div>
-    <div class="item" style="width: 300px;">
+    <div class="item item--channels">
       <h4>Channel Types</h4>
 	  <p>Channel types/roles are primarily used with TuyaMCU devices and are intended for advanced users. They are also useful for creating advanced scriptable devices and for testing.</p>
 	  <p>Setting a type for given channel may cause a special control to appear on the main web UI page. For example, a slider for dimmer channel or a radio selection box for a fan speed channel.</p>
 	  <p>Do not change these settings unless you understand the implications.</p>
-      <div v-for="(role, index) in channelTypes.types" :key="index">
+      <div class="channel-row" v-for="(role, index) in channelTypes.types" :key="index">
         <span class="channel-index">{{index}}</span>
         <select v-model="channelTypes.types[index]">
           <option v-for="(name, index2) in channelTypes.typenames" :value="index2" :key="index2" :selected="(role == index2)">{{name}}</option>
@@ -705,16 +713,142 @@
 </script>
 
 <style scoped>
+  /* Layout: responsive flex columns with weighted widths (no phantom SSDP column, no centering) */
   .container {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 18px;
+    padding: 10px 12px;
+  }
+
+  /* Make sizing predictable for inputs/selects inside the component */
+  .container, .container * {
+    box-sizing: border-box;
   }
 
   .item {
-    padding: 0 15px;
+    padding: 0;
+    min-width: 220px;
   }
+
+  /* Weighted columns (not equal width)
+     Tuned so a typical 1366px-wide viewport still fits 4 columns in most cases. */
+  .item--ssdp      { flex: 0.7 1 220px; }
+  .item--current   { flex: 2.1 1 420px; min-width: 320px; }
+  .item--templates { flex: 1.0 1 270px; }
+  .item--pins      { flex: 0.9 1 250px; }
+  .item--channels  { flex: 0.8 1 240px; }
+
+  /* Typography / spacing */
+  h4 { margin: 0 0 8px; }
+  p  { margin: 0 0 6px; }
+  .item--current p { line-height: 1.35; }
+
+  /* Export template */
+  .export-title { margin-top: 14px; }
+  .templateBox {
+    width: 100%;
+    min-width: 0;
+    height: 460px;
+    max-height: 60vh;
+    resize: vertical;
+    vertical-align: top;
+  }
+
+  /* Keep the JSON box from becoming absurdly wide on large screens */
+  .item--current .templateBox,
+  .item--current .button-row,
+  .item--current .templateNote {
+    width: 75%;
+    max-width: 100%;
+  }
+
+
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .pins-save {
+    margin-top: 10px;
+    margin-bottom: 6px;
+  }
+
+  /* Device Templates selects */
+  .device-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Pin settings rows */
+  .pin-row {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) 56px;
+    gap: 8px;
+    align-items: center;
+    margin: 2px 0;
+  }
+
   .pin-index {
     display: inline-block;
-    width: 20px;
+    width: 22px;
+  }
+
+  .pin-row select,
+  .pin-row input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .pin-row input[type="number"] {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  /* Flags/Command: aligned label + input */
+  .kv-row {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: 8px;
+    align-items: center;
+    margin: 6px 0;
+  }
+  .kv-row label { margin: 0; }
+  .kv-row input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Channel types rows */
+  .channel-row {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    gap: 8px;
+    align-items: center;
+    margin: 2px 0;
+  }
+
+  .channel-index {
+    display: inline-block;
+    width: 22px;
+  }
+
+  .channel-row select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Small-screen: reduce gaps and textarea height */
+  @media (max-width: 700px) {
+    .container { gap: 14px; padding: 10px 10px; }
+    .templateBox { height: 340px; }
+    .item--current .templateBox,
+    .item--current .button-row,
+    .item--current .templateNote { width: 100%; }
+
   }
 </style>
