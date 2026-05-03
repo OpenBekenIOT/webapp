@@ -7970,6 +7970,34 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic3979012.html"
     },
     {
+      "vendor": "MOES",
+      "bDetailed": "0",
+      "name": "WiFi Smart Plug with Energy Monitoring",
+      "model": "WP-ZK-EU16M",
+      "chip": "BK7231T",
+      "board": "WB2S",
+      "keywords": [
+        "EU plug",
+        "Schuko",
+        "16A",
+        "power metering",
+        "BL0937",
+        "Tuya",
+        "Smart Life"
+      ],
+      "pins": {
+        "6": "LED_n;1",
+        "7": "BL0937CF;1",
+        "8": "BL0937CF1;1",
+        "10": "Btn;1",
+        "24": "BL0937SEL;1",
+        "26": "Rel;1"
+      },
+      "command": "startDriver BL0937",
+      "image": "https://obrazki.elektroda.pl/5163628800_1777794062.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4172713.html"
+    },    
+    {
       "vendor": "DELTACO",
       "bDetailed": "0",
       "name": "RGB Lamp E27",
