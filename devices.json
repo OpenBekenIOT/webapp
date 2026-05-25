@@ -12197,6 +12197,33 @@
       "wiki": "https://www.elektroda.pl/rtvforum/topic4088414.html"
     },
     {
+      "vendor": "LoraTap",
+      "bDetailed": "0",
+      "name": "WiFi Roller Shutter Curtain Light Switch",
+      "model": "SC500W",
+      "chip": "BK7231N",
+      "board": "CB2S",
+      "flags": "0",
+      "keywords": [
+        "CHENGYUAN",
+        "Active Up/Down Buttons",
+        "No Tuya uC",
+        "CY49F-5V-F-Y",
+        "blinds"
+      ],
+      "pins": {
+        "6": "dInput_n;4;1",
+        "7": "dInput_n;3;1",
+        "8": "dInput_n;5;1",
+        "10": "WifiLED_n;0",
+        "24": "Rel;1",
+        "26": "Rel;2"
+      },
+      "command": "PowerSave 1\r\nsetChannelType 1 toggle\r\nsetChannelType 2 toggle\r\nsetChannelType 3 readonly\r\nsetChannelType 4 readonly\r\nsetChannelType 5 readonly\r\nsetChannelLabel 1 Up\r\nsetChannelLabel 2 Down\r\nsetChannelLabel 3 ButtonUp\r\nsetChannelLabel 4 ButtonDown\r\nsetChannelLabel 5 ButtonPairing\r\naddChangeHandler Channel1 == 1 setChannel 2 0\r\naddChangeHandler Channel2 == 1 setChannel 1 0\r\naddChangeHandler Channel3 == 1 setChannel 1 1\r\naddChangeHandler Channel4 == 1 setChannel 2 1\r\naddChangeHandler Channel3 == 0 setChannel 1 0\r\naddChangeHandler Channel4 == 0 setChannel 2 0",
+      "image": "https://obrazki.elektroda.pl/1036680200_1779623083.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4174621.html"
+    },    
+    {
       "vendor": "Tuya",
       "bDetailed": "1",
       "name": "Shutters rollers controller module",
