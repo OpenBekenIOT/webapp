@@ -9195,6 +9195,31 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4161922.html"
     },
     {
+      "vendor": "ACDC Dynamics",
+      "bDetailed": "1",
+      "name": " 230VAC 40A Smart WIFI DIN Timer/Switch/PowerMonitor",
+      "model": "ATMS4002",
+      "chip": "BK7231N",
+      "board": "CBU",
+      "flags": "1024",
+      "keywords": [
+        "DIN rail",
+        "energy monitoring",
+        "BL0942",
+        "relay module"
+      ],
+      "pins": {
+        "6": "BridgeFWD;1",
+        "7": "BridgeREV;1",
+        "8": "Btn;1",
+        "20": "WifiLED_n;0",
+        "22": "LED;1"
+      },
+      "command": "startDriver BL0942",
+      "image": "https://obrazki.elektroda.pl/4341052300_1780350745.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4175341.html"
+    },    
+    {
       "vendor": "Action",
       "bDetailed": "0",
       "name": "LSC Smart Plug (with Energy Meter) - Variant #2",
