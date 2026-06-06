@@ -112,13 +112,13 @@ function hideNotNeeded()
 {
   var selectType = document.getElementById("selectType");
   var mode = selectType.value;
-  var elements = document.querySelectorAll("#forumFilter");
+  var elements = document.querySelectorAll(".forumFilter");
 	for (var i = 0; i < elements.length; i++) {
-		elements[i].style.display = mode == "guide" ? "block" : "none";
+		elements[i].hidden = mode != "guide";
 	}
-   elements = document.querySelectorAll("#cutterFilter");
+   elements = document.querySelectorAll(".cutterFilter");
 	for (var i = 0; i < elements.length; i++) {
-		elements[i].style.display = mode == "guide" ?  "none" : "block";
+		elements[i].hidden = mode == "guide";
 	}
 }
 
@@ -156,88 +156,8 @@ function hideNotNeeded()
 		</div>
 	  </div>
 	  
-	  <div class="col-auto" id="forumFilter">
-		<label class="mr-sm-2" for="filter_BK7231N"></label>
-		<div class="form-check mb-2">
-		  <input class="form-check-input" type="checkbox" id="filter_BK7231N" checked>
-		  <label class="form-check-label" for="filter_BK7231N">
-			BK7231N
-		  </label>
-		</div>
-	  </div>
-	  <div class="col-auto" id="forumFilter">
-		<label class="mr-sm-2" for="filter_BK7231T"></label>
-		<div class="form-check mb-2">
-		  <input class="form-check-input" type="checkbox" id="filter_BK7231T" checked>
-		  <label class="form-check-label" for="filter_BK7231T">
-			BK7231T
-		  </label>
-		</div>
-	  </div>
-	  <div class="col-auto" id="forumFilter">
-		<label class="mr-sm-2" for="filter_XR809"></label>
-		<div class="form-check mb-2">
-		  <input class="form-check-input" type="checkbox" id="filter_XR809" checked>
-		  <label class="form-check-label" for="filter_XR809">
-			XR809
-		  </label>
-		</div>
-	  </div>
-	  <div class="col-auto" id="forumFilter">
-		<label class="mr-sm-2" for="filter_BL602"></label>
-		<div class="form-check mb-2">
-		  <input class="form-check-input" type="checkbox" id="filter_BL602" checked>
-		  <label class="form-check-label" for="filter_BL602">
-			BL602
-		  </label>
-		</div>
-	  </div>
-	  <div class="col-auto" id="forumFilter">
-		<label class="mr-sm-2" for="filter_W80X"></label>
-		<div class="form-check mb-2">
-		  <input class="form-check-input" type="checkbox" id="filter_W80X" checked>
-		  <label class="form-check-label" for="filter_W80X">
-			W80X
-		  </label>
-		</div>
-	  </div>
-	  <div class="col-auto" id="forumFilter">
-		<label class="mr-sm-2" for="filter_W60X"></label>
-		<div class="form-check mb-2">
-		  <input class="form-check-input" type="checkbox" id="filter_W60X" checked>
-		  <label class="form-check-label" for="filter_W60X">
-			W60X
-			</label>
-			</div>
-			</div>
-			<div class="col-auto" id="forumFilter">
-			  <label class="mr-sm-2" for="filter_LN882H"></label>
-			  <div class="form-check mb-2">
-				<input class="form-check-input" type="checkbox" id="filter_LN882H" checked>
-				<label class="form-check-label" for="filter_LN882H">
-				  LN882H
-				  </label>
-				  </div>
-				  </div>
-			<div class="col-auto" id="forumFilter">
-			<label class="mr-sm-2" for="filter_ESP82XX"></label>
-			<div class="form-check mb-2">
-			<input class="form-check-input" type="checkbox" id="filter_ESP82XX" checked>
-			<label class="form-check-label" for="filter_ESP82XX">
-			ESP82XX
-			</label>
-			</div>
-			</div>
-			<div class="col-auto" id="forumFilter">
-			<label class="mr-sm-2" for="filter_ESP32"></label>
-			<div class="form-check mb-2">
-			<input class="form-check-input" type="checkbox" id="filter_ESP32" checked>
-			<label class="form-check-label" for="filter_ESP32">
-			ESP32
-			</label>
-			</div>
-			</div>
-			<div class="col-auto" id="forumFilter">
+	  <div id="chipFiltersContainer"></div>
+			<div class="col-auto forumFilter">
 			<label class="mr-sm-2" for="filter_detailed"></label>
 			<div class="form-check mb-2">
 			<input class="form-check-input" type="checkbox" id="filter_detailed">
@@ -251,12 +171,12 @@ function hideNotNeeded()
 	</div>	
   </div>
 </form>
-<h6 id="forumFilter">NOTE: BL0937, BL0942 and CSE7766 (HLW8032) are chips used for energy metering.</h6>
-<h6 id="forumFilter">NOTE: SM2135, BP1658 and BP5758 are "I2C" RGBCW LED drivers.</h6>
-<h6 id="forumFilter">NOTE: Type filter "RGBCW" to find RGBCW devices, try also "4CH", "relay", try shop names, like "Action", "Blitzwolf", "Aubess", etc...</h6>
-<h6 id="forumFilter">NOTE: If config template is missing, check linked topic, it may not been just entered in Database</h6>
-<h6 id="cutterFilter">NOTE: Following list is fetched from Cloudcutter repository. The configs are extracted from 2MB device dumps.</h6>
-<h6 id="cutterFilter">NOTE: The configs here may be incomplete.</h6>
+<h6 class="forumFilter">NOTE: BL0937, BL0942 and CSE7766 (HLW8032) are chips used for energy metering.</h6>
+<h6 class="forumFilter">NOTE: SM2135, BP1658 and BP5758 are "I2C" RGBCW LED drivers.</h6>
+<h6 class="forumFilter">NOTE: Type filter "RGBCW" to find RGBCW devices, try also "4CH", "relay", try shop names, like "Action", "Blitzwolf", "Aubess", etc...</h6>
+<h6 class="forumFilter">NOTE: If config template is missing, check linked topic, it may not been just entered in Database</h6>
+<h6 class="cutterFilter">NOTE: Following list is fetched from Cloudcutter repository. The configs are extracted from 2MB device dumps.</h6>
+<h6 class="cutterFilter">NOTE: The configs here may be incomplete.</h6>
 <p id="demo"></p>
 <h6 id="g_state">Table is loading.</h6>
 <table class="table table-image">
@@ -276,6 +196,153 @@ function hideNotNeeded()
 <script>
 var g_database;
 var g_cloudCuttable;
+var g_chipFilters = [];
+var g_chipFilterLookup = {};
+var g_chipFilterConfigs = [
+	{ key: "BK7231N", label: "BK7231N", matches: function(chip) { return chip === "BK7231N" || chip === "BK7231M" || chip === "BL2028N" || chip === "T34"; } },
+	{ key: "BK7238", label: "BK7238", matches: function(chip) { return chip === "BK7238"; } },
+	{ key: "BK7252", label: "BK7252", matches: function(chip) { return chip === "BK7252"; } },
+	{ key: "BK7252N", label: "BK7252N", matches: function(chip) { return chip === "BK7252N"; } },
+	{ key: "BL602", label: "BL602", matches: function(chip) { return chip === "BL602"; } },
+	{ key: "ECR6600", label: "ECR6600", matches: function(chip) { return chip === "ECR6600"; } },
+	{ key: "ESP32", label: "ESP32*", matches: function(chip) { return chip != null && chip.toUpperCase().indexOf("ESP32") === 0; } },
+	{ key: "ESP82XX", label: "ESP82XX", matches: function(chip) { return chip === "ESP8266" || chip === "ESP8285"; } },
+	{ key: "LN8825", label: "LN8825", matches: function(chip) { return chip === "LN8825"; } },
+	{ key: "LN882H", label: "LN882H", matches: function(chip) { return chip === "LN882H"; } },
+	{ key: "RDA5981", label: "RDA5981", matches: function(chip) { return chip === "RDA5981"; } },
+	{ key: "RTL8710AM", label: "RTL8710AM", matches: function(chip) { return chip === "RTL8710AM"; } },
+	{ key: "RTL8710B", label: "RTL8710B", matches: function(chip) { return chip === "RTL8710B"; } },
+	{ key: "RTL87X0C", label: "RTL87X0C", matches: function(chip) { return chip === "RTL87X0C" || (chip != null && chip.toUpperCase().indexOf("W701-") === 0); } },
+	{ key: "TR6260", label: "TR6260", matches: function(chip) { return chip === "TR6260"; } },
+	{ key: "TXW81X", label: "TXW81X", matches: function(chip) { return chip === "TXW81X"; } },
+	{ key: "W60X", label: "W60X", matches: function(chip) { return chip === "W600" || chip === "W601"; } },
+	{ key: "W80X", label: "W80X", matches: function(chip) { return chip === "W800" || chip === "W801" || chip === "W803"; } },
+	{ key: "XR806", label: "XR806", matches: function(chip) { return chip === "XR806"; } },
+	{ key: "XR809", label: "XR809", matches: function(chip) { return chip === "XR809"; } },
+	{ key: "XR872", label: "XR872", matches: function(chip) { return chip === "XR872"; } }
+];
+
+function makeChipFilterId(key) {
+	return "filter_chip_" + String(key).replace(/[^A-Za-z0-9]+/g, "_");
+}
+
+function splitSearchTerms(text) {
+	if(text == null) {
+		return [];
+	}
+	return text.toLowerCase().trim().split(/\s+/).filter(function(term) {
+		return term.length > 0;
+	});
+}
+
+function matchesSearchTerms(parts, terms) {
+	if(terms == null || terms.length === 0) {
+		return true;
+	}
+	var haystack = parts.join(" ").toLowerCase();
+	for(var i = 0; i < terms.length; i++) {
+		if(haystack.includes(terms[i]) == false) {
+			return false;
+		}
+	}
+	return true;
+}
+
+function getChipSearchAliases(chip) {
+	var aliases = [];
+	var filterKey = g_chipFilterLookup[chip];
+	if(filterKey != null) {
+		aliases.push(filterKey);
+		for(var i = 0; i < g_chipFilterConfigs.length; i++) {
+			if(g_chipFilterConfigs[i].key === filterKey && g_chipFilterConfigs[i].label !== filterKey) {
+				aliases.push(g_chipFilterConfigs[i].label);
+				break;
+			}
+		}
+	}
+	if(chip === "BK7231M" || chip === "BL2028N" || chip === "T34") {
+		aliases.push("BK7231N");
+	}
+	return aliases;
+}
+
+function buildChipFilters(devices) {
+	var chipCounts = {};
+	var chipNames = [];
+	var i;
+	for(i = 0; i < devices.length; i++) {
+		var chip = devices[i].chip;
+		if(chip == null || chip.length === 0) {
+			continue;
+		}
+		if(chipCounts[chip] == null) {
+			chipCounts[chip] = 0;
+			chipNames.push(chip);
+		}
+		chipCounts[chip]++;
+	}
+	g_chipFilters = [];
+	g_chipFilterLookup = {};
+	for(i = 0; i < g_chipFilterConfigs.length; i++) {
+		var family = g_chipFilterConfigs[i];
+		var familyCount = 0;
+		for(var j = 0; j < chipNames.length; j++) {
+			var chipName = chipNames[j];
+			if(family.matches(chipName)) {
+				familyCount += chipCounts[chipName];
+				g_chipFilterLookup[chipName] = family.key;
+			}
+		}
+		g_chipFilters.push({
+			key: family.key,
+			label: family.label,
+			count: familyCount,
+			checkboxId: makeChipFilterId(family.key)
+		});
+	}
+	renderChipFilters();
+}
+
+function renderChipFilters() {
+	var container = document.getElementById("chipFiltersContainer");
+	container.innerHTML = "";
+	for(var i = 0; i < g_chipFilters.length; i++) {
+		var filter = g_chipFilters[i];
+		var wrapper = document.createElement("div");
+		wrapper.className = "col-auto forumFilter d-inline-block";
+		var formCheck = document.createElement("div");
+		formCheck.className = "form-check mb-2";
+		var input = document.createElement("input");
+		input.className = "form-check-input";
+		input.type = "checkbox";
+		input.id = filter.checkboxId;
+		input.checked = true;
+		input.title = filter.count + " devices";
+		var label = document.createElement("label");
+		label.className = "form-check-label";
+		label.htmlFor = filter.checkboxId;
+		label.innerText = filter.label;
+		label.title = filter.count + " devices";
+		formCheck.appendChild(input);
+		formCheck.appendChild(label);
+		wrapper.appendChild(formCheck);
+		container.appendChild(wrapper);
+	}
+	hideNotNeeded();
+}
+
+function isChipAllowedByFilters(chip) {
+	var filterKey = g_chipFilterLookup[chip];
+	if(filterKey == null) {
+		return true;
+	}
+	var checkbox = document.getElementById(makeChipFilterId(filterKey));
+	if(checkbox == null) {
+		return true;
+	}
+	return checkbox.checked;
+}
+
 var getJSON = function(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -308,6 +375,7 @@ function processJSON(json) {
 		alert("JSON for Guides/Reviews get error? JSON was NULL");
 	}
 	g_database = json;
+	buildChipFilters(json.devices);
 	refreshJSON();
 }
 function refreshForFilters() {
@@ -497,17 +565,9 @@ function refreshJSON() {
 
 
  //var s = "";
-  var filter_BK7231T = document.getElementById("filter_BK7231T").checked;
   var filter_text = document.getElementById("filter_text").value;
-  var filter_BK7231N = document.getElementById("filter_BK7231N").checked;
-  var filter_XR809 = document.getElementById("filter_XR809").checked;
-  var filter_BL602 = document.getElementById("filter_BL602").checked;
-  var filter_ESP82XX = document.getElementById("filter_ESP82XX").checked;
-  var filter_ESP32 = document.getElementById("filter_ESP32").checked;
+  var filter_terms = splitSearchTerms(filter_text);
   var filter_detailed = document.getElementById("filter_detailed").checked;
-  var filter_W80X = document.getElementById("filter_W80X").checked;
-  var filter_W60X = document.getElementById("filter_W60X").checked;
-  var filter_LN882H = document.getElementById("filter_LN882H").checked;
   var g_state = document.getElementById("g_state");
   var selectMax = document.getElementById("selectMax");
   var selectType = document.getElementById("selectType");
@@ -559,62 +619,9 @@ function refreshJSON() {
 				name = name +" (" + model + ")";
 			}
 		}
-		if(filter_BK7231T == false)
+		if(isChipAllowedByFilters(chip) == false)
 		{
-			if(chip == "BK7231T")
-			{
-				continue;
-			}
-		}
-		if(filter_BK7231N == false)
-		{
-			if(chip == "BK7231N")
-			{
-				continue;
-			}
-		}
-		if(filter_XR809 == false)
-		{
-			if(chip == "XR809")
-			{
-				continue;
-			}
-		}
-		if(filter_ESP82XX == false)
-		{
-			if(chip == "ESP8266" || chip == "ESP8285")
-			{
-				continue;
-			}
-		}
-		if(filter_ESP32 == false)
-		{
-			if(chip.toUpperCase().includes("ESP32"))
-			{
-				continue;
-			}
-		}
-		if(filter_W60X == false)
-		{
-			if(chip == "W600" || chip == "W601")
-			{
-				continue;
-			}
-		}
-		if(filter_LN882H == false)
-		{
-			if(chip == "LN882H")
-			{
-				continue;
-			}
-		}
-		
-		if(filter_W80X == false)
-		{
-			if(chip == "W800" || chip == "W801")
-			{
-				continue;
-			}
+			continue;
 		}
 		if(filter_detailed)
 		{
@@ -625,13 +632,6 @@ function refreshJSON() {
 				continue;
 			if(bDetailed != null && bDetailed == "0")
 				continue;
-		}
-		if(filter_BL602 == false)
-		{
-			if(chip == "BL602")
-			{
-				continue;
-			}
 		}
 		var keywordsString = "";
 		if(keywords == null)
@@ -646,19 +646,8 @@ function refreshJSON() {
 		{
 			wiki = "";
 		}
-		if(filter_text != null){
-			if(filter_text.length > 0)
-			{
-				// at least one of fields must contain
-				if(name.toLowerCase().includes(filter_text.toLowerCase()) == false &&
-				 chipStr.toLowerCase().includes(filter_text.toLowerCase()) == false &&
-				  wiki.toLowerCase().includes(filter_text.toLowerCase()) == false &&
-				  model.toLowerCase().includes(filter_text.toLowerCase()) == false &&
-				   vendor.toLowerCase().includes(filter_text.toLowerCase()) == false
-				 && keywordsString.toLowerCase().includes(filter_text.toLowerCase()) == false) {
-					continue;
-				}
-			}
+		if(matchesSearchTerms([name, chip, board, wiki, model, vendor, keywordsString].concat(getChipSearchAliases(chip)), filter_terms) == false) {
+			continue;
 		}
 		//Do something
 		//s += "Device " + i + " out of " + arrayLength + " is "
@@ -753,15 +742,8 @@ function refreshJSON() {
 		let chipStr = "";
 		let keywords = "";
 
-		if(filter_text != null){
-			if(filter_text.length > 0)
-			{
-				// at least one of fields must contain
-				if(name.toLowerCase().includes(filter_text.toLowerCase()) == false && vendor.toLowerCase().includes(filter_text.toLowerCase()) == false) {
-					//console.log("Skipping cuttable " +name);
-					continue;
-				}
-			}
+		if(matchesSearchTerms([name, vendor], filter_terms) == false) {
+			continue;
 		}
 
 		var tr = document.createElement('tr');   
