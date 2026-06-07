@@ -590,6 +590,10 @@
                         prefix = 'OpenLN8825_';
                         postfix = '_ota.img';
                         break;
+                    case 'GD32VW553': 
+                        prefix = 'OpenGD32VW553_';
+                        postfix = '_ota.img';
+                        break;                        
 		    default:
 			prefix = 'Open' + this.chipset + '_';
                         postfix = '.img';
