@@ -9195,6 +9195,31 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4161922.html"
     },
     {
+      "vendor": "ACDC Dynamics",
+      "bDetailed": "1",
+      "name": " 230VAC 40A Smart WIFI DIN Timer/Switch/PowerMonitor",
+      "model": "ATMS4002",
+      "chip": "BK7231N",
+      "board": "CBU",
+      "flags": "1024",
+      "keywords": [
+        "DIN rail",
+        "energy monitoring",
+        "BL0942",
+        "relay module"
+      ],
+      "pins": {
+        "6": "BridgeFWD;1",
+        "7": "BridgeREV;1",
+        "8": "Btn;1",
+        "20": "WifiLED_n;0",
+        "22": "LED;1"
+      },
+      "command": "startDriver BL0942",
+      "image": "https://obrazki.elektroda.pl/4341052300_1780350745.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4175341.html"
+    },    
+    {
       "vendor": "Action",
       "bDetailed": "0",
       "name": "LSC Smart Plug (with Energy Meter) - Variant #2",
@@ -12222,7 +12247,27 @@
       "command": "PowerSave 1\r\nsetChannelType 1 toggle\r\nsetChannelType 2 toggle\r\nsetChannelType 3 readonly\r\nsetChannelType 4 readonly\r\nsetChannelType 5 readonly\r\nsetChannelLabel 1 Up\r\nsetChannelLabel 2 Down\r\nsetChannelLabel 3 ButtonUp\r\nsetChannelLabel 4 ButtonDown\r\nsetChannelLabel 5 ButtonPairing\r\naddChangeHandler Channel1 == 1 setChannel 2 0\r\naddChangeHandler Channel2 == 1 setChannel 1 0\r\naddChangeHandler Channel3 == 1 setChannel 1 1\r\naddChangeHandler Channel4 == 1 setChannel 2 1\r\naddChangeHandler Channel3 == 0 setChannel 1 0\r\naddChangeHandler Channel4 == 0 setChannel 2 0",
       "image": "https://obrazki.elektroda.pl/1036680200_1779623083.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4174621.html"
-    },    
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "Sixwgh 3Gang Smart Switch",
+      "model": "BW1",
+      "chip": "LN882H",
+      "board": "WB03A",
+      "flags": "134218756",
+      "keywords": ["WH_DLH_Power 3Gang v1.3 251013","rs3tb6o11tgkhkwx"],
+      "pins": {
+        "1": "Btn;1",
+        "3": "WifiLED;0",
+        "5": "Btn;2",
+        "20": "Rel;2",
+        "22": "Rel;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/8901029000_1770886818.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4164747.html"
+    },
     {
       "vendor": "Tuya",
       "bDetailed": "1",
