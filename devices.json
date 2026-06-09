@@ -103,9 +103,9 @@
         "AmebaDplus"
       ],
       "pins": {
-       "17": "PWM;2",
-       "18": "PWM;1",
-       "19": "PWM;3"       
+        "49": "PWM;3",
+        "50": "PWM;1",
+        "51": "PWM;2"  
       },
       "command": "",
       "image": "https://obrazki.elektroda.pl/9231549100_1781039948.png",
