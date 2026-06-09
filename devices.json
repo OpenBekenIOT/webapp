@@ -89,6 +89,27 @@
       "command": "",
       "image": "https://obrazki.elektroda.pl/9015588400_1780378738.png",
       "wiki": "https://www.elektroda.com/rtvforum/topic4175401.html"
+    },
+    {
+      "vendor": "Ai-Thinker",
+      "bDetailed": "0",
+      "name": "NodeMCU Development Board",
+      "model": "NodeMCU-BW20-12F-Kit",
+      "chip": "RTL8721DA",
+      "board": "BW20-12F",
+      "flags": "0",
+      "keywords": [
+        "AmebaDp",
+        "AmebaDplus"
+      ],
+      "pins": {
+       "17": "PWM;2",
+       "18": "PWM;1",
+       "19": "PWM;3"       
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/9231549100_1781039948.png",
+      "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21918395#21918395"
     },    
     {
       "vendor": "Smart Ape",
