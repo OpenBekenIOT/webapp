@@ -71,6 +71,26 @@
       "wiki": ""
     },
     {
+      "vendor": "LCSC",
+      "bDetailed": "0",
+      "name": "GigaDevice Development Board",
+      "model": "LCKFB-GD32VW553-HMQ6",
+      "chip": "GD32VW553",
+      "board": "on PCB",
+      "flags": "0",
+      "keywords": [
+        "GD32VW553HMQ6",
+        "GD32"
+      ],
+      "pins": {
+       "0": "Btn_pd_n;1",
+       "45": "LED;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/9015588400_1780378738.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4175401.html"
+    },    
+    {
       "vendor": "Smart Ape",
       "bDetailed": "0",
       "name": "10A/240V Smart Plug with Energy Meter",
