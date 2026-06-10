@@ -103,7 +103,9 @@
         "XR806 鸿蒙无线模组",
         "XR806 核心板",
         "Harmony wireless module",
-        "USB-C"
+        "USB-C",
+        "XRadio",
+        "xradiotech"
       ],
       "pins": {
         "3": "Btn_pd;1",
