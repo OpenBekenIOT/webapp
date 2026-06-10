@@ -80,7 +80,8 @@
       "flags": "0",
       "keywords": [
         "GD32VW553HMQ6",
-        "GD32"
+        "GD32",
+        "USB-C"
       ],
       "pins": {
        "0": "Btn_pd_n;1",
@@ -91,6 +92,28 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4175401.html"
     },
     {
+      "vendor": "Allwinner",
+      "bDetailed": "0",
+      "name": "Development Board",
+      "model": "XR806AF2L_Baseboard V1.0",
+      "chip": "XR806",
+      "board": "XR806AF2L_CoreBoard",
+      "flags": "0",
+      "keywords": [
+        "XR806 鸿蒙无线模组",
+        "XR806 核心板",
+        "Harmony wireless module",
+        "USB-C"
+      ],
+      "pins": {
+        "3": "Btn_pd;1",
+        "13": "LED;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/3977110100_1741084327.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4109971.html"
+    },    
+    {
       "vendor": "Ai-Thinker",
       "bDetailed": "0",
       "name": "NodeMCU Development Board",
@@ -100,7 +123,8 @@
       "flags": "0",
       "keywords": [
         "AmebaDp",
-        "AmebaDplus"
+        "AmebaDplus",
+        "USB-C"
       ],
       "pins": {
         "49": "PWM;3",
