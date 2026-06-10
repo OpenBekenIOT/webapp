@@ -1738,6 +1738,29 @@
       "command": "",
       "image": "https://obrazki.elektroda.pl/1210714800_1736792389.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4099399.html"
+    },
+    {
+      "vendor": "SparkleIOT",
+      "bDetailed": "0",
+      "name": "NiceMCU Realtek AmebaD Development Board",
+      "model": "NiceMCU_8720_V1",
+      "chip": "RTL8720D",
+      "board": "BW16E",
+      "flags": "0",
+      "keywords": [
+        "USB-C",
+        "CH340G",
+        "RGB LED",
+        "dev"
+      ],
+      "pins": {
+        "12": "LED_n;0",
+        "13": "LED_n;2",
+        "14": "LED_n;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/2746583000_1752331993.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4130029.html"
     },    
     {
       "vendor": "TEQOOZ",
