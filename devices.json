@@ -1713,6 +1713,33 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic3906443.html"
     },
     {
+      "vendor": "Hi-Link",
+      "bDetailed": "0",
+      "name": "WinnerMicro W80x Development Board",
+      "model": "HLK-W801-KIT-V1.1",
+      "chip": "W801",
+      "board": "on PCB",
+      "flags": "0",
+      "keywords": [
+        "RGB LED",
+        "USB-C",
+        "CH340N",
+        "w800"
+      ],
+      "pins": {
+        "21": "LED_n;1",
+        "27": "LED_n;7",
+        "32": "LED_n;6",
+        "33": "LED_n;5",
+        "34": "LED_n;4",
+        "41": "LED_n;2",
+        "42": "LED_n;3"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/1210714800_1736792389.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4099399.html"
+    },    
+    {
       "vendor": "TEQOOZ",
       "bDetailed": "1",
       "name": "Tuya 5 Speed Fan Controller by TEQOOZ",
