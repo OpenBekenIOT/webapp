@@ -136,7 +136,25 @@
       "command": "",
       "image": "https://obrazki.elektroda.pl/9231549100_1781039948.png",
       "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21918395#21918395"
-    },    
+    },
+    {
+      "vendor": "SparkleIOT",
+      "bDetailed": "0",
+      "name": "NiceMCU Development Board",
+      "model": "NiceMCU_WB3S_V1",
+      "chip": "BK7238",
+      "board": "XH-WB3S",
+      "flags": "0",
+      "keywords": ["T1","dev"],
+      "pins": {
+        "6": "PWM_n;2",
+        "24": "PWM_n;0",
+        "26": "PWM_n;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/8731894200_1730483606.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4092465.html"      
+    },
     {
       "vendor": "Smart Ape",
       "bDetailed": "0",
