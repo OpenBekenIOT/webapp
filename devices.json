@@ -1716,6 +1716,32 @@
       "vendor": "Hi-Link",
       "bDetailed": "0",
       "name": "WinnerMicro W80x Development Board",
+      "model": "HLK-W800-KIT-V1.0",
+      "chip": "W800",
+      "board": "on PCB",
+      "flags": "0",
+      "keywords": [
+        "RGB LED",
+        "USB-C",
+        "CH340N",
+        "CHT8305C",
+        "Sensylink"
+      ],
+      "pins": {
+        "1": "CHT83XX_SCK;0;0",
+        "4": "CHT83XX_SDA;4;5",
+        "16": "PWM_n;1",
+        "17": "PWM_n;0",
+        "18": "PWM_n;2"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/9764335700_1781156311.png",
+      "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21919043#21919043"
+    },    
+    {
+      "vendor": "Hi-Link",
+      "bDetailed": "0",
+      "name": "WinnerMicro W80x Development Board",
       "model": "HLK-W801-KIT-V1.1",
       "chip": "W801",
       "board": "on PCB",
