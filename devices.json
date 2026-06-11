@@ -1737,6 +1737,32 @@
       "command": "",
       "image": "https://obrazki.elektroda.pl/9764335700_1781156311.png",
       "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21919043#21919043"
+    },
+    {
+      "vendor": "Ai-Thinker",
+      "bDetailed": "0",
+      "name": "Bouffalo Lab Development Board",
+      "model": "Ai-M62-32S-Kit",
+      "chip": "BL616",
+      "board": "Ai-M62-32S",
+      "flags": "0",
+      "keywords": [
+        "RGB LED",
+        "USB-C",
+        "CH340C",
+        "A341",
+        "2ATPO-AIM62"
+      ],
+      "pins": {
+        "0": "PWM;2",
+        "1": "PWM;0",
+        "27": "PWM;4",
+        "29": "PWM;3",
+        "30": "PWM;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/9134098700_1775762550.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4170735.html"
     },    
     {
       "vendor": "Hi-Link",
