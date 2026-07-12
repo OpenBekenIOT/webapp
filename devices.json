@@ -826,6 +826,55 @@
       "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21014244#21014244"
     },
     {
+      "vendor": "Immax",
+      "bDetailed": "NeoLite",
+      "name": "NEO LITE Smart Plug 4AC + 4USB, WiFi, TUYA",
+      "model": "Neo Lite",
+      "chip": "RTL8710B",
+      "board": "WR3E",
+      "flags": "1024",
+      "keywords": [
+        "Smart_Plug",
+        "4AC"
+      ],
+      "pins": {
+        "0": "Rel;0",
+        "1": "BL0937CF;0",
+        "8": "BL0937CF1;0",
+        "9": "Rel;2",
+        "10": "BL0937SEL;0",
+        "11": "Rel;1",
+        "12": "Btn_Tgl_All;0",
+        "13": "Rel;3",
+        "15": "WifiLED;0"
+      },
+      "command": "backlog startDriver BL0937; startDriver NTP; SetupEnergyStats 1 60 60; PowerSave 0",
+      "image": "https://obrazki.elektroda.pl/6834887100_1783616216.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4178323.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "Gembird Power Strip AC+USB",
+      "model": "TSL-PS-S4U-01-W",
+      "chip": "BK7231N",
+      "board": "CB2S",
+      "flags": "2098180",
+      "keywords": [
+      ],
+      "pins": {
+        "6": "Rel;5;0",
+        "7": "Rel;1;0",
+        "8": "Rel;2;0",
+        "23": "Btn;5;1",
+        "24": "Rel;4",
+        "26": "Rel;3"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/9575166600_1783414727.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4178113.html"
+    },    
+    {
       "vendor": "Tuya",
       "bDetailed": "0",
       "name": "Tuya IR+RF Remote",
