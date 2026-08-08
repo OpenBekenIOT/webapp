@@ -19,6 +19,26 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic3895572.html#20033093"
     },
     {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "Crabtek Smart Plug 10A",
+      "model": "CTE-P13",
+      "chip": "RTL87X0C",
+      "board": "WBR2",
+      "flags": "1028",
+      "keywords": [
+        "2200w"
+      ],
+      "pins": {
+        "11": "Btn;1",
+        "14": "WifiLED;0",
+        "19": "Rel;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/3841539600_1786160985.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4180488.html"
+    },
+    {
       "vendor": "Zemismart",
       "bDetailed": "0",
       "name": "Matter LED Light Bulb RGBCW E27 Dimmable 7W",
