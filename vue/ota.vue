@@ -145,7 +145,7 @@
 
         /* Check if the chipset uses RBL files */
         chipSetUsesRBL(){
-            return this.chipset === "BK7231T" || this.chipset === "BK7231N" || this.chipset === "BK7231U" || this.chipset === "BK7238" || this.chipset === "BK7252" || this.chipset === "BK7252N";
+            return this.chipset === "BK7231T" || this.chipset === "BK7231N" || this.chipset === "BK7231U" || this.chipset === "BK7238" || this.chipset === "BK7252" || this.chipset === "BK7252N" || this.chipset == "BK7236" || this.chipset == "BK7236N" || this.chipset == "BK7239N";
         },
         /* Extract OTA variant from currentversion, e.g. 1.18.233_hlw8112 -> hlw8112 */
         getOtaVariantFromCurrentVersion(){
@@ -474,8 +474,20 @@
                         prefix = 'OpenBK7231U_';
                         postfix = '.rbl';
                         break;
+                    case 'BK7236':
+                        prefix = 'OpenBK7236_';
+                        postfix = '.rbl';
+                        break;
+                    case 'BK7236N':
+                        prefix = 'OpenBK7236N_';
+                        postfix = '.rbl';
+                        break;
                     case 'BK7238':
                         prefix = 'OpenBK7238_';
+                        postfix = '.rbl';
+                        break;
+                    case 'BK7239N':
+                        prefix = 'OpenBK7239N_';
                         postfix = '.rbl';
                         break;
                     case 'BK7252':
