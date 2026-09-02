@@ -6697,6 +6697,22 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4135429.html"
     },
     {
+      "vendor": "EXTRASTAR",
+      "bDetailed": "0",
+      "name": "E14 Smart Bulb",
+      "chip": "BK7231N",
+      "board": "CBLC5",
+      "flags": "5120",
+      "keywords": ["candle", "c37"],
+      "pins": {
+        "24": "BP5758D_DAT;0",
+        "26": "BP5758D_CLK;0"
+      },
+      "command": "led_enableAll 1",
+      "image": "https://obrazki.elektroda.pl/7916692600_1786905600.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4181039.html"
+    },
+    {
       "vendor": "Tuya",
       "bDetailed": "0",
       "name": "Cabinet CW LED Lamp - PIR Motion Sensor - USB Rechargeable",
