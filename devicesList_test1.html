@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Device Browser</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { padding: 20px; }
+    .device-card { margin-bottom: 20px; }
+    .filter-label { font-weight: bold; margin-top: 10px; }
+    .tag { margin-right: 5px; }
+    .clear-btn { margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mb-4">IoT Device Browser</h1>
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <label class="filter-label">Chip</label>
+        <select id="chipFilter" class="form-select" multiple></select>
+        <button class="btn btn-sm btn-secondary clear-btn" onclick="clearFilter('chipFilter')">Clear filter</button>
+      </div>
+      <div class="col-md-3">
+        <label class="filter-label">Board</label>
+        <select id="boardFilter" class="form-select" multiple></select>
+        <button class="btn btn-sm btn-secondary clear-btn" onclick="clearFilter('boardFilter')">Clear filter</button>
+      </div>
+      <div class="col-md-3">
+        <label class="filter-label">Vendor</label>
+        <select id="vendorFilter" class="form-select" multiple></select>
+        <button class="btn btn-sm btn-secondary clear-btn" onclick="clearFilter('vendorFilter')">Clear filter</button>
+      </div>
+      <div class="col-md-3">
+        <label class="filter-label">Search Keywords</label>
+        <input type="text" id="keywordSearch" class="form-control" placeholder="e.g., relay, lamp"/>
+        <div id="topKeywords" class="mt-2 small text-muted"></div>
+        <button class="btn btn-sm btn-secondary clear-btn" onclick="clearKeywordFilter()">Clear filter</button>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <p id="deviceCount"></p>
+      </div>
+      <div class="col-md-6 text-end">
+        <label class="me-2">Items per page:</label>
+        <select id="pageSize" class="form-select d-inline-block w-auto">
+          <option>5</option>
+          <option selected>10</option>
+          <option>20</option>
+          <option>50</option>
+          <option>100</option>
+          <option>250</option>
+          <option>500</option>
+          <option>1000</option>
+        </select>
+        <button class="btn btn-sm btn-warning ms-2" onclick="clearAllFilters()">Clear all filters</button>
+      </div>
+    </div>
+    <div id="deviceList" class="row"></div>
+    <nav>
+      <ul class="pagination justify-content-center" id="pagination"></ul>
+    </nav>
+  </div>
+
+  <script>
+    let allDevices = [], filteredDevices = [], currentPage = 1;
+
+    async function loadDevices() {
+      const res = await fetch("https://openbekeniot.github.io/webapp/devices.json");
+      const json = await res.json();
+      allDevices = json.devices;
+      populateFilters();
+      applyFilters();
+      renderTopKeywords();
+    }
+
+    function countOccurrences(key) {
+      const counts = {};
+      allDevices.forEach(d => {
+        const val = d[key];
+        if (val) counts[val] = (counts[val] || 0) + 1;
+      });
+      return counts;
+    }
+
+    function populateFilters() {
+      const chipCounts = countOccurrences("chip");
+      const boardCounts = countOccurrences("board");
+      const vendorCounts = countOccurrences("vendor");
+
+      populateSelect("chipFilter", chipCounts);
+      populateSelect("boardFilter", boardCounts);
+      populateSelect("vendorFilter", vendorCounts);
+    }
+
+    function populateSelect(id, countMap) {
+      const select = document.getElementById(id);
+      select.innerHTML = "";
+      const sortedKeys = Object.keys(countMap).sort((a, b) => countMap[b] - countMap[a]);
+      sortedKeys.forEach(val => {
+        const option = document.createElement("option");
+        option.value = val;
+        option.textContent = `${val} (${countMap[val]})`;
+        select.appendChild(option);
+      });
+    }
+
+    function applyFilters() {
+      const chips = getSelectValues("chipFilter");
+      const boards = getSelectValues("boardFilter");
+      const vendors = getSelectValues("vendorFilter");
+      const keyword = document.getElementById("keywordSearch").value.toLowerCase();
+
+      filteredDevices = allDevices.filter(d =>
+        (chips.length === 0 || chips.includes(d.chip)) &&
+        (boards.length === 0 || boards.includes(d.board)) &&
+        (vendors.length === 0 || vendors.includes(d.vendor)) &&
+        (!keyword || (d.keywords && d.keywords.join(" ").toLowerCase().includes(keyword)))
+      );
+
+      currentPage = 1;
+      renderDevices();
+    }
+
+    function getSelectValues(id) {
+      return Array.from(document.getElementById(id).selectedOptions).map(opt => opt.value);
+    }
+
+    function clearFilter(id) {
+      const select = document.getElementById(id);
+      for (let option of select.options) option.selected = false;
+      applyFilters();
+    }
+
+    function clearKeywordFilter() {
+      document.getElementById("keywordSearch").value = "";
+      applyFilters();
+    }
+
+    function clearAllFilters() {
+      clearFilter("chipFilter");
+      clearFilter("boardFilter");
+      clearFilter("vendorFilter");
+      clearKeywordFilter();
+    }
+
+    function renderDevices() {
+      const list = document.getElementById("deviceList");
+      const count = document.getElementById("deviceCount");
+      const pageSize = parseInt(document.getElementById("pageSize").value);
+
+      const start = (currentPage - 1) * pageSize;
+      const pageItems = filteredDevices.slice(start, start + pageSize);
+
+      list.innerHTML = "";
+      pageItems.forEach(d => {
+        const col = document.createElement("div");
+        col.className = "col-md-6 device-card";
+        col.innerHTML = `
+          <div class="card">
+            <img src="${d.image}" class="card-img-top" alt="Device image">
+            <div class="card-body">
+              <h5 class="card-title">${d.name}</h5>
+              <p class="card-text">
+                <strong>Vendor:</strong> ${d.vendor}<br>
+                <strong>Model:</strong> ${d.model}<br>
+                <strong>Chip:</strong> ${d.chip}<br>
+                <strong>Board:</strong> ${d.board}<br>
+                <strong>Keywords:</strong> ${(d.keywords || []).join(", ")}<br>
+                <a href="${d.wiki}" target="_blank">Wiki</a>
+              </p>
+              <button class="btn btn-sm btn-outline-primary mt-2" onclick='copyJSON(this)'>Copy JSON</button>
+            </div>
+          </div>`;
+        list.appendChild(col);
+      });
+
+      count.textContent = `Showing ${filteredDevices.length} devices.`;
+      renderPagination(Math.ceil(filteredDevices.length / pageSize));
+    }
+
+    function renderPagination(totalPages) {
+      const pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
+      const pages = new Set([1, totalPages]);
+      if (currentPage > 1) pages.add(currentPage - 1);
+      pages.add(currentPage);
+      if (currentPage < totalPages) pages.add(currentPage + 1);
+      const sortedPages = Array.from(pages).filter(p => p >= 1 && p <= totalPages).sort((a, b) => a - b);
+
+      sortedPages.forEach(i => {
+        const li = document.createElement("li");
+        li.className = `page-item ${i === currentPage ? "active" : ""}`;
+        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+        li.addEventListener("click", e => {
+          e.preventDefault();
+          currentPage = i;
+          renderDevices();
+        });
+        pagination.appendChild(li);
+      });
+    }
+
+    function renderTopKeywords() {
+      const keywordCounts = {};
+      allDevices.forEach(d => {
+        (d.keywords || []).forEach(k => {
+          keywordCounts[k] = (keywordCounts[k] || 0) + 1;
+        });
+      });
+      const sorted = Object.entries(keywordCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+      const container = document.getElementById("topKeywords");
+      container.innerHTML = "Top keywords: ";
+      sorted.forEach(([kw, count]) => {
+        const btn = document.createElement("a");
+        btn.href = "#";
+        btn.className = "badge bg-secondary me-1 mb-1";
+        btn.textContent = `${kw} (${count})`;
+        btn.onclick = (e) => {
+          e.preventDefault();
+          document.getElementById("keywordSearch").value = kw;
+          applyFilters();
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    function copyJSON(button) {
+      const card = button.closest(".card");
+      const name = card.querySelector(".card-title").textContent;
+      const device = allDevices.find(d => d.name === name);
+      if (device) {
+        navigator.clipboard.writeText(JSON.stringify(device, null, 2)).then(() => {
+          alert("Device JSON copied to clipboard.");
+        }).catch(err => console.error("Copy failed", err));
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("chipFilter").addEventListener("change", applyFilters);
+      document.getElementById("boardFilter").addEventListener("change", applyFilters);
+      document.getElementById("vendorFilter").addEventListener("change", applyFilters);
+      document.getElementById("keywordSearch").addEventListener("input", applyFilters);
+      document.getElementById("pageSize").addEventListener("change", () => {
+        currentPage = 1;
+        renderDevices();
+      });
+
+      loadDevices();
+    });
+  </script>
+</body>
+</html>

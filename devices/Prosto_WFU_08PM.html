@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>16A 3680W Smart Plug with Energy Monitoring (EU)</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">16A 3680W Smart Plug with Energy Monitoring (EU) (WFU-08PM)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/4824277100_1750330552.png" alt="16A 3680W Smart Plug with Energy Monitoring (EU)">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Prosto</p>
+        <p><strong>Chip:</strong> BK7231T</p>
+        <p><strong>Board:</strong> WB2S</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> socket, tuya</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Prosto",
+  "bDetailed": "0",
+  "name": "16A 3680W Smart Plug with Energy Monitoring (EU)",
+  "model": "WFU-08PM",
+  "chip": "BK7231T",
+  "board": "WB2S",
+  "flags": "1024",
+  "keywords": [
+    "socket",
+    "tuya"
+  ],
+  "pins": {
+    "6": "WifiLED;0",
+    "7": "BL0937CF;2",
+    "8": "BL0937CF1;2",
+    "10": "LED_n;1",
+    "11": "Btn;1",
+    "24": "BL0937SEL;2",
+    "26": "Rel;1"
+  },
+  "command": "powersave 1",
+  "image": "https://obrazki.elektroda.pl/4824277100_1750330552.png",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4126933.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P6 is WifiLED on channel 0<br>- P7 is BL0937CF on channel 2<br>- P8 is BL0937CF1 on channel 2<br>- P10 is LED_n on channel 1<br>- P11 is Btn on channel 1<br>- P24 is BL0937SEL on channel 2<br>- P26 is Rel on channel 1<br>- Flags are set to 1024<br>- StartupCommand is set to powersave 1<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4126933.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4126933.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Tuya_LSPA9.html">Tuya AU LSPA9? Smart Socket: Energy Monitoring</a> - 28.6% match</li>
+<li><a href="Tuya_Feu_Smart_Plug_16A.html">Feu Smart Plug 16A</a> - 28.6% match</li>
+<li><a href="Tuya_6000HA.html">Deta Grid Connect Smart Inline Switch</a> - 28.6% match</li>
+<li><a href="Sylvania_Model_Number_75822_Menards.html">Sylvania Smart+ WiFi Plug</a> - 28.6% match</li>
+<li><a href="HomeKit_WHDZ03_Smart_Plug_with_Energy_Monitoring.html">WHDZ03 Smart Plug with Energy Monitoring</a> - 28.6% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

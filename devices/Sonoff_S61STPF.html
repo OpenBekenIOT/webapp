@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sonoff S61s 16A Matter over Wi-Fi Smart Plug (EU)</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Sonoff S61s 16A Matter over Wi-Fi Smart Plug (EU) (S61STPF)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/9129170400_1766188545.png" alt="Sonoff S61s 16A Matter over Wi-Fi Smart Plug (EU)">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Sonoff</p>
+        <p><strong>Chip:</strong> BK7238</p>
+        <p><strong>Board:</strong> WBBK_01P_V1.3</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> E355782, 100-240V, 3840W, EU02C0-V1.2, 20241202</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Sonoff",
+  "bDetailed": "0",
+  "name": "Sonoff S61s 16A Matter over Wi-Fi Smart Plug (EU)",
+  "model": "S61STPF",
+  "chip": "BK7238",
+  "board": "WBBK_01P_V1.3",
+  "flags": "1024",
+  "keywords": [
+    "E355782",
+    "100-240V",
+    "3840W",
+    "EU02C0-V1.2",
+    "20241202"
+  ],
+  "pins": {
+    "0": "LED_n;1",
+    "1": "WifiLED_n;2",
+    "6": "BL0937CF1;0",
+    "8": "BL0937CF;0",
+    "9": "Btn_Tgl_All;1",
+    "24": "BL0937SEL;0",
+    "26": "Rel;1"
+  },
+  "command": "loglevel 0",
+  "image": "https://obrazki.elektroda.pl/9129170400_1766188545.png",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4157852.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P0 is LED_n on channel 1<br>- P1 is WifiLED_n on channel 2<br>- P6 is BL0937CF1 on channel 0<br>- P8 is BL0937CF on channel 0<br>- P9 is Btn_Tgl_All on channel 1<br>- P24 is BL0937SEL on channel 0<br>- P26 is Rel on channel 1<br>- Flags are set to 1024<br>- StartupCommand is set to loglevel 0<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4157852.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4157852.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="BASILUS_BA_TOM16A.html">Casa Conectada 16A Smart Plug with Energy Meter</a> - 42.9% match</li>
+<li><a href="Tuya_RMC021.html">Wifi Smart Plug with Energy Measurement</a> - 42.9% match</li>
+<li><a href="ANTELA_F1s202_EU.html">Smart Plug</a> - 42.9% match</li>
+<li><a href="Tuya_RMC021.html">Wifi Smart Plug with Energy Measurement</a> - 42.9% match</li>
+<li><a href="Hama_00176575.html">16A WiFi Socket with Power Metering 3680W (EU)</a> - 42.9% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

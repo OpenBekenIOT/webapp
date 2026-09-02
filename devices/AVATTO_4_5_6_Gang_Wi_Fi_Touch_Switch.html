@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AVATTO 4/5/6-Gang Wi-Fi Touch Switch</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">AVATTO 4/5/6-Gang Wi-Fi Touch Switch ()</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/3465786200_1675538229.jpg" alt="AVATTO 4/5/6-Gang Wi-Fi Touch Switch">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> AVATTO</p>
+        <p><strong>Chip:</strong> BK7231N</p>
+        <p><strong>Board:</strong> on PCB</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> double switch, 4gang</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "AVATTO",
+  "name": "AVATTO 4/5/6-Gang Wi-Fi Touch Switch",
+  "chip": "BK7231N",
+  "bDetailed": "0",
+  "board": "on PCB",
+  "pins": {
+    "6": "Btn;1",
+    "7": "Rel;1",
+    "8": "LED;1",
+    "14": "Rel;2",
+    "16": "Btn;2",
+    "26": "LED;2",
+    "28": "WifiLED_n;2"
+  },
+  "keywords": [
+    "double switch",
+    "4gang"
+  ],
+  "image": "https://obrazki.elektroda.pl/3465786200_1675538229.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic3954947.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P6 is Btn on channel 1<br>- P7 is Rel on channel 1<br>- P8 is LED on channel 1<br>- P14 is Rel on channel 2<br>- P16 is Btn on channel 2<br>- P26 is LED on channel 2<br>- P28 is WifiLED_n on channel 2<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic3954947.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic3954947.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="KingArt_KING_K3_W.html">Smart Switch 2 Way No Neutral 3 Gang Teardown and Flashing</a> - 44.4% match</li>
+<li><a href="Tuya_WCM1MR.html">RTX WCM1MR Shutter Controller</a> - 28.6% match</li>
+<li><a href="Tuya_ATLO_GDC2_TUYA.html">Smart Garage Door Opener</a> - 28.6% match</li>
+<li><a href="Tuya_SB527.html">SB527 QS-WIFI-ECC02 Shutter Controller</a> - 28.6% match</li>
+<li><a href="BroadLink_SP4L_UK.html">13A 250V Smart Plug (UK)</a> - 28.6% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>
