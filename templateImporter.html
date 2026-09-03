@@ -165,7 +165,33 @@
 
     </div>
   </div>
-  <script type="text/javascript" src="templateParser.js"></script>
+
+<script>
+  (async function () {
+    try {
+      const specPath = 'spec/tuya-spec.json'; // adjust path if your JSON lives elsewhere
+      const resp = await fetch(specPath, { cache: 'no-cache' });
+      if (!resp.ok) throw new Error('Failed to fetch TUYA spec: ' + resp.status);
+      window.TUYA_SPEC = await resp.json();
+
+      // Now inject templateParser.js so it can read window.TUYA_SPEC synchronously at load time
+      const s = document.createElement('script');
+      s.src = 'templateParser.js'; // adjust path if needed
+      s.defer = false; // ensure it runs immediately, after TUYA_SPEC is set
+      document.head.appendChild(s);
+    } catch (err) {
+      console.error('Failed to initialize templateParser: ', err);
+      // Optionally show a visible error in the page:
+      if (document.body) {
+        const e = document.createElement('div');
+        e.style.color = 'red';
+        e.textContent = 'Error: failed to load TUYA spec - templateParser unavailable. See console for details.';
+        document.body.insertBefore(e, document.body.firstChild);
+      }
+    }
+  })();
+</script>
+
   <script type="text/javascript" src="tuyaExporter.js"></script>
   <script>
     var inputText;
