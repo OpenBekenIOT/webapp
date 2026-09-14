@@ -1991,6 +1991,21 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4016922.html"
     },
     {
+      "vendor": "Feit",
+      "bDetailed": "0",
+      "name": "Feit Electric A19 Smart Light Bulb",
+      "model": "BPA800/RGBW/AG/3/UK",      
+      "chip": "BK7238",
+      "board": "",
+      "keywords": ["RGBCW","BP5758D","E26"],
+      "pins": {
+        "24": "BP5758D_DAT",
+        "9": "BP5758D_CLK"
+      },
+      "image": "https://obrazki.elektroda.pl/9274879600_1700769145.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4182326.html"
+    },    
+    {
       "vendor": "eWelink",
       "bDetailed": "0",
       "name": "E27 AC90-250V Smart Lamp Holder",
