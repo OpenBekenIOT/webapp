@@ -1996,7 +1996,7 @@
       "name": "Feit Electric A19 Smart Light Bulb",
       "model": "BPA800/RGBW/AG/3/UK",      
       "chip": "BK7238",
-      "board": "",
+      "board": "T1-U-HL",
       "keywords": ["RGBCW","BP5758D","E26"],
       "pins": {
         "24": "BP5758D_DAT",
