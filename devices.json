@@ -2909,6 +2909,25 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic3991520.html"
     },
     {
+      "vendor": "SYLVANIA",
+      "bDetailed": "0",
+      "name": "SMART+ WiFi A19 Full Color Bulb E26 9W 2700-6500K",
+      "model": "A19CCECWF",
+      "chip": "BK7231T",
+      "board": "WB8P",
+      "flags": "16782336",
+      "keywords": ["RGBW", "smartplus", "LEDVANCE", "75663", "75674", "75812", "key3fscgx7apny5f", "1ijupffokexbz0cl"],
+      "pins": {
+        "7": "PWM;1",
+        "8": "PWM;2",
+        "9": "PWM;3",
+        "24": "PWM;5"
+      },
+      "command": "backlog CTRange 154 370; PWMFrequency 2000; led_gammaCtrl cal 1.0 0.7 0.75; led_dimmer 100; led_enableAll 1; PowerSave 1",
+      "image": "https://obrazki.elektroda.pl/7127409900_1707464379.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4034705.html"
+    },
+    {
       "vendor": "OpenLit",
       "bDetailed": "0",
       "name": "OpenLit WF-M4 RGB LED controller",
