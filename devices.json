@@ -13985,9 +13985,9 @@
       "chip": "BK7231N",
       "board": "CB3S",
       "flags": "1024",
-      "keywords": ["smart socket", "smart dimmer", "tuyamcu"],
+      "keywords": ["socket", "dimmer", "outdoor", "TuyaMCU", "DP10_JL_V7.5", "2ANIFDP10", "24572-DP10"],
       "pins": {},
-      "command": "",
+      "command": "backlog startDriver tuyaMCU; tuyaMcu_setBaudRate 115200; setChannelType 1 toggle; setChannelType 2 dimmer; tuyaMcu_setDimmerRange 0 1000; linkTuyaMCUOutputToChannel 1 bool 1; linkTuyaMCUOutputToChannel 2 val 2",
       "image": "https://obrazki.elektroda.pl/2112688900_1707364259.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20950756#20950756"
     },
@@ -14065,13 +14065,14 @@
       "flags": "1024",
       "keywords": [
         "socket",
+        "dimmer",
         "TuyaMCU",
         "DP20_RMD_V2.2",
         "CB04-SBL-B",
         "RMD-DP200BTF"
       ],
       "pins": {},
-      "command": "",
+      "command": "backlog startDriver tuyaMCU; tuyaMcu_setBaudRate 115200; setChannelType 1 toggle; setChannelType 2 dimmer; tuyaMcu_setDimmerRange 0 1000; linkTuyaMCUOutputToChannel 1 bool 1; linkTuyaMCUOutputToChannel 2 val 2",
       "image": "https://obrazki.elektroda.pl/5451634600_1741982828.png",
       "wiki": "https://www.elektroda.com/rtvforum/topic4111826.html"
     },
