@@ -1974,6 +1974,27 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4016922.html"
     },
     {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "Martin Jerry 3-way Switch",
+      "model": "RP-ST01",
+      "chip": "BK7231N",
+      "board": "CB3S",
+      "flags": "1024",
+      "keywords": [
+        "e1kfkvfc",
+        "28uwxmn4ivbyslm9",
+        "nogdesx1o8a63f7t",
+        "TuyaMCU",
+        "Night Light Brightness",
+        "stvrdl"
+      ],
+      "pins": {},
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/7606147600_1789493956.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4183190.html"
+    },    
+    {
       "vendor": "Feit",
       "bDetailed": "1",
       "name": "Feit BPA800/RGBW/2 Bulb Article No. 1528975",
@@ -2004,7 +2025,7 @@
       },
       "image": "https://obrazki.elektroda.pl/9274879600_1700769145.png",
       "wiki": "https://www.elektroda.com/rtvforum/topic4182326.html"
-    },    
+    },
     {
       "vendor": "eWelink",
       "bDetailed": "0",
