@@ -9046,23 +9046,29 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4062365.html"
     },
     {
-      "vendor": "Aubess",
+      "vendor": "Tuya",
       "bDetailed": "0",
-      "name": "Door Sensor (no TuyaMCU) guide for DeepSleep",
-      "model": "",
+      "name": "Tuya Smart WiFi Door and Window Sensor",
+      "model": "RH-MAGv3B",
       "chip": "BK7231N",
       "board": "CBU",
-      "flags": "1",
-      "keywords": [],
+      "flags": "4535485465600",
+      "keywords": [
+        "aw201",
+        "contact",
+        "magnet",
+        "battery",
+        "deepsleep"
+      ],
       "pins": {
         "16": "DoorSnsrWSleep;0",
         "17": "BAT_Relay;1",
         "20": "Btn;2",
         "23": "BAT_ADC;1",
-        "26": "WifiLED_n;0"
+        "26": "WifiLED;0"
       },
-      "command": "",
-      "image": "https://obrazki.elektroda.pl/1324893100_1691349663.jpg",
+      "command": "backlog Battery_Setup 2200 3000; DSTime 30",
+      "image": "https://obrazki.elektroda.pl/7142703600_1789600657.png",
       "wiki": "https://www.elektroda.com/rtvforum/topic3994294.html"
     },
     {
