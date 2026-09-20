@@ -16919,6 +16919,78 @@
       "command": "",
       "image": "https://obrazki.elektroda.pl/2519862300_1767272667.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4159198.html"
+    },
+    {
+      "vendor": "SYLVANIA",
+      "bDetailed": "0",
+      "name": "SMART+ WiFi A19 RGBW Color Filament Bulb E26 7W 2000K",
+      "model": "40A19FILCCLWIFI",
+      "chip": "BK7231N",
+      "board": "CBLC5",
+      "flags": "5632",
+      "keywords": [
+        "smartplus",
+        "LEDVANCE",
+        "75807",
+        "120v",
+        "keya5pptr4qtmgt8",
+        "k2nagch3coapc6yd"
+      ],
+      "pins": {
+        "24": "SM2135CLK;0",
+        "26": "SM2135DAT;0"
+      },
+      "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 20 40; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_dimmer 100; led_enableAll 1; PowerSave 1",
+      "image": "https://obrazki.elektroda.pl/1421233900_1789935088.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4183585.html"
+    },
+    {
+      "vendor": "SYLVANIA",
+      "bDetailed": "0",
+      "name": "SMART+ WiFi ST19 RGBW Color Filament Bulb E26 7W 2000K",
+      "model": "40ST19FILCCLWIFI",
+      "chip": "BK7231N",
+      "board": "CBLC5",
+      "flags": "5632",
+      "keywords": [
+        "smartplus",
+        "LEDVANCE",
+        "75809",
+        "120v",
+        "keya5pptr4qtmgt8",
+        "bmvlf3o8idpnobqe"
+      ],
+      "pins": {
+        "24": "SM2135CLK;0",
+        "26": "SM2135DAT;0"
+      },
+      "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 20 40; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_dimmer 100; led_enableAll 1; PowerSave 1",
+      "image": "https://obrazki.elektroda.pl/6055952800_1789935108.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4183585.html"
+    },
+    {
+      "vendor": "SYLVANIA",
+      "bDetailed": "0",
+      "name": "SMART+ WiFi G25 RGBW Color Filament Bulb E26 7W 2000K",
+      "model": "40G25FILCCLWIFI",
+      "chip": "BK7231N",
+      "board": "CBLC5",
+      "flags": "5632",
+      "keywords": [
+        "smartplus",
+        "LEDVANCE",
+        "75808",
+        "120v",
+        "keya5pptr4qtmgt8",
+        "eiy7vo6ilyocf9ts"
+      ],
+      "pins": {
+        "24": "SM2135CLK;0",
+        "26": "SM2135DAT;0"
+      },
+      "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 20 40; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_dimmer 100; led_enableAll 1; PowerSave 1",
+      "image": "https://obrazki.elektroda.pl/3436896500_1789935123.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4183585.html"
     }
   ]
 }
