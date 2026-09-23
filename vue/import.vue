@@ -280,11 +280,33 @@
         cryptoScript.async = true;
         document.head.appendChild(cryptoScript);
 
+        // we don't want to load it always from git page!
+        // if we define another webapp location, ALL content shall be loaded from there!
+        // so, let's go, find out the source of the initial js file, "startup.js"
+        // and build base URL of this script URL
+        const startupscript = Array.from(document.scripts).find(script => script.src.includes("startup.js"));
+        const baseUrl = startupscript.src.substring(0, startupscript.src.lastIndexOf('/'));
+        
+        const valuemaps = document.createElement("script");
+        valuemaps.setAttribute(
+          "src",
+          `${baseUrl}/generated/generated_value_maps.js`
+        );
+        valuemaps.async = true;
+        document.head.appendChild(valuemaps);
+        const procTable = document.createElement("script");
+        procTable.setAttribute(
+          "src",
+          `${baseUrl}/generated/generated_processing_table.js`
+        );
+        procTable.async = true;
+        document.head.appendChild(procTable);
+
         const plugin = document.createElement("script");
         plugin.setAttribute(
           "src",
-          "https://openbekeniot.github.io/webapp/templateParser.js"
-         //"../templateParser.js"
+          //"https://openbekeniot.github.io/webapp/templateParser.js"
+          `${baseUrl}/templateParser.js`		// Now uses actual server we used for initial script
         );
         plugin.async = true;
         document.head.appendChild(plugin);
@@ -292,7 +314,8 @@
         const plugin2 = document.createElement("script");
         plugin2.setAttribute(
           "src",
-            "https://openbekeniot.github.io/webapp/tuyaExporter.js"
+           //"https://openbekeniot.github.io/webapp/tuyaExporter.js"
+           `${baseUrl}/tuyaExporter.js`			// Now uses actual server we used for initial script
         );
         plugin2.async = true;
         document.head.appendChild(plugin2);
