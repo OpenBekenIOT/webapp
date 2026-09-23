@@ -2012,6 +2012,27 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4016922.html"
     },
     {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "STEREN IR Blaster",
+      "model": "SHOME-160",
+      "chip": "BK7238",
+      "board": "T1-U-HL",
+      "flags": "6341632",
+      "keywords": [
+        "Generic Infra-red"
+      ],
+      "pins": {
+        "6": "IRSend;0",
+        "8": "IRRecv;0",
+        "9": "WifiLED;1",
+        "26": "Btn;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/1915340000_1790192432.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4183728.html"
+    },    
+    {
       "vendor": "Feit",
       "bDetailed": "0",
       "name": "Feit Electric A19 Smart Light Bulb",
