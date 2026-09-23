@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tuya Smart Valve (UJV Ufairy)</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Tuya Smart Valve (UJV Ufairy) ()</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/5771107800_1678386680.png" alt="Tuya Smart Valve (UJV Ufairy)">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Tuya</p>
+        <p><strong>Chip:</strong> BK7231T</p>
+        <p><strong>Board:</strong> WB3S</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> water, valve, LED, Domotique Valve Controller, 31x15x75cm, GR-W-105</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Tuya",
+  "bDetailed": "0",
+  "name": "Tuya Smart Valve (UJV Ufairy)",
+  "model": "",
+  "chip": "BK7231T",
+  "board": "WB3S",
+  "pins": {
+    "7": "dInput_NoPullUp;1",
+    "8": "dInput_NoPullUp;2",
+    "14": "Rel;0",
+    "24": "LED;0",
+    "26": "Btn;0"
+  },
+  "keywords": [
+    "water",
+    "valve",
+    "LED",
+    "Domotique Valve Controller",
+    "31x15x75cm",
+    "GR-W-105"
+  ],
+  "image": "https://obrazki.elektroda.pl/5771107800_1678386680.png",
+  "wiki": "https://www.elektroda.com/rtvforum/topic3963394.html",
+  "product": ""
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P7 is dInput_NoPullUp on channel 1<br>- P8 is dInput_NoPullUp on channel 2<br>- P14 is Rel on channel 0<br>- P24 is LED on channel 0<br>- P26 is Btn on channel 0<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic3963394.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic3963394.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Athom_Garage_Door_Opener_Kit.html">Athom Garage Door Opener Kit</a> - 40.0% match</li>
+<li><a href="Tuya_Mini_Universal_IR_Remote_M_18_CBU_BK7231N.html">Mini Universal IR Remote M-18 CBU/BK7231N</a> - 40.0% match</li>
+<li><a href="Energizer_B17423.html">16A 220-240v Smart Wifi Plug Socket (EU)</a> - 20.0% match</li>
+<li><a href="Tuya_MC38.html">Earykong Water Leak Flood Sensor</a> - 20.0% match</li>
+<li><a href="EARU_[BK7231N_CBU]_EARU_Electric_RDCBC_TJ_2P_DIN_rail_relay_energy_meter.html">[BK7231N - CBU] EARU Electric RDCBC/TJ-2P DIN-rail relay/energy meter</a> - 20.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

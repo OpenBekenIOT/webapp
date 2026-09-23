@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ONENUO Tuya Wifi Magnetic Door Sensor</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">ONENUO Tuya Wifi Magnetic Door Sensor (19JWT)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/7623210600_1704647495.jpg" alt="ONENUO Tuya Wifi Magnetic Door Sensor">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> ONENUO</p>
+        <p><strong>Chip:</strong> BK7231N</p>
+        <p><strong>Board:</strong> CBU-NL</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> sensor, battery-powered, door sensor, hall sensor</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "ONENUO",
+  "bDetailed": "0",
+  "name": "ONENUO Tuya Wifi Magnetic Door Sensor",
+  "model": "19JWT",
+  "chip": "BK7231N",
+  "board": "CBU-NL",
+  "flags": "1024",
+  "keywords": [
+    "sensor",
+    "battery-powered",
+    "door sensor",
+    "hall sensor"
+  ],
+  "pins": {
+    "14": "dInput_NoPullUp_n;2",
+    "15": "WifiLED_n;1",
+    "20": "BAT_Relay;4",
+    "22": "DoorSnsrWSleep;0",
+    "23": "BAT_ADC;3"
+  },
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/7623210600_1704647495.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20896810"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P14 is dInput_NoPullUp_n on channel 2<br>- P15 is WifiLED_n on channel 1<br>- P20 is BAT_Relay on channel 4<br>- P22 is DoorSnsrWSleep on channel 0<br>- P23 is BAT_ADC on channel 3<br>- Flags are set to 1024<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/viewtopic.php?p=20896810" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/viewtopic.php?p=20896810" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Tuya_SW100.html">Smart Life Flood Water Leak Detector - 2x AAA</a> - 20.0% match</li>
+<li><a href="Tuya_AW301.html">Door/Window Contact Sensor with Audible Alarm - 2x AAA</a> - 16.7% match</li>
+<li><a href="Tuya_898DT.html">ONENUO Water Leak Sensor Flood Leakage Detector with Sound Alarm</a> - 16.7% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

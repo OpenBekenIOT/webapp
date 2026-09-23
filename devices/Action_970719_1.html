@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LSC Smart connect LED Lamp A60 RGB-CCT 806LM 8W 2700-6500K E27</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">LSC Smart connect LED Lamp A60 RGB-CCT 806LM 8W 2700-6500K E27 (970719.1)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/3888664700_1734559289.png" alt="LSC Smart connect LED Lamp A60 RGB-CCT 806LM 8W 2700-6500K E27">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Action</p>
+        <p><strong>Chip:</strong> BK7231T</p>
+        <p><strong>Board:</strong> WBLC9</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> LIGHT, bulb, A60P1-WR-8W-T1</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Action",
+  "bDetailed": "0",
+  "name": "LSC Smart connect LED Lamp A60 RGB-CCT 806LM 8W 2700-6500K E27",
+  "model": "970719.1",
+  "chip": "BK7231T",
+  "board": "WBLC9",
+  "flags": "1024",
+  "keywords": [
+    "LIGHT",
+    "bulb",
+    "A60P1-WR-8W-T1"
+  ],
+  "pins": {
+    "7": "PWM;5",
+    "8": "PWM;1",
+    "9": "PWM;2",
+    "24": "PWM;3",
+    "26": "PWM;4"
+  },
+  "command": "backlog powersave 1; pwmfrequency 1000",
+  "image": "https://obrazki.elektroda.pl/3888664700_1734559289.png",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4094053.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P7 is PWM on channel 5<br>- P8 is PWM on channel 1<br>- P9 is PWM on channel 2<br>- P24 is PWM on channel 3<br>- P26 is PWM on channel 4<br>- Flags are set to 1024<br>- StartupCommand is set to backlog powersave 1; pwmfrequency 1000<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4094053.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4094053.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Action_LSC_Smart_GU10_RGB_3004919_970706_v1_1.html">LSC Smart GU10-RGB 3004919 970706 v1.1</a> - 100.0% match</li>
+<li><a href="Anslut_C37.html">E14/SES RGBCCT Candle Bulb - 470lm 4.9w 2700-6500k</a> - 100.0% match</li>
+<li><a href="Spectrum_Smart_E27_1500_lm_13W_WOJ14473.html">Spectrum Smart E27 1500 lm 13W WOJ14473</a> - 60.0% match</li>
+<li><a href="LEDVANCE_AC33909.html">SmartPlus Classic A60 Tunable White Bulb E27 9W 806lm</a> - 40.0% match</li>
+<li><a href="Ledvance_A100.html">SmartPlus Classic A100 14W Multicolor (RGBW, four PWMs)</a> - 40.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

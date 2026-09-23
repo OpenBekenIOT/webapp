@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>OpenBeken Configuration Generator - Parse Tuya JSON data from Cloudcutter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- Crypto-JS for AES operations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <style>
+    /* Log Output Styling */
+    #log-output,
+    #output-text,
+    #input-text,
+    #output-text-templ,
+    #output-text-scr {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.9rem;
+    }
+
+    #log-output {
+      height: 100%;
+      /* Fill available height */
+      min-height: 550px;
+      /* Increased height to span roughly two rows */
+      overflow-y: auto;
+      background-color: #ffffff;
+      /* White background */
+      color: #212529;
+      /* Bootstrap dark gray text */
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ced4da;
+      /* Match Bootstrap input border */
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    /* Revised colors for white background */
+    .log-info {
+      color: #212529;
+    }
+
+    .log-success {
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    /* Bootstrap Success Green */
+    .log-warning {
+      color: #856404;
+    }
+
+    /* Bootstrap Warning Dark Yellow */
+    .log-error {
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    /* Bootstrap Danger Red */
+    .log-debug {
+      color: #007bff;
+    }
+
+    /* Bootstrap Primary Blue */
+
+    /* Drag & Drop Styling */
+    #input-text {
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    #input-text.dragover {
+      background-color: #e9ecef;
+      border-color: #4ec9b0;
+      border-width: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>OpenBeken Configuration Generator - Parse Tuya JSON or Binary</h1>
+    <p>This tool can generate OpenBeken config with one click. Just input JSON data (e.g. from cloudcutter), or <b>drag
+        and drop a binary file</b> (full device dump or Tuya config partition) to extract the configuration. Usage:</p>
+    <ul>
+      <li>Drag & drop your 2MB/4MB/etc <b>full flash dump</b> or <b>Tuya config partition</b> .bin file</li>
+      <li>Or paste cloudcutter profile text or user_param_key from BK tools</li>
+      <li>Click <a href="https://github.com/tuya-cloudcutter/tuya-cloudcutter.github.io/tree/master/devices">here</a>
+        for cloudcutter profiles</li>
+      <li>When doing it in OpenBeken Web Application, you will have 'Apply template' button, just click it</li>
+    </ul>
+    <div class="row">
+      <!-- Left Column: Inputs and Outputs -->
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="input-text">Input (JSON or Drag .bin):</label>
+            <textarea class="form-control" id="input-text" rows="10"
+              placeholder="Paste JSON here or drag & drop Tuya firmware .bin file"></textarea>
+          </div>
+          <div class="col-md-6">
+            <label for="output-text">Text interpretation:</label>
+            <textarea class="form-control" id="output-text" rows="10"></textarea>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <label for="output-text-templ">OpenBeken template:</label>
+            <textarea class="form-control" id="output-text-templ" rows="10"></textarea>
+          </div>
+          <div class="col-md-6">
+            <label for="output-text-scr">OpenBeken one shot script:</label>
+            <textarea class="form-control" id="output-text-scr" rows="10"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Log -->
+      <div class="col-md-4">
+        <label for="log-output">Log:</label>
+        <div id="log-output"></div>
+      </div>
+    </div>
+    <div class="row">
+      <span class="text-center">Examples (each button will fetch a cloudcutter JSON):</span>
+      <div class="col-md-12 text-center">
+        <button class="btn btn-primary mt-3" id="parse-btn"
+          onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/athom-garage-door-opener.json')">Garage
+          Door</button>
+        <button class="btn btn-primary mt-3" id="parse-btn"
+          onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/aldi-casalux-wifi-led-rgb-light-strip.json')">RGB
+          strip</button>
+        <button class="btn btn-primary mt-3" id="parse-btn"
+          onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/lenovo-se-242dc-rgbct-bulb-v1.2.21.json')">RGBCW
+          LED</button>
+        <button class="btn btn-primary mt-3" id="parse-btn"
+          onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/deta-6014ha-switch.json')">Deta
+          Plug</button>
+        <button class="btn btn-primary mt-3" id="parse-btn"
+          onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/pegant-pg3451-3-outlet-power-strip.json')">Triple
+          socket + USB</button>
+        <button class="btn btn-primary mt-3" id="parse-btn"
+          onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/b04e860fe0bb1c8bed417ab36c57e6759ec08510/devices/spectrum-woj14415-rgbct-gu10-bulb.json')">SM2135
+          LED</button>
+        <button class="btn btn-primary mt-3" id="parse-btn"
+          onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/43a341ef1dd8eec8514e1d435563bd9008ff2835/devices/hombli-hbss-0209-smart-socket-b2030248-energy-plug.json')">BL0937
+          PLUG</button>
+        <button class="btn btn-primary mt-3" id="parse-btn"
+          onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/b04e860fe0bb1c8bed417ab36c57e6759ec08510/devices/tuya-generic-rr620w-jl-smart-switch.json')">BL0942
+          power metering plug</button>
+        <button class="btn btn-primary mt-3" id="parse-btn"
+          onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/nous-p4-e14-rgbct-bulb.json')">BP5758
+          LED</button>
+        <button class="btn btn-primary mt-3" id="parse-btn"
+          onclick="loadSample('https://raw.githubusercontent.com/tuya-cloudcutter/tuya-cloudcutter.github.io/a8a6539aad21a03d5db41e4d27e9d5516c62fe23/devices/lsc-3004200-wifi-outdoor-dual-socket.json')">Bridge
+          socket (TODO)</button>
+      </div>
+
+
+    </div>
+  </div>
+  <script type="text/javascript" src="templateParser.js"></script>
+  <script type="text/javascript" src="tuyaExporter.js"></script>
+  <script>
+    var inputText;
+    var outputText_desc;
+    var outputText_script;
+    var outputText_template;
+    var logOutput;
+
+    function loadSample(url) {
+      fetch(url)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          inputText.value = JSON.stringify(data, null, 2);
+          refreshFields();
+        })
+        .catch(function (error) {
+          log('Error fetching JSON: ' + error, 'error');
+          console.error('Error fetching JSON: ', error);
+        });
+
+    }
+    function refreshFields(keepLog = false) {
+      if (!keepLog) {
+        logOutput.textContent = '';
+      }
+      // Clear outputs
+      outputText_desc.value = '';
+      outputText_script.value = '';
+      outputText_template.value = '';
+
+      if (!inputText.value || inputText.value.trim() === "") {
+        return;
+      }
+
+      log("Starting text parsing...", 'info');
+      try {
+        let res = processJSON(inputText.value);
+        if (!res) {
+          throw new Error("processJSON returned null/undefined");
+        }
+        log("JSON structure valid. Processing...", 'info');
+
+        outputText_desc.value = res.desc;
+        outputText_script.value = res.scr;
+        outputText_template.value = JSON.stringify(res.tmpl, null, 2);
+
+        // Try to extract some info for log
+        let info = [];
+        if (res.tmpl.vendor) info.push(res.tmpl.vendor);
+        if (res.tmpl.model) info.push(res.tmpl.model);
+        if (info.length > 0) {
+          log(`Parsed device: ${info.join(" ")}`, 'success');
+        } else {
+          log("Parsed successfully.", 'success');
+        }
+      } catch (e) {
+        log("Error parsing JSON: " + e.message, 'error');
+        // Optional: clear outputs on error? Or keep previous?
+        // Keeping previous might be better for user correction.
+      }
+    }
+
+    // --- Logging Utils ---
+    function log(msg, type = 'info') {
+      const div = document.createElement('div');
+      div.className = `log-${type}`;
+      div.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+      if (logOutput) {
+        logOutput.appendChild(div);
+        logOutput.scrollTop = logOutput.scrollHeight;
+      }
+      console.log(`[${type}] ${msg}`);
+    }
+
+    // --- Tuya KV Storage Logic ---
+    // Moved to tuyaExporter.js
+
+    document.addEventListener('DOMContentLoaded', function () {
+      inputText = document.getElementById('input-text');
+      outputText_desc = document.getElementById('output-text');
+      outputText_script = document.getElementById('output-text-scr');
+      outputText_template = document.getElementById('output-text-templ');
+      logOutput = document.getElementById('log-output');
+
+      inputText.addEventListener('change', function () {
+        refreshFields();
+      });
+
+      // --- Drag & Drop Initialization ---
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        inputText.addEventListener(eventName, preventDefaults, false);
+      });
+
+      function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      inputText.addEventListener('dragover', () => inputText.classList.add('dragover'));
+      ['dragleave', 'drop'].forEach(evt => {
+        inputText.addEventListener(evt, () => inputText.classList.remove('dragover'));
+      });
+
+      inputText.addEventListener('drop', handleDrop);
+
+      function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        if (files && files.length > 0) {
+          // Clear logs and fields for a fresh start
+          if (logOutput) logOutput.textContent = '';
+          outputText_desc.value = '';
+          outputText_script.value = '';
+          outputText_template.value = '';
+          inputText.value = '';
+
+          const file = files[0];
+          if (file.name.toLowerCase().endsWith('.bin')) {
+            log(`Processing dropped file: ${file.name}`, 'info');
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+              const arrayBuffer = evt.target.result;
+              const uint8Array = new Uint8Array(arrayBuffer);
+              try {
+                // Pass log callback
+                const result = TuyaExporter.extractConfig(uint8Array, log);
+                if (result) {
+                  if (typeof result === 'object') {
+                    inputText.value = JSON.stringify(result, null, 2);
+                    // Keep logs from extraction
+                    refreshFields(true);
+                    log('Config extracted and loaded successfully.', 'success');
+                  } else {
+                    inputText.value = result;
+                    refreshFields(true);
+                    log('Config extracted but parsing had issues. Raw/Repaired text loaded.', 'warning');
+                  }
+                } else {
+                  log('Failed to extract config from binary.', 'error');
+                }
+              } catch (err) {
+                log(`Decryption crash: ${err.message}`, 'error');
+                console.error(err);
+              }
+            };
+            reader.readAsArrayBuffer(file);
+          } else {
+            log(`Dropped file is not .bin, trying text read for ${file.name}`, 'warning');
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+              inputText.value = evt.target.result;
+              // Text load - logs are already cleared at start of handleDrop
+              // But we logged "Dropped file..." just now. 
+              // If we run refreshFields(false), we lose that warning.
+              // So refreshFields(true).
+              refreshFields(true);
+              log("Loaded text file content.", 'success');
+            };
+            reader.readAsText(file);
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
