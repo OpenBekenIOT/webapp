@@ -2048,6 +2048,29 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4182326.html"
     },
     {
+      "vendor": "BAW",
+      "bDetailed": "0",
+      "name": "Smart Plug (AU)",
+      "model": "TPSWIFI-101",
+      "chip": "BK7231N",
+      "board": "CB2S",
+      "flags": "1024",
+      "keywords": [
+        "IEC 60669-2"
+      ],
+      "pins": {
+        "6": "Btn;1",
+        "7": "WifiLED_n;0",
+        "8": "Rel;1",
+        "10": "BL0937SEL;0",
+        "24": "BL0937CF;0",
+        "26": "BL0937CF1;0"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/1972403700_1790281354.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4183877.html"
+    },    
+    {
       "vendor": "eWelink",
       "bDetailed": "0",
       "name": "E27 AC90-250V Smart Lamp Holder",
