@@ -12145,18 +12145,19 @@
       "model": "",
       "chip": "BK7231N",
       "board": "CBU",
-      "keywords": ["Battery", "AAA", "SHT30"],
+      "keywords": ["Battery", "AAA", "SHT30", "RH-MAGv3B", "deepsleep"],
       "pins": {
         "7": "SHT3X_SCK;0",
         "8": "SHT3X_SDA;2;3",
-        "16": "dInput;8",
+        "16": "DoorSnsrWSleep;8",
         "17": "BAT_Relay;5",
         "20": "Btn;6",
         "23": "BAT_ADC;4",
         "26": "WifiLED;0"
       },
-      "image": "https://obrazki.elektroda.pl/9205540100_1672573268.jpg",
-      "wiki": "https://www.elektroda.com/rtvforum/topic3945688.html",
+      "command": "backlog startDriver SHT3X; setChannelType 2 temperature_div10; setChannelType 3 Humidity; Battery_Setup 2200 3000; addEventHandler OnHold 20 SafeMode; SHT_ClearStatus; DSTime 20 14400",
+      "image": "https://obrazki.elektroda.pl/9370269300_1790722752.png",
+      "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21979690#21979690",
       "product": ""
     },
     {
