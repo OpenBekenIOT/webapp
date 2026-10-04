@@ -17163,7 +17163,7 @@
         "24": "SM2135CLK;0",
         "26": "SM2135DAT;0"
       },
-      "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 20 40; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_dimmer 100; led_enableAll 1; PowerSave 1",
+      "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 6 2; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_colorBlendLimit 1; led_dimmer 100; led_enableAll 1; PowerSave 1",
       "image": "https://obrazki.elektroda.pl/1421233900_1789935088.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4183585.html"
     },
@@ -17187,7 +17187,7 @@
         "24": "SM2135CLK;0",
         "26": "SM2135DAT;0"
       },
-      "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 20 40; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_dimmer 100; led_enableAll 1; PowerSave 1",
+      "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 6 2; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_colorBlendLimit 1; led_dimmer 100; led_enableAll 1; PowerSave 1",
       "image": "https://obrazki.elektroda.pl/6055952800_1789935108.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4183585.html"
     },
@@ -17211,7 +17211,7 @@
         "24": "SM2135CLK;0",
         "26": "SM2135DAT;0"
       },
-      "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 20 40; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_dimmer 100; led_enableAll 1; PowerSave 1",
+      "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 6 2; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_colorBlendLimit 1; led_dimmer 100; led_enableAll 1; PowerSave 1",
       "image": "https://obrazki.elektroda.pl/3436896500_1789935123.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4183585.html"
     }
