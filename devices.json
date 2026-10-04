@@ -2048,6 +2048,120 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4182326.html"
     },
     {
+      "vendor": "Action",
+      "bDetailed": "0",
+      "name": "Smart Wall Washer Light",
+      "model": "3225769",
+      "chip": "BK7238",
+      "board": "T1-U-HL",
+      "flags": "0",
+      "keywords": [
+        "NL2523-POWER-U1.8-26.04.10-W",
+        "WORLDSEM",
+        "WS2811",
+        "20251128A"
+      ],
+      "pins": {
+        "6": "Btn;0",
+        "16": "SM16703P_DIN;0"
+      },
+      "command": "backlog startDriver SM16703P; SM16703P_Init 3 RGB; startDriver PixelAnim; SetFlag 10 1; addEventHandler OnClick 6 power toggle;",
+      "image": "https://obrazki.elektroda.pl/1369043900_1790660706.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4184137.html"
+    },
+    {
+      "vendor": "Behogan",
+      "bDetailed": "0",
+      "name": "16A Mini Smart Light Switch Module",
+      "model": "B0FY6PXZVN",
+      "chip": "LN882H",
+      "board": "on PCB",
+      "flags": "1024",
+      "keywords": [
+        "Tuya",
+        "Smart Life",
+        "16A mini relay",
+        "S1 S2",
+        "Input:AC100-240V 50/60Hz 16A Max",
+        "Ouput AC100-240V 50/60Hz 16A Max"
+      ],
+      "pins": {
+        "5": "Btn;1",
+        "7": "LED;1",
+        "12": "TglChanOnTgl;1",
+        "19": "Rel;1"
+      },
+      "command": "PowerSave 1",
+      "image": "https://obrazki.elektroda.pl/9604497200_1790508464.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4184037.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "Smart Plug",
+      "model": "TC0301_TW02_PLUG_L1_P0",
+      "chip": "W600",
+      "board": "TW02",
+      "flags": "1024",
+      "keywords": [
+        "winnermicro"
+      ],
+      "pins": {
+        "11": "Rel;1",
+        "13": "LED_n;1",
+        "14": "Btn;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/2673550500_1790798193.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4184072.html"
+    },    
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "Pearl Auvisio Infrared IR Blaster",
+      "model": "NX-4519-675",
+      "chip": "BK7231N",
+      "board": "TODO",
+      "flags": "1073759232",
+      "keywords": [
+        "REV2_2022_11_03_SK-CM",
+        "WEEE-Reg.-Nr. DE 60771113",
+        "Los-Nr.182337"
+      ],
+      "pins": {
+        "7": "IRSend;0",
+        "8": "IRRecv;0",
+        "24": "LED;0",
+        "26": "Btn;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/3660939000_1790602360.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4184108.html"
+    },    
+    {
+      "vendor": "BAW",
+      "bDetailed": "0",
+      "name": "Smart Plug (AU)",
+      "model": "TPSWIFI-101",
+      "chip": "BK7231N",
+      "board": "CB2S",
+      "flags": "1024",
+      "keywords": [
+        "IEC 60669-2"
+      ],
+      "pins": {
+        "6": "Btn;1",
+        "7": "WifiLED_n;0",
+        "8": "Rel;1",
+        "10": "BL0937SEL;0",
+        "24": "BL0937CF;0",
+        "26": "BL0937CF1;0"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/1972403700_1790281354.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4183877.html"
+    },    
+    {
       "vendor": "eWelink",
       "bDetailed": "0",
       "name": "E27 AC90-250V Smart Lamp Holder",
