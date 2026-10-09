@@ -17214,6 +17214,34 @@
       "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 20 40; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_dimmer 100; led_enableAll 1; PowerSave 1",
       "image": "https://obrazki.elektroda.pl/3436896500_1789935123.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4183585.html"
+    },
+    {
+      "vendor": "Qarmijaer",
+      "bDetailed": "0",
+      "name": "Tuya USB Smart Switch WiFi (inline USB-A)",
+      "model": "TY-USB09",
+      "chip": "BK7238",
+      "board": "T1-3S",
+      "flags": "1024",
+      "keywords": [
+        "TY-USB09",
+        "T1-3S",
+        "usb switch",
+        "BK7238_T1_2_0_0",
+        "Tuya",
+        "Smart Life",
+        "B0FCSB6P1K",
+        "CTRLZS",
+        "B0H6ZQCG1J"
+      ],
+      "pins": {
+        "9": "LED;1",
+        "24": "Btn;1",
+        "26": "Rel;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/1195103200_1791535112.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4184839.html"
     }
   ]
 }
