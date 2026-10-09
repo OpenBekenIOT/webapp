@@ -1,38 +1,38 @@
 <template>
   <div class="container">
     <div class="item">
-      <h4>Command status</h4>
-      <p>Here you can check the last command send to OBK device by our Web App frontent for Tools. </p>
+      <h4>Command Status</h4>
+      <p>Last command shows the most recent command triggered from this page. Last status shows whether the request is still sending, completed successfully (OK 200), or failed (error response).</p>
       <h5>Last command: {{command_text}}</h5>
       <h5>Last status: {{command_status}}</h5>
 
       <h4>Generic Tools</h4>
-      <p>Those are all wrappers for console commands, but they are more friendly for beginners. Please read console <a href="https://github.com/openshwprojects/OpenBK7231T_App/blob/main/docs/commands.md">commands docs</a> if you want to know more. </p>
+      <p>These are wrappers around console commands, presented in a more beginner-friendly way. See the console <a href="https://github.com/openshwprojects/OpenBK7231T_App/blob/main/docs/commands.md">command documentation</a> for details.</p>
       
        <button @click="stopDrivers($event)">Stop all drivers</button><br>
-       <button @click="factorySettings($event)">Return device to factory settings (this will erase everything, even your Wifi config)</button>
-       <button @click="backToOpenAccessPoint($event)">Clear WiFi config and return to AP, but keep settings</button>
-       <button @click="temporaryAPMode($event)">Temporarily convert to AP mode (will go AP now, but back to client with reboot)</button>
+       <button @click="factorySettings($event)">Return device to factory settings (this will erase everything, including your WiFi configuration)</button>
+       <button @click="backToOpenAccessPoint($event)">Clear WiFi configuration and switch to AP mode (keep settings)</button>
+       <button @click="temporaryAPMode($event)">Temporarily switch to AP mode (switches now; returns to client mode after reboot)</button>
        <button @click="forceSafeMode($event)">Force reboot into safe mode</button>
-       <p>Driver testing shortcuts, please REMEMBER, they will not run after reboot, if you want driver to run after reboot, use a startup command/autoexec.bat</p>
+       <p>Driver testing shortcuts. Note: these do not persist across reboots. To start a driver on boot, use a startup command or autoexec.bat.</p>
        <button @click="startDriver('SSDP')">Start SSDP</button>
        <button @click="startDriver('DDP')">Start DDP</button>
        <button @click="startDriver('DGR')">Start DGR</button>
 
       <h4>Test/Play Tools</h4>
-      <p>Some things to play around/to learn events</p>
+      <p>Utilities for testing and learning event behavior.</p>
        <button @click="addRepeatingEvent(7298,'POWER TOGGLE', 2)">Start toggling power every 2 seconds</button><br>
        <button @click="cancelRepeatingEvent(7298)">Stop toggling power</button><br>
-       <button @click="addRepeatingEvent(9531,'add_dimmer 1 2', 0.01)">Start Dimmer ping-pong animation for LED</button><br>
-       <button @click="cancelRepeatingEvent(9531)">Stop Dimmer ping-pong animation for LED</button><br>
-       <button @click="addRepeatingEvent(8412,'add_temperature 1 2', 0.01)">Start Temperature ping-pong animation for LED</button><br>
-       <button @click="cancelRepeatingEvent(8412)">Stop Temperature ping-pong animation for LED</button><br>
+       <button @click="addRepeatingEvent(9531,'add_dimmer 1 2', 0.01)">Start dimmer ping-pong animation for LED</button><br>
+       <button @click="cancelRepeatingEvent(9531)">Stop dimmer ping-pong animation for LED</button><br>
+       <button @click="addRepeatingEvent(8412,'add_temperature 1 2', 0.01)">Start temperature ping-pong animation for LED</button><br>
+       <button @click="cancelRepeatingEvent(8412)">Stop temperature ping-pong animation for LED</button><br>
 
        
     </div>
     <div class="item">
-      <h4>LED tools</h4> 
-      <p>Here are some misc buttons for testing LEDs. </p>
+      <h4>LED Tools</h4>
+      <p>Miscellaneous buttons for testing LEDs.</p>
        <button @click="justSetRed($event)">100% Red</button>
        <button @click="justSetGreen($event)">100% Green</button>
        <button @click="justSetBlue($event)">100% Blue</button><br>
@@ -40,50 +40,50 @@
        <button @click="justSetCool($event)">100% Cool</button>
        <button @click="toggleLED($event)">Toggle LED</button><br>
 
-      <h4>LED driver tools</h4>      
-      <p>Those will show up when you enable a 'I2C' LED driver and set correct pin. You also might need to reboot. </p>
-      <p>Here you can easily change the order of LED colours. The order of colours in SM2135/etc drivers is not standarized, so if you have wrong colours, for example, cool warm is swapped with red, you might need to reorder them here. Enter numbers 0, 1, 2, 3 and 4, each one only once. </p>
+      <h4>LED Driver Tools</h4>
+      <p>These options appear when you enable an I2C LED driver and configure the correct pins. You may also need to reboot.</p>
+      <p>Use this to change the channel order for LED drivers (for example, SM2135). Some drivers are not standardized, so colors may be mapped incorrectly (for example, warm/cool swapped with red). Enter the channel indices 0-4, using each value once.</p>
       <label for="R" style="width:75px; display: inline-block;">Red:</label>&nbsp;<input id="R" v-model="R" placeholder="R"/>
       <label for="G" style="width:75px; display: inline-block;">Green:</label>&nbsp;<input id="G" v-model="G" placeholder="G"/>
       <label for="B" style="width:75px; display: inline-block;">Blue:</label>&nbsp;<input id="B" v-model="B" placeholder="B"/>
       <label for="C" style="width:75px; display: inline-block;">Cool:</label>&nbsp;<input id="C" v-model="C" placeholder="C"/>
       <label for="W" style="width:75px; display: inline-block;">Warm:</label>&nbsp;<input id="W" v-model="W" placeholder="W"/>
-       <button @click="applyMapAndSetRed($event)">Apply and turn light to Red</button><br>
-       <button @click="applyMapAndSetGreen($event)">Apply and turn light to Green</button><br>
-       <button @click="applyMapAndSetBlue($event)">Apply and turn light to Blue</button><br>
-       <button @click="applyMapAndSetWarm($event)">Apply and turn light to Warm</button><br>
-       <button @click="applyMapAndSetCool($event)">Apply and turn light to Cool</button><br><br>
-      <p>LED remap will be automatically saved in flash.</p>
+       <button @click="applyMapAndSetRed($event)">Apply mapping and set light to Red</button><br>
+       <button @click="applyMapAndSetGreen($event)">Apply mapping and set light to Green</button><br>
+       <button @click="applyMapAndSetBlue($event)">Apply mapping and set light to Blue</button><br>
+       <button @click="applyMapAndSetWarm($event)">Apply mapping and set light to Warm</button><br>
+       <button @click="applyMapAndSetCool($event)">Apply mapping and set light to Cool</button><br><br>
+      <p>The LED remap is saved to flash automatically.</p>
     </div>
     <div class="item">
       <h4>Power Metering</h4>
-      <p>Those are useful if you have a device running BL0937, BL0942, CSE or a similiar driver. </p>
-      <h5>Calibration utility</h5>
-      <p>Here you can calibrate your device. It's the same as using 'VoltageSet', etc commands, just with GUI. </p>
-      <p>Please connect 60W bulb (or another resistive load with power factor equal to 1), measure the real voltage with multimeter, enter in field and save: </p>
-      <label for="Voltage" style="width:75px; display: inline-block;">Voltage:</label>&nbsp;<input id="Voltage" v-model="Voltage" placeholder="Startup command"/>
-      <button @click="applyVoltage($event)">Apply!</button>
-      <p>Now do the same for current, enter measured current in A:</p>
-      <label for="Current" style="width:75px; display: inline-block;">Current:</label>&nbsp;<input id="Current" v-model="Current" placeholder="Startup command"/>
-      <button @click="applyCurrent($event)">Apply!</button>
-      <p>Now do the same for power, enter measured power in W:</p>
-      <label for="Power" style="width:75px; display: inline-block;">Power:</label>&nbsp;<input id="Power" v-model="Power" placeholder="Startup command"/>
-      <button @click="applyPower($event)">Apply!</button>
-      <p>Calibration will be automatically saved in flash.</p>
+      <p>These are useful if your device uses BL0937, BL0942, CSE, or a similar driver.</p>
+      <h5>Calibration Utility</h5>
+      <p>Here you can calibrate your device. It is equivalent to using the VoltageSet/CurrentSet/PowerSet commands, but with a GUI.</p>
+      <p>Connect a 60W bulb (or another resistive load with a power factor of 1), measure the mains voltage with a multimeter, enter it in the field below, and save:</p>
+      <label for="Voltage" style="width:75px; display: inline-block;">Voltage:</label>&nbsp;<input id="Voltage" v-model="Voltage" placeholder="Measured voltage (V)"/>
+      <button @click="applyVoltage($event)">Apply</button>
+      <p>Repeat for current: enter the measured current (A):</p>
+      <label for="Current" style="width:75px; display: inline-block;">Current:</label>&nbsp;<input id="Current" v-model="Current" placeholder="Measured current (A)"/>
+      <button @click="applyCurrent($event)">Apply</button>
+      <p>Repeat for power: enter the measured power (W):</p>
+      <label for="Power" style="width:75px; display: inline-block;">Power:</label>&nbsp;<input id="Power" v-model="Power" placeholder="Measured power (W)"/>
+      <button @click="applyPower($event)">Apply</button>
+      <p>Calibration is saved to flash automatically.</p>
       
-      <h5>Extra utilities for power metering.</h5>
-      <p>BL0937/42/ETC devices can measure current, power and voltage. They can also count and save energy consumption, but it requires a little setup. Don't forget to enable NTP in short startup command/autoexec! </p>
+      <h5>Extra Utilities for Power Metering</h5>
+      <p>BL0937/BL0942/etc. devices can measure current, power, and voltage. They can also track and persist energy consumption, but this requires some setup. Do not forget to enable NTP in the short startup command or autoexec.bat.</p>
       <button @click="resetEnergyCounters($event)">Reset the 'total' energy counter</button><br>
       <button @click="setupEnergyCounters($event)">Enable and setup some basic energy counting</button><br>
       <button @click="stopEnergyCounters($event)">Disable basic energy counting</button><br>
 
     </div>
     <div class="item">
-      <h4>Tasmota Device Groups</h4> 
-      <p>Here you can play around Tasmota Device Groups, test sending of packets, etc. </p>
-      <h5>External DGR control</h5>
-      <p>Here you can control any outside Tasmota DGR group, even if your device is not in DGR. Of course, DGR driver must be run first.</p>
-      <label for="ExternalGroupName" style="width:75px; display: inline-block;">Target:</label>&nbsp;<input id="ExternalGroupName" v-model="ExternalGroupName" placeholder="ExternalGroupName"/>
+      <h4>Tasmota Device Groups</h4>
+      <p>Here you can experiment with Tasmota Device Groups (DGR) and test packet sending.</p>
+      <h5>External DGR Control</h5>
+      <p>Here you can control any external Tasmota DGR group, even if your device is not part of a DGR. The DGR driver must be running first.</p>
+      <label for="ExternalGroupName" style="width:75px; display: inline-block;">Target:</label>&nbsp;<input id="ExternalGroupName" v-model="ExternalGroupName" placeholder="Group name"/>
       <br><button @click="sendDGRPower(1,1)">Send power ON</button>
       <button @click="sendDGRPower(0,1)">Send power OFF</button>
       <button @click="sendDGRBrightness(25)">Send brightness 10%</button>
@@ -213,7 +213,7 @@
               this.runCommand("stopDriver *");
         },
         factorySettings(ev){			
-              let rep = prompt("Are you sure? This will ERASE ALL YOUR SETTINGS. Enter yes.", "no");
+              let rep = prompt("Are you sure? This will erase all settings. Type yes to confirm.", "no");
 			  if (rep != null) {
                 if(rep == "yes")
                 {
@@ -222,7 +222,7 @@
 			  }
         },
         backToOpenAccessPoint(ev){			
-              let rep = prompt("Are you sure? This will return device to AP, andd everyone will be able to connect to it. Enter yes.", "no");
+              let rep = prompt("Are you sure? This will clear the WiFi credentials and restart the device in AP mode. Anyone nearby will be able to connect. Type yes to confirm.", "no");
 			  if (rep != null) {
                 if(rep == "yes")
                 {
