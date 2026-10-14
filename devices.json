@@ -17214,6 +17214,35 @@
       "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 20 40; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_dimmer 100; led_enableAll 1; PowerSave 1",
       "image": "https://obrazki.elektroda.pl/3436896500_1789935123.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4183585.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "Tuya Smart WiFi Dimmer for LED Light Strip, inline DC barrel (single colour, LN882H)",
+      "model": "Light Controller",
+      "chip": "LN882H",
+      "board": "LN882HK1 bare chip, PCB V1.2",
+      "flags": "1024",
+      "keywords": [
+        "LN882H",
+        "LN882HK1",
+        "inline led controller",
+        "dimmer",
+        "single colour",
+        "Tuya",
+        "Smart Life",
+        "Smart Switch Wifi Switch Dimmer for LED Light Strip",
+        "Smart WiFi Controller",
+        "Light Controller",
+        "eBay 377157842766"
+      ],
+      "pins": {
+        "10": "PWM;1",
+        "20": "Btn;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/1435916000_1791979614.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21986960"
     }
   ]
 }
