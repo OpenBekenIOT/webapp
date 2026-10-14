@@ -17214,6 +17214,36 @@
       "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 20 40; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_dimmer 100; led_enableAll 1; PowerSave 1",
       "image": "https://obrazki.elektroda.pl/3436896500_1789935123.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4183585.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "Smart WiFi Controller \"Light Controller\" USB-A to DC barrel (single colour)",
+      "model": "DLX-RGBCW",
+      "chip": "BK7231N",
+      "board": "DLX-RGBCW BK7231N-B Rev2.6",
+      "flags": "1024",
+      "keywords": [
+        "DLX-RGBCW",
+        "BK7231N-B",
+        "BK7231N_1_0_1",
+        "usb led controller",
+        "dimmer",
+        "single colour",
+        "Tuya",
+        "Smart Life",
+        "Smart WiFi Controller",
+        "Light Controller",
+        "eBay 376998764306"
+      ],
+      "pins": {
+        "8": "PWM;1",
+        "14": "Btn;1",
+        "26": "IRRecv;0"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/9461966400_1791978312.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21986952"
     }
   ]
 }
