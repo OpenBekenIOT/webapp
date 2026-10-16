@@ -2172,7 +2172,28 @@
       "command": "powersave 1",
       "image": "https://obrazki.elektroda.pl/4692978100_1791836255.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4185093.html"
-    },    
+    },
+    {
+      "vendor": "Action",
+      "bDetailed": "0",
+      "name": "LSC Smart RGBIC + CCTIC LED Strip 10m (1400lm, 36V, 24W)",
+      "model": "3225778",
+      "chip": "LN882H",
+      "board": "on PCB",
+      "flags": "1024",
+      "keywords": [
+        "8712879170235",
+        "2700K-6500K",
+        "ln_strip_rgbcw"
+      ],
+      "pins": {
+        "6": "SM16703P_DIN;0",
+        "21": "Btn_SmartLED;0"
+      },
+      "command": "backlog startDriver SM16703P; SM16703P_Init 30 BRGWCC 200; startDriver PixelAnim",
+      "image": "https://obrazki.elektroda.pl/6390734000_1792184444.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4185089.html"
+    },
     {
       "vendor": "Tuya",
       "bDetailed": "0",
