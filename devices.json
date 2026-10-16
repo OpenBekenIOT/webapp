@@ -2125,6 +2125,35 @@
     {
       "vendor": "Tuya",
       "bDetailed": "0",
+      "name": "Smart WiFi Controller \"Light Controller\" USB-A to DC barrel (single colour)",
+      "model": "DLX-RGBCW",
+      "chip": "BK7231N",
+      "board": "on PCB",
+      "flags": "1024",
+      "keywords": [
+        "DLX-RGBCW",
+        "BK7231N-B",
+        "BK7231N_1_0_1",
+        "usb led controller",
+        "dimmer",
+        "single colour",
+        "Tuya",
+        "Smart Life",
+        "eBay 376998764306",
+        "DLX-RGBCW BK7231N-B Rev2.6"
+      ],
+      "pins": {
+        "8": "PWM;1",
+        "14": "Btn;1",
+        "26": "IRRecv;0"
+      },
+      "command": "PowerSave 1",
+      "image": "https://obrazki.elektroda.pl/4802821800_1791978274.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4185211.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
       "name": "Smart Plug",
       "model": "TC0301_TW02_PLUG_L1_P0",
       "chip": "W600",
