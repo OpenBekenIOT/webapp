@@ -2098,6 +2098,33 @@
     {
       "vendor": "Tuya",
       "bDetailed": "0",
+      "name": "Tuya Smart WiFi Dimmer for LED Light Strip",
+      "model": "",
+      "chip": "LN882H",
+      "board": "on PCB",
+      "flags": "1024",
+      "keywords": [
+        "LN882HKI",
+        "inline led controller",
+        "dimmer",
+        "single colour",
+        "Smart Life",
+        "Smart Switch WiFi Switch Dimmer for LED Light Strip",
+        "Smart WiFi Controller",
+        "Light Controller",
+        "eBay 377157842766"
+      ],
+      "pins": {
+        "10": "PWM;1",
+        "20": "Btn;1"
+      },
+      "command": "PowerSave 1",
+      "image": "https://obrazki.elektroda.pl/9302702800_1792183254.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4185213.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
       "name": "Smart Plug",
       "model": "TC0301_TW02_PLUG_L1_P0",
       "chip": "W600",
