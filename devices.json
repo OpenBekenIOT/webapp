@@ -2154,6 +2154,28 @@
     {
       "vendor": "Tuya",
       "bDetailed": "0",
+      "name": "LOUYSGEN Wi-Fi Touch Dimmer Switch",
+      "model": "LG-DW0101/US",
+      "chip": "BK7231T",
+      "board": "WB3S",
+      "flags": "1024",
+      "keywords": [
+        "Dimmer",
+        "Touch",
+        "stvrdl",
+        "tuyamcu",
+        "SK-W801T-C-TY",
+        "FR-4 1MM",
+        "A488866XPH13780WZAO"
+      ],
+      "pins": {},
+      "command": "powersave 1",
+      "image": "https://obrazki.elektroda.pl/4692978100_1791836255.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4185093.html"
+    },    
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
       "name": "Smart Plug",
       "model": "TC0301_TW02_PLUG_L1_P0",
       "chip": "W600",
