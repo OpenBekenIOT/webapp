@@ -17304,6 +17304,262 @@
       "command": "backlog startDriver SM2135; SM2135_Map 0 1 2 3 4; SM2135_Current 20 40; CTRange 500 500; led_gammaCtrl cal 1.0 0.7 0.75; led_dimmer 100; led_enableAll 1; PowerSave 1",
       "image": "https://obrazki.elektroda.pl/3436896500_1789935123.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4183585.html"
+    },
+    {
+      "vendor": "LTC",
+      "bDetailed": "0",
+      "name": "M170 1 gang touch wall switch",
+      "model": "LXM170 / M170",
+      "chip": "BK7231N",
+      "board": "CB3S",
+      "keywords": [
+        "Lamex"
+      ],
+      "pins": {
+        "6": "Rel;1",
+        "10": "Btn;1",
+        "26": "WifiLED_n;0"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/2284454800_1703671917.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4028982.html"
+    },
+    {
+      "vendor": "LDNIO",
+      "bDetailed": "0",
+      "name": "3 AC outlet and USB power strip with Quick Charge",
+      "model": "SEW3452",
+      "chip": "BK7231N",
+      "board": "CB2S",
+      "keywords": [
+        "Spacetronik",
+        "SL-PS27"
+      ],
+      "pins": {
+        "6": "Rel;1",
+        "7": "Rel;2",
+        "8": "Rel;3",
+        "23": "WifiLED_n;0",
+        "24": "Btn_Tgl_All;0",
+        "26": "Rel;4"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/8103363400_1712670569.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4048894.html"
+    },
+    {
+      "vendor": "Avatto",
+      "bDetailed": "0",
+      "name": "1 gang wall light switch",
+      "model": "N-TS10-EU-W1 / N-TS10-W1",
+      "chip": "BK7231N",
+      "board": "CB3S",
+      "keywords": [
+        "YD3L_WF_DV5"
+      ],
+      "pins": {
+        "8": "Rel;1",
+        "10": "Btn;1",
+        "26": "WifiLED_n;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/6239109700_1711281352.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4047343.html"
+    },
+    {
+      "vendor": "Avatto",
+      "bDetailed": "0",
+      "name": "2 gang wall light switch",
+      "model": "TS02-EU-B2",
+      "chip": "BK7231N",
+      "board": "CB3S",
+      "keywords": [],
+      "pins": {
+        "8": "Btn;2",
+        "10": "Btn;1",
+        "14": "Rel;1",
+        "23": "WifiLED_n;0",
+        "24": "Rel;2"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/8673190000_1709453257.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4043800.html"
+    },
+    {
+      "vendor": "Avatto",
+      "bDetailed": "0",
+      "name": "1 gang mains relay switch module",
+      "model": "WSM16-W1",
+      "chip": "BK7231N",
+      "board": "CBU",
+      "keywords": [
+        "mains output",
+        "800W"
+      ],
+      "pins": {
+        "6": "WifiLED_n;0",
+        "8": "Btn_Tgl_All;0",
+        "14": "TglChanOnTgl;1",
+        "20": "Rel;1"
+      },
+      "command": "PowerSave 1",
+      "image": "https://obrazki.elektroda.pl/6501118800_1709452254.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4044662.html"
+    },
+    {
+      "vendor": "Avatto",
+      "bDetailed": "0",
+      "name": "2 gang mains relay switch module",
+      "model": "WSM16-W2",
+      "chip": "BK7231N",
+      "board": "CBU",
+      "keywords": [
+        "MK-Z2-001_V1.0"
+      ],
+      "pins": {
+        "6": "WifiLED_n;0",
+        "8": "Btn_Tgl_All;0",
+        "14": "TglChanOnTgl;1",
+        "16": "TglChanOnTgl;2",
+        "17": "Rel;2",
+        "20": "Rel;1"
+      },
+      "command": "PowerSave 1",
+      "image": "https://obrazki.elektroda.pl/8909673500_1711293307.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4045441.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "1 gang relay switch module",
+      "model": "QS-WIFI-S03",
+      "chip": "BK7231N",
+      "board": "CB3S",
+      "keywords": [
+        "SB436"
+      ],
+      "pins": {
+        "6": "Rel;1",
+        "8": "WifiLED_n;0",
+        "9": "Btn_Tgl_All;0",
+        "24": "TglChanOnTgl;1"
+      },
+      "command": "PowerSave 1",
+      "image": "https://obrazki.elektroda.pl/5113970700_1712318068.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4049884.html"
+    },
+    {
+      "vendor": "MODEE",
+      "bDetailed": "0",
+      "name": "RGBCW ceiling light 24W",
+      "model": "MSL-CL24WRGB",
+      "chip": "BK7231N",
+      "board": "on PCB",
+      "keywords": [
+        "SM2235",
+        "MT7668"
+      ],
+      "pins": {
+        "24": "SM2235DAT;0",
+        "26": "SM2235CLK;0"
+      },
+      "command": "backlog SM2235_Map 2 1 0 3 4; SM2235_Current 11 14",
+      "image": "https://obrazki.elektroda.pl/6273817600_1723996814.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4078021.html"
+    },
+    {
+      "vendor": "TNCE",
+      "bDetailed": "0",
+      "name": "EU smart plug with power monitoring",
+      "model": "TCOGCZ20",
+      "chip": "LN882H",
+      "board": "on PCB",
+      "keywords": [
+        "BL0937",
+        "LN882HKI"
+      ],
+      "pins": {
+        "5": "LED;1",
+        "6": "Btn;1",
+        "7": "Rel;1",
+        "12": "BL0937CF1;0",
+        "19": "BL0937CF;0",
+        "20": "BL0937SEL;0"
+      },
+      "command": "startDriver BL0937",
+      "image": "https://obrazki.elektroda.pl/9806336600_1778770019.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4173759-0.html",
+      "flags": "33555460"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "24W RGBCW ceiling light",
+      "model": "5001 / SD205BK-2024.08",
+      "chip": "BK7231N",
+      "board": "CBU",
+      "keywords": [
+        "DX2286",
+        "BP2525"
+      ],
+      "pins": {
+        "6": "PWM;5",
+        "7": "PWM;2",
+        "8": "PWM;3",
+        "24": "PWM;1",
+        "26": "PWM;4"
+      },
+      "command": "backlog PWMFrequency 1000; PowerSave 1",
+      "image": "https://obrazki.elektroda.pl/5627940500_1775282138.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4173194.html"
+    },
+    {
+      "vendor": "MOES",
+      "bDetailed": "0",
+      "name": "Dual US wall outlet with USB-A and USB-C",
+      "model": "WK-US2-TC",
+      "chip": "BK7231N",
+      "board": "CB2S",
+      "keywords": [
+        "B0BV9HRPMN"
+      ],
+      "pins": {
+        "6": "Rel;3",
+        "7": "Rel;4",
+        "8": "Rel;2",
+        "10": "WifiLED_n;0",
+        "11": "Btn;1",
+        "24": "Btn;2",
+        "26": "Rel;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/1530838500_1683737225.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic3977240.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "4 AC outlet and USB power strip with power monitoring",
+      "model": "RH-EU411-4U-W (BK7231N)",
+      "chip": "BK7231N",
+      "board": "EZO-WBGNNCN-A",
+      "keywords": [
+        "SMART_STRIP_EU4_M",
+        "RH410B3S_4U4K_V2",
+        "BL0942"
+      ],
+      "pins": {
+        "6": "Rel;1",
+        "7": "Rel;2",
+        "8": "Rel;3",
+        "9": "Rel;4",
+        "20": "WifiLED_n;0",
+        "22": "Btn_Tgl_All;0",
+        "26": "Rel;5"
+      },
+      "command": "startDriver BL0942",
+      "image": "https://obrazki.elektroda.pl/3861594600_1760653557.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4150296.html"
     }
   ]
 }
