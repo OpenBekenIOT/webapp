@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SILVERGEAR Smart Socket with Energy Monitor (EU)</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">SILVERGEAR Smart Socket with Energy Monitor (EU) (ArtNo. 3750 Batch No. 23417)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/1107946900_1741354324.jpg" alt="SILVERGEAR Smart Socket with Energy Monitor (EU)">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Tuya</p>
+        <p><strong>Chip:</strong> BK7231N</p>
+        <p><strong>Board:</strong> CB2S</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> plug</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Tuya",
+  "bDetailed": "0",
+  "name": "SILVERGEAR Smart Socket with Energy Monitor (EU)",
+  "model": "ArtNo. 3750 Batch No. 23417",
+  "chip": "BK7231N",
+  "board": "CB2S",
+  "flags": "1024",
+  "keywords": [
+    "plug"
+  ],
+  "pins": {
+    "6": "BL0937CF;0",
+    "7": "BL0937CF1;0",
+    "8": "BL0937SEL;0",
+    "10": "WifiLED_n;0",
+    "24": "Rel;1",
+    "26": "Btn;1"
+  },
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/1107946900_1741354324.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4110485.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P6 is BL0937CF on channel 0<br>- P7 is BL0937CF1 on channel 0<br>- P8 is BL0937SEL on channel 0<br>- P10 is WifiLED_n on channel 0<br>- P24 is Rel on channel 1<br>- P26 is Btn on channel 1<br>- Flags are set to 1024<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4110485.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4110485.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="QNCX_LSPA9_clone.html">Generic Smart Plug with Energy Measurement (T34)</a> - 50.0% match</li>
+<li><a href="Tuya_FL_S181_V1_2.html">2 in 1 plug power metering WiFi 16A Beige double plug</a> - 42.9% match</li>
+<li><a href="Feit_BPPLUG_WIFI_WP_2.html">Feit Electric Wi-Fi Smart Outdoor Plug BPPLUG/WIFI/WP/2 (T version)</a> - 33.3% match</li>
+<li><a href="LSC_Smart_Power_Plug_2_0_970762_Action_2300W.html">LSC Smart Power Plug 2.0 970762 Action 2300W</a> - 33.3% match</li>
+<li><a href="Aqia_F3202_US.html">15A 120V US Smart Plug</a> - 33.3% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

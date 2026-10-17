@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WiFi G16.5 Candelabra E12</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">WiFi G16.5 Candelabra E12 ()</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/6222169900_1683650145.png" alt="WiFi G16.5 Candelabra E12">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> LightingInside</p>
+        <p><strong>Chip:</strong> BK7231N</p>
+        <p><strong>Board:</strong> CBLC9</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> ASIN B0BS14VHH3, Item model number ‎LYS-009, Part Number ‎LTD-SM-G16.5-E12-4P, G16 1/2, E12</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "LightingInside",
+  "bDetailed": "0",
+  "name": "WiFi G16.5 Candelabra E12",
+  "chip": "BK7231N",
+  "board": "CBLC9",
+  "pins": {
+    "7": "SM2235_CLK;1",
+    "9": "SM2235_DAT;1"
+  },
+  "command": "SM2235_Map 2 0 1 3 4",
+  "keywords": [
+    "ASIN B0BS14VHH3",
+    "Item model number ‎LYS-009",
+    "Part Number ‎LTD-SM-G16.5-E12-4P",
+    "G16 1/2",
+    "E12"
+  ],
+  "image": "https://obrazki.elektroda.pl/6222169900_1683650145.png",
+  "wiki": "https://www.elektroda.com/rtvforum/topic3976993.html",
+  "product": "https://www.amazon.com/gp/product/B0BS14VHH3"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P7 is SM2235_CLK on channel 1<br>- P9 is SM2235_DAT on channel 1<br>- StartupCommand is set to SM2235_Map 2 0 1 3 4<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic3976993.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic3976993.html" target="_blank">Polish guide</a>
+        </p>
+        <p>You can also visit <a href="https://www.amazon.com/gp/product/B0BS14VHH3" target="_blank">shop site</a>.</p>
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Comprehensive IoT device teardowns, firmware flashing guides, and a module database for BK7231N, W80X, XR809, BL602, and ESP32-based smart home hardware, OpenBeken, Tasmota, and ESPHome flashing">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Google -->
+	<meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+.table-image {
+  td, th {
+    vertical-align: middle;
+  }
+}
+</style>
+</head>
+<body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+    <script src="templateParser.js"></script>
+<h2><a href="https://github.com/openshwprojects/OpenBK7231T_App">OpenBeken</a> IoT device teardown database</h2>
+<h4>Powered by the <a href="https://www.elektroda.com/rtvforum/forum507.html">Elektroda.com</a> teardown section</h4>
+<h6>Have a device? Help us! Submit a teardown <a href="https://www.elektroda.com/rtvforum/forum507.html">here!</a></h6>
+<h6>Want to get cloud-free? Pair with HA? Flash OpenBeken - Tasmota/ESPHome-style multiplatform firmware - now supporting BK7231N, BK7231T, T34, BL2028N, XR809, W600/W601, W800/W801, BL602, LF686, LN882H, and much more!</h6>
+<h4>Do you like our teardown list? <a href="https://www.paypal.com/paypalme/openshwprojects">Donate to help us</a> so we can buy more devices for teardowns! Every $1 counts!</h4>
+<h6>Need help? Ask <a href="https://www.elektroda.com/rtvforum/topic3866123-960.html">here!</a> Direct contact with developers, daily feedback, and bug fixes!</h6>
+<h5>Please watch our English flashing/configuration tutorials:</h5>
+<div id="videoContainer"></div>
+
+<script>
+  // Array of YouTube video IDs
+  var youtubeIds = [
+    'VDbaLR_0YWs',
+    'Yb3zXtBdSnE',
+    'PKkiqDNFIx8',
+    'KU0tDwtjfjw',
+    'fSbeKwCCMHM',
+    '2e1SUQNMrgY',
+    '-a5hV1y5aIU',
+    'pkcspey25V4',
+    'x4p3JHXbK1E',
+    'YQdR7r6lXRY',
+    'L6d42IMGhHw',
+    'KEjOPuYd3CE',
+    'xGE-DVrm3BU',
+    'e1xcq3OUR5M',
+	'vDh8Y_NDrb4'
+  ];
+
+  // Array of YouTube video IDs to always show
+  var alwaysShowIds = [
+    'VDbaLR_0YWs'
+  ];
+
+  // Function to select random videos excluding the always shown videos
+  function getRandomVideos(array, alwaysShown, count) {
+    var shuffled = array.filter(function (videoId) {
+      return !alwaysShown.includes(videoId);
+    });
+    var randomVideos = alwaysShown.slice(0);
+    var i = shuffled.length;
+    var min = i - (count - alwaysShown.length);
+    var temp;
+    var index;
+
+    while (i-- > min) {
+      index = Math.floor((i + 1) * Math.random());
+      temp = shuffled[index];
+      shuffled[index] = shuffled[i];
+      shuffled[i] = temp;
+      randomVideos.push(temp);
+    }
+
+    return randomVideos;
+  }
+
+  // Select and add random videos to the container
+  var videoContainer = document.getElementById('videoContainer');
+  var randomVideos = getRandomVideos(youtubeIds, alwaysShowIds, 4);
+
+  randomVideos.forEach(function (videoId) {
+    var iframe = document.createElement('iframe');
+    iframe.width = '420';
+    iframe.height = '345';
+    iframe.src = 'https://www.youtube.com/embed/' + videoId;
+    videoContainer.appendChild(iframe);
+  });
+</script>
+
+
+<br>
+<h6>We also have Polish translations for the <a href="https://www.youtube.com/watch?v=7MyfSgxLAOo">RGBCW bulb flashing & soldering tutorial</a>, <a href="https://www.youtube.com/watch?v=0V0kaRVnk18">CB2S relay flashing</a>, and <a href="https://www.youtube.com/watch?v=JCqq-gn-X2c">WB3S wall switch flashing</a>.</h6>
+<h6>You can support us by helping us make more videos, firmware features, and teardowns <a href="https://www.paypal.com/paypalme/openshwprojects">here</a>.</h6>
+<h5>Modern Windows GUI tool for Beken and more flashing (and for automatic template extraction in most cases): <a href="https://github.com/openshwprojects/BK7231GUIFlashTool">BK7231 GUI Flash Tool</a></h5>
+<h5>New for 2025: one place for all platform flashing tools (excluding BK7231 GUI Tool - see link above): <a href="https://github.com/openshwprojects/FlashTools/tree/main">FlashTools</a></h5>
+<h6>Click a device name to get a detailed teardown article, often with pin configuration and setup.</h6>
+<h6>Some devices were submitted by contributors and not by me, and may not have complete info.</h6>
+<h6>Also keep in mind that we have some Zigbee or TODO devices on the list, just for completeness.</h6>
+
+<script type="text/javascript">
+
+function hideNotNeeded()
+{
+  var selectType = document.getElementById("selectType");
+  var mode = selectType.value;
+  var elements = document.querySelectorAll(".forumFilter");
+	for (var i = 0; i < elements.length; i++) {
+		elements[i].hidden = mode != "guide";
+	}
+   elements = document.querySelectorAll(".cutterFilter");
+	for (var i = 0; i < elements.length; i++) {
+		elements[i].hidden = mode == "guide";
+	}
+}
+
+function onSelectTypeChanged()
+{
+	hideNotNeeded();
+	refreshForFilters();
+}
+
+</script>
+<form onsubmit="return false;">
+	<div class="form-row align-items-end mt-2" style="margin-left: 0px; margin-right: 0px;">
+		<div class="col-auto" >
+		  <label class="mr-sm-2" for="inlineFormCustomSelect">Type:</label>
+		  <div class="input-group mb-2">
+			<select class="custom-select mr-sm-2" id="selectType" onchange="onSelectTypeChanged()">
+			  <option selected value="guide">Template/Guide</option>
+			  <option value="cutter">Cloudcutter Profile</option>
+			</select>
+		  </div>
+		</div>
+	  <div class="col-auto">
+		<label class="sr-only" for="filter_text">Name</label>
+		<label class="mr-sm-2" for="filter_text">Keyword filter:</label>
+		<input type="text" class="form-control mb-2" id="filter_text" placeholder="Keyword filter">
+	  </div>
+	  <div class="col-auto" >
+		<label class="sr-only" for="inlineFormInputGroup">Max</label>
+		<label class="mr-sm-2" for="inlineFormCustomSelect">Max:</label>
+		<div class="input-group mb-2">
+		  <select class="custom-select mr-sm-2" id="selectMax">
+			<option value="5">5</option>
+			<option selected value="10">10</option>
+			<option value="25">25</option>
+			<option value="50">50</option>
+			<option value="100">100</option>
+			<option value="250">250</option>
+			<option value="500">500</option>
+			<option value="1000">1000</option>
+		  </select>
+		</div>
+	  </div>
+	  <div class="col-auto mb-2">
+		<button class="btn btn-primary" onclick="refreshForFilters()">Apply filtering</button>
+	  </div>
+	  <div class="col-auto mb-2">
+		<button class="btn btn-outline-secondary" onclick="clearAllFilters()">Clear all</button>
+	  </div>
+	  <div class="col-auto mb-2">
+		<button class="btn btn-outline-secondary" onclick="resetAllFilters()">Reset all</button>
+	  </div>
+	  <div class="col-auto forumFilter mb-2">
+			<div class="form-check">
+			<input class="form-check-input" type="checkbox" id="filter_detailed">
+			<label class="form-check-label" for="filter_detailed">
+			Only show detailed teardowns
+			</label>
+			</div>
+	  </div>
+	  <div class="w-100"></div>
+	  <div id="chipFiltersContainer" class="w-100 forumFilter mb-2"></div>
+  </div>
+</form>
+<h6 class="forumFilter">NOTE: BL0937, BL0942 and CSE7766 (HLW8032) are chips used for energy metering.</h6>
+<h6 class="forumFilter">NOTE: SM2135, BP1658 and BP5758 are "I2C" RGBCW LED drivers.</h6>
+<h6 class="forumFilter">NOTE: Type "RGBCW" in the filter to find RGBCW devices; also try "4CH", "relay", and shop names such as "Action", "Blitzwolf", "Aubess", etc.</h6>
+<h6 class="forumFilter">NOTE: If the config template is missing, check the linked topic; it may not have been entered into the database yet.</h6>
+<h6 class="cutterFilter">NOTE: The following list is fetched from the Cloudcutter repository. The configs are extracted from 2MB device dumps.</h6>
+<h6 class="cutterFilter">NOTE: The configs here may be incomplete.</h6>
+<p id="demo"></p>
+<h6 id="g_state">Table is loading.</h6>
+<table class="table table-image">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Image</th>
+      <th scope="col">Device Name</th>
+      <th scope="col">Chipset (Module)</th>
+      <th scope="col">Keywords</th>
+      <th scope="col">Config</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody">
+  </tbody>
+</table>
+<script>
+var g_database;
+var g_cloudCuttable;
+var g_chipFilters = [];
+var g_chipFilterLookup = {};
+var g_otherChipFilterKey = "OTHER_UNLISTED";
+var g_chipFilterConfigs = [
+	{ key: "BK7231N", label: "BK7231N", matches: function(chip) { return chip === "BK7231N" || chip === "BK7231M" || chip === "BL2028N" || chip === "T34"; } },
+	{ key: "BK7231T", label: "BK7231T", matches: function(chip) { return chip === "BK7231T"; } },
+	{ key: "BK7238", label: "BK7238", matches: function(chip) { return chip === "BK7238"; } },
+	{ key: "BK7252", label: "BK7252", matches: function(chip) { return chip === "BK7252"; } },
+	{ key: "BK7252N", label: "BK7252N", matches: function(chip) { return chip === "BK7252N"; } },
+	{ key: "BL602", label: "BL602", matches: function(chip) { return chip === "BL602"; } },
+	{ key: "ECR6600", label: "ECR6600", matches: function(chip) { return chip === "ECR6600"; } },
+	{ key: "GD32VW553", label: "GD32VW553", matches: function(chip) { return chip === "GD32VW553"; } },
+	{ key: "ESP32", label: "ESP32*", matches: function(chip) { return chip != null && chip.toUpperCase().indexOf("ESP32") === 0; } },
+	{ key: "ESP82XX", label: "ESP82XX", matches: function(chip) { return chip === "ESP8266" || chip === "ESP8285"; } },
+	{ key: "LN8825", label: "LN8825", matches: function(chip) { return chip === "LN8825"; } },
+	{ key: "LN882H", label: "LN882H", matches: function(chip) { return chip === "LN882H"; } },
+	{ key: "RDA5981", label: "RDA5981", matches: function(chip) { return chip === "RDA5981"; } },
+	{ key: "RTL8710AM", label: "RTL8710AM", matches: function(chip) { return chip === "RTL8710AM"; } },
+	{ key: "RTL8710B", label: "RTL8710B", matches: function(chip) { return chip === "RTL8710B"; } },
+	{ key: "RTL8721DA", label: "RTL8721DA", matches: function(chip) { return chip === "RTL8721DA" || chip === "RTL8711DAM"; } },
+	{ key: "RTL87X0C", label: "RTL87X0C", matches: function(chip) { return chip === "RTL87X0C" || (chip != null && chip.toUpperCase().indexOf("W701-") === 0); } },
+	{ key: "TR6260", label: "TR6260", matches: function(chip) { return chip === "TR6260"; } },
+	{ key: "TXW81X", label: "TXW81X", matches: function(chip) { return chip === "TXW81X"; } },
+	{ key: "W60X", label: "W60X", matches: function(chip) { return chip === "W600" || chip === "W601"; } },
+	{ key: "W80X", label: "W80X", matches: function(chip) { return chip === "W800" || chip === "W801" || chip === "W803"; } },
+	{ key: "XR806", label: "XR806", matches: function(chip) { return chip === "XR806"; } },
+	{ key: "XR809", label: "XR809", matches: function(chip) { return chip === "XR809"; } },
+	{ key: "XR872", label: "XR872", matches: function(chip) { return chip === "XR872"; } }
+];
+
+function makeChipFilterId(key) {
+	return "filter_chip_" + String(key).replace(/[^A-Za-z0-9]+/g, "_");
+}
+
+function splitSearchTerms(text) {
+	if(text == null) {
+		return [];
+	}
+	return text.toLowerCase().trim().split(/\s+/).filter(function(term) {
+		return term.length > 0;
+	});
+}
+
+function matchesSearchTerms(parts, terms) {
+	if(terms == null || terms.length === 0) {
+		return true;
+	}
+	var haystack = parts.join(" ").toLowerCase();
+	for(var i = 0; i < terms.length; i++) {
+		if(haystack.includes(terms[i]) == false) {
+			return false;
+		}
+	}
+	return true;
+}
+
+function getChipSearchAliases(chip) {
+	var aliases = [];
+	var filterKey = g_chipFilterLookup[chip];
+	if(filterKey != null) {
+		aliases.push(filterKey);
+		for(var i = 0; i < g_chipFilterConfigs.length; i++) {
+			if(g_chipFilterConfigs[i].key === filterKey && g_chipFilterConfigs[i].label !== filterKey) {
+				aliases.push(g_chipFilterConfigs[i].label);
+				break;
+			}
+		}
+	}
+	if(chip === "BK7231M" || chip === "BL2028N" || chip === "T34") {
+		aliases.push("BK7231N");
+	}
+	return aliases;
+}
+
+function getChipFilterKey(chip) {
+	if(chip != null && g_chipFilterLookup[chip] != null) {
+		return g_chipFilterLookup[chip];
+	}
+	return g_otherChipFilterKey;
+}
+
+function buildChipFilters(devices) {
+	var chipCounts = {};
+	var chipNames = [];
+	var matchedChips = {};
+	var i;
+	for(i = 0; i < devices.length; i++) {
+		var chip = devices[i].chip;
+		if(chip == null || chip.length === 0) {
+			continue;
+		}
+		if(chipCounts[chip] == null) {
+			chipCounts[chip] = 0;
+			chipNames.push(chip);
+		}
+		chipCounts[chip]++;
+	}
+	g_chipFilters = [];
+	g_chipFilterLookup = {};
+	for(i = 0; i < g_chipFilterConfigs.length; i++) {
+		var family = g_chipFilterConfigs[i];
+		var familyCount = 0;
+		for(var j = 0; j < chipNames.length; j++) {
+			var chipName = chipNames[j];
+			if(family.matches(chipName)) {
+				familyCount += chipCounts[chipName];
+				g_chipFilterLookup[chipName] = family.key;
+				matchedChips[chipName] = true;
+			}
+		}
+		g_chipFilters.push({
+			key: family.key,
+			label: family.label,
+			count: familyCount,
+			checkboxId: makeChipFilterId(family.key)
+		});
+	}
+	var otherCount = 0;
+	for(i = 0; i < devices.length; i++) {
+		var otherChip = devices[i].chip;
+		if(otherChip == null || otherChip.length === 0 || matchedChips[otherChip] !== true) {
+			otherCount++;
+		}
+	}
+	g_chipFilters.push({
+		key: g_otherChipFilterKey,
+		label: "Other",
+		count: otherCount,
+		checkboxId: makeChipFilterId(g_otherChipFilterKey)
+	});
+	renderChipFilters();
+}
+
+function renderChipFilters() {
+	var container = document.getElementById("chipFiltersContainer");
+	container.innerHTML = "";
+	for(var i = 0; i < g_chipFilters.length; i++) {
+		var filter = g_chipFilters[i];
+		var wrapper = document.createElement("div");
+		wrapper.className = "col-auto forumFilter d-inline-block";
+		var formCheck = document.createElement("div");
+		formCheck.className = "form-check mb-2";
+		var input = document.createElement("input");
+		input.className = "form-check-input";
+		input.type = "checkbox";
+		input.id = filter.checkboxId;
+		input.checked = true;
+		input.title = filter.count + " devices";
+		var label = document.createElement("label");
+		label.className = "form-check-label";
+		label.htmlFor = filter.checkboxId;
+		label.innerText = filter.label;
+		label.title = filter.count + " devices";
+		formCheck.appendChild(input);
+		formCheck.appendChild(label);
+		wrapper.appendChild(formCheck);
+		container.appendChild(wrapper);
+	}
+	hideNotNeeded();
+}
+
+function isChipAllowedByFilters(chip) {
+	var filterKey = getChipFilterKey(chip);
+	var checkbox = document.getElementById(makeChipFilterId(filterKey));
+	if(checkbox == null) {
+		return true;
+	}
+	return checkbox.checked;
+}
+
+var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status === 200) {
+		//alert("status is 200");
+        callback(null, xhr.response);
+      } else {
+		alert("JSON get error? Status is "+status);
+        callback(status, xhr.response);
+      }
+    };
+    xhr.send();
+};
+
+function processJSONCutter(json) {
+	//json = JSON.parse(json);
+	if(json == null)
+	{
+		alert("Error getting JSON for Cloudcutter: JSON was null.");
+	}
+	g_cloudCuttable = json;
+}
+function processJSON(json) {
+	//json = JSON.parse(json);
+	if(json == null)
+	{
+		alert("Error getting JSON for Guides/Reviews: JSON was null.");
+	}
+	g_database = json;
+	buildChipFilters(json.devices);
+	refreshJSON();
+}
+function refreshForFilters() {
+	refreshJSON();
+}
+function setAllPlatformFilters(checked) {
+	for(var i = 0; i < g_chipFilters.length; i++) {
+		var checkbox = document.getElementById(g_chipFilters[i].checkboxId);
+		if(checkbox != null) {
+			checkbox.checked = checked;
+		}
+	}
+}
+function clearAllFilters() {
+	document.getElementById("filter_text").value = "";
+	document.getElementById("filter_detailed").checked = false;
+	setAllPlatformFilters(false);
+}
+function resetAllFilters() {
+	document.getElementById("filter_text").value = "";
+	document.getElementById("filter_detailed").checked = false;
+	document.getElementById("selectMax").value = "10";
+	setAllPlatformFilters(true);
+}
+function findDocsURLForChip(chip) {
+
+	if(chip == "BL602") 
+	{
+		return "http://download.bl602.fun/BL602_%E5%AE%98%E6%96%B9%E8%8A%AF%E7%89%87%E8%B5%84%E6%96%99.pdf";
+	}
+	if(chip == "BK7231N" || chip == "BK7231T" || chip == "BK7231") 
+	{
+		return "https://www.elektroda.com/rtvforum/topic3951016.html";
+	}
+	if(chip == "EFR32MG13P732F512GM48") 
+	{
+		return "https://www.silabs.com/wireless/zigbee/efr32mg13-series-1-socs/device.efr32mg13p732f512gm48?tab=specs";
+	}
+	if(chip == "EFR32MG21A020F768") 
+	{
+		return "https://www.silabs.com/documents/public/data-sheets/efr32mg21-datasheet.pdf";
+	}
+	if(chip == "JN5169") 
+	{
+		return "https://www.nxp.com/docs/en/data-sheet/JN5169.pdf";
+	}
+	if(chip == "ESP8266" || chip == "ESP8285") 
+	{
+		return "https://www.espressif.com/sites/default/files/documentation/0a-esp8266ex_datasheet_en.pdf";
+	}
+	if(chip == "F8088") 
+	{
+		return "https://www.foneric.com/f8088";
+	}
+	if(chip == "XR809") 
+	{
+		return "http://www.xradiotech.com/product/XR809.php";
+	}
+	if (chip == "LN882H") {
+		return "https://www.elektroda.com/rtvforum/topic4028087.html";
+	}
+	if (chip == "RTL87X0C") {
+		return "https://www.elektroda.com/rtvforum/topic4097185.html";
+	}
+	if (chip == "TR6260") {
+		return "https://www.elektroda.com/rtvforum/topic4093752.html";
+	}	
+	if (chip == "T34") {
+		return "https://www.elektroda.com/rtvforum/topic4112776.html";
+	}
+	if (chip == "BK7231M") {
+		return "https://www.elektroda.com/rtvforum/topic4058227.html";
+	}
+	if (chip == "RTL8720CF") {
+		return "https://www.elektroda.com/rtvforum/topic4104395.html";
+	}
+	if (chip == "W701-VA2-CG") {
+		return "https://www.elektroda.com/rtvforum/topic4104395.html";
+	}
+	 
+	return "";
+	
+	
+}
+//
+// TODO ! ! ! Create our own boards.json and use it here
+//
+function findDocsURLForBoard(board) {
+	if(board == "WB3S") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/wb3s-module-datasheet?id=K9dx20n6hz5n4";
+	}
+	if(board == "WB2S") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/wb2s-module-datasheet?id=K9ghecl7kc479";
+	}
+	if(board == "WB8P") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/wb8p-module-datasheet?id=K9fwx4f89tvzd";
+	}
+	if(board == "WB2L") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/wb2l-datasheet?id=K9duegc9bualu";
+	}
+	if(board == "CB3S") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/cb3s?id=Kai94mec0s076";
+	}
+	if(board == "CB2S") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/cb2s-module-datasheet?id=Kafgfsa2aaypq";
+	}
+	if(board == "CB2L") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/cb2l-module-datasheet?id=Kai2eku1m3pyl";
+	}
+	if(board == "CB3L") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/cb3l-module-datasheet?id=Kai51ngmrh3qm";
+	}
+	if(board == "TYWE3S") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/wifie3smodule?id=K9605ua1cx9tv";
+	}
+	if(board == "TYWE2S") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/wifie2smodule?id=K9605u79tgxug";
+	}
+	if(board == "WBLC5") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/wblc5-module-datasheet?id=K9duilns1f3gi";
+	}
+	if(board == "WBR2") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/wbr2-module-mcu-serial-communication-instructions?id=K9pffkcjk7q5f";
+	}
+	if(board == "CBLC9") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/cblc9-module-datasheet?id=Ka42cqnj9r0i5";
+	}
+	if(board == "TYZS5") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/tyzs5-zigbee-module-datasheet?id=K97gu1imy1m3u";
+	}
+	if(board == "CBU") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/cbu-module-datasheet?id=Ka07pykl5dk4u";
+	}
+	if(board == "Z2S") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/zs2s-datasheet?id=K97s05sctcqvy";
+	}
+	if(board == "CBLC5") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/cblc5-module-datasheet?id=Ka07iqyusq1wm";
+	}
+	if(board == "SM-028_V1.3") 
+	{
+		return "https://www.elektroda.com/rtvforum/viewtopic.php?t=3945435&highlight=";
+	}
+	if(board == "WB2L_M1") 
+	{
+		return "https://www.elektroda.com/rtvforum/topic3903356.html";
+	}
+	if(board == "WBLC9") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/wblc9-module-datasheet?id=K9hgglry2jp5h";
+	}
+	if(board == "ZS2S") 
+	{
+		return "https://developer.tuya.com/en/docs/iot/zs2s-datasheet?id=K97s05sctcqvy";
+	}
+	if (board == "WBR3" || board == "WBR2" || board == "WBRU") {
+		return "https://www.elektroda.com/rtvforum/topic4104395.html";
+	}
+	if(board == "QQQ") 
+	{
+		return "httQQQug";
+	}
+	
+	return "";
+}
+function generateChipStr(chip, board) {
+	var chipURL = findDocsURLForChip(chip);
+	var chipStr;
+	if(chipURL != null && chipURL.length > 0) {
+		chipStr = "<a href='"+chipURL+"' target='_blank'>" + chip + "</a>";
+	} else {
+		chipStr = chip;
+	}
+	if(board == null || board.length == 0) {
+	
+	} else {
+		var boardURL = findDocsURLForBoard(board);
+		chipStr += " ";
+		if(boardURL != null && boardURL.length > 0) {
+			chipStr += "(<a href='"+boardURL+"' target='_blank'>" + board + "</a>)";
+		} else {
+			chipStr += "(" + board + ")";
+		}
+	}
+	return chipStr;
+}
+function refreshJSON() {
+	let json;
+
+
+ //var s = "";
+  var filter_text = document.getElementById("filter_text").value;
+  var filter_terms = splitSearchTerms(filter_text);
+  var filter_detailed = document.getElementById("filter_detailed").checked;
+  var g_state = document.getElementById("g_state");
+  var selectMax = document.getElementById("selectMax");
+  var selectType = document.getElementById("selectType");
+  var maxDevices = selectMax.value;
+
+  var cnt = 0;
+  var tableBody = document.getElementById("tableBody");
+  tableBody.innerHTML = '';
+  if(selectType.value == "guide") {
+	json = g_database;
+	var arrayLength = json.devices.length;
+	for (var i = 0; i < arrayLength; i++) {
+		if(cnt >= maxDevices)
+		{
+			break;
+		}
+		let device_i = json.devices[i];
+		var image = device_i.image;
+		var bDetailed = device_i.bDetailed;
+		var model = device_i.model;;
+		var name = device_i.name;;
+		var wiki = device_i.wiki;
+		var chip = device_i.chip;
+		var board = device_i.board;
+		var keywords = device_i.keywords;
+		var vendor = device_i.vendor;
+		
+		var chipStr = generateChipStr(chip,board);
+		if(vendor == null)
+		{
+			vendor = "";
+		}
+		if(model == null)
+		{
+			model = "";
+		}
+		// if full display name has no vendor included, add italic
+		if(vendor.length > 0)
+		{
+			if(name.toLowerCase().includes(vendor.toLowerCase()) == false)
+			{
+				name = "(" + vendor + ") "+name;
+			}
+		}
+		if(model.length > 0)
+		{
+			if(name.toLowerCase().includes(model.toLowerCase()) == false)
+			{
+				name = name +" (" + model + ")";
+			}
+		}
+		if(isChipAllowedByFilters(chip) == false)
+		{
+			continue;
+		}
+		if(filter_detailed)
+		{
+			// only show detailed articles
+			if(wiki == null)
+				continue;
+			if(wiki.length == null)
+				continue;
+			if(bDetailed != null && bDetailed == "0")
+				continue;
+		}
+		var keywordsString = "";
+		if(keywords == null)
+		{
+			keywords = "";
+		}
+		else
+		{
+			keywordsString = JSON.stringify(keywords);
+		}
+		if(wiki == null)
+		{
+			wiki = "";
+		}
+		if(matchesSearchTerms([name, chip, board, wiki, model, vendor, keywordsString].concat(getChipSearchAliases(chip)), filter_terms) == false) {
+			continue;
+		}
+		//Do something
+		//s += "Device " + i + " out of " + arrayLength + " is "
+		//s += name;
+		//s += "<br>";
+		
+		let jsonTextForThisDevice = JSON.stringify(device_i, null, 2);
+		var tr = document.createElement('tr');   
+
+		var th = document.createElement('th');
+		var td1 = document.createElement('td');
+		var td2 = document.createElement('td');
+		var td3 = document.createElement('td');
+		var td4 = document.createElement('td');
+		var td5 = document.createElement('td');
+		var bt = document.createElement('button');
+		if(false) {
+			bt.innerText = "Copy!";
+			bt.onclick = function() {
+				navigator.clipboard.writeText(jsonTextForThisDevice)
+					.then(function() {
+					console.log('Text copied to clipboard:', jsonTextForThisDevice);
+					})
+					.catch(function(err) {
+					console.error('Could not copy text: ', jsonTextForThisDevice);
+					});
+			};
+		} else {
+			bt.innerText = "Read more!";
+			let pageName = pageNameForDevice(json.devices[i]); // get safe page name
+			bt.onclick = function() {
+				window.open("devices/"+pageName + ".html"); // open device page in new tab
+			};
+			var bt2 = document.createElement('button');
+			bt2.innerText = "Copy link!";
+			bt2.onclick = function() {
+				let url = window.location.origin + "/webapp/devices/" + pageName + ".html";
+				navigator.clipboard.writeText(url).then(() => {
+				
+				}).catch(err => {
+					console.error("Failed to copy: ", err);
+				});
+			};
+		}
+		td5.appendChild(bt);
+		td5.appendChild(bt2);
+		var img = document.createElement('img');
+		
+		var a = document.createElement('a');
+		if(wiki.length > 0) {
+			a.href = wiki;
+		} else {
+			a.href = "#";
+			a.onclick = function() {alert('Sorry, the contributor didn\'t add a link to Elektroda. If you have this device, please take some photos and post them to our forums, and we will update this database later.'); return false; };
+		}
+		a.target = "blank";
+		a.innerHTML = name;
+		td1.appendChild(img);
+		
+		th.innerHTML = cnt;
+		td1.class = "w-25";
+		img.class = "img-fluid img-thumbnail";
+		img.width = 200;
+		img.src = image;
+		td2.appendChild(a);
+		td3.innerHTML = chipStr;
+		td4.innerHTML = keywords;
+		tr.appendChild(th);
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		tr.appendChild(td4);
+		tr.appendChild(td5);
+
+		tableBody.appendChild(tr);
+		cnt++;
+	}
+} else {
+	console.log(g_cloudCuttable);
+	json = g_cloudCuttable;
+	var arrayLength = json.length;
+	for (var i = 0; i < arrayLength; i++) {
+		if(cnt >= maxDevices)
+		{
+			break;
+		}
+		let name = json[i].name;
+		let vendor = json[i].manufacturer;
+		let image = json[i].image_url;
+		let slug = json[i].slug;//who was naming that?
+		let url = json[i].deviceFile = "https://tuya-cloudcutter.github.io/api/devices/"+slug+".json";
+		let chipStr = "";
+		let keywords = "";
+
+		if(matchesSearchTerms([name, vendor], filter_terms) == false) {
+			continue;
+		}
+
+		var tr = document.createElement('tr');   
+
+		var th = document.createElement('th');
+		var td1 = document.createElement('td');
+		var td2 = document.createElement('td');
+		var td3 = document.createElement('td');
+		var td4 = document.createElement('td');
+		var td5 = document.createElement('td');
+		var bt = document.createElement('button');
+		bt.innerText = "Open!";
+		td5.appendChild(bt);
+		bt.onclick = function() {
+			alert("Please select all text and copy/paste it into the Web App/Import tab of OBK (or your preferred tool). The config will now open.");
+		
+			window.open(url, "_blank");
+		};
+
+		var img = document.createElement('img');
+		
+		var a = document.createElement('a');
+		let wiki = url;
+		if(wiki.length > 0) {
+			a.href = wiki;
+		} else {
+			a.href = "#";
+			a.onclick = function() {alert('Sorry, the contributor didn\'t add a link to Elektroda. If you have this device, please take some photos and post them to our forums, and we will update this database later.'); return false; };
+		}
+		a.target = "blank";
+		a.innerHTML = name + " ("+vendor+")";
+		td1.appendChild(img);
+		
+		th.innerHTML = cnt;
+		td1.class = "w-25";
+		img.class = "img-fluid img-thumbnail";
+		img.width = 200;
+		img.src = image;
+		td2.appendChild(a);
+		td3.innerHTML = chipStr;
+		td4.innerHTML = keywords;
+		tr.appendChild(th);
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		tr.appendChild(td4);
+		tr.appendChild(td5);
+
+		tableBody.appendChild(tr);
+		cnt++;
+
+	}
+}
+	g_state.innerHTML = "Showing " + cnt + " out of " +arrayLength +" devices.";
+  //document.getElementById("demo").innerHTML = s;
+
+}
+
+getJSON('https://openbekeniot.github.io/webapp/devices.json',
+function(err, data) {
+  if (err !== null) {
+    alert('Something went wrong while downloading the Guides/Templates database: ' + err);
+  } else {
+	processJSON(data);
+  }
+});
+getJSON('https://tuya-cloudcutter.github.io/api/devices.json',
+function(err, data) {
+  if (err !== null) {
+    alert('Something went wrong while downloading the Guides/Templates database: ' + err);
+  } else {
+	processJSONCutter(data);
+  }
+});
+
+hideNotNeeded();
+
+</script>
+
+</body>
+</html>
+
+
