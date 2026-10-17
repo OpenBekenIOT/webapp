@@ -8370,8 +8370,7 @@
         "6": "Btn;1"
       },
       "image": "https://obrazki.elektroda.pl/2951877900_1678136252.jpg",
-      "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20473339#20473339",
-      "product": "https://www.costco.com/feit-electric-wi-fi-smart-plug%2C-3-pack.product.100825589.html"
+      "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20473339#20473339"
     },
     {
       "vendor": "Enbrighten",
@@ -8386,8 +8385,7 @@
         "26": "Btn;1"
       },
       "image": "https://obrazki.elektroda.pl/1036592500_1659877616.jpg",
-      "wiki": "https://www.elektroda.com/rtvforum/topic3911041.html#20133554",
-      "product": "https://enbrightenme.com/enbrighten-indoor-plug-in-mini-wifi-smart-switch-2-pack-white"
+      "wiki": "https://www.elektroda.com/rtvforum/topic3911041.html#20133554"
     },
     {
       "vendor": "Enbrighten",
@@ -9758,8 +9756,7 @@
       "pins": {},
       "command": "",
       "image": "https://obrazki.elektroda.pl/7753728000_1701806422.jpg",
-      "wiki": "https://www.elektroda.com/rtvforum/topic4017963.html",
-      "product": "https://www.ledvance.com/consumer/smart/control-options/smart-wifi-remote-control"
+      "wiki": "https://www.elektroda.com/rtvforum/topic4017963.html"
     },
     {
       "vendor": "Tuya",
@@ -14620,7 +14617,6 @@
       },
       "image": "https://obrazki.elektroda.pl/4311607700_1792212390.png",
       "wiki": "",
-      "product": "https://www.hama.com/00176598/hama-wlan-led-lamp-gu10-5-5-w-rgbw-dimmable-reflective-for-voice-app-control?srcLang=0&targetLang=1",
       "flag": 4
     },
     {
@@ -15300,8 +15296,7 @@
         "8": "PWM;1"
       },
       "image": "https://obrazki.elektroda.pl/4818674000_1792212366.png",
-      "wiki": "",
-      "product": "https://www.hama.com/00176584/hama-wlan-led-lamp-e27-10w-dimmable-bulb-for-voice-app-control-white"
+      "wiki": ""
     },
     {
       "bDetailed": "0",
@@ -15726,7 +15721,6 @@
       },
       "image": "https://obrazki.elektroda.pl/1991161200_1675734721.png",
       "wiki": "https://www.elektroda.com/rtvforum/topic3954346.html",
-      "shop": "https://freshin.com/products/smart-light-bulbs-freshin-e27-a60-9w-rgbcw-wifi-light-bulb-dimmable-led-light-2-4ghz-only-compatible-with-alexa-google-home-no-hub-required",
       "flag": 134218752,
       "command": "SM2135_Map 2 1 0 4 3",
       "keywords": ["E27", "RGBW", "9W", "SM2135"]
@@ -15791,7 +15785,6 @@
         "26": "Btn_SmartLED;0"
       },
       "command": "backlog CTRange 154 370; scheduleHADiscovery 10",
-      "product": "https://www.feit.com/products/16-ft-rgbw-color-changing-smart-wi-fi-led-strip-light-tape16-rgbw-rp",
       "image": "https://obrazki.elektroda.pl/7879920800_1678042069.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20474832#20474832"
     },
