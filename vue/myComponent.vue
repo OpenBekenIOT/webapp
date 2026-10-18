@@ -32,10 +32,9 @@
 
     <div class="tabcontent" v-if="tab === 'About'">
       <h3>About</h3>
-      <p><a v-bind:href="nativeurl" target="_blank">Native UI on this device {{nativeurl}}</a></p>
-      <p>A simple web app to go with OpenBekenIOT equipped devices by <a href="https://github.com/btsimonh">btsimonh</a></p>
-      <p>This app is a pure javascript application written in VueJS as an SFC .vue component, and dynamically loaded from the device via a simple webpage.  The intent here is to be able to provide a rich UI and allow the device UI to remain simple (and small).</p>
-      <p>Currently, it supports displaying logging from the device</p>
+      <p><a v-bind:href="nativeurl" target="_blank">Open the native device UI ({{nativeurl}})</a></p>
+      <p>A simple companion web app for OpenBekenIOT-equipped devices by <a href="https://github.com/btsimonh">btsimonh</a>.</p>
+      <p>This is a lightweight JavaScript web app built with Vue.js as a single-file component (.vue) and loaded directly from the device. The intent is to provide a richer UI while keeping the device UI simple and small.</p>
     </div>
 
     <div class="tabcontent" v-if="tab === 'OTA'">
@@ -43,7 +42,7 @@
       <ota-controller></ota-controller>
     </div>
     <div class="tabcontent" v-if="tab === 'Tools'">
-      <h3>Tools (WORK IN PROGRESS, SOME BUTTONS MAY NOT BE READY)</h3>
+      <h3>Tools</h3>
       <tools-controller></tools-controller>
     </div>
     <div class="tabcontent" v-if="tab === 'Flash'">
@@ -60,8 +59,8 @@
     </div>
 
     <div class="tabcontent" v-if="tab === 'GPIODoctor'">
-      <h3>GPIO Doctor - easily find GPIO roles for your relays, PWMs, and buttons (Work In Progress)</h3>
-      <h6>Please also UPDATE OBK to latest version to get best experience, otherwise reading values won't work</h6>
+      <h3>GPIO Doctor - easily find GPIO roles for your relays, PWMs, and buttons</h3>
+      <p class="helperNote">For best results, update OpenBeken to the latest version. Otherwise, some values may not display correctly.</p>
       <gpio-controller></gpio-controller>
     </div>
     </div>
@@ -137,6 +136,12 @@
 
     .example {
         color: v-bind('color');
+    }
+
+    .helperNote {
+      margin: 6px 0 18px 0;
+      font-size: 0.8em;
+      color: #444;
     }
 
     /* Style the tab */

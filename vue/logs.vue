@@ -9,14 +9,14 @@
                 </td>
                 <td>
                     <button class="logging" :class="{paused:paused}"  @click="paused = !paused">{{paused?"Resume":"Pause"}}</button>
-                    <button class="feature" style="width: 100px" @click="clear">Clear History</button>
-                    <button class="feature" style="width: 125px" @click="selectAllFeatures">Select All Features</button>
-                    <button class="feature" style="width: 125px" @click="clearAllFeatures">Clear All Features</button>
+                    <button class="feature" style="width: 100px" @click="clear">Clear log</button>
+                    <button class="feature" style="width: 125px" @click="selectAllFeatures">Select all features</button>
+                    <button class="feature" style="width: 125px" @click="clearAllFeatures">Clear all features</button>
                 </td>
             </tr>
             <tr>
                 <td style="width: 80px">
-                    <label>Log Features:</label>
+                    <label>Log features:</label>
                 </td>
                 <td id="logFeaturesParent">
                     <div class="feature" v-for="(item) in sortedLogFeatureNames" :key="item">
@@ -27,13 +27,13 @@
             </tr>
             <tr>
                 <td style="width: 80px">
-                    <label>Log Level:</label>
+                    <label>Log level:</label>
                 </td>
                 <td>
                     <select v-model="loglevel">
                         <option v-for="(item,index) of loglevelnames" :value="index" :key="index">{{item}}</option>
                     </select>
-                     NOTE: If you are getting 'command unknown', remember that some commands are only added when a driver is started, and some drivers requires device reboot to start.
+                     Note: If you see 'command unknown', remember that some commands are only available after a driver starts. Some drivers require a device reboot to start.
                 </td>
             </tr>
             <tr>
