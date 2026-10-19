@@ -8479,7 +8479,7 @@
         "24": "PWM;5",
         "26": "PWM;4"
       },
-      "command": "startDriver SM16703P; SM16703P_Init 120; startDriver PixelAnim;",
+      "command": "startDriver SM16703P; SM16703P_Init 12; startDriver PixelAnim;",
       "image": "https://obrazki.elektroda.pl/2568990700_1735106079.png",
       "wiki": "https://www.elektroda.com/rtvforum/topic4095226.html"
     },
