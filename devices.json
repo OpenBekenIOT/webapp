@@ -13098,6 +13098,27 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic4024917.html"
     },
     {
+      "vendor": "Xeefeel",
+      "bDetailed": "0",
+      "name": "1CH Mini Switch",
+      "model": "S1/Mini PM",
+      "chip": "BK7238",
+      "board": "",
+      "flags": "1024",
+      "keywords": [
+        "EZB-W6C1HCW-A_V1.1",
+        "2025-719",
+        "Dingpanxing EdTech Co., Ltd"
+      ],
+      "pins": {
+        "9": "Btn_Tgl_All;1",
+        "26": "WifiLED_n;1"
+      },
+      "command": "backlog powersave1; startDriver BL0942",
+      "image": "https://obrazki.elektroda.pl/8386768200_1792664251.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4185856.html"
+    },    
+    {
       "vendor": "Magic Home",
       "bDetailed": "0",
       "name": "Magic Home 12V-24V GRB 4-Pin LED Controller",
