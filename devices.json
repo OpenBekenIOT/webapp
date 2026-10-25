@@ -17609,6 +17609,41 @@
       "command": "",
       "image": "https://obrazki.elektroda.pl/1195103200_1791535112.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4184839.html"
+    },
+    {
+      "vendor": "SRAN",
+      "bDetailed": "0",
+      "name": "SRAN SR-CB01-SBL 1 Gang 1 Way Touch Wall Switch",
+      "model": "SR-CB01-SBL",
+      "chip": "BK7231N",
+      "board": "CB3S",
+      "keywords": [
+        "AliExpress",
+        "SF6",
+        "1 gang",
+        "1 way",
+        "glass panel",
+        "Tuya",
+        "Smart Life",
+        "DS-SR-EU-DH-01A",
+        "DS-SR-EU-DH-01B",
+        "XQ141-1-B",
+        "touch switch",
+        "backlight",
+        "a37clle4crwqussz",
+        "oem_bk7231n_dctrl_switch"
+      ],
+      "pins": {
+        "6": "Rel;1",
+        "20": "Btn;1",
+        "22": "WifiLED_n;0",
+        "23": "LED_n;2",
+        "26": "LED_n;1"
+      },
+      "command": "",
+      "image": "https://raw.githubusercontent.com/OpenBekenIOT/webapp/main/images/sran-sr-cb01-sbl.png",
+      "wiki": "",
+      "product": "https://www.aliexpress.com/item/1005003170017057.html"
     }
   ]
 }
