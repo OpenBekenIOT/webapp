@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WiFi DIY Relay</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">WiFi DIY Relay (KR05-1CHKG-W)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://user-images.githubusercontent.com/14217781/209668900-bb520a07-8e79-45ce-a03a-ca0936ad0034.jpg" alt="WiFi DIY Relay">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> QIACHIP</p>
+        <p><strong>Chip:</strong> BL602</p>
+        <p><strong>Board:</strong> SM-028_V1.3</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> switch, relay, KR05</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "QIACHIP",
+  "bDetailed": "0",
+  "name": "WiFi DIY Relay",
+  "model": "KR05-1CHKG-W",
+  "chip": "BL602",
+  "board": "SM-028_V1.3",
+  "pins": {
+    "4": "Btn;1",
+    "20": "Rel;1",
+    "22": "WifiLED_n;1"
+  },
+  "keywords": [
+    "switch",
+    "relay",
+    "KR05"
+  ],
+  "image": "https://user-images.githubusercontent.com/14217781/209668900-bb520a07-8e79-45ce-a03a-ca0936ad0034.jpg",
+  "wiki": "",
+  "product": "https://aliexpress.com/item/1005004996247436.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P4 is Btn on channel 1<br>- P20 is Rel on channel 1<br>- P22 is WifiLED_n on channel 1<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="#" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/" target="_blank">Polish guide</a>
+        </p>
+        <p>You can also visit <a href="https://aliexpress.com/item/1005004996247436.html" target="_blank">shop site</a>.</p>
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="eWelink_E27_AC90_250V_Smart_Lamp_Holder.html">E27 AC90-250V Smart Lamp Holder</a> - 33.3% match</li>
+<li><a href="Cozylife_DS_1321AL.html">1CH 10A 400W Neutral/No Neutral Switch</a> - 33.3% match</li>
+<li><a href="Tuya_WB01.html">Single-Gang 1CH 10A Touch Switch</a> - 33.3% match</li>
+<li><a href="Tuya_GIRIER_16A_1CH_Wi_Fi_Switch_Module_ES_with_Power_Monitoring.html">GIRIER 16A 1CH Wi-Fi Switch Module-ES with Power Monitoring</a> - 25.0% match</li>
+<li><a href="Tuya_WSM16_DC_1.html">AVATTO WiFi 1CH Smart Dry Contact Module</a> - 25.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>
