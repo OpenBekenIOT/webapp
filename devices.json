@@ -1146,6 +1146,31 @@
     },
     {
       "vendor": "LEDVANCE",
+      "bDetailed": "1",
+      "name": "SmartPlus Classic A60 Tunable White Bulb E27 9W (CCT revision, pins 7/8)",
+      "model": "AC33908",
+      "chip": "BK7231T",
+      "board": "WB8P",
+      "flags": "262400",
+      "keywords": [
+      "2700-6500k",
+      "cct",
+      "cw",
+      "smart+",
+      "230v",
+      "revision"
+      ],
+      "pins": {
+      "7": "PWM;2",
+      "8": "PWM;1"
+      },
+      "pin_notes": "c_pin=7 (brightness input), w_pin=8 (temperature input), cwtype=1. Temperature direction is inverted on this hardware, CTRange 500 154 restores 2700K warm / 6500K cold.",
+      "command": "backlog led_enableAll 0; CTRange 500 154; PowerSave 0; PowerSave_WFI 0",
+      "image": "",
+      "wiki": ""
+      },
+    {
+      "vendor": "LEDVANCE",
       "bDetailed": "0",
       "name": "SmartPlus Classic A60 Tunable White Bulb E27 9W 806lm",
       "model": "AC33909",
