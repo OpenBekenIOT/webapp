@@ -1162,7 +1162,7 @@
         "8": "temperature input (w_pin), cwtype=1"
       },
       "command": "backlog led_enableAll 0; CTRange 500 154; PowerSave 0; PowerSave_WFI 0",
-      "image": "",
+      "image": "https://cdn.idealo.com/folder/Product/201634/2/201634239/s1_produktbild_max/ledvance-smart-classic-wifi-dim-e27-9w-ww-ac33908.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4186467.html"
     },
     {
