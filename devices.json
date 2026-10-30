@@ -1163,7 +1163,7 @@
       },
       "command": "backlog led_enableAll 0; CTRange 500 154; PowerSave 0; PowerSave_WFI 0",
       "image": "",
-      "wiki": ""
+      "wiki": "https://www.elektroda.com/rtvforum/topic4186467.html"
     },
     {
       "vendor": "LEDVANCE",
