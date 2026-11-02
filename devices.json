@@ -13103,7 +13103,7 @@
       "name": "1CH Mini Switch",
       "model": "S1/Mini PM",
       "chip": "BK7238",
-      "board": "",
+      "board": "T1-M",
       "flags": "1024",
       "keywords": [
         "EZB-W6C1HCW-A_V1.1",
