@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Zemismart Light Switch (Neutral Optional) KS-811-3</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Zemismart Light Switch (Neutral Optional) KS-811-3 (KS-811-3)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://zorruno.com/wp-content/uploads/2022/10/2022-07-25-11_08_53-Photo-Google-Photos-edited.png" alt="Zemismart Light Switch (Neutral Optional) KS-811-3">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Zemismart</p>
+        <p><strong>Chip:</strong> BK7231N</p>
+        <p><strong>Board:</strong> on PCB</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> switch, 3 gang</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Zemismart",
+  "bDetailed": "0",
+  "name": "Zemismart Light Switch (Neutral Optional) KS-811-3",
+  "model": "KS-811-3",
+  "chip": "BK7231N",
+  "board": "on PCB",
+  "pins": {
+    "14": "Rel;3",
+    "15": "Rel;1",
+    "16": "Rel;2",
+    "17": "Btn;1",
+    "22": "WifiLED;1",
+    "24": "Btn;3",
+    "26": "Btn;2"
+  },
+  "keywords": [
+    "switch",
+    "3 gang"
+  ],
+  "image": "https://zorruno.com/wp-content/uploads/2022/10/2022-07-25-11_08_53-Photo-Google-Photos-edited.png",
+  "wiki": "https://zorruno.com/2022/zemismart-ks-811-with-openbk7231n-openbeken/",
+  "product": "https://www.aliexpress.com/item/4000979779573.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P14 is Rel on channel 3<br>- P15 is Rel on channel 1<br>- P16 is Rel on channel 2<br>- P17 is Btn on channel 1<br>- P22 is WifiLED on channel 1<br>- P24 is Btn on channel 3<br>- P26 is Btn on channel 2<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://zorruno.com/2022/zemismart-ks-811-with-openbk7231n-openbeken/" target="_blank">English guide</a>, see also <a href="https://zorruno.pl/2022/zemismart-ks-811-with-openbk7231n-openbeken/" target="_blank">Polish guide</a>
+        </p>
+        <p>You can also visit <a href="https://www.aliexpress.com/item/4000979779573.html" target="_blank">shop site</a>.</p>
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Tuya_WCM1MR.html">RTX WCM1MR Shutter Controller</a> - 28.6% match</li>
+<li><a href="Tuya_LSPS5_Wall_Switch_No_Neutral_3_gang.html">LSPS5 Wall Switch No-Neutral - 3 gang</a> - 28.6% match</li>
+<li><a href="Tuya_SB527.html">SB527 QS-WIFI-ECC02 Shutter Controller</a> - 28.6% match</li>
+<li><a href="Tuya_Smart_Socket_20A.html">Smart Socket 20A</a> - 14.3% match</li>
+<li><a href="Tuya_SL_SC_01.html">Spacetronik shutter controller module SL-SC-01</a> - 14.3% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

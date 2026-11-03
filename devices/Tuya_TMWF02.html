@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mini Ceiling Fan Speed Controller (ZN30460201)</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Mini Ceiling Fan Speed Controller (ZN30460201) (TMWF02)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/5815138200_1710277150.jpg" alt="Mini Ceiling Fan Speed Controller (ZN30460201)">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Tuya</p>
+        <p><strong>Chip:</strong> BK7231T</p>
+        <p><strong>Board:</strong> WB2S</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> tuyamcu, dimmer, puya, PY32F003, ZN304602_01, WB_MD1, 20220811</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Tuya",
+  "bDetailed": "0",
+  "name": "Mini Ceiling Fan Speed Controller (ZN30460201)",
+  "model": "TMWF02",
+  "chip": "BK7231T",
+  "board": "WB2S",
+  "flags": "1024",
+  "keywords": [
+    "tuyamcu",
+    "dimmer",
+    "puya",
+    "PY32F003",
+    "ZN304602_01",
+    "WB_MD1",
+    "20220811"
+  ],
+  "pins": {},
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/5815138200_1710277150.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4003295.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- Flags are set to 1024<br></div>
+    </div>
+  </div>
+
+	
+	<div class="col-12 mb-3">
+	  <div class="card">
+		<div class="card-body">
+		  <p class="font-weight-bold" style="font-size: 1.5rem;">
+			Warning! This device is using TuyaMCU. Please consult generic TuyaMCU guide: 
+			<a href="https://www.elektroda.com/rtvforum/topic4038151.html" target="_blank">
+			  TuyaMCU flashing, setup and configuration guide - configure dpIDs for Home Assistant
+			</a>
+		  </p>
+		</div>
+	  </div>
+	</div>
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4003295.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4003295.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

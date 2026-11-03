@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lepro LE Wifi Smart LED Bulb A19 E26</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Lepro LE Wifi Smart LED Bulb A19 E26 (901003-US)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/4842854400_1676748124.jpg" alt="Lepro LE Wifi Smart LED Bulb A19 E26">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> Lepro</p>
+        <p><strong>Chip:</strong> BK7231T</p>
+        <p><strong>Board:</strong> WB2L</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> RGBCW, E26, SM2135</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "Lepro",
+  "bDetailed": "0",
+  "name": "Lepro LE Wifi Smart LED Bulb A19 E26",
+  "model": "901003-US",
+  "chip": "BK7231T",
+  "board": "WB2L",
+  "pins": {
+    "7": "SM2135_DAT;1",
+    "8": "SM2135_CLK;1"
+  },
+  "keywords": [
+    "RGBCW",
+    "E26",
+    "SM2135"
+  ],
+  "image": "https://obrazki.elektroda.pl/4842854400_1676748124.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=20445785#20445785",
+  "command": "SM2135_MAP 2 1 0 3 4"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P7 is SM2135_DAT on channel 1<br>- P8 is SM2135_CLK on channel 1<br>- StartupCommand is set to SM2135_MAP 2 1 0 3 4<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/viewtopic.php?p=20445785#20445785" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/viewtopic.php?p=20445785#20445785" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Globe_35804_E26_RGBCW_LED_Bulb.html">Globe 35804 E26 RGBCW LED Bulb</a> - 50.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

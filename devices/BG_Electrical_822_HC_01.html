@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nexus 13A Twin Switched Smart Home Control Socket (UK)</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><!-- Google -->
+ <meta name="google-site-verification" content="7TndFADSStO2WmhEx0TgZ_o__nVvRwyk8IQeWlbK-4g" />
+<style>
+body { max-width: 1000px; margin: 2rem auto; }
+img { max-width: 100%; border-radius: 8px; }
+textarea { width: 100%; height: 250px; font-family: monospace; }
+.copy-btn { margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<h5>Firmware change information, Home Assistant pairing, guide, template, tutorial and help for...</h5>
+<h1 class="my-3">Nexus 13A Twin Switched Smart Home Control Socket (UK) (822/HC-01)</h1>
+
+<div class="row">
+  
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <img class="card-img-top" src="https://obrazki.elektroda.pl/5992008100_1760133211.jpg" alt="Nexus 13A Twin Switched Smart Home Control Socket (UK)">
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Information</div>
+      <div class="card-body">
+        <p><strong>Vendor:</strong> BG Electrical</p>
+        <p><strong>Chip:</strong> RDA5981</p>
+        <p><strong>Board:</strong> BL335-P</p>
+        <p><strong>Detailed:</strong> 0</p>
+        <p><strong>Keywords:</strong> double, plug, RDA5891A, broadlink, 3335-P1V2 S1000H, SLWS-M2, E324684</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Device Template</div>
+      <div class="card-body">
+        <textarea readonly id="deviceTemplate">{
+  "vendor": "BG Electrical",
+  "bDetailed": "0",
+  "name": "Nexus 13A Twin Switched Smart Home Control Socket (UK)",
+  "model": "822/HC-01",
+  "chip": "RDA5981",
+  "board": "BL335-P",
+  "flags": "1024",
+  "keywords": [
+    "double",
+    "plug",
+    "RDA5891A",
+    "broadlink",
+    "3335-P1V2 S1000H",
+    "SLWS-M2",
+    "E324684"
+  ],
+  "pins": {
+    "3": "Btn_n;1",
+    "4": "Btn_n;2",
+    "7": "Rel;2",
+    "25": "AlwaysHigh;0",
+    "26": "Rel;1"
+  },
+  "command": "",
+  "image": "https://obrazki.elektroda.pl/5992008100_1760133211.jpg",
+  "wiki": "https://www.elektroda.com/rtvforum/topic4148862.html"
+}</textarea>
+        <button class="btn btn-primary copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <button class="btn btn-primary copy-btn" onclick="showTemplateTutorial()">View Templates Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-header">Pins</div>
+      <div class="card-body">- P3 is Btn_n on channel 1<br>- P4 is Btn_n on channel 2<br>- P7 is Rel on channel 2<br>- P25 is AlwaysHigh on channel 0<br>- P26 is Rel on channel 1<br>- Flags are set to 1024<br></div>
+    </div>
+  </div>
+
+	
+
+
+	
+
+  
+  
+  
+  <div class="col-12 mb-3">
+    <div class="card">
+      <div class="card-header">Futher reading</div>
+      <div class="card-body">
+	  <p class="font-weight-bold" style="font-size: 1.5rem;">
+          Read detailed flashing guide and get help in device topic: <a href="https://www.elektroda.com/rtvforum/topic4148862.html" target="_blank">English guide</a>, see also <a href="https://www.elektroda.pl/rtvforum/topic4148862.html" target="_blank">Polish guide</a>
+        </p>
+        
+        <p>Return to <a href="../devicesList.html">devices list</a>.</p>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+    <div class="col-12 mb-3">
+      <div class="card">
+        <div class="card-header">Devices with similar GPIO configuration</div>
+        <div class="card-body">
+          <ul>
+            <li><a href="Tuya_SP400W_IL.html">Smart Plug Power Monitoring</a> - 20.0% match</li>
+<li><a href="LoraTap_SP800WJ_EU.html">Tuya EU Smart Plug with Power Metering</a> - 20.0% match</li>
+<li><a href="Geeni_Current_Charge_outlet.html">Current + Charge outlet</a> - 20.0% match</li>
+<li><a href="Aubess_PSW1_24v3_WF.html">16A Tuya Mini Power Monitor Switch ID:13605</a> - 20.0% match</li>
+<li><a href="Aubess_PSW_22V3a.html">16A Tuya Mini Power Monitor Switch ID:13605</a> - 20.0% match</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+</div>
+</div>
+
+<script>
+function copyTemplate() {
+    const txt = document.getElementById("deviceTemplate");
+    txt.select();
+    document.execCommand("copy");
+    alert("Device template copied!");
+}
+function showTemplateTutorial() {
+    window.open("https://www.youtube.com/watch?v=VDbaLR_0YWs","_blank");
+}
+</script>
+</body>
+</html>

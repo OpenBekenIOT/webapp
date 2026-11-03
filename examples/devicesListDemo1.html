@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Simplest demo of OpenBeken devices database</h2>
+
+<p id="demo"></p>
+
+<script>
+var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status === 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status, xhr.response);
+      }
+    };
+    xhr.send();
+};
+
+function processJSON(json) {
+
+  //const obj = JSON.parse(text);
+ var s = "";
+  
+	var arrayLength = json.devices.length;
+	for (var i = 0; i < arrayLength; i++) {
+		var image = json.devices[i].image;
+		var name = json.devices[i].name;
+		//Do something
+		s += "Device " + i + " out of " + arrayLength + " is "
+		s += name;
+		s += "<br>";
+	}
+  document.getElementById("demo").innerHTML = s;
+
+}
+
+getJSON('https://openbekeniot.github.io/webapp/devices.json',
+function(err, data) {
+  if (err !== null) {
+    alert('Something went wrong: ' + err);
+  } else {
+  processJSON(data);
+    //alert('Your query count: ' + data);
+  }
+});
+
+</script>
+
+</body>
+</html>
+
+
