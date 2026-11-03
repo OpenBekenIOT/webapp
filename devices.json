@@ -14600,6 +14600,25 @@
       "product": "https://www.aliexpress.com/item/1005003425831720.html"
     },
     {
+      "vendor": "Govee",
+      "bDetailed": "0",
+      "name": "RGBWW Smart LED Bulb",
+      "model": "H6008",
+      "chip": "RTL87X0C",
+      "board": "on PCB",
+      "flags": "1024",
+      "keywords": [
+        "RTL8720CF"
+      ],
+      "pins": {
+        "2": "BP5758D_CLK;0",
+        "3": "BP5758D_DAT;0"
+      },
+      "command": "BP5758D_Map 2 1 0 3 4",
+      "image": "https://obrazki.elektroda.pl/7415284000_1793687738.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4186706.html"
+    },    
+    {
       "vendor": "Tuya",
       "bDetailed": "1",
       "name": "WX300P RGB Strip Controller",
