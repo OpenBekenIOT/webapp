@@ -11935,6 +11935,34 @@
     },
     {
       "vendor": "Blitzwolf",
+      "bDetailed": "0",
+      "name": "Power Monitoring Plug (EU)",
+      "model": "BW-SHP6 Pro",
+      "chip": "RTL87X0C",
+      "board": "on PCB",
+      "flags": "1024",
+      "keywords": [
+        "RTL8720CF",
+        "BL0937",
+        "cuco_plug_bw_shp6_comm",
+        "stock firmware 1.0.1",
+        "SDK 2.3.3-40.00"
+      ],
+      "pins": {
+        "1": "Rel;1",
+        "3": "BL0937CF1;0",
+        "4": "BL0937CF;0",
+        "11": "BL0937SEL;0",
+        "12": "Btn;1",
+        "17": "LED;1",
+        "18": "LED_n;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/9896325900_1792615383.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4185821.html"
+    },    
+    {
+      "vendor": "Blitzwolf",
       "bDetailed": "1",
       "name": "smart socket BW-SHP6 (with metering)",
       "model": "BW-SHP6",
