@@ -11935,6 +11935,54 @@
     },
     {
       "vendor": "Blitzwolf",
+      "bDetailed": "0",
+      "name": "Power Monitoring Plug (EU)",
+      "model": "BW-SHP6 Pro",
+      "chip": "RTL87X0C",
+      "board": "on PCB",
+      "flags": "1024",
+      "keywords": [
+        "RTL8720CF",
+        "BL0937",
+        "cuco_plug_bw_shp6_comm",
+        "stock firmware 1.0.1",
+        "SDK 2.3.3-40.00"
+      ],
+      "pins": {
+        "1": "Rel;1",
+        "3": "BL0937CF1;0",
+        "4": "BL0937CF;0",
+        "11": "BL0937SEL;0",
+        "12": "Btn;1",
+        "17": "LED;1",
+        "18": "LED_n;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/9896325900_1792615383.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4185821.html"
+    },
+    {
+      "vendor": "Ucomen",
+      "bDetailed": "0",
+      "name": "Power Metering Socket (EU)",
+      "model": "PA-FRH-01SW2",
+      "chip": "BK7231N",
+      "board": "CB2S",
+      "keywords": ["BP2525", "WIFI3680-15A"],
+      "pins": {
+        "6": "BL0937CF1;0",
+        "7": "BL0937CF;0",
+        "8": "WifiLED_n;0",
+        "10": "Btn;1",
+        "24": "BL0937SEL;0",
+        "26": "Rel;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/8644350100_1766447093.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4183964.html"
+    },        
+    {
+      "vendor": "Blitzwolf",
       "bDetailed": "1",
       "name": "smart socket BW-SHP6 (with metering)",
       "model": "BW-SHP6",
@@ -13103,7 +13151,7 @@
       "name": "1CH Mini Switch",
       "model": "S1/Mini PM",
       "chip": "BK7238",
-      "board": "",
+      "board": "T1-M",
       "flags": "1024",
       "keywords": [
         "EZB-W6C1HCW-A_V1.1",
@@ -14551,6 +14599,25 @@
       "wiki": "",
       "product": "https://www.aliexpress.com/item/1005003425831720.html"
     },
+    {
+      "vendor": "Govee",
+      "bDetailed": "0",
+      "name": "RGBWW Smart LED Bulb",
+      "model": "H6008",
+      "chip": "RTL87X0C",
+      "board": "on PCB",
+      "flags": "1024",
+      "keywords": [
+        "RTL8720CF"
+      ],
+      "pins": {
+        "2": "BP5758D_CLK;0",
+        "3": "BP5758D_DAT;0"
+      },
+      "command": "BP5758D_Map 2 1 0 3 4",
+      "image": "https://obrazki.elektroda.pl/7415284000_1793687738.png",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4186706.html"
+    },    
     {
       "vendor": "Tuya",
       "bDetailed": "1",
