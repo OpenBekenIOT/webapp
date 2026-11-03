@@ -11960,7 +11960,27 @@
       "command": "",
       "image": "https://obrazki.elektroda.pl/9896325900_1792615383.jpg",
       "wiki": "https://www.elektroda.com/rtvforum/topic4185821.html"
-    },    
+    },
+    {
+      "vendor": "Ucomen",
+      "bDetailed": "0",
+      "name": "Power Metering Socket (EU)",
+      "model": "PA-FRH-01SW2",
+      "chip": "BK7231N",
+      "board": "CB2S",
+      "keywords": ["BP2525", "WIFI3680-15A"],
+      "pins": {
+        "6": "BL0937CF1;0",
+        "7": "BL0937CF;0",
+        "8": "WifiLED_n;0",
+        "10": "Btn;1",
+        "24": "BL0937SEL;0",
+        "26": "Rel;1"
+      },
+      "command": "",
+      "image": "https://obrazki.elektroda.pl/8644350100_1766447093.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4183964.html"
+    },        
     {
       "vendor": "Blitzwolf",
       "bDetailed": "1",
