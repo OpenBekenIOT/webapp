@@ -1147,6 +1147,27 @@
     {
       "vendor": "LEDVANCE",
       "bDetailed": "0",
+      "name": "SmartPlus Classic A60 Tunable White Bulb E27 9W (CCT revision, pins 7/8)",
+      "model": "AC33908/CCT",
+      "chip": "BK7231T",
+      "board": "WB8P",
+      "flags": "262400",
+      "keywords": ["AC33908", "2700-6500k", "cct", "cw", "smart+", "230v"],
+      "pins": {
+        "7": "PWM;2",
+        "8": "PWM;1"
+      },
+      "pin_notes": {
+        "7": "brightness input (c_pin)",
+        "8": "temperature input (w_pin), cwtype=1"
+      },
+      "command": "backlog led_enableAll 0; CTRange 500 154; PowerSave 0; PowerSave_WFI 0",
+      "image": "https://cdn.idealo.com/folder/Product/201634/2/201634239/s1_produktbild_max/ledvance-smart-classic-wifi-dim-e27-9w-ww-ac33908.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4186467.html"
+    },
+    {
+      "vendor": "LEDVANCE",
+      "bDetailed": "0",
       "name": "SmartPlus Classic A60 Tunable White Bulb E27 9W 806lm",
       "model": "AC33909",
       "chip": "BK7231T",
