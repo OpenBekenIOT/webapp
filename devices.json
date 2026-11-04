@@ -16627,6 +16627,33 @@
       "wiki": "https://www.elektroda.com/rtvforum/topic3995489.html"
     },
     {
+      "vendor": "Connex Connect",
+      "name": "Smart WiFi 3 Pin Plug 16A",
+      "model": "CC-P1004 / CC-P1003",
+      "chip": "BK7231T",
+      "board": "WB2S",
+      "pins": {
+        "6": "WifiLED_n;0",
+        "7": "BL0937CF;0",
+        "8": "BL0937CF1;0",
+        "10": "Btn;1",
+        "24": "BL0937SEL;0",
+        "26": "Rel;1"
+      },
+      "command": "backlog startDriver BL0937; PowerSave 0; SetStartValue 1 0",
+      "keywords": [
+        "South Africa",
+        "Type M",
+        "BL0937",
+        "CloudCutter"
+      ],
+      "product": "https://connexconnect.com/product/smart-wifi-plug-3-pin-sa-round-16a/",
+      "bDetailed": "0",
+      "flags": "1024",
+      "image": "https://obrazki.elektroda.pl/3558321200_1793794107.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/viewtopic.php?p=21998200"
+    },
+    {
       "vendor": "Dewenwils",
       "bDetailed": "0",
       "name": "200W Wi-Fi Low Voltage Transformer",
