@@ -1,50 +1,66 @@
 <template>
   <div class="container">
-    <div class="item" style="max-width: 300px;">
-      <h4>GPIO Doctor</h4>
-      <p>Here you can quickly detect GPIO roles of an unknown device. Remember to try checking <a href="https://www.youtube.com/watch?v=VDbaLR_0YWs"> our Templates</a> first, maybe there is already template for your device.</p>
+    <div class="item infoPanel">
+      <p>Use this tool to identify GPIO roles on an unknown device. Before you start, check <a href="https://www.youtube.com/watch?v=VDbaLR_0YWs">Templates</a> first; there may already be a template for your device.</p>
 
-      <h4>Usage warning</h4>
-      <p>This tool will override your current GPIO settings. Use with caution. Backup your current template if needed.</p>
+      <h4>Warning</h4>
+      <p>This tool overrides your current GPIO configuration. Use with caution. Back up your current template first, if needed.</p>
 
-      <h4>How to use - finding outputs</h4>
-      <p>To find relays, LEDs or PWMs, just use 'Set Output High'/Set Output Low' button on each pin and see if relay/LED/Light changes. This works also for PWMs, because 'Relay' role can control PWM, it just toggles it between 100% and 0% duty.</p>
- 
-      <h4>How to use - finding inputs</h4>
-      <p>To find inputs, including buttons, first click 'Setup input with pull up', which is a most common option, and then press a button for a second and check if state High/Low changes. If it changes, then you've found your button. In some rare cases, you also might want to try no pullup resistor mode (maybe for door sensors, etc?)</p>
- 
-      <h4>How to use - final steps</h4>
-      <p>You can easily change pin roles here and they will be saved. Remember to clear up unused Relay/dInput/roles etc manually and keep only the roles you are going to use</p>
- 
+      <h4>How to use: finding outputs</h4>
+      <p>To find relays, LEDs, or PWM outputs, use the “Set Output High” / “Set Output Low” button for each pin and observe what changes. This can also help with PWM outputs, because the “Relay” role can drive a PWM channel by toggling it between 100% and 0% duty cycle.</p>
+
+      <h4>How to use: finding inputs</h4>
+      <p>To find inputs (including buttons), first click “Set Input (pull-up)”, which is the most common option. Then press and hold the button briefly and check whether the state changes (High/Low). If it does, you have likely found your button. In rarer cases, you may also want to try “Set Input (no pull-up)” (for example, some door sensors).</p>
+
+      <h4>How to use: final steps</h4>
+      <p>Changes you make here are saved automatically. Once you have identified the required pins, clear any unused roles and keep only the roles you intend to use.</p>
     </div>
-    <div class="item" style="max-width: 550px;">
-    
-      <h4>GPIO Doctor Pins</h4> 
-      <div v-for="(role, index) in pins.roles" :key="index">
-        <span class="pin-index">P{{index}} ({{getPinAlias(index)}})</span>
-        <select v-model="pins.roles[index]"  @change="onPinChange(index)">
-          <option v-for="(name, index2) in pins.rolenames" :value="index2" :key="index2" :selected="(role == index2)">{{name}}</option>
-        </select>
-       Ch: <input type="number" min="0" max="64" step="1" v-model="pins.channels[index]" @change="onChannelChange(index)">
-       Val:
-        <span class="pin-value" :style="{ fontWeight: pins.states[index] ? 'bold' : 'bold', color: pins.states[index] ? 'green' : 'red' }">{{pins.states[index] ? 'High' : 'Low'}}</span>
-        <br>
-        Tools: <button @click="toggle(index)" :class="pins.states[index] ? 'button-green' : 'button-red'">
-         {{ pins.states[index] ? 'Set Output Low' : 'Set Output High' }}
-         </button>
-        <button @click="setInput(index,'dInput')">Set Input P-up</button>
-        <button @click="setInput(index,'dInput_NoPullUp')">Set Input (no p-up)</button>
-        <button @click="clearPin(index)">Clear)</button>
-        <hr>
+
+    <div class="item pinsPanel" :style="pinsCssVars">
+
+      <div class="pinHeader">
+        <div>Pin</div>
+        <div>Role</div>
+        <div class="rightHeader">
+          <div>Ch</div>
+        </div>
       </div>
 
+      <div v-for="(role, index) in pins.roles" :key="index" class="pinRow">
+        <div class="cellPin">
+          <span class="pin-index">P{{index}}</span>
+          <span class="pin-alias">({{getPinAlias(index)}})</span>
+        </div>
 
+        <div class="cellRole">
+          <select class="roleSelect" v-model="pins.roles[index]" @change="onPinChange(index)">
+            <option v-for="(name, index2) in pins.rolenames" :value="index2" :key="index2">{{name}}</option>
+          </select>
+        </div>
+
+        <div class="cellRight rightGroup">
+          <input class="chInput" type="number" min="0" max="64" step="1" v-model="pins.channels[index]" @change="onChannelChange(index)">
+          <span class="valBadge" :data-state="pins.states[index] ? 'high' : 'low'">{{pins.states[index] ? 'High' : 'Low'}}</span>
+        </div>
+
+        <div class="cellToolsLeft">
+          <button @click="toggle(index)" :class="pins.states[index] ? 'button-green' : 'button-red'">
+            {{ pins.states[index] ? 'Set Output Low' : 'Set Output High' }}
+          </button>
+          <button @click="setInput(index,'dInput')">Set Input P-up</button>
+        </div>
+
+        <div class="cellToolsRight">
+          <button @click="setInput(index,'dInput_NoPullUp')">Set Input (no P-up)</button>
+          <button @click="clearPin(index)">Clear</button>
+        </div>
+      </div>
     </div>
-   </div>
+  </div>
 </template>
 
 <script>
-  module.exports = {
+module.exports = {
 
     data: ()=>{
       return {
@@ -59,7 +75,7 @@
 
         },
        getPinAlias(index) {
-        // some of pins have special roles
+        // Some pins have special roles
         if (index == 23)
           return "ADC3";
         if (index == 26)
@@ -201,6 +217,24 @@
               }); // Never forget the final catch!
         }
     },
+    computed:{
+      roleMaxCh(){
+        const names = (this.pins && this.pins.rolenames) ? this.pins.rolenames : [];
+        let maxLen = 0;
+        for(let i = 0; i < names.length; i++){
+          const s = names[i];
+          if(s && s.length > maxLen) maxLen = s.length;
+        }
+        // Extra space for dropdown chrome and padding
+        let ch = maxLen + 6;
+        if(ch < 18) ch = 18;
+        if(ch > 48) ch = 48;
+        return ch;
+      },
+      pinsCssVars(){
+        return { '--roleW': this.roleMaxCh + 'ch' };
+      }
+    },
     mounted (){
         this.msg = 'fred';
 
@@ -224,18 +258,140 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
 }
-  .container {
-    display: flex;
-    justify-content: center;
-  }
 
-  .item {
-    padding: 0 15px;
-  }
-  .pin-index {
-    display: inline-block;
-  }
-  .button-green {
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.item {
+  padding: 0 15px;
+}
+
+/* Left info panel */
+.infoPanel {
+  flex: 0 0 300px;
+  max-width: 360px;
+}
+
+/* Right pins panel */
+.pinsPanel {
+  flex: 1 1 720px;
+  max-width: 920px;
+  min-width: 520px;
+  /* Role column target width (computed via pinsCssVars) */
+  --roleW: 28ch;
+}
+
+.pinHeader{
+  display: grid;
+  grid-template-columns: 150px minmax(18ch, var(--roleW)) 1fr;
+  column-gap: 12px;
+  padding: 6px 10px;
+  font-weight: 600;
+  opacity: 0.85;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  margin-bottom: 6px;
+  align-items: end;
+}
+
+.rightHeader{
+  display: grid;
+  grid-template-columns: 5ch max-content;
+  column-gap: 12px;
+  justify-content: start;
+}
+
+.pinRow{
+  display: grid;
+  grid-template-columns: 150px minmax(18ch, var(--roleW)) 1fr;
+  grid-template-areas:
+    "pin role right"
+    ".  toolsL toolsR";
+  column-gap: 12px;
+  row-gap: 6px;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  align-items: center;
+}
+
+.cellPin{ grid-area: pin; white-space: nowrap; }
+.cellRole{ grid-area: role; min-width: 0; }
+.cellRight{ grid-area: right; }
+.cellToolsLeft{ grid-area: toolsL; }
+.cellToolsRight{ grid-area: toolsR; }
+
+.pin-index{ font-weight: 600; }
+.pin-alias{ opacity: 0.7; margin-left: 6px; }
+
+.roleSelect{
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.rightGroup{
+  display: grid;
+  grid-template-columns: 5ch max-content;
+  column-gap: 12px;
+  align-items: center;
+  justify-content: start;
+}
+
+.chInput{
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Hide number spinners to avoid cramped/clipped look at small widths */
+.chInput::-webkit-outer-spin-button,
+.chInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.chInput[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Keep classic/simple control feel but with consistent sizing */
+select, input, button{
+  font-size: 13px;
+}
+
+select, input{
+  padding: 4px 6px;
+}
+
+button{
+  padding: 3px 10px;
+}
+
+/* Tool button rows */
+.cellToolsLeft,
+.cellToolsRight{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.valBadge{
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+
+.valBadge[data-state="high"]{ background: rgba(46,125,50,0.12); color: #1b5e20; }
+.valBadge[data-state="low"] { background: rgba(229,57,53,0.12); color: #b71c1c; }
+
+.button-green {
   background-color: green;
   color: white;
 }
@@ -244,4 +400,25 @@
   background-color: red;
   color: white;
 }
+
+@media (max-width: 900px){
+  .pinsPanel{
+    min-width: 0;
+    max-width: 100%;
+  }
+  .pinHeader{
+    display: none;
+  }
+  .pinRow{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "pin"
+      "role"
+      "right"
+      "toolsL"
+      "toolsR";
+  }
+  .cellPin{ margin-bottom: 2px; }
+}
 </style>
+

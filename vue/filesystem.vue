@@ -1,66 +1,94 @@
 <template>
     <div class="fill">
-        <p>"List Filesystem" will display all files on LittleFS. 
-        After listing the files, you can click on file name to begin editing text.
-        "Create File" allows you to create a new file on Device (like autoexec.bat).
-        You can also add files by drag &amp; dropping it.
-        "Reset scripts" will stop all script threads running (if you have started any) without stopping the device.
-        When editing a file, use "Save, Reset (...), and run" file to test new scripts, it will restart scripting every time with a clear state.
-        </p>
-		<p>You can access LittleFS HTML files by the following url: DEVICE_IP/api/lfs/FILENAME, for example: http://192.168.0.213/api/lfs/cfg.html . See <a href="https://www.elektroda.com/rtvforum/topic3971355.html">OBK/TASMOTA rest tutorial</a> for details</p>
-        <div class="top">
-            <button @click="backup(null, $event)">Read fsblock</button>
-            <button @click="restore(null, $event)">Restore fsblock</button>
-            <button @click="read(null, $event)">List Filesystem</button>
-            <button @click="create(null, $event)">Create File</button>
-            <button @click="upload(null, $event, false)">Upload file</button>
-            <button @click="upload(null, $event, true)">Upload as gzip</button>
-            <button @click="showUrlModal = true">Fetch from URLs</button>
-            <button @click="resetSVM(null, $event)">Reset scripts</button>
-            <br/>
-            <button @click="getTar(null, $event)">Download FS Backup in Tar Archive</button>
+        <div class="helpBox">
+            <div class="helpIntro">This tab lets you browse and manage files stored on LittleFS:</div>
+            <ul class="helpList">
+                <li><strong>List filesystem</strong> shows all files and folders on the device.</li>
+                <li>Click a filename to open it in the editor.</li>
+                <li><strong>Create file</strong> creates a new file on the device (for example, <code>autoexec.bat</code>).</li>
+                <li>You can also upload files by dragging and dropping them onto the drop area.</li>
+                <li><strong>Reset scripts</strong> stops all running script threads without rebooting the device.</li>
+                <li>Use <strong>Save, reset SVM, and run</strong> to test changes with a clean scripting state.</li>
+            </ul>
+            <div class="helpFooter">
+                LittleFS files can also be accessed via <code>{{ deviceBase }}/api/lfs/&lt;filename&gt;</code>.
+                For details, see the <a href="https://www.elektroda.com/rtvforum/topic3971355.html">OpenBeken/Tasmota REST tutorial</a>.
+            </div>
+        </div>
 
+<div class="top toolbar">
+            <div class="toolbarRow">
+                <button @click="read(null, $event)">List filesystem</button>
+                <button @click="create(null, $event)">Create file</button>
+                <button @click="upload(null, $event, false)">Upload file(s)</button>
+                <button @click="upload(null, $event, true)">Upload as gzip (.gz)</button>
+                <button @click="showUrlModal = true">Fetch from URLs</button>
+                <button @click="getTar(null, $event)">Download filesystem backup (.tar)</button>
+            </div>
+            <div class="toolbarRow toolbarRowAdvanced">
+                <button :disabled="lfsState.busy || lfsState.pending" @click="backup(null, $event)">Read FS block</button>
+                <button :disabled="lfsState.busy || lfsState.pending || !backupdata" @click="restore(null, $event)">Restore FS block</button>
+                <button @click="resetSVM(null, $event)">Reset scripts</button>
+                <button class="danger" :disabled="lfsState.busy || lfsState.pending" @click="formatLittleFS(null, $event)">Format LittleFS</button>
+                <button class="danger" :disabled="lfsState.busy || lfsState.pending" @click="resizeLittleFS(null, $event)">Schedule LittleFS resize</button>
+            </div>
+            <p v-if="lfsState.message" class="lfsNotice" role="status">{{ lfsState.message }}</p>
+            <div v-if="lfsState.pending" class="lfsNotice">
+                A resize may be pending. Reboot the device before using Format or raw FS-block tools.
+                The live file listing does not confirm the new size; files may be reformatted on reboot.
+                Refreshing this page does not reboot the device. Avoid FS-block/OTA tools elsewhere until after reboot.
+                <button :disabled="lfsState.busy" @click="acknowledgeLfsReboot">I have rebooted the device</button>
+            </div>
         </div>
         <div class="bottom">
-<div v-if="showUrlModal" style="position:fixed; top:20%; left:30%; width:40%; background:white; border:1px solid black; padding:1em; z-index:1000;">
-  <h3>Enter URLs (one per line)</h3>
-  This will download files from given URLs and save them to LFS.
-  <br>
-  <textarea v-model="urlInput" rows="10" style="width:100%"></textarea>
-  <br>
-  <label><input type="checkbox" v-model="urlGzip"> Compress with GZIP</label>
-  <br><br>
-  <button @click="fetchFromUrls">OK</button>
-  <button @click="showUrlModal = false">Cancel</button>
+<div v-if="showUrlModal" class="modalOverlay" @click.self="showUrlModal = false">
+    <div class="modal">
+        <h3>Fetch from URLs</h3>
+        <p class="modalHelp">The web app will download each URL and save the file to LittleFS.</p>
+        <textarea v-model="urlInput" rows="10"></textarea>
+        <label class="modalOption"><input type="checkbox" v-model="urlGzip"> Compress using gzip (.gz)</label>
+        <div class="modalActions">
+            <button @click="fetchFromUrls">Fetch</button>
+            <button @click="showUrlModal = false">Cancel</button>
+        </div>
+    </div>
 </div>
             <div class="left">
-                <input type="text" v-model="folder">
+                <div class="folderBox">
+                    <label for="folderInput"><strong>Target Folder (Optional)</strong></label><br/>
+                    <input id="folderInput" class="folderInput" type="text" v-model="folder" placeholder="e.g., www">
+                    <div class="folderHelp">
+                        Used for uploads and newly created files. Leave blank to save to the LittleFS root.
+                    </div>
+                </div>
                 <div class="drop" @drop="dropHandler($event)" @dragover="dragOverHandler($event)">
                     <div class="otatext center" v-html="otatext"></div>
                 </div>
-                <div v-html="status"></div>
-                <div v-html="output"></div>
+                <div class="logText" v-html="status"></div>
+                <div class="logText" v-html="output"></div>
             </div>
             <div class="middle">
                 <div>
-                    <div v-for="file in files" v-bind:key="file.name">
-                        <span v-if="file.type === 1"><button @click="editfile(file.name)">{{file.name}}</button> - {{file.size}}</span>
-                        <br v-if="file.type === 1"/>
+                    <div v-for="file in files" v-bind:key="file.name" v-if="file.type === 1" class="fileRow">
+                        <button class="fileBtn" @click="editfile(file.name)">{{file.name}}</button>
+                        <span class="fileSize">- {{file.size}}</span>
                     </div>
                     <div v-if="files.length > 0">
-                    <strong>Total Size: {{ totalBytes }} bytes</strong>
+                        <strong>Total Size: {{ totalBytes }} bytes</strong>
                     </div>
                 </div>
             </div>
             <div class="right">
-                <h2 id="fileEditorLabel">File editor. Select file to begin.</h2>
-                <div id="fileEditorBody" style="display:none">
-                    <button @click="save(null, $event)">Save</button>
-                    <button @click="save(startScript_simple)">Save, Run file as script thread</button>
-                    <button @click="save(startScript_firstReset)">Save, Reset SVM and run file as script thread</button>         
-                    <button @click="deleteFile(null, $event)">Delete</button>
-                    <button @click="openInBrowser(null, $event)">Open in Browser</button>
-                    <textarea v-model="edittext" rows="40" cols="100" style="height:90%"></textarea>
+                <h2 id="fileEditorLabel">File editor: select or create a file to begin.</h2>
+                <div id="fileEditorBody" class="editorBody" style="display:none">
+                    <div class="editorActions">
+                        <button @click="save(null, $event)">Save</button>
+                        <button @click="save(startScript_simple)">Save and run as script thread</button>
+                        <button @click="save(startScript_firstReset)">Save, reset SVM, and run as script thread</button>
+                        <button @click="deleteFile(null, $event)">Delete</button>
+                        <button @click="openInBrowser(null, $event)">Open in browser</button>
+                    </div>
+                    <textarea v-model="edittext" rows="40" cols="100"></textarea>
                 </div>
             </div>
         </div>
@@ -68,17 +96,34 @@
 </template>
 
 <script>
+  // Share an in-flight operation across tab remounts; remember a pending resize
+  // across page reloads. Firmware does not expose mounted/configured LFS geometry.
+  function getLfsMaintenanceState() {
+    const key = 'OpenBekenLfsResize:' + String(window.device || '').replace(/\/+$/, '');
+    const states = window.OpenBekenLfsMaintenance || (window.OpenBekenLfsMaintenance = {});
+    const state = states[key] || (states[key] = { key: key, busy: false, pending: false, message: '' });
+    try {
+      state.pending = state.pending || window.sessionStorage.getItem(key) === '1';
+    } catch (error) {
+      state.pending = true;
+      state.message = 'Cannot read the saved resize warning. Enable browser session storage before using LFS maintenance.';
+    }
+    return state;
+  }
+
   module.exports = {
 
     data: ()=>{
       return {
         msg: 'world!',
         backupdata: null,
-        status:'nothing going on',
+        lfsState: getLfsMaintenanceState(),
+        status:'Ready.',
         folder:'',
-        otatext:'drop file(s) or .tar here',
+        otatext:'Drop file(s) or a .tar archive here',
         shortName:'',
         mqtttopic:'',
+        deviceBase: '',
         output: '',
         showUrlModal: false,
         urlInput: '',
@@ -145,7 +190,7 @@
                         this.savefile(filename, buffer, resolve);
                     });
                 } catch (e) {
-                    this.status += `<br/>Error with ${url}: ${e}`;
+                    this.status += `<br/>Error fetching ${url}: ${e}`;
                 }
             }
             this.read();
@@ -162,7 +207,7 @@
                         reader.onload = (event) => {
                             console.log(event);
                             console.log('file len:'+event.target.result.byteLength);
-                            this.status += '<br/>tar upload '+files[0].filepath;
+                            this.status += '<br/>Uploading tar archive: '+files[0].filepath;
                             this.putTar(event.target.result);
                         };
                         reader.readAsArrayBuffer(files[0]);
@@ -233,10 +278,10 @@
                     reader.onload = (event) => {
                         console.log(event);
                         console.log('file len:'+event.target.result.byteLength);
-                        this.status += '<br/>save '+files[filecount].filepath;
+                        this.status += '<br/>Saving '+files[filecount].filepath;
                         this.savefile(files[filecount].filepath, event.target.result, ()=>{
                             filecount++;
-                            this.status += '.. done';
+                            this.status += ' done.';
                             saveone();
                         });
                         //holder.style.background = 'url(' + event.target.result + ') no-repeat center';
@@ -297,7 +342,7 @@
         },
 
         savefile(name, data, cb){
-            this.status += '<br/>saving file...';
+            this.status += '<br/>Saving file...';
             let url = window.device+'/api/lfs/';
             if (this.folder){
                 url += this.folder;
@@ -311,41 +356,52 @@
                 .then(response => response.text())
                 .then(text => {
                     console.log('received '+text);
-                    this.status += 'save complete...';
+                    this.status += ' done.';
                     if(cb) cb();
                 })
                 .catch(err => console.error(err)); // Never forget the final catch!
         },
 
         backup(cb){
-            this.status += '<br/>starting backup...';
+            if (!this.beginLfsOperation()) return;
+            this.backupdata = null;
+            this.status += '<br/>Starting backup...';
             let url = window.device+'/api/fsblock';
-            fetch(url)
-                .then(response => response.arrayBuffer())
+            return fetch(url, { cache: 'no-store' })
+                .then(response => {
+                    if (!response.ok) throw new Error('HTTP ' + response.status);
+                    return response.arrayBuffer();
+                })
                 .then(buffer => {
                     this.backupdata = buffer; 
                     console.log('received '+buffer.byteLength);
-                    this.status += '..backup done...';
+                    this.status += ' backup complete.';
                     if(cb) cb();
                 })
-                .catch(err => console.error(err)); // Never forget the final catch!
+                .catch(err => { this.lfsState.message = 'FS-block read failed: ' + err.message; })
+                .finally(() => { this.lfsState.busy = false; });
         },
 
         restore(cb){
-            this.status += '<br/>starting restore...';
+            if (!this.backupdata || !this.beginLfsOperation()) return;
+            this.status += '<br/>Starting restore...';
             let url = window.device+'/api/fsblock';
             if (this.backupdata){
-                fetch(url, { 
+                return fetch(url, {
                         method: 'POST',
                         body: this.backupdata
                     })
-                    .then(response => response.text())
+                    .then(response => {
+                        if (!response.ok) throw new Error('HTTP ' + response.status);
+                        return response.text();
+                    })
                     .then(text => {
                         console.log('received '+text);
-                        this.status += 'Restore complete...';
+                        this.status += ' restore complete.';
                         if(cb) cb();
                     })
-                    .catch(err => console.error(err)); // Never forget the final catch!
+                    .catch(err => { this.lfsState.message = 'FS-block restore not verified: ' + err.message; })
+                    .finally(() => { this.lfsState.busy = false; });
             }
         },
 
@@ -355,7 +411,7 @@
                 .then(response => response.json())
                 .then(folder => {
                     console.log('folder '+url,folder);
-                    this.status += 'Read '+url;
+                    this.status += '<br/>Reading '+url;
                     if (!folder.content) return;
                     for (let i = 0;i < folder.content.length; i++){
                         if (folder.content[i].name.startsWith('.')){
@@ -386,24 +442,24 @@
         },
         read(cb) {
             this.files = [];
-            this.readFolder('/');
+            this.readFolder('/', cb);
         },
 
 
         create(cb) {
-            let fname = prompt("Please enter new file name:", "autoexec.bat");
+            let fname = prompt("Enter a new filename:", "autoexec.bat");
             if(fname == null)
             {
                  alert("Canceled.");
             }
             else if(fname.length < 1)
             {
-                 alert("Empty name.");
+                 alert("Filename cannot be empty.");
             }
             else
             {
                  //alert("TODO "+fname);
-                 alert("Will try to create " +fname);
+                 alert("Creating " + fname + "...");
                  this.savefile(fname,"", ()=>{
                      this.read();
                  });
@@ -417,8 +473,8 @@
                 .then(text => {
                     this.edittext = text;
                     this.editname = name;
-                    document.getElementById("fileEditorLabel").innerHTML = "Editing "+name;
-                    document.getElementById("fileEditorBody").style.display = "block";
+                    document.getElementById("fileEditorLabel").innerHTML = "Editing: "+name;
+                    document.getElementById("fileEditorBody").style.display = "flex";
                 });
         },
 
@@ -427,27 +483,27 @@
         deleteFile(cb) {   
             let readCallback = this.read;
             if (this.editname) {
-                let r = confirm("Do you really want to remove the file " + this.editname + "?");
+                let r = confirm("Do you want to delete the file " + this.editname + "?");
                 if (r == false) {
-                    alert("Ok, then not.");
+                    alert("Delete canceled.");
                     return;
                 }
                 let url = window.device + '/api/del' + this.editname;
-                alert("Will try to remove - url is " + url);
+                alert("Deleting file...");
                 fetch(url)
                     .then(response => response.arrayBuffer())
                     .then(buffer => {
-                        this.status += '..delete done...';
+                        this.status += '<br/>Delete complete.';
                         if (cb) cb();
                         readCallback();
                     })
                     .catch(error => {
-                        this.status += `..delete failed: ${error}`;
+                        this.status += `<br/>Delete failed: ${error}`;
                         readCallback();
                         alert("Error deleting file: " + error);
                     });
             } else {
-                alert("Please begin editing some file first. Just click the name on list to edit.");
+                alert("Select a file from the list to edit first.");
             }
         },
 
@@ -458,7 +514,7 @@
                 // open URL in new window
                 window.open(url, '_blank');
             } else {
-                alert("Please begin editing some file first. Just click the name on list to edit.");
+                alert("Select a file from the list to edit first.");
             }
         },
         save(cb) {
@@ -474,7 +530,7 @@
                          readCallback();
                     });
             } else {
-                alert("Please begin editing some file first. Just click the name on list to edit.");
+                alert("Select a file from the list to edit first.");
             }
         },
         resetSVM() {
@@ -493,6 +549,111 @@
                     });
             }
         },
+        beginLfsOperation() {
+            if (this.lfsState.busy || this.lfsState.pending) return false;
+            this.lfsState.busy = true;
+            this.lfsState.message = '';
+            return true;
+        },
+        setLfsResizePending(pending) {
+            // Write before sending lfs_size: losing its reply does not undo it.
+            if (pending) window.sessionStorage.setItem(this.lfsState.key, '1');
+            else window.sessionStorage.removeItem(this.lfsState.key);
+            this.lfsState.pending = pending;
+        },
+        acknowledgeLfsReboot() {
+            if (this.lfsState.busy || !this.lfsState.pending) return;
+            if (!confirm('Confirm that you have rebooted this device since the resize attempt. A page refresh is not a reboot. This only clears the browser warning; it does not reboot or verify filesystem geometry.')) return;
+            try {
+                this.setLfsResizePending(false);
+                this.backupdata = null;
+                this.lfsState.message = 'Reboot acknowledged. Read a new FS block before any raw restore.';
+            } catch (error) {
+                this.lfsState.message = 'Cannot clear the resize warning: ' + error.message;
+            }
+        },
+        async sendLfsCommand(command) {
+            const response = await fetch(window.device + '/api/cmnd', { method: 'POST', body: command });
+            const text = await response.text();
+            let result;
+            try {
+                // Some firmware builds omit the value after the final "res":.
+                result = JSON.parse(text.replace(/("res"\s*:)\s*}$/, '$1null}'));
+            } catch (error) { /* An HTML fallback/error page is not command success. */ }
+            if (!response.ok || !result || result.success !== 200 || result.error !== undefined) {
+                const error = new Error('HTTP ' + response.status + ': ' + ((result && result.msg) || text.slice(0, 200)));
+                error.rejected = (response.status === 400 || response.status === 501) && result && result.error === response.status;
+                throw error;
+            }
+        },
+        async formatLittleFS(cb) {
+            if (this.lfsState.busy || this.lfsState.pending) return;
+            if (!confirm('Format LittleFS? This permanently deletes all files. Back up files and stop scripts/file transfers first. Unsaved editor text will be cleared only after verification.')) return;
+            if (!this.beginLfsOperation()) return;
+            const editname = this.editname, edittext = this.edittext;
+            this.lfsState.message = 'Formatting LittleFS...';
+            try {
+                await this.sendLfsCommand('lfs_format');
+                // lfs_format is synchronous, but its return code can hide an
+                // internal format/remount failure. Check the live root, not a timer.
+                const response = await fetch(window.device + '/api/lfs/', { cache: 'no-store' });
+                if (!response.ok) throw new Error('Filesystem check returned HTTP ' + response.status);
+                const listing = await response.json();
+                if (!listing || typeof listing.dir !== 'string' || !Array.isArray(listing.content) ||
+                    listing.content.some(file => !file || file.error !== undefined || file.type !== 2 || (file.name !== '.' && file.name !== '..'))) {
+                    throw new Error('Could not verify an empty root directory. Check the device log and files.');
+                }
+                this.files = [];
+                if (this.editname === editname && this.edittext === edittext) {
+                    this.edittext = '';
+                    this.editname = '';
+                    const label = document.getElementById('fileEditorLabel');
+                    const body = document.getElementById('fileEditorBody');
+                    if (label) label.textContent = 'File editor: select or create a file to begin.';
+                    if (body) body.style.display = 'none';
+                }
+                this.lfsState.message = 'Format command accepted; LittleFS is readable and its root directory is empty.';
+                if (cb) cb();
+            } catch (error) {
+                this.lfsState.message = 'Format not verified: ' + error.message + ' Files may already have changed. Editor text was kept; no automatic retry.';
+            } finally {
+                this.lfsState.busy = false;
+            }
+        },
+        async resizeLittleFS(cb) {
+            if (this.lfsState.busy || this.lfsState.pending) return;
+            const input = prompt('New LittleFS size in bytes (hex such as 0x10000 or decimal such as 65536):', '0x10000');
+            if (input === null) return;
+            const raw = input.trim();
+            const size = /^(0x[0-9a-f]+|[0-9]+)$/i.test(raw) ? Number(raw) : NaN;
+            // strtol in the MCU firmware is signed 32-bit. Platform size/alignment
+            // checks remain in firmware, rather than another per-platform JS table.
+            if (!Number.isSafeInteger(size) || size <= 0 || size > 0x7fffffff) {
+                this.lfsState.message = 'Invalid size. Enter a positive integer no larger than 0x7fffffff in decimal or hex.';
+                return;
+            }
+            const sizeHex = '0x' + size.toString(16);
+            if (!confirm('Schedule LittleFS size ' + sizeHex + ' (' + size + ' bytes)? Firmware may round down to its block size. The change takes effect on reboot and may reformat/delete files. Back up files first. Raw FS-block tools and Format will be blocked until you acknowledge a device reboot.')) return;
+            if (!this.beginLfsOperation()) return;
+            try {
+                this.setLfsResizePending(true);
+                this.backupdata = null;
+                this.lfsState.message = 'Requesting LittleFS size ' + sizeHex + '...';
+                await this.sendLfsCommand('lfs_size ' + sizeHex);
+                this.lfsState.message = 'Size request ' + sizeHex + ' accepted; reboot required. The live filesystem has not been resized by this command. Files may be reformatted on reboot.';
+                if (cb) cb();
+            } catch (error) {
+                // Only a recognized firmware rejection proves lfs_size was not
+                // accepted. Network/invalid-response failures leave the guard set.
+                if (error.rejected) {
+                    try { this.setLfsResizePending(false); } catch (storageError) { /* Keep the guard. */ }
+                }
+                this.lfsState.message = (error.rejected ? 'Resize rejected: ' : 'Resize outcome not confirmed: ') + error.message;
+            } finally {
+                this.lfsState.busy = false;
+            }
+        },
+
         startScript_simple() {
             this.startScript(null,null,0);
         },
@@ -516,7 +677,7 @@
                          
                     });
             } else {
-                alert("Please begin editing some file first. Just click the name on list to edit.");
+                alert("Select a file from the list to edit first.");
             }
         },
 
@@ -999,6 +1160,9 @@
     mounted (){
         this.msg = 'fred';
 
+        this.deviceBase = (window.device || '').toString().replace(/\/+$/, '');
+        if (!this.deviceBase) this.deviceBase = 'http://<device-ip>';
+
         // construct tarball class
         this.tar = this.tarball();
 
@@ -1013,16 +1177,160 @@
 </script>
 
 <style scoped>
+    .fill {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        height: 100%;
+        min-height: 0;
+    }
+
+        /* Help text: always visible, but compact so actions stay near the top. */
+    .helpBox {
+        font-size: 0.85em;
+        line-height: 1.25em;
+        padding: 8px 10px;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.02);
+    }
+    .helpIntro {
+        margin: 0 0 6px 0;
+        font-weight: 600;
+    }
+    .helpList {
+        margin: 0 0 6px 18px;
+        padding: 0;
+        columns: 2;
+        column-gap: 26px;
+    }
+    .helpList li {
+        break-inside: avoid;
+        margin: 0 0 2px 0;
+    }
+    .helpFooter {
+        margin: 0;
+    }
+
+
+    /* Action toolbar */
+    .top.toolbar {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .toolbarRow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+    }
+    .toolbarRowAdvanced {
+        padding-top: 0;
+        border-top: none;
+    }
+    button.danger {
+        border: 2px solid #a32020;
+        color: #8b1b1b;
+    }
+    button.danger:disabled {
+        opacity: 0.5;
+    }
+    .lfsNotice {
+        margin: 0;
+        padding: 6px 8px;
+        border-left: 3px solid #a46a00;
+        overflow-wrap: anywhere;
+    }
+
+    /* Main 3-column layout */
+    .bottom {
+        flex: 1 1 auto;
+        min-height: 0;
+        display: grid;
+        grid-template-columns: 300px 280px 1fr;
+        gap: 12px;
+        position: relative;
+        padding-top: 10px;
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    .left,
+    .middle,
+    .right {
+        position: static;
+        width: auto;
+        height: auto;
+        min-height: 0;
+        overflow: auto;
+        box-sizing: border-box;
+    }
+
+    .left {
+        padding: 4px 8px 4px 0;
+    }
+    .middle {
+        padding: 4px 8px 4px 12px;
+        border-left: none;
+    }
+    .right {
+        padding: 4px 0 4px 12px;
+        border-left: none;
+    }
+
+
+    /* Middle panel: file list spacing */
+    .fileRow {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin: 0 0 6px 0;
+        flex-wrap: wrap;
+    }
+    .fileBtn {
+        padding: 2px 6px;
+    }
+    .fileSize {
+        white-space: nowrap;
+    }
+
+
+    /* Left panel */
+    .folderBox {
+        margin: 0 0 10px 0;
+        width: 100%;
+    }
+    .folderInput {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 4px 6px;
+    }
+    .folderHelp {
+        margin-top: 4px;
+        font-size: 0.9em;
+        line-height: 1.2em;
+        word-break: break-word;
+    }
+
+    .logText {
+        font-size: 0.88em;
+        line-height: 1.25em;
+        word-break: break-word;
+    }
+
+
     .drop {
-        border: 5px solid blue;
-        width:  200px;
-        height: 100px;
+        border: 4px solid #3b82f6;
+        background: #ffffff;
+        color: #000000;
+        margin: 10px 0 10px 2px;
+        width: 240px;
+        max-width: 100%;
+        height: 120px;
         text-align: center;
         position: relative;
         vertical-align: center;
-    }
-
-    .otatext {
+        box-sizing: border-box;
     }
     .center {
         margin: 0;
@@ -1033,32 +1341,90 @@
         transform: translate(-50%, -50%);
     }
 
-    .left {
-        position: absolute;
-        left:0;
-        width:30%;
-        height:100%;
+    /* Right panel: editor */
+    #fileEditorLabel {
+        margin: 0 0 8px 0;
+        font-size: 1.05em;
+        line-height: 1.25em;
     }
-    .middle {
-        position: absolute;
-        left:30%;
-        width:20%;
-        height:100%;
+    .editorBody {
+        gap: 8px;
+        flex-direction: column;
+        min-height: 0;
     }
-    .right {
-        position: absolute;
-        left:50%;
-        width:50%;
-        height:100%;
+    .editorActions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
     }
-    .fill {
-        height:90%;
+    .editorBody textarea {
+        width: 100%;
+        box-sizing: border-box;
+        flex: 1 1 auto;
+        min-height: 340px;
+        height: 100%;
     }
-    .top {
-        height:10%;
+
+    /* Modal */
+    .modalOverlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 10vh 12px 12px 12px;
+        box-sizing: border-box;
     }
-    .bottom {
-        height:90%;
-        position: relative;
+    .modal {
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.35);
+        padding: 12px;
+        width: min(720px, 92vw);
+        box-sizing: border-box;
+        border-radius: 6px;
+    }
+    .modal h3 {
+        margin: 0 0 8px 0;
+        font-size: 1.05em;
+    }
+    .modalHelp {
+        margin: 0 0 8px 0;
+    }
+    .modal textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .modalOption {
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        margin-top: 8px;
+    }
+    .modalActions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 6px;
+        margin-top: 10px;
+    }
+
+    /* Responsive: stack columns on narrower screens */
+    @media (max-width: 1000px) {
+        .bottom {
+            grid-template-columns: 1fr;
+        }
+        .helpList {
+            columns: 1;
+        }
+        .left,
+        .middle,
+        .right {
+            overflow: visible;
+        }
+        .editorBody textarea {
+            min-height: 260px;
+        }
     }
 </style>
