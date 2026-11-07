@@ -17732,6 +17732,43 @@
       "image": "https://raw.githubusercontent.com/OpenBekenIOT/webapp/main/images/sran-sr-cb01-sbl.png",
       "wiki": "",
       "product": "https://www.aliexpress.com/item/1005003170017057.html"
+    },
+    {
+      "vendor": "Tuya",
+      "bDetailed": "0",
+      "name": "Bluetooth SigMesh Gateway (bundled with Gimdow smart locks)",
+      "model": "JM-MESH01-WG",
+      "chip": "RTL87X0C",
+      "board": "CR3L",
+      "flags": "1024",
+      "keywords": [
+        "gateway",
+        "bluetooth",
+        "BLE",
+        "SigMesh",
+        "mesh gateway",
+        "bt proxy",
+        "btproxy",
+        "ESPHome",
+        "Gimdow",
+        "A1 Pro Max",
+        "RTL8720CF",
+        "JM-MESH01-WG V1.5",
+        "oem_rtl8720cm_gw_plug"
+      ],
+      "pins": {
+        "2": "LED;2",
+        "3": "LED;1",
+        "20": "Btn;3"
+      },
+      "pin_notes": {
+        "2": "Blue LED D3",
+        "3": "Red LED D2",
+        "20": "Side button, active-low (board pull-up, pressed = low)"
+      },
+      "command": "backlog BTInit; BTSetScanMode 1; startDriver ESPHomeAPI; BTStartScan",
+      "image": "https://raw.githubusercontent.com/OpenBekenIOT/webapp/main/images/jm-mesh01-wg-cr3l-ble-gateway.jpg",
+      "wiki": "https://github.com/openshwprojects/OpenBK7231T_App/pull/2298"
     }
   ]
 }
