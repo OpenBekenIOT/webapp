@@ -17759,12 +17759,12 @@
       "pins": {
         "2": "LED;2",
         "3": "LED;1",
-        "20": "Btn_pd_n;3"
+        "20": "Btn;3"
       },
       "pin_notes": {
         "2": "Blue LED D3",
         "3": "Red LED D2",
-        "20": "Side button, active-high (reads high when pressed, board has a pull-down)"
+        "20": "Side button, active-low (board pull-up, pressed = low)"
       },
       "command": "backlog BTInit; BTSetScanMode 1; startDriver ESPHomeAPI; BTStartScan",
       "image": "https://raw.githubusercontent.com/OpenBekenIOT/webapp/main/images/jm-mesh01-wg-cr3l-ble-gateway.jpg",
