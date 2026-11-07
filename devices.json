@@ -17732,6 +17732,39 @@
       "image": "https://raw.githubusercontent.com/OpenBekenIOT/webapp/main/images/sran-sr-cb01-sbl.png",
       "wiki": "",
       "product": "https://www.aliexpress.com/item/1005003170017057.html"
+    },
+    {
+      "vendor": "Eurodomest",
+      "bDetailed": "0",
+      "name": "RGBIC LED strip controller with IR remote and mic (Action 3225770)",
+      "model": "6108000100 C1137_L34_W1_LT04_V1.6",
+      "chip": "BK7238",
+      "board": "on PCB",
+      "flags": "1024",
+      "keywords": [
+        "T1",
+        "T1-CHL",
+        "BK7238_T1_2_0_0",
+        "WS2812",
+        "SM16703P",
+        "RGBIC",
+        "LED strip",
+        "IR remote",
+        "Action",
+        "3225770",
+        "Calex",
+        "oem_t1_slide_strip_ty",
+        "keyruxdxgav5kujk"
+      ],
+      "pins": {
+        "9": "IRRecv;0",
+        "21": "Btn_Tgl_All;0",
+        "22": "AlwaysHigh;0"
+      },
+      "command": "backlog startDriver SM16703P; SM16703P_Init 120 GRB; startDriver PixelAnim; startDriver IR",
+      "image": "https://obrazki.elektroda.pl/8658264600_1794079782.jpg",
+      "wiki": "https://www.elektroda.com/rtvforum/topic4187078.html",
+      "product": "https://www.action.com/pl-pl/p/3225770/inteligentna-tasma-led/"
     }
   ]
 }
